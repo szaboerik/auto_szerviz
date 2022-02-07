@@ -1,0 +1,29 @@
+body {
+    background-color:aqua;
+}
+.item1 { grid-area: header; }
+.item2 { grid-area: menu; }
+.item3 { grid-area: article; }
+.item4 {grid-area: aside}
+
+
+.grid-container {
+    display: grid;
+    grid-template-areas:
+      'header header header header header aside'
+      'menu menu article article article article';
+    grid-gap: 10px;
+    text-align: center;
+    background-color: #2196F3;
+    padding: 10px;
+  }
+  .grid-container > article, header, menu, div {
+    background-color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    padding: 20px 0;
+    font-size: 30px;
+  }
+
+table, th, td{
+  border: 1px solid black;
+}
