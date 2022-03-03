@@ -31,12 +31,12 @@ class SzervizController extends Controller
             if($beFhn == $dolgozoFhn && $beJsz == $dolgozoJsz){
                 $_SESSION["belepve"] = true;
                 $_SESSION["nev"] =$beFhn;
-                return redirect("dfeladatok");
+                return redirect("dolgozo/dfeladatok");
                 exit();
             }if($beFhn == $mvezetoFhn && $beJsz == $mvezetoJsz){
                 $_SESSION["belepve"] = true;
                 $_SESSION["nev"] =$beFhn;
-                return redirect("munkalap");
+                return redirect("mvezeto/munkalap");
                 exit();
             }
             else{
@@ -49,7 +49,14 @@ class SzervizController extends Controller
         return Szerviz::all();
     }
 
-
+//Dolgozó
+//-------------------------
+public function dfeladatok()
+{
+    //Itt majd a szervizs kell átírni a táblázat nevére, egyenlőre így működik
+    $szervizs = Szerviz::all();
+    return view('dolgozo.dfeladatok', ['szervizs' => $szervizs]);
+}
 
 //Feladathoz tartozók
 //---------------------------------------------------------
@@ -232,6 +239,4 @@ public function rszerkesztes($id)
     //{
     //    return Szerviz::find($id);
     //}
-
-
 }

@@ -15,26 +15,10 @@ Route::get('/belepes', function () {
 //Belépés
 Route::post('/belepes', [SzervizController::class, 'belepes']);
 
-//Műhelyvezető
-//--------------------------------
-Route::get('/munkalap', function () {
-    return view('mvezeto/munkalap');
-});
-Route::get('/rendeles', function () {
-    return view('mvezeto/rendeles');
-});
-Route::get('/feladatok', function () {
-    return view('mvezeto/feladatok');
-});
-Route::get('/munkak', function () {
-    return view('mvezeto/munkak');
-});
-
 //Dolgozó
-//---------------------------------
-Route::get('/dfeladatok', function () {
-    return view('dolgozo/dfeladatok');
-});
+//--------------------------
+Route::get('/dolgozo/dfeladatok', [SzervizController::class, 'dfeladatok']);
+
 
 //Feladathoz tartozó linkek
 //---------------------------------
@@ -44,7 +28,6 @@ Route::get('/mvezeto/feladat', [SzervizController::class, 'feladat']);
 
 //Feladatok listázása
 Route::get('/mvezeto/feladatok', [SzervizController::class, 'feladatok']);
-Route::get('/dolgozo/dfeladatok', [SzervizController::class, 'feladatok']);
 
 //Feladat törlése
 Route::delete('/api/feladat/{id}', [SzervizController::class, 'ftorles']);
