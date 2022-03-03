@@ -16,7 +16,8 @@
             <a href="belepes">Kijelentkezés</a>
         </aside>
         <nav class="item2">
-            <a href="rendelesek">Rendelések</a>
+            <a href="munkalap">Munkalap</a>
+            <a href="rendeles">Rendelés</a>
             <a href="munkak">Munkák</a>
         </nav>
         <article class="item3">
@@ -39,7 +40,7 @@
                   <input type="number" id="mora" name="mora"><br>
                   <input type="submit" value="Feltöltés">
 
-                  <a href="feladat">Új feladat létrehozása</a>
+
               </form> 
         </article>
     </main>

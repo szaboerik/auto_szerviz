@@ -21,28 +21,29 @@
             <a href="rendeles">Rendelés</a>
             <a href="feladatok">Feladatok</a>
             <a href="munkak">Munkák</a>
+            <a href="rendelesek">Rendelések</a>
         </nav>
         <article class="item3">
             <h2>Munkalap</h2>
             <form action="">
-                <label for="munkaszam">Munkaszám</label>
-                <input type="text" id="munkaszam" name="munkaszam"><br>
-                <label for="ugyfel_nev">Ügyfél neve</label>
-                <input type="text" id="ugyfel_nev" name="ugyfel_nev"><br>
-                <label for="ugyfel_telefonszam">Ügyfél telefonszáma</label>
-                <input type="number" id="ugyfel_telefonszam" name="ugyfel_telefonszam"><br>
-                <label for="rendszam">Rendszám</label>
-                <input type="text" id="rendszam" name="rendszam"><br>
-                <label for="auto_erkezese">Autó érkezése</label>
-                <input type="date" id="auto_erkezese" name="auto_erkezese"><br>
-                <label for="munka_kezdete">Munka kezdete</label>
-                <input type="date" id="munka_kezdete" name="munka_kezdete"><br>
-                <label for="munka_vege">Munka vége</label>
-                <input type="date" id="munka_vege" name="munka_vege"><br>
-                <label for="auto_tavozasa">Autó távozása</label>
-                <input type="date" id="auto_tavozasa" name="auto_tavozasa"><br>
-                <label for="fizetendo_osszeg">Fizetendő összeg</label>
-                <input type="number" id="fizetendo_osszeg" name="fizetendo_osszeg"><br>
+                <label for="mszam">Munkaszám</label>
+                <input type="text" id="mszam" name="mszam"><br>
+                <label for="ugyfnev">Ügyfél neve</label>
+                <input type="text" id="ugyfnev" name="ugyfnev"><br>
+                <label for="ugyftel">Ügyfél telefonszáma</label>
+                <input type="number" id="ugyftel" name="ugyftel"><br>
+                <label for="rendsz">Rendszám</label>
+                <input type="text" id="rendsz" name="rendsz"><br>
+                <label for="autoerk">Autó érkezése</label>
+                <input type="date" id="autoerk" name="autoerk"><br>
+                <label for="mkezd">Munka kezdete</label>
+                <input type="date" id="mkezd" name="mkezd"><br>
+                <label for="mvege">Munka vége</label>
+                <input type="date" id="mvege" name="mvege"><br>
+                <label for="autotav">Autó távozása</label>
+                <input type="date" id="autotav" name="autotav"><br>
+                <label for="fizetendo">Fizetendő összeg</label>
+                <input type="number" id="fizetendo" name="fizetendo"><br>
                 <input type="submit" value="Feltöltés">
               </form> 
         </article>

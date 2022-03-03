@@ -22,7 +22,7 @@ class SzervizController extends Controller
                 $fhn = $_GET["fhn"];
             }
         }
-    
+        
         $dolgozoFhn = "a";
         $dolgozoJsz = "a";
     
@@ -50,12 +50,6 @@ class SzervizController extends Controller
             }
         }
     }
-
-    public function munkalapok() {
-        $szervizek = Szerviz::all();
-        return view('mvezeto.munkak', ['szervizek' => $szervizek]);
-    }
-
 
     public function ujmunkalap(Request $request) {
         $szerviz = new Szerviz();
@@ -89,7 +83,7 @@ class SzervizController extends Controller
 
     public function index()
     {
-        return Szerviz::all();
+        
     }
 
     /**

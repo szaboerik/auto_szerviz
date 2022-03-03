@@ -5,12 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/stilus.css') }}" >
-    <title>Rendelés</title>
+    <title>Rendelések</title>
 </head>
 <body>
     <main class="grid-container">
         <header class="header">
-            Rendelés
+            Rendelések
             
         </header>
         <aside class="item4">
@@ -20,10 +20,10 @@
             <a href="munkalap">Munkalap</a>
             <a href="feladatok">Feladatok</a>
             <a href="munkak">Munkák</a>
-            <a href="rendelesek">Rendelések</a>
+            <a href="rendeles">Rendelések</a>
         </nav>
         <article class="item3">
-            <h2>Rendelés felvétele</h2>
+            <h2>Rendelések</h2>
             <form action="">
                 <label for="bazon">Beszerzés azonosító</label>
                 <input type="text" id="bazon" name="bazon"><br>
