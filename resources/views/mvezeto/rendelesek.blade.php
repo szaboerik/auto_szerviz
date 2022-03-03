@@ -35,20 +35,20 @@
       </tr>
     </thead>
     <tbody>
-     <?php foreach($szervizs as $szerviz): ?>
+     <?php foreach($beszerzess as $beszerzes): ?>
         <tr>
-          <th>{{ $szerviz->id}}</th>
-          <th>{{ $szerviz->besz_azon}}</th>
-          <td>{{ $szerviz->f_szam }}</td>
-          <td>{{ $szerviz->alkatresz }}</td>
-          <td>{{ $szerviz->beszall_kod }}</td>
-          <td>{{ $szerviz->egyseg_ar }}</td>
-          <td>{{ $szerviz->mennyiseg }}</td>
-          <td>{{ $szerviz->besz_osszege }}</td>
-          <td>{{ $szerviz->atveve }}</td>
+          <th>{{ $beszerzes->id}}</th>
+          <th>{{ $beszerzes->besz_azon}}</th>
+          <td>{{ $beszerzes->f_szam }}</td>
+          <td>{{ $beszerzes->alkatresz }}</td>
+          <td>{{ $beszerzes->beszall_kod }}</td>
+          <td>{{ $beszerzes->egyseg_ar }}</td>
+          <td>{{ $beszerzes->mennyiseg }}</td>
+          <td>{{ $beszerzes->besz_osszege }}</td>
+          <td>{{ $beszerzes->atveve }}</td>
           <td style="display: flex;">
-            <a href="/mvezeto/rendelesmodosit/{{ $szerviz->id }}"><button class="btn btn-sm btn-info">Szerkesztés</button></a>
-            <a><form action="/api/rendeles/{{ $szerviz->id }}" method="POST">@csrf @method('delete')<button type="submit" class="btn btn-sm btn-danger">Törlés</button></form></a>
+            <a href="/mvezeto/rendelesmodosit/{{ $beszerzes->id }}"><button class="btn btn-sm btn-info">Szerkesztés</button></a>
+            <a><form action="/api/rendeles/{{ $beszerzes->id }}" method="POST">@csrf @method('delete')<button type="submit" class="btn btn-sm btn-danger">Törlés</button></form></a>
           </td>
         </tr>
         <?php endforeach; ?> 

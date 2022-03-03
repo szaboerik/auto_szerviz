@@ -29,13 +29,13 @@
       </tr>
     </thead>
     <tbody>
-     <?php foreach($szervizs as $szerviz): ?>
+     <?php foreach($feladats as $feladat): ?>
         <tr>
-          <th>{{ $szerviz->id}}</th>
-          <td>{{ $szerviz->m_szam }}</td>
-          <td>{{ $szerviz->jelleg }}</td>
-          <td>{{ $szerviz->szerelo }}</td>
-          <td>{{ $szerviz->munkaora }}</td>
+          <th>{{ $feladat->id}}</th>
+          <td>{{ $feladat->m_szam }}</td>
+          <td>{{ $feladat->jelleg }}</td>
+          <td>{{ $feladat->szerelo }}</td>
+          <td>{{ $feladat->munkaora }}</td>
         </tr>
         <?php endforeach; ?> 
     </tbody>

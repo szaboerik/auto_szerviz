@@ -35,19 +35,19 @@
       </tr>
     </thead>
     <tbody>
-     <?php foreach($szervizs as $szerviz): ?>
+     <?php foreach($munkalaps as $munkalap): ?>
         <tr>
-          <th>{{ $szerviz->id}}</th>
-          <th>{{ $szerviz->m_szam}}</th>
-          <td>{{ $szerviz->ugyfel_neve }}</td>
-          <td>{{ $szerviz->ugyfel_telszama }}</td>
-          <td>{{ $szerviz->rendszam }}</td>
-          <td>{{ $szerviz->munka_kezdete }}</td>
-          <td>{{ $szerviz->munka_vege }}</td>
-          <td>{{ $szerviz->fizetendo }}</td>
+          <th>{{ $munkalap->id}}</th>
+          <th>{{ $munkalap->m_szam}}</th>
+          <td>{{ $munkalap->ugyfel_neve }}</td>
+          <td>{{ $munkalap->ugyfel_telszama }}</td>
+          <td>{{ $munkalap->rendszam }}</td>
+          <td>{{ $munkalap->munka_kezdete }}</td>
+          <td>{{ $munkalap->munka_vege }}</td>
+          <td>{{ $munkalap->fizetendo }}</td>
           <td style="display: flex;">
-            <a href="/mvezeto/munkamodosit/{{ $szerviz->id }}"><button class="btn btn-sm btn-info">Szerkesztés</button></a>
-            <a><form action="/api/munkalap/{{ $szerviz->id }}" method="POST">@csrf @method('delete')<button type="submit" class="btn btn-sm btn-danger">Törlés</button></form></a>
+            <a href="/mvezeto/munkamodosit/{{ $munkalap->id }}"><button class="btn btn-sm btn-info">Szerkesztés</button></a>
+            <a><form action="/api/munkalap/{{ $munkalap->id }}" method="POST">@csrf @method('delete')<button type="submit" class="btn btn-sm btn-danger">Törlés</button></form></a>
           </td>
         </tr>
         <?php endforeach; ?> 

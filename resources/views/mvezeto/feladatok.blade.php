@@ -34,18 +34,18 @@
       </tr>
     </thead>
     <tbody>
-     <?php foreach($szervizs as $szerviz): ?>
+     <?php foreach($feladats as $feladat): ?>
         <tr>
-          <th>{{ $szerviz->id}}</th>
-          <th>{{ $szerviz->f_szam}}</th>
-          <td>{{ $szerviz->m_szam }}</td>
-          <td>{{ $szerviz->jelleg }}</td>
-          <td>{{ $szerviz->szerelo }}</td>
-          <td>{{ $szerviz->munkaora }}</td>
-          <td>{{ $szerviz->besz_osszege }}</td>
+          <th>{{ $feladat->id}}</th>
+          <th>{{ $feladat->f_szam}}</th>
+          <td>{{ $feladat->m_szam }}</td>
+          <td>{{ $feladat->jelleg }}</td>
+          <td>{{ $feladat->szerelo }}</td>
+          <td>{{ $feladat->munkaora }}</td>
+          <td>{{ $feladat->besz_osszege }}</td>
           <td style="display: flex;">
-            <a href="/mvezeto/feladatmodosit/{{ $szerviz->id }}"><button class="btn btn-sm btn-info">Szerkesztés</button></a>
-            <a><form action="/api/feladat/{{ $szerviz->id }}" method="POST">@csrf @method('delete')<button type="submit" class="btn btn-sm btn-danger">Törlés</button></form></a>
+            <a href="/mvezeto/feladatmodosit/{{ $feladat->id }}"><button class="btn btn-sm btn-info">Szerkesztés</button></a>
+            <a><form action="/api/feladat/{{ $feladat->id }}" method="POST">@csrf @method('delete')<button type="submit" class="btn btn-sm btn-danger">Törlés</button></form></a>
           </td>
         </tr>
         <?php endforeach; ?> 

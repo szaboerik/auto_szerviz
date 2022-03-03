@@ -17,21 +17,21 @@
         </aside>
         <article class="item3">
   <div style="width: 80%; margin: auto;">
-    <form action="/api/feladat/{{ $szerviz->id }}" method="POST">
+    <form action="/api/feladat/{{ $feladat->id }}" method="POST">
       @csrf
       @method('put')
         <label for="f_szam">Feladatszám</label>
-        <input type="text" id="f_szam" name="f_szam" value="{{ $szerviz->f_szam }}"><br>
+        <input type="text" id="f_szam" name="f_szam" value="{{ $feladat->f_szam }}"><br>
         <label for="m_szam">Munkaszám</label>
-        <input type="text" id="m_szam" name="m_szam" value="{{ $szerviz->m_szam }}"><br>
+        <input type="text" id="m_szam" name="m_szam" value="{{ $feladat->m_szam }}"><br>
         <label for="jelleg">Jelleg</label>
-        <input type="text" id="jelleg" name="jelleg" value="{{ $szerviz->jelleg }}"><br>
+        <input type="text" id="jelleg" name="jelleg" value="{{ $feladat->jelleg }}"><br>
         <label for="szerelo">Szerelő</label>
-        <input type="text" id="szerelo" name="szerelo" value="{{ $szerviz->szerelo }}"><br>
+        <input type="text" id="szerelo" name="szerelo" value="{{ $feladat->szerelo }}"><br>
         <label for="munkaora">Munkaóra</label>
-        <input type="text" id="munkaora" name="munkaora" value="{{ $szerviz->munkaora }}"><br>
+        <input type="text" id="munkaora" name="munkaora" value="{{ $feladat->munkaora }}"><br>
         <label for="besz_osszege">Beszerzési összeg</label>
-        <input type="text" id="besz_osszege" name="besz_osszege" value="{{ $szerviz->besz_osszege }}"><br>
+        <input type="text" id="besz_osszege" name="besz_osszege" value="{{ $feladat->besz_osszege }}"><br>
       <button type="submit" class="btn btn-success" style="width: 100%;">Mentés</button>
     </form>
   </div>

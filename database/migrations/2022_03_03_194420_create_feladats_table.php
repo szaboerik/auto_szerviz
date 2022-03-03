@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFeladatokTable extends Migration
+class CreateFeladatsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateFeladatokTable extends Migration
      */
     public function up()
     {
-        Schema::create('szervizs', function (Blueprint $table) {
+        Schema::create('feladats', function (Blueprint $table) {
             $table->id();
-            //$table->integer('f_szam');
-            //$table->integer('m_szam');
-            //$table->integer('jelleg');
-            //$table->integer('szerelo');
-            //$table->float('munkaora');
-           // $table->integer('besz_osszege');
+            $table->integer('f_szam');
+            $table->integer('m_szam');
+            $table->integer('jelleg');
+            $table->integer('szerelo');
+            $table->float('munkaora');
+            $table->integer('besz_osszege');
             $table->timestamps();
         });
     }
@@ -32,6 +32,6 @@ class CreateFeladatokTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('szervizs');
+        Schema::dropIfExists('feladats');
     }
 }

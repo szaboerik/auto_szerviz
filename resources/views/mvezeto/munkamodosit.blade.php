@@ -17,23 +17,23 @@
         </aside>
         <article class="item3">
   <div style="width: 80%; margin: auto;">
-    <form action="/api/munkalap/{{ $szerviz->id }}" method="POST">
+    <form action="/api/munkalap/{{ $munkalap->id }}" method="POST">
       @csrf
       @method('put')
         <label for="m_szam">Munkaszám</label>
-        <input type="number" id="m_szam" name="m_szam" value="{{ $szerviz->m_szam }}"><br>
+        <input type="number" id="m_szam" name="m_szam" value="{{ $munkalap->m_szam }}"><br>
         <label for="ugyfel_neve">Ügyfél neve</label>
-        <input type="text" id="ugyfel_neve" name="ugyfel_neve" value="{{ $szerviz->ugyfel_neve }}"><br>
+        <input type="text" id="ugyfel_neve" name="ugyfel_neve" value="{{ $munkalap->ugyfel_neve }}"><br>
         <label for="ugyfel_telszama">Ügyfél telefonszáma</label>
-        <input type="text" id="ugyfel_telszama" name="ugyfel_telszama" value="{{ $szerviz->ugyfel_telszama }}"><br>
+        <input type="text" id="ugyfel_telszama" name="ugyfel_telszama" value="{{ $munkalap->ugyfel_telszama }}"><br>
         <label for="rendszam">Rendszám</label>
-        <input type="text" id="rendszam" name="rendszam" value="{{ $szerviz->rendszam }}"><br>
+        <input type="text" id="rendszam" name="rendszam" value="{{ $munkalap->rendszam }}"><br>
         <label for="munka_kezdete">Munka kezdete</label>
-        <input type="date" id="munka_kezdete" name="munka_kezdete" value="{{ $szerviz->munka_kezdete }}"><br>
+        <input type="date" id="munka_kezdete" name="munka_kezdete" value="{{ $munkalap->munka_kezdete }}"><br>
         <label for="munka_vege">Munka vége</label>
-        <input type="date" id="munka_vege" name="munka_vege" value="{{ $szerviz->munka_vege }}"><br>
+        <input type="date" id="munka_vege" name="munka_vege" value="{{ $munkalap->munka_vege }}"><br>
         <label for="fizetendo">Fizetendő</label>
-        <input type="number" id="fizetendo" name="fizetendo" value="{{ $szerviz->fizetendo }}"><br>
+        <input type="number" id="fizetendo" name="fizetendo" value="{{ $munkalap->fizetendo }}"><br>
       <button type="submit" class="btn btn-success" style="width: 100%;">Mentés</button>
     </form>
 </div>
