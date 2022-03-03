@@ -11,38 +11,50 @@
     <main class="grid-container">
         <header class="header">
             Rendelések
-            
         </header>
         <aside class="item4">
-            <a href="belepes">Kijelentkezés</a>
+            <a href="/belepes">Kijelentkezés</a>
         </aside>
         <nav class="item2">
-            <a href="munkalap">Munkalap</a>
-            <a href="feladatok">Feladatok</a>
             <a href="munkak">Munkák</a>
-            <a href="rendeles">Rendelések</a>
+            <a href="feladatok">Feladatok</a>
         </nav>
         <article class="item3">
             <h2>Rendelések</h2>
-            <form action="">
-                <label for="bazon">Beszerzés azonosító</label>
-                <input type="text" id="bazon" name="bazon"><br>
-                <label for="fszam">Feladatszám</label>
-                <input type="text" id="fszam" name="fszam"><br>
-                <label for="alk">Alkatrész</label>
-                <input type="text" id="alk" name="alk"><br>
-                <label for="bkod">Beszállító kód</label>
-                <input type="text" id="bkod" name="bkod"><br>
-                <label for="ar">Egységár</label>
-                <input type="number" id="ar" name="ar"><br>
-                <label for="db">Mennyiség</label>
-                <input type="number" id="db" name="db"><br>
-                <label for="rendel">Megrendelve</label>
-                <input type="date" id="rendel" name="rendel"><br>
-                <label for="atveve">Átvéve</label>
-                <input type="date" id="atveve" name="atveve"><br>
-                <input type="submit" value="Feltöltés">
-              </form> 
+            <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Beszerzés azonosító</th>
+        <th>Feladatszám</th>
+        <th>Alkatrész</th>
+        <th>Egységár</th>
+        <th>Mennyiség</th>
+        <th>Beszerzés összege</th>
+        <th>Átvéve</th>
+      </tr>
+    </thead>
+    <tbody>
+     <?php foreach($szervizs as $szerviz): ?>
+        <tr>
+          <th>{{ $szerviz->id}}</th>
+          <th>{{ $szerviz->besz_azon}}</th>
+          <td>{{ $szerviz->f_szam }}</td>
+          <td>{{ $szerviz->alkatresz }}</td>
+          <td>{{ $szerviz->beszall_kod }}</td>
+          <td>{{ $szerviz->egyseg_ar }}</td>
+          <td>{{ $szerviz->mennyiseg }}</td>
+          <td>{{ $szerviz->besz_osszege }}</td>
+          <td>{{ $szerviz->atveve }}</td>
+          <td style="display: flex;">
+            <a href="/mvezeto/rendelesmodosit/{{ $szerviz->id }}"><button class="btn btn-sm btn-info">Szerkesztés</button></a>
+            <a><form action="/api/rendeles/{{ $szerviz->id }}" method="POST">@csrf @method('delete')<button type="submit" class="btn btn-sm btn-danger">Törlés</button></form></a>
+          </td>
+        </tr>
+        <?php endforeach; ?> 
+    </tbody>
+    <div><a href="/mvezeto/rendeles"><button class="btn btn-sm btn-success">Új rendelés létrehozása</button></a></div>
+  </table>
         </article>
     </main>
 </div>

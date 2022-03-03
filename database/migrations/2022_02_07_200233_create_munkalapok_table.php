@@ -14,7 +14,8 @@ class CreateMunkalapokTable extends Migration
     public function up()
     {
         Schema::create('munkalapok', function (Blueprint $table) {
-            $table->id('m_szam');
+            $table->id();
+            $table->integer('m_szam');
             $table->string('ugyfel_neve', 50);
             $table->string('ugyfel_telszama', 30);
             $table->string('rendszam', 6);

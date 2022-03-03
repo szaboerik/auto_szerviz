@@ -13,7 +13,7 @@
             Feladatok
         </header>
         <aside class="item4">
-            <a href="belepes">Kijelentkezés</a>
+            <a href="/belepes">Kijelentkezés</a>
         </aside>
         <nav class="item2">
             <a href="rendelesek">Rendelések</a>
@@ -21,26 +21,37 @@
         </nav>
         <article class="item3">
             <h2>Feladatok</h2>
-            <form action="">
-                <label for="mszam">Munka szám</label>
-                <select name="mszam" id="mszam" form="feladatform">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                  </select><br>
-                  <label for="fszam">Feladatszám</label>
-                  <input type="text" id="fszam" name="fszam"><br>
-                  <label for="jelleg">Jelleg</label>
-                  <input type="text" id="jelleg" name="jelleg"><br>
-                  <label for="szerelo">Szerelő</label>
-                  <input type="text" id="szerelo" name="szerelo"><br>
-                  <label for="mora">Munkaóra</label>
-                  <input type="number" id="mora" name="mora"><br>
-                  <input type="submit" value="Feltöltés">
-
-                  <a href="feladat">Új feladat létrehozása</a>
-              </form> 
+            <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Feladatszám</th>
+        <th>Munkaszám</th>
+        <th>Jelleg</th>
+        <th>Szerelő</th>
+        <th>Munkaóra</th>
+        <th>Beszerzés összege</th>
+      </tr>
+    </thead>
+    <tbody>
+     <?php foreach($szervizs as $szerviz): ?>
+        <tr>
+          <th>{{ $szerviz->id}}</th>
+          <th>{{ $szerviz->f_szam}}</th>
+          <td>{{ $szerviz->m_szam }}</td>
+          <td>{{ $szerviz->jelleg }}</td>
+          <td>{{ $szerviz->szerelo }}</td>
+          <td>{{ $szerviz->munkaora }}</td>
+          <td>{{ $szerviz->besz_osszege }}</td>
+          <td style="display: flex;">
+            <a href="/mvezeto/feladatmodosit/{{ $szerviz->id }}"><button class="btn btn-sm btn-info">Szerkesztés</button></a>
+            <a><form action="/api/feladat/{{ $szerviz->id }}" method="POST">@csrf @method('delete')<button type="submit" class="btn btn-sm btn-danger">Törlés</button></form></a>
+          </td>
+        </tr>
+        <?php endforeach; ?> 
+    </tbody>
+    <div><a href="/mvezeto/feladat"><button class="btn btn-sm btn-success">Új feladat létrehozása</button></a></div>
+  </table>
         </article>
     </main>
 </div>

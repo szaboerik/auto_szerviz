@@ -14,6 +14,7 @@ class CreateBeszerzesekTable extends Migration
     public function up()
     {
         Schema::create('beszerzesek', function (Blueprint $table) {
+            $table->id();
             $table->id('besz_azon');
             $table->integer('f_szam');
             $table->integer('alkatresz');

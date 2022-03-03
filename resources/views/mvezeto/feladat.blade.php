@@ -13,34 +13,30 @@
             Feladatok
         </header>
         <aside class="item4">
-            <a href="belepes">Kijelentkezés</a>
+            <a href="/belepes">Kijelentkezés</a>
         </aside>
         <nav class="item2">
-            <a href="munkalap">Munkalap</a>
-            <a href="rendeles">Rendelés</a>
-            <a href="munkak">Munkák</a>
+            <a href="feladatok">Feladatok</a>
+            <a href="rendelesek">Rendelések</a>
+            <a href="munkak">Munkalapok</a>
         </nav>
         <article class="item3">
             <h2>Feladatok</h2>
             <form action="">
-                <label for="mszam">Munka szám</label>
-                <select name="mszam" id="mszam" form="feladatform">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                  </select><br>
+                @csrf
                   <label for="fszam">Feladatszám</label>
-                  <input type="text" id="fszam" name="fszam"><br>
+                  <input type="number" id="fszam" name="fszam"><br>
+                  <label for="m_szam">Munkaszám</label>
+                  <input type="number" id="m_szam" name="m_szam"><br>
                   <label for="jelleg">Jelleg</label>
-                  <input type="text" id="jelleg" name="jelleg"><br>
+                  <input type="number" id="jelleg" name="jelleg"><br>
                   <label for="szerelo">Szerelő</label>
-                  <input type="text" id="szerelo" name="szerelo"><br>
-                  <label for="mora">Munkaóra</label>
-                  <input type="number" id="mora" name="mora"><br>
+                  <input type="number" id="szerelo" name="szerelo"><br>
+                  <label for="munkaora">Munkaóra</label>
+                  <input type="number" id="munkaora" name="munkaora"><br>
+                  <label for="besz_osszege">Beszerzés összege</label>
+                  <input type="number" id="besz_osszege" name="besz_osszege"><br>
                   <input type="submit" value="Feltöltés">
-
-
               </form> 
         </article>
     </main>
