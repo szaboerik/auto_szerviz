@@ -37,4 +37,8 @@ Route::get('/dfeladatok', function () {
 //Belépés
 Route::post('/belepes', [SzervizController::class, 'belepes']);
 
+//Új munkalap
+Route::post('/mvezeto/munkalap', [SzervizController::class, 'uj']);
 
+//Munkalapok
+Route::get('mvezeto/munkak', [SzervizController::class, 'munkalapok']);

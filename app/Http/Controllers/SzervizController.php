@@ -51,6 +51,12 @@ class SzervizController extends Controller
         }
     }
 
+    public function munkalapok() {
+        $szervizek = Szerviz::all();
+        return view('mvezeto.munkak', ['szervizek' => $szervizek]);
+    }
+
+
     public function ujmunkalap(Request $request) {
         $szerviz = new Szerviz();
         $szerviz->beszerzes_azonosito = $request->beszerzes_azonosito;
@@ -83,7 +89,7 @@ class SzervizController extends Controller
 
     public function index()
     {
-        
+        return Szerviz::all();
     }
 
     /**

@@ -14,11 +14,12 @@ class CreateFeladatokTable extends Migration
     public function up()
     {
         Schema::create('feladatok', function (Blueprint $table) {
-            $table->id();
-            $table->integer('feladatszam');
-            $table->string('jelleg');
-            $table->string('szerelo');
-            $table->integer('munkaora');
+            $table->id('f_szam');
+            $table->integer('m_szam');
+            $table->integer('jelleg');
+            $table->integer('szerelo');
+            $table->float('munkaora');
+            $table->integer('besz_osszege');
             $table->timestamps();
         });
     }

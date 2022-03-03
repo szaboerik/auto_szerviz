@@ -14,16 +14,13 @@ class CreateMunkalapokTable extends Migration
     public function up()
     {
         Schema::create('munkalapok', function (Blueprint $table) {
-            $table->id();
-            $table->integer('beszerzes_azonosito');
-            $table->string('ugyfel_nev');
-            $table->integer('ugyfel_telefonszam');
-            $table->string('rendszam');
-            $table->date('auto_erkezese');
+            $table->id('m_szam');
+            $table->string('ugyfel_neve', 50);
+            $table->string('ugyfel_telszama', 30);
+            $table->string('rendszam', 6);
             $table->date('munka_kezdete');
             $table->date('munka_vege');
-            $table->date('auto_tavozasa');
-            $table->integer('fizetendo_osszeg');
+            $table->integer('fizetendo');
             $table->timestamps();
         });
     }
