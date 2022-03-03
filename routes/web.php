@@ -27,7 +27,8 @@ Route::get('/dolgozo/dfeladatok', [FeladatController::class, 'dfeladatok']);
 //---------------------------------
 
 //Új feladat
-Route::get('/mvezeto/feladat', [FeladatController::class, 'feladat']);
+Route::get('/mvezeto/feladat', [FeladatController::class, 'ujf']);
+Route::post('/api/feladat', [FeladatController::class, 'feladat']);
 
 //Feladatok listázása
 Route::get('/mvezeto/feladatok', [FeladatController::class, 'feladatok']);
@@ -47,7 +48,8 @@ Route::put('/api/feladat/{id}', [FeladatController::class, 'fmodosit']);
 //-----------------------------------
 
 //Új munkalap
-Route::get('/mvezeto/munkalap', [MunkalapController::class, 'munkalap']);
+Route::get('/mvezeto/munkalap', [MunkalapController::class, 'ujm']);
+Route::post('/api/munkalap', [MunkalapController::class, 'munkalap']);
 
 //Munkalapok listázása
 Route::get('/mvezeto/munkak', [MunkalapController::class, 'munkak']);
@@ -66,7 +68,8 @@ Route::put('/api/munkalap/{id}', [MunkalapController::class, 'mmodosit']);
 //--------------------------------
 
 //Új rendelés
-Route::get('/mvezeto/rendeles', [BeszerzesController::class, 'rendeles']);
+Route::get('/mvezeto/rendeles', [BeszerzesController::class, 'ujr']);
+Route::post('/api/rendeles', [BeszerzesController::class, 'rendeles']);
 
 //Rendelés listázása
 Route::get('/mvezeto/rendelesek', [BeszerzesController::class, 'rendelesek']);

@@ -20,8 +20,8 @@ class CreateMunkalapsTable extends Migration
             $table->string('ugyfel_telszama', 30);
             $table->string('rendszam', 6);
             $table->date('munka_kezdete');
-            $table->date('munka_vege');
-            $table->integer('fizetendo');
+            $table->date('munka_vege')->nullable();
+            $table->integer('fizetendo')->nullable();
             $table->timestamps();
         });
     }

@@ -22,7 +22,8 @@
         </nav>
         <article class="item3">
             <h2>Rendelés felvétele</h2>
-            <form action="">
+            <form action="/api/rendeles" method="POST">
+                @csrf
                 <label for="besz_azon">Beszerzés azonosító</label>
                 <input type="number" id="besz_azon" name="besz_azon"><br>
                 <label for="f_szam">Feladatszám</label>

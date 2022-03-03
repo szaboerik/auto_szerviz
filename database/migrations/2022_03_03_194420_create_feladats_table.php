@@ -19,7 +19,7 @@ class CreateFeladatsTable extends Migration
             $table->integer('m_szam');
             $table->integer('jelleg');
             $table->integer('szerelo');
-            $table->float('munkaora');
+            $table->float('munkaora')->nullable();
             $table->integer('besz_osszege');
             $table->timestamps();
         });

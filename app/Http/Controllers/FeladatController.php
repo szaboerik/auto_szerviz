@@ -11,12 +11,15 @@ class FeladatController extends Controller
 //-------------------------
 public function dfeladatok()
 {
-    //Itt majd a feladats kell átírni a táblázat nevére, egyenlőre így működik
     $feladats = feladat::all();
     return view('dolgozo.dfeladatok', ['feladats' => $feladats]);
 }
-
 //Új feladat
+public function ujf()
+{
+    return view('mvezeto/feladatok');
+}
+
 public function feladat(Request $request) {
     $feladat = new Feladat();
     $feladat -> f_szam = $request -> f_szam;

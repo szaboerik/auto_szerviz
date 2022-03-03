@@ -8,11 +8,9 @@
     <title>Adatfelvitel</title>
 </head>
 <body>
-    <form action="munkalap" method="POST">
     <main class="grid-container">
         <header class="header">
-            Adatok rögzítése
-            
+            Munkalap
         </header>
         <aside class="item4">
             <a href="/belepes">Kijelentkezés</a>
@@ -21,11 +19,11 @@
             <a href="feladatok">Feladatok</a>
             <a href="rendelesek">Rendelések</a>
             <a href="munkak">Munkalapok</a>
-
         </nav>
         <article class="item3">
-            <h2>Munkalap</h2>
-            <form action="">
+            <h2>Munkalap felvitele</h2>
+            <form action="/api/munkalap" method="POST">
+                @csrf
                 <label for="m_szam">Munkaszám</label>
                 <input type="number" id="m_szam" name="m_szam"><br>
                 <label for="ugyfel_neve">Ügyfél neve</label>
@@ -40,7 +38,7 @@
                 <input type="date" id="munka_vege" name="munka_vege"><br>
                 <label for="fizetendo">Fizetendő összeg</label>
                 <input type="number" id="fizetendo" name="fizetendo"><br>
-                <input type="submit" value="Feltöltés">
+                <button type="submit" class="btn btn-success" style="width: 100%;">Mentés</button>
               </form> 
         </article>
     </main>

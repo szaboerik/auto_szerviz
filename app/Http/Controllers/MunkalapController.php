@@ -7,7 +7,12 @@ use Illuminate\Http\Request;
 
 class MunkalapController extends Controller
 {
-   //Új munkalap
+//Új munkalap
+public function ujm()
+{
+    return view('mvezeto/munkak');
+}
+
 public function munkalap(Request $request) {
     $munkalap = new Munkalap();
     $munkalap -> m_szam = $request -> m_szam;

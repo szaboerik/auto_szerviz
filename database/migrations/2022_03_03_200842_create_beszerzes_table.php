@@ -22,7 +22,7 @@ class CreateBeszerzesTable extends Migration
             $table->integer('egyseg_ar');
             $table->integer('mennyiseg');
             $table->integer('besz_osszege');
-            $table->boolean('atveve');
+            $table->boolean('atveve')->nullable();
             $table->timestamps();
         });
     }

@@ -7,8 +7,12 @@ use Illuminate\Http\Request;
 
 class BeszerzesController extends Controller
 {
+//Új feladat
+public function ujr()
+{
+    return view('mvezeto/rendeles');
+}
 
-//Új rendelés
 public function rendeles(Request $request) {
     $beszerzes = new beszerzes();
     $beszerzes -> besz_azon = $request -> besz_azon;

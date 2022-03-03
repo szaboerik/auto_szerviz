@@ -37,7 +37,7 @@ class SzervizController extends Controller
             }if($beFhn == $mvezetoFhn && $beJsz == $mvezetoJsz){
                 $_SESSION["belepve"] = true;
                 $_SESSION["nev"] =$beFhn;
-                return redirect("mvezeto/munkalap");
+                return redirect("mvezeto/munkak");
                 exit();
             }
             else{
