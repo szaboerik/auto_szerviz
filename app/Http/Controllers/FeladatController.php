@@ -17,7 +17,7 @@ public function dfeladatok()
 //Új feladat
 public function ujf()
 {
-    return view('mvezeto/feladatok');
+    return view('mvezeto/feladat');
 }
 
 public function feladat(Request $request) {
