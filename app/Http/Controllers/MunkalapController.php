@@ -10,7 +10,7 @@ class MunkalapController extends Controller
 //Új munkalap
 public function ujm()
 {
-    return view('mvezeto/munkak');
+    return view('mvezeto/munkalap');
 }
 
 public function munkalap(Request $request) {
