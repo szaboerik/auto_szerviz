@@ -25,7 +25,7 @@
             <form action="/api/munkalap" method="POST">
                 @csrf
                 <label for="m_szam">Munkaszám</label>
-                <input type="number" id="m_szam" name="m_szam"><br>
+                <input type="number" id="m_szam" name="m_szam" readonly><br>
                 <label for="ugyfel_neve">Ügyfél neve</label>
                 <input type="text" id="ugyfel_neve" name="ugyfel_neve"><br>
                 <label for="ugyfel_telszama">Ügyfél telefonszáma</label>

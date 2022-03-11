@@ -24,7 +24,6 @@
             <table class="table">
     <thead>
       <tr>
-        <th>ID</th>
         <th>Feladatszám</th>
         <th>Munkaszám</th>
         <th>Jelleg</th>
@@ -36,7 +35,6 @@
     <tbody>
      <?php foreach($feladats as $feladat): ?>
         <tr>
-          <th>{{ $feladat->id}}</th>
           <th>{{ $feladat->f_szam}}</th>
           <td>{{ $feladat->m_szam }}</td>
           <td>{{ $feladat->jelleg }}</td>
@@ -44,8 +42,8 @@
           <td>{{ $feladat->munkaora }}</td>
           <td>{{ $feladat->besz_osszege }}</td>
           <td style="display: flex;">
-            <a href="/mvezeto/feladatmodosit/{{ $feladat->id }}"><button class="btn btn-sm btn-info">Szerkesztés</button></a>
-            <a><form action="/api/feladat/{{ $feladat->id }}" method="POST">@csrf @method('delete')<button type="submit" class="btn btn-sm btn-danger">Törlés</button></form></a>
+            <a href="/mvezeto/feladatmodosit/{{ $feladat->f_szam }}"><button class="btn btn-sm btn-info">Szerkesztés</button></a>
+            <a><form action="/api/feladat/{{ $feladat->f_szam }}" method="POST">@csrf @method('delete')<button type="submit" class="btn btn-sm btn-danger">Törlés</button></form></a>
           </td>
         </tr>
         <?php endforeach; ?> 

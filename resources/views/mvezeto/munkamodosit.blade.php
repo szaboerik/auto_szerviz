@@ -17,11 +17,11 @@
         </aside>
         <article class="item3">
   <div style="width: 80%; margin: auto;">
-    <form action="/api/munkalap/{{ $munkalap->id }}" method="POST">
+    <form action="/api/munkalap/{{ $munkalap->m_szam }}" method="POST">
       @csrf
       @method('put')
         <label for="m_szam">Munkaszám</label>
-        <input type="number" id="m_szam" name="m_szam" value="{{ $munkalap->m_szam }}"><br>
+        <input type="number" id="m_szam" name="m_szam" value="{{ $munkalap->m_szam }}" readonly><br>
         <label for="ugyfel_neve">Ügyfél neve</label>
         <input type="text" id="ugyfel_neve" name="ugyfel_neve" value="{{ $munkalap->ugyfel_neve }}"><br>
         <label for="ugyfel_telszama">Ügyfél telefonszáma</label>

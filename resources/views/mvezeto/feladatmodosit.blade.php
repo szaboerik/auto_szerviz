@@ -17,11 +17,11 @@
         </aside>
         <article class="item3">
   <div style="width: 80%; margin: auto;">
-    <form action="/api/feladat/{{ $feladat->id }}" method="POST">
+    <form action="/api/feladat/{{ $feladat->f_szam }}" method="POST">
       @csrf
       @method('put')
         <label for="f_szam">Feladatszám</label>
-        <input type="text" id="f_szam" name="f_szam" value="{{ $feladat->f_szam }}"><br>
+        <input type="text" id="f_szam" name="f_szam" value="{{ $feladat->f_szam }}" readonly><br>
         <label for="m_szam">Munkaszám</label>
         <input type="text" id="m_szam" name="m_szam" value="{{ $feladat->m_szam }}"><br>
         <label for="jelleg">Jelleg</label>

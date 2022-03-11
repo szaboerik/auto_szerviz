@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Munkalap extends Model
 {
     use HasFactory;
+
+    protected $primaryKey = 'm_szam';
 }

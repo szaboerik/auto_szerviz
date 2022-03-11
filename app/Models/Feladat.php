@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Feladat extends Model
 {
     use HasFactory;
+
+    protected $primaryKey = 'f_szam';
 }

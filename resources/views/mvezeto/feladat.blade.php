@@ -25,7 +25,7 @@
             <form action="/api/feladat" method="POST">
                 @csrf
                   <label for="f_szam">Feladatszám</label>
-                  <input type="number" id="f_szam" name="f_szam"><br>
+                  <input type="number" id="f_szam" name="f_szam" readonly><br>
                   <label for="m_szam">Munkaszám</label>
                   <input type="number" id="m_szam" name="m_szam"><br>
                   <label for="jelleg">Jelleg</label>
