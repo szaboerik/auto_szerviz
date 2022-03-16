@@ -17,7 +17,7 @@ class CreateMunkalapsTable extends Migration
             $table->id("m_szam");
             $table->string('ugyfel_neve', 50);
             $table->string('ugyfel_telszama', 30);
-            $table->string('autoId')->references('id')->on('autoks');
+            $table->unsignedBigInteger('autoId')->references('id')->on('autoks');
             $table->date('munka_kezdete');
             $table->date('munka_vege')->nullable();
             $table->integer('fizetendo')->nullable();

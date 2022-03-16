@@ -20,7 +20,7 @@ public function munkalap(Request $request) {
     $munkalap -> m_szam = $request -> m_szam;
     $munkalap -> ugyfel_neve = $request -> ugyfel_neve;
     $munkalap -> ugyfel_telszama = $request -> ugyfel_telszama;
-    $munkalap->autoId = Autok::id()->autoId;
+    $munkalap->autoId = $request->rendszam;
     $munkalap -> munka_kezdete = $request -> munka_kezdete;
     $munkalap -> munka_vege = $request -> munka_vege;
     $munkalap -> fizetendo = $request -> fizetendo;
@@ -33,6 +33,9 @@ public function munkalap(Request $request) {
 public function munkak()
 {
     $munkalaps = Munkalap::all();
+    foreach ($munkalaps as $munkalap) {
+        $munkalap -> auto;
+    }
     return view('mvezeto.munkak', ['munkalaps' => $munkalaps]);
 }
 

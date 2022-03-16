@@ -41,7 +41,7 @@
           <th>{{ $munkalap->m_szam}}</th>
           <td>{{ $munkalap->ugyfel_neve }}</td>
           <td>{{ $munkalap->ugyfel_telszama }}</td>
-          <td>{{ $munkalap->rendszam }}</td>
+          <td>{{ $munkalap->auto->rendszam }}</td>
           <td>{{ $munkalap->munka_kezdete }}</td>
           <td>{{ $munkalap->munka_vege }}</td>
           <td>{{ $munkalap->fizetendo }}</td>
