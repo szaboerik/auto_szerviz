@@ -53,7 +53,7 @@ public function mmodosit(Request $request, $id)
     $munkalap -> m_szam = $request -> m_szam;
     $munkalap -> ugyfel_neve = $request -> ugyfel_neve;
     $munkalap -> ugyfel_telszama = $request -> ugyfel_telszama;
-    $munkalap -> rendszam = $request -> rendszam;
+    $munkalap->autoId = $request->rendszam;
     $munkalap -> munka_kezdete = $request -> munka_kezdete;
     $munkalap -> munka_vege = $request -> munka_vege;
     $munkalap -> fizetendo = $request -> fizetendo;
@@ -63,8 +63,10 @@ public function mmodosit(Request $request, $id)
 }
 public function mszerkesztes($id)
 {
+    $autoks = Autok::all();
     $munkalap = Munkalap::find($id);
-    return view('mvezeto/munkamodosit', ['munkalap' => $munkalap]);
+    $munkalap->auto;
+    return view('mvezeto/munkamodosit', ['autoks' => $autoks, 'munkalap' => $munkalap]);
 }
 
 //Munkalap mutatása ID szerint

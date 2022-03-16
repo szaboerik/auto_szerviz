@@ -23,7 +23,11 @@ class CreateMunkalapsTable extends Migration
             $table->integer('fizetendo')->nullable();
 
             $table->timestamps();
+
+            
         });
+
+        DB::statement('ALTER TABLE munkalaps ADD CONSTRAINT check_dates CHECK (munka_kezdete < "munka_vege")');
     }
 
     /**
