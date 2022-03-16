@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAutokTable extends Migration
+class CreateAutoksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateAutokTable extends Migration
      */
     public function up()
     {
-        Schema::create('autok', function (Blueprint $table) {
+        Schema::create('autoks', function (Blueprint $table) {
             $table->id();
-            $table->string('rendszam', 6);
-            $table->string('marka', 30)->references('marka')->on('markak');
+            $table->string('rendszam', 6)->unique();
+            $table->unsignedBigInteger('markaId')->references('id')->on('markak');
             $table->string('forgalmi', 8);
             $table->year('evjarat');
 
@@ -31,6 +31,6 @@ class CreateAutokTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('autok');
+        Schema::dropIfExists('autoks');
     }
 }

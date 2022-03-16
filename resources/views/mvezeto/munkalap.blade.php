@@ -31,7 +31,11 @@
                 <label for="ugyfel_telszama">Ügyfél telefonszáma</label>
                 <input type="text" id="ugyfel_telszama" name="ugyfel_telszama"><br>
                 <label for="rendszam">Rendszám</label>
-                <input type="text" id="rendszam" name="rendszam"><br>
+                <select name="rendszam" placeholder="ABC123">
+                @foreach ($autoks as $auto)
+                <option value="{{ $auto->id }}">{{ $auto->rendszam }}</option>
+                @endforeach
+                </select><br>
                 <label for="munka_kezdete">Munka kezdete</label>
                 <input type="date" id="munka_kezdete" name="munka_kezdete"><br>
                 <label for="munka_vege">Munka vége</label>

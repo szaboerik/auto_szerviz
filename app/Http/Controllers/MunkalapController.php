@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Munkalap;
+use App\Models\Autok;
 use Illuminate\Http\Request;
 
 class MunkalapController extends Controller
@@ -10,7 +11,8 @@ class MunkalapController extends Controller
 //Új munkalap
 public function ujm()
 {
-    return view('mvezeto/munkalap');
+    $autoks = Autok::all();
+    return view('mvezeto/munkalap', ['autoks' => $autoks]);
 }
 
 public function munkalap(Request $request) {
@@ -18,7 +20,7 @@ public function munkalap(Request $request) {
     $munkalap -> m_szam = $request -> m_szam;
     $munkalap -> ugyfel_neve = $request -> ugyfel_neve;
     $munkalap -> ugyfel_telszama = $request -> ugyfel_telszama;
-    $munkalap -> rendszam = $request -> rendszam;
+    $munkalap->autoId = Autok::id()->autoId;
     $munkalap -> munka_kezdete = $request -> munka_kezdete;
     $munkalap -> munka_vege = $request -> munka_vege;
     $munkalap -> fizetendo = $request -> fizetendo;
