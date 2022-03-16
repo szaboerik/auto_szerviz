@@ -18,6 +18,7 @@
         <nav class="item2">
             <a href="rendelesek">Rendelések</a>
             <a href="feladatok">Feladatok</a>
+            <a href="jellegek">Jellegek</a>
         </nav>
         <article class="item3">
             <h2>Munkák</h2>

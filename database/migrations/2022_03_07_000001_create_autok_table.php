@@ -14,8 +14,8 @@ class CreateAutokTable extends Migration
     public function up()
     {
         Schema::create('autok', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-            $table->string('rendszam', 6)->primary();
+            $table->id();
+            $table->string('rendszam', 6);
             $table->string('marka', 30)->references('marka')->on('markak');
             $table->string('forgalmi', 8);
             $table->year('evjarat');

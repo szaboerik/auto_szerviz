@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateJellegekTable extends Migration
+class CreateJellegeksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateJellegekTable extends Migration
      */
     public function up()
     {
-        Schema::create('jellegek', function (Blueprint $table) {
+        Schema::create('jellegeks', function (Blueprint $table) {
             $table->id('jelleg');
-            $table->boolean('anyag_e');
+            $table->char('anyag_e',1);
             $table->string('elnevezes', 50);
             $table->integer('oradij');
             $table->timestamps();
@@ -29,6 +29,6 @@ class CreateJellegekTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('jellegek');
+        Schema::dropIfExists('jellegeks');
     }
 }
