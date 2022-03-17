@@ -21,8 +21,6 @@
     }
 });
 */
-
-
 $(document).ready(function() {
     $("#getData").click(function() { 
      $.ajax({  //create an ajax request to display.php
