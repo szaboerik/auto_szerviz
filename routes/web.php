@@ -20,8 +20,11 @@ Route::post('/belepes', [SzervizController::class, 'belepes']);
 
 //Dolgozó
 //--------------------------
-Route::get('/dolgozo/dfeladatok', [FeladatController::class, 'dfeladatok']);
-
+//Route::get('/dolgozo/dfeladatok', [FeladatController::class, 'dfeladatok']);
+Route::get('/ezaz','App\Http\Controllers\FeladatController@dfeladatok');
+Route::get('/dolgozo/dfeladatok', function () {
+    return view('/dolgozo/dfeladatok');
+});
 
 //Feladathoz tartozó linkek
 //---------------------------------
