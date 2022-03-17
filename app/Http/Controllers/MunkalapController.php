@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Munkalap;
-use App\Models\Autok;
+use App\Models\Auto;
 use Illuminate\Http\Request;
 
 class MunkalapController extends Controller
@@ -11,8 +11,8 @@ class MunkalapController extends Controller
 //Új munkalap
 public function ujm()
 {
-    $autoks = Autok::all();
-    return view('mvezeto/munkalap', ['autoks' => $autoks]);
+    $autos = Auto::all();
+    return view('mvezeto/munkalap', ['autos' => $autos]);
 }
 
 public function munkalap(Request $request) {
@@ -63,10 +63,10 @@ public function mmodosit(Request $request, $id)
 }
 public function mszerkesztes($id)
 {
-    $autoks = Autok::all();
+    $autos = Auto::all();
     $munkalap = Munkalap::find($id);
     $munkalap->auto;
-    return view('mvezeto/munkamodosit', ['autoks' => $autoks, 'munkalap' => $munkalap]);
+    return view('mvezeto/munkamodosit', ['autos' => $autos, 'munkalap' => $munkalap]);
 }
 
 //Munkalap mutatása ID szerint

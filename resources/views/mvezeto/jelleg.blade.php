@@ -19,6 +19,8 @@
             <a href="feladatok">Feladatok</a>
             <a href="rendelesek">Rendelések</a>
             <a href="munkak">Munkalapok</a>
+            <a href="autok">Autók</a>
+            <a href="markak">Márkák</a>
         </nav>
         <article class="item3">
             <h2>Jelleg felvitele</h2>

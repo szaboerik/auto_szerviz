@@ -16,9 +16,11 @@
             <a href="/belepes">Kijelentkezés</a>
         </aside>
         <nav class="item2">
-            <a href="rendelesek">Rendelések</a>
-            <a href="feladatok">Feladatok</a>
             <a href="jellegek">Jellegek</a>
+            <a href="feladatok">Feladatok</a>
+            <a href="rendelesek">Rendelések</a>
+            <a href="autok">Autók</a>
+            <a href="markak">Márkák</a>
         </nav>
         <article class="item3">
             <h2>Munkák</h2>

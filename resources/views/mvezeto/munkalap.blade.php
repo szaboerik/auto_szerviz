@@ -16,9 +16,12 @@
             <a href="/belepes">Kijelentkezés</a>
         </aside>
         <nav class="item2">
+            <a href="jellegek">Jellegek</a>
             <a href="feladatok">Feladatok</a>
             <a href="rendelesek">Rendelések</a>
             <a href="munkak">Munkalapok</a>
+            <a href="autok">Autók</a>
+            <a href="markak">Márkák</a>
         </nav>
         <article class="item3">
             <h2>Munkalap felvitele</h2>
@@ -32,7 +35,7 @@
                 <input type="text" id="ugyfel_telszama" name="ugyfel_telszama"><br>
                 <label for="rendszam">Rendszám</label>
                 <select name="rendszam" placeholder="ABC123">
-                @foreach ($autoks as $auto)
+                @foreach ($autos as $auto)
                 <option value="{{ $auto->id }}">{{ $auto->rendszam }}</option>
                 @endforeach
                 </select><br>

@@ -5,13 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Munkalap extends Model
+class Auto extends Model
 {
     use HasFactory;
+    protected $primaryKey = 'id';
 
-    protected $primaryKey = 'm_szam';
-
-    public function auto(){
-        return $this->belongsTo(Auto::class, "autoId");
+    public function marka(){
+        return $this->belongsTo(Marka::class, "markaId");
     }
 }
