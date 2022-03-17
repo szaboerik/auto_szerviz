@@ -5,6 +5,7 @@ use App\Http\Controllers\SzervizController;
 use App\Http\Controllers\FeladatController;
 use App\Http\Controllers\MunkalapController;
 use App\Http\Controllers\BeszerzesController;
+use App\Http\Controllers\JellegController;
 
 //Alap funkciók
 //------------------------------
@@ -87,3 +88,18 @@ Route::put('/api/rendeles/{id}', [BeszerzesController::class, 'rmodosit']);
 //Rendelés mutatása ID szerint
 //Route::get('/api/rendeles/{id}', [BeszerzesController::class, 'rmutat']);
 
+
+
+//Új munkalap
+Route::get('/mvezeto/jelleg', [JellegController::class, 'ujj']);
+Route::post('/api/jelleg', [JellegController::class, 'jelleg']);
+
+//Munkalapok listázása
+Route::get('/mvezeto/jellegek', [JellegController::class, 'jellegek']);
+
+//Munkalapok törlése
+Route::delete('/api/jelleg/{id}', [JellegController::class, 'jtorles']);
+
+//Munkalap szerkesztése
+Route::get('/mvezeto/jellegmodosit/{id}', [JellegController::class, 'jszerkesztes']);
+Route::put('/api/jelleg/{id}', [JellegController::class, 'jmodosit']);

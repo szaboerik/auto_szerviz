@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateJellegekTable extends Migration
+class CreateAutoksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,13 @@ class CreateJellegekTable extends Migration
      */
     public function up()
     {
-        Schema::create('jellegek', function (Blueprint $table) {
-            $table->id('jelleg');
-            $table->boolean('anyag_e');
-            $table->string('elnevezes', 50);
-            $table->integer('oradij');
+        Schema::create('autoks', function (Blueprint $table) {
+            $table->id();
+            $table->string('rendszam', 6)->unique();
+            $table->unsignedBigInteger('markaId')->references('id')->on('markak');
+            $table->string('forgalmi', 8);
+            $table->year('evjarat');
+
             $table->timestamps();
         });
     }
@@ -29,6 +31,6 @@ class CreateJellegekTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('jellegek');
+        Schema::dropIfExists('autoks');
     }
 }

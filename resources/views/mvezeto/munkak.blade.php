@@ -18,13 +18,13 @@
         <nav class="item2">
             <a href="rendelesek">Rendelések</a>
             <a href="feladatok">Feladatok</a>
+            <a href="jellegek">Jellegek</a>
         </nav>
         <article class="item3">
             <h2>Munkák</h2>
             <table class="table">
     <thead>
       <tr>
-        <th>ID</th>
         <th>Munkaszám</th>
         <th>Ügyfél neve</th>
         <th>Ügyfél telefonszáma</th>
@@ -37,17 +37,17 @@
     <tbody>
      <?php foreach($munkalaps as $munkalap): ?>
         <tr>
-          <th>{{ $munkalap->id}}</th>
+          
           <th>{{ $munkalap->m_szam}}</th>
           <td>{{ $munkalap->ugyfel_neve }}</td>
           <td>{{ $munkalap->ugyfel_telszama }}</td>
-          <td>{{ $munkalap->rendszam }}</td>
+          <td>{{ $munkalap->auto->rendszam }}</td>
           <td>{{ $munkalap->munka_kezdete }}</td>
           <td>{{ $munkalap->munka_vege }}</td>
           <td>{{ $munkalap->fizetendo }}</td>
           <td style="display: flex;">
-            <a href="/mvezeto/munkamodosit/{{ $munkalap->id }}"><button class="btn btn-sm btn-info">Szerkesztés</button></a>
-            <a><form action="/api/munkalap/{{ $munkalap->id }}" method="POST">@csrf @method('delete')<button type="submit" class="btn btn-sm btn-danger">Törlés</button></form></a>
+            <a href="/mvezeto/munkamodosit/{{ $munkalap->m_szam }}"><button class="btn btn-sm btn-info">Szerkesztés</button></a>
+            <a><form action="/api/munkalap/{{ $munkalap->m_szam }}" method="POST">@csrf @method('delete')<button type="submit" class="btn btn-sm btn-danger">Törlés</button></form></a>
           </td>
         </tr>
         <?php endforeach; ?> 

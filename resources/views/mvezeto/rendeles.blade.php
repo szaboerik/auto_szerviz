@@ -25,7 +25,7 @@
             <form action="/api/rendeles" method="POST">
                 @csrf
                 <label for="besz_azon">Beszerzés azonosító</label>
-                <input type="number" id="besz_azon" name="besz_azon"><br>
+                <input type="number" id="besz_azon" name="besz_azon" readonly><br>
                 <label for="f_szam">Feladatszám</label>
                 <input type="number" id="f_szam" name="f_szam"><br>
                 <label for="alkatresz">Alkatrész</label>

@@ -14,15 +14,18 @@ class CreateBeszerzesTable extends Migration
     public function up()
     {
         Schema::create('beszerzes', function (Blueprint $table) {
-            $table->id();
-            $table->integer('besz_azon');
-            $table->integer('f_szam');
-            $table->integer('alkatresz');
-            $table->smallInteger('beszall_kod');
+            $table->id('besz_azon');
+            $table->unsignedBigInteger('f_szam');
+            $table->unsignedBigInteger('alkatresz');
+            $table->unsignedBigInteger('beszall_kod');
             $table->integer('egyseg_ar');
             $table->integer('mennyiseg');
             $table->integer('besz_osszege');
             $table->boolean('atveve')->nullable();
+
+            $table->foreign('f_szam')->references('f_szam')->on('feladats');
+            $table->foreign('alkatresz')->references('alk_azon')->on('alkatreszek');
+            $table->foreign('beszall_kod')->references('beszall_kod')->on('beszallitok');
             $table->timestamps();
         });
     }

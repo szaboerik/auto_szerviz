@@ -18,13 +18,13 @@
         <nav class="item2">
             <a href="munkak">Munkák</a>
             <a href="feladatok">Feladatok</a>
+            <a href="jellegek">Jellegek</a>
         </nav>
         <article class="item3">
             <h2>Rendelések</h2>
             <table class="table">
     <thead>
       <tr>
-        <th>ID</th>
         <th>Beszerzés azonosító</th>
         <th>Feladatszám</th>
         <th>Alkatrész</th>
@@ -37,7 +37,6 @@
     <tbody>
      <?php foreach($beszerzess as $beszerzes): ?>
         <tr>
-          <th>{{ $beszerzes->id}}</th>
           <th>{{ $beszerzes->besz_azon}}</th>
           <td>{{ $beszerzes->f_szam }}</td>
           <td>{{ $beszerzes->alkatresz }}</td>
@@ -47,8 +46,8 @@
           <td>{{ $beszerzes->besz_osszege }}</td>
           <td>{{ $beszerzes->atveve }}</td>
           <td style="display: flex;">
-            <a href="/mvezeto/rendelesmodosit/{{ $beszerzes->id }}"><button class="btn btn-sm btn-info">Szerkesztés</button></a>
-            <a><form action="/api/rendeles/{{ $beszerzes->id }}" method="POST">@csrf @method('delete')<button type="submit" class="btn btn-sm btn-danger">Törlés</button></form></a>
+            <a href="/mvezeto/rendelesmodosit/{{ $beszerzes->besz_azon }}"><button class="btn btn-sm btn-info">Szerkesztés</button></a>
+            <a><form action="/api/rendeles/{{ $beszerzes->besz_azon }}" method="POST">@csrf @method('delete')<button type="submit" class="btn btn-sm btn-danger">Törlés</button></form></a>
           </td>
         </tr>
         <?php endforeach; ?> 

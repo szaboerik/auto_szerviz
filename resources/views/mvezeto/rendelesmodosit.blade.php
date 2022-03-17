@@ -17,11 +17,11 @@
         </aside>
         <article class="item3">
   <div style="width: 80%; margin: auto;">
-    <form action="/api/rendeles/{{ $beszerzes->id }}" method="POST">
+    <form action="/api/rendeles/{{ $beszerzes->besz_azon }}" method="POST">
       @csrf
       @method('put')
         <label for="besz_azon">Beszerzés azonosító</label>
-        <input type="number" id="besz_azon" name="besz_azon" value="{{ $beszerzes->besz_azon }}"><br>
+        <input type="number" id="besz_azon" name="besz_azon" value="{{ $beszerzes->besz_azon }}" readonly><br>
         <label for="f_szam">Feladatszám</label>
         <input type="number" id="f_szam" name="f_szam" value="{{ $beszerzes->f_szam }}"><br>
         <label for="alkatresz">Alkatrész</label>

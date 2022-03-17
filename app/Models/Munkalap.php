@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Munkalap extends Model
 {
     use HasFactory;
+
+    protected $primaryKey = 'm_szam';
+
+    public function auto(){
+        return $this->belongsTo(Autok::class, "autoId");
+    }
 }

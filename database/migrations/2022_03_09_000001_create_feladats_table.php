@@ -14,13 +14,16 @@ class CreateFeladatsTable extends Migration
     public function up()
     {
         Schema::create('feladats', function (Blueprint $table) {
-            $table->id();
-            $table->integer('f_szam');
-            $table->integer('m_szam');
-            $table->integer('jelleg');
-            $table->integer('szerelo');
+            $table->id('f_szam');
+            $table->unsignedBigInteger('m_szam');
+            $table->unsignedBigInteger('jelleg');
+            $table->unsignedBigInteger('szerelo');
             $table->float('munkaora')->nullable();
             $table->integer('besz_osszege');
+
+            $table->foreign('m_szam')->references('m_szam')->on('munkalaps');
+            $table->foreign('jelleg')->references('jelleg')->on('jellegeks');
+            $table->foreign('szerelo')->references('d_kod')->on('dolgozok');
             $table->timestamps();
         });
     }
