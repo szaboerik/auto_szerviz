@@ -27,7 +27,7 @@
                   <label for="elnevezes">Elnevezés</label>
                   <input type="text" id="elnevezes" name="elnevezes" value="{{ $jelleg->elnevezes }}"><br>
                   <label for="oradij">Óradíj</label>
-                  <input type="text" id="oradij" name="oradij" value="{{ $jelleg->oradij }}"><br>
+                  <input type="number" id="oradij" name="oradij" value="{{ $jelleg->oradij }}"><br>
                   <button type="submit" class="btn btn-success" style="width: 100%;">Mentés</button>
               </form> 
               </div>

@@ -45,7 +45,7 @@ public function automodosit(Request $request, $id)
 {
     $auto = Auto::find($id);
     $auto -> rendszam = $request -> rendszam;
-    $auto -> markaId = $request -> marka;
+    $auto -> markaId = $request -> markaId;
     $auto -> forgalmi = $request -> forgalmi;
     $auto -> evjarat = $request -> evjarat;
     $auto->save();

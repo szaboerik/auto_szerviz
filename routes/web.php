@@ -8,6 +8,9 @@ use App\Http\Controllers\BeszerzesController;
 use App\Http\Controllers\JellegController;
 use App\Http\Controllers\AutoController;
 use App\Http\Controllers\MarkaController;
+use App\Http\Controllers\AlkatreszController;
+use App\Http\Controllers\BeszallitoController;
+use App\Http\Controllers\DolgozoController;
 
 //Alap funkciók
 //------------------------------
@@ -49,6 +52,69 @@ Route::put('/api/feladat/{id}', [FeladatController::class, 'fmodosit']);
 
 //Feladat mutatása ID szerint
 //Route::get('/api/feladat/{id}', [FeladatController::class, 'fmutat']);
+
+//Alkatrészhez tartozó linkek
+//---------------------------------
+
+//Új alkatrész
+Route::get('/mvezeto/alkatresz', [AlkatreszController::class, 'ujalkatresz']);
+Route::post('/api/alkatresz', [AlkatreszController::class, 'alkatresz']);
+
+//Alkatrészek listázása
+Route::get('/mvezeto/alkatreszek', [AlkatreszController::class, 'alkatreszek']);
+
+
+//Alkatrész törlése
+Route::delete('/api/alkatresz/{id}', [AlkatreszController::class, 'alkatresztorles']);
+
+//Alkatrész szerkesztése
+Route::get('/mvezeto/alkatreszmodosit/{id}', [AlkatreszController::class, 'alkatreszszerkesztes']);
+Route::put('/api/alkatresz/{id}', [AlkatreszController::class, 'alkatreszmodosit']);
+
+//Alkatrész mutatása ID szerint
+//Route::get('/api/alkatresz/{id}', [AlkatreszController::class, 'alkatreszmutat']);
+
+//Beszállítóhoz tartozó linkek
+//---------------------------------
+
+//Új Beszállító
+Route::get('/mvezeto/beszallito', [BeszallitoController::class, 'ujbeszallito']);
+Route::post('/api/beszallito', [BeszallitoController::class, 'beszallito']);
+
+//Beszállítók listázása
+Route::get('/mvezeto/beszallitok', [BeszallitoController::class, 'beszallitok']);
+
+
+//Beszállítók törlése
+Route::delete('/api/beszallito/{id}', [BeszallitoController::class, 'beszallitotorles']);
+
+//Beszállítók szerkesztése
+Route::get('/mvezeto/beszallitomodosit/{id}', [BeszallitoController::class, 'beszallitoszerkesztes']);
+Route::put('/api/beszallito/{id}', [BeszallitoController::class, 'beszallitomodosit']);
+
+//Beszállító mutatása ID szerint
+//Route::get('/api/beszallito/{id}', [BeszallitoController::class, 'beszallitomutat']);
+
+//Dolgozóhoz tartozó linkek
+//---------------------------------
+
+//Új dolgozó
+Route::get('/mvezeto/dolgozo', [DolgozoController::class, 'ujdolgozo']);
+Route::post('/api/dolgozo', [DolgozoController::class, 'dolgozo']);
+
+//Dolgozók listázása
+Route::get('/mvezeto/dolgozok', [DolgozoController::class, 'dolgozok']);
+
+
+//Dolgozók törlése
+Route::delete('/api/dolgozo/{id}', [DolgozoController::class, 'dolgozotorles']);
+
+//Dolgozók szerkesztése
+Route::get('/mvezeto/dolgozomodosit/{id}', [DolgozoController::class, 'dolgozoszerkesztes']);
+Route::put('/api/dolgozo/{id}', [DolgozoController::class, 'dolgozomodosit']);
+
+//Dolgozó mutatása ID szerint
+//Route::get('/api/dolgozo/{id}', [DolgozoController::class, 'dolgozomutat']);
 
 //Autóhoz tartozó linkek
 //-----------------------------------

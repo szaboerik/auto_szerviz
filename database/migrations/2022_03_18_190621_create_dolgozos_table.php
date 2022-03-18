@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateJellegeksTable extends Migration
+class CreateDolgozosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateJellegeksTable extends Migration
      */
     public function up()
     {
-        Schema::create('jellegeks', function (Blueprint $table) {
-            $table->id('jelleg');
-            $table->char('anyag_e',1);
-            $table->string('elnevezes', 50);
-            $table->integer('oradij');
+        Schema::create('dolgozos', function (Blueprint $table) {
+            $table->id();
+            $table->integer('d_kod');
+            $table->string('dolg_nev', 30);
+            $table->string('kepesseg', 1);
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateJellegeksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('jellegeks');
+        Schema::dropIfExists('dolgozos');
     }
 }

@@ -16,11 +16,14 @@
             <a href="/belepes">Kijelentkezés</a>
         </aside>
         <nav class="item2">
-            <a href="jellegek">Jellegek</a>
-            <a href="feladatok">Feladatok</a>
-            <a href="munkak">Munkalapok</a>
+            <a href="alkatreszek">Alkatrészek</a>
             <a href="autok">Autók</a>
+            <a href="beszallitok">Beszállítók</a>
+            <a href="dolgozok">Dolgozók</a>
+            <a href="feladatok">Feladatok</a>
+            <a href="jellegek">Jellegek</a>
             <a href="markak">Márkák</a>
+            <a href="munkak">Munkalapok</a>
         </nav>
         <article class="item3">
             <h2>Rendelések</h2>

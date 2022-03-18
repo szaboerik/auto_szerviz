@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDolgozokTable extends Migration
+class CreateAlkatreszsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateDolgozokTable extends Migration
      */
     public function up()
     {
-        Schema::create('dolgozok', function (Blueprint $table) {
-            $table->id('d_kod');
-            $table->string('dolg_nev', 30);
-            $table->string('kepesseg', 1);
+        Schema::create('alkatreszs', function (Blueprint $table) {
+            $table->id();
+            $table->integer('alk_azon');
+            $table->string('alk_neve', 30);
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateDolgozokTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dolgozok');
+        Schema::dropIfExists('alkatreszs');
     }
 }

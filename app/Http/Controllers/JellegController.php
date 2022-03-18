@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Jellegek;
+use App\Models\Jelleg;
 use Illuminate\Http\Request;
 
 class JellegController extends Controller
@@ -15,7 +15,7 @@ public function ujj()
 }
 
 public function jelleg(Request $request) {
-    $jelleg = new jellegek();
+    $jelleg = new Jelleg();
     $jelleg -> jelleg = $request -> jelleg;
     $jelleg -> anyag_e = $request -> anyag_e;
     $jelleg -> elnevezes = $request -> elnevezes;
@@ -28,20 +28,20 @@ public function jelleg(Request $request) {
 public function jellegek()
 {
     
-    $jellegek = Jellegek::all();
+    $jellegek = Jelleg::all();
     return view('mvezeto.jellegek', ['jellegek' => $jellegek]);
 }
 //Jelleg törlése
 public function jtorles($id)
 {
-    Jellegek::find($id)->delete();
+    Jelleg::find($id)->delete();
     return redirect('/mvezeto/jellegek');
 }
 
 //Jelleg módosítása
 public function jmodosit(Request $request, $id)
 {
-    $jelleg = Jellegek::find($id);
+    $jelleg = Jelleg::find($id);
     $jelleg -> jelleg = $request -> jelleg;
     $jelleg -> anyag_e = $request -> anyag_e;
     $jelleg -> elnevezes = $request -> elnevezes;
@@ -52,10 +52,7 @@ public function jmodosit(Request $request, $id)
 }
 public function jszerkesztes($id)
 {
-    $jelleg = Jellegek::find($id);
+    $jelleg = Jelleg::find($id);
     return view('mvezeto/jellegmodosit', ['jelleg' => $jelleg]);
-}
-
-
-
+    }
 }

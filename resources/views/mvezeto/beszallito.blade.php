@@ -5,12 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/stilus.css') }}" >
-    <title>Jellegek</title>
+    <title>Beszállító</title>
 </head>
 <body>
     <main class="grid-container">
         <header class="header">
-            Jelleg
+            Beszállító
         </header>
         <aside class="item4">
             <a href="/belepes">Kijelentkezés</a>
@@ -27,17 +27,19 @@
             <a href="rendelesek">Rendelések</a>
         </nav>
         <article class="item3">
-            <h2>Jelleg felvitele</h2>
-            <form action="/api/jelleg" method="POST">
+            <h2>Beszállító felvitele</h2>
+            <form action="/api/beszallito" method="POST">
                 @csrf
-                  <label for="jelleg">Jelleg</label>
-                  <input type="text" id="jelleg" name="jelleg" readonly><br>
-                  <label for="anyag_e">Beszerzéssel jár?</label>
-                  <input type="text" id="anyag_e" name="anyag_e"><br>
-                  <label for="elnevezes">Elnevezés</label>
-                  <input type="text" id="elnevezes" name="elnevezes"><br>
-                  <label for="oradij">Óradíj</label>
-                  <input type="number" id="oradij" name="oradij"><br>
+                  <label for="beszall_kod">Beszállító kód</label>
+                  <input type="number" id="beszall_kod" name="beszall_kod"><br>
+                  <label for="nev">Neve</label>
+                  <input type="text" id="nev" name="nev"><br>
+                  <label for="irsz">Irányítószám</label>
+                  <input type="number" id="irsz" name="irsz"><br>
+                  <label for="cim">Lakcím</label>
+                  <input type="text" id="cim" name="cim"><br>
+                  <label for="elerhetoseg">Elérhetősége</label>
+                  <input type="text" id="elerhetoseg" name="elerhetoseg"><br>
                   <button type="submit" class="btn btn-success" style="width: 100%;">Mentés</button>
               </form> 
         </article>

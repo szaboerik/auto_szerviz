@@ -5,12 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/stilus.css') }}" >
-    <title>Jellegek</title>
+    <title>Alkatrész</title>
 </head>
 <body>
     <main class="grid-container">
         <header class="header">
-            Jelleg
+            Alkatrész
         </header>
         <aside class="item4">
             <a href="/belepes">Kijelentkezés</a>
@@ -27,17 +27,13 @@
             <a href="rendelesek">Rendelések</a>
         </nav>
         <article class="item3">
-            <h2>Jelleg felvitele</h2>
-            <form action="/api/jelleg" method="POST">
+            <h2>Alkatrész felvitele</h2>
+            <form action="/api/alkatresz" method="POST">
                 @csrf
-                  <label for="jelleg">Jelleg</label>
-                  <input type="text" id="jelleg" name="jelleg" readonly><br>
-                  <label for="anyag_e">Beszerzéssel jár?</label>
-                  <input type="text" id="anyag_e" name="anyag_e"><br>
-                  <label for="elnevezes">Elnevezés</label>
-                  <input type="text" id="elnevezes" name="elnevezes"><br>
-                  <label for="oradij">Óradíj</label>
-                  <input type="number" id="oradij" name="oradij"><br>
+                  <label for="alk_azon">Alkatrész azonosító</label>
+                  <input type="number" id="alk_azon" name="alk_azon"><br>
+                  <label for="alk_neve">Alkatrész neve</label>
+                  <input type="text" id="alk_neve" name="alk_neve"><br>
                   <button type="submit" class="btn btn-success" style="width: 100%;">Mentés</button>
               </form> 
         </article>
