@@ -22,7 +22,7 @@
       @method('put')
         <label for="rendszam">Rendszám</label>
         <input type="text" id="rendszam" name="rendszam" value="{{ $auto->rendszam }}"><br>
-        <label for="markaId">Márkaid</label>
+        <label for="markaId">Márka</label>
                 <select name="markaId" placeholder="ABC123">
                 @foreach ($markas as $marka)
                 <option value="{{ $marka->id }}">{{ $marka->marka }}</option>

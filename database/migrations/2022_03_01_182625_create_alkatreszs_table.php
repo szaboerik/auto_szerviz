@@ -14,8 +14,7 @@ class CreateAlkatreszsTable extends Migration
     public function up()
     {
         Schema::create('alkatreszs', function (Blueprint $table) {
-            $table->id();
-            $table->integer('alk_azon');
+            $table->id('alk_azon');
             $table->string('alk_neve', 30);
             $table->timestamps();
         });

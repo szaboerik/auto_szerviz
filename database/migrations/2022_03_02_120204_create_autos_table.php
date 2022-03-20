@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBeszallitosTable extends Migration
+class CreateAutosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,18 @@ class CreateBeszallitosTable extends Migration
      */
     public function up()
     {
-        Schema::create('beszallitos', function (Blueprint $table) {
+        Schema::create('autos', function (Blueprint $table) {
             $table->id();
-            $table->integer('beszall_kod');
-            $table->string('nev', 50);
-            $table->string('irsz', 4);
-            $table->string('cim', 50);
-            $table->string('elerhetoseg', 12);
+            $table->string('rendszam', 6)->unique();
+            $table->unsignedBigInteger('markaId')->references('id')->on('markas');
+            $table->string('forgalmi', 8)->unique();
+            $table->year('evjarat');
             $table->timestamps();
         });
+
+
+        
+        
     }
 
     /**
@@ -31,6 +34,6 @@ class CreateBeszallitosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('beszallitos');
+        Schema::dropIfExists('autos');
     }
 }

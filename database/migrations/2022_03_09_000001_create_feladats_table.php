@@ -22,8 +22,8 @@ class CreateFeladatsTable extends Migration
             $table->integer('besz_osszege');
 
             $table->foreign('m_szam')->references('m_szam')->on('munkalaps');
-            $table->foreign('jelleg')->references('jelleg')->on('jellegeks');
-            $table->foreign('szerelo')->references('d_kod')->on('dolgozok');
+            $table->foreign('jelleg')->references('jelleg')->on('jellegs');
+            $table->foreign('szerelo')->references('d_kod')->on('dolgozos');
             $table->timestamps();
         });
     }

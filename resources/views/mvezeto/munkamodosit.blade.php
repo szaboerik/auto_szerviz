@@ -28,12 +28,12 @@
         <input type="text" id="ugyfel_telszama" name="ugyfel_telszama" value="{{ $munkalap->ugyfel_telszama }}"><br>
         <label for="rendszam">Rendszám</label>
                 <select name="rendszam" placeholder="ABC123">
-                @foreach ($autoks as $auto)
-                <option value="{{ $auto->id }}" {{$auto->id == $munkalap->auto->id ? 'selected' : ''}}>{{ $auto->rendszam }}</option>
+                @foreach ($autos as $auto)
+                <option value="{{ $auto->id }}" {{$auto->id == $munkalap->auto->id ? 'selected' : ''}}>{{ $auto->rendszam }} </option>
                 @endforeach
                 </select><br>
         <label for="munka_kezdete">Munka kezdete</label>
-        <input type="date" id="munka_kezdete" name="munka_kezdete" value="{{ $munkalap->munka_kezdete }}"><br>
+        <input type="date" id="munka_kezdete" name="munka_kezdete" value="{{ $munkalap->munka_kezdete }}"readonly><br>
         <label for="munka_vege">Munka vége</label>
         <input type="date" id="munka_vege" name="munka_vege" value="{{ $munkalap->munka_vege }}"><br>
         <label for="fizetendo">Fizetendő</label>

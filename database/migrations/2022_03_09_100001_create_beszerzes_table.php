@@ -24,8 +24,8 @@ class CreateBeszerzesTable extends Migration
             $table->boolean('atveve')->nullable();
 
             $table->foreign('f_szam')->references('f_szam')->on('feladats');
-            $table->foreign('alkatresz')->references('alk_azon')->on('alkatreszek');
-            $table->foreign('beszall_kod')->references('beszall_kod')->on('beszallitok');
+            $table->foreign('alkatresz')->references('alk_azon')->on('alkatreszs');
+            $table->foreign('beszall_kod')->references('beszall_kod')->on('beszallitos');
             $table->timestamps();
         });
     }

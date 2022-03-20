@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDolgozosTable extends Migration
+class CreateBeszallitosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateDolgozosTable extends Migration
      */
     public function up()
     {
-        Schema::create('dolgozos', function (Blueprint $table) {
-            $table->id();
-            $table->integer('d_kod');
-            $table->string('dolg_nev', 30);
-            $table->string('kepesseg', 1);
+        Schema::create('beszallitos', function (Blueprint $table) {
+            $table->id('beszall_kod');
+            $table->string('nev', 50);
+            $table->string('irsz', 4);
+            $table->string('cim', 50);
+            $table->string('elerhetoseg', 12);
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreateDolgozosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dolgozos');
+        Schema::dropIfExists('beszallitos');
     }
 }

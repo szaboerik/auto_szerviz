@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Auto;
 use App\Models\Marka;
 use Illuminate\Http\Request;
+use App\Rules\rendszam;
 
 class AutoController extends Controller
 {
+
 //Új autó
 public function ujauto()
 {
@@ -21,6 +23,10 @@ public function auto(Request $request) {
     $auto -> forgalmi = $request -> forgalmi;
     $auto -> evjarat = $request -> evjarat;
     $auto->save();
+
+    $rules = [
+        'rendszam' => ['required', new rendszam],
+    ];
 
     return redirect('/mvezeto/autok');
 }

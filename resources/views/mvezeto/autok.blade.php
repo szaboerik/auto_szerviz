@@ -31,7 +31,7 @@
     <thead>
       <tr>
         <th>Rendszám</th>
-        <th>MárkaID</th>
+        <th>Márka</th>
         <th>Forgalmi</th>
         <th>Évjárat</th>
       </tr>

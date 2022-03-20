@@ -17,7 +17,7 @@ class CreateMunkalapsTable extends Migration
             $table->id("m_szam");
             $table->string('ugyfel_neve', 50);
             $table->string('ugyfel_telszama', 30);
-            $table->unsignedBigInteger('autoId')->references('id')->on('autoks');
+            $table->unsignedBigInteger('autoId')->references('id')->on('autos');
             $table->date('munka_kezdete');
             $table->date('munka_vege')->nullable();
             $table->integer('fizetendo')->nullable();
@@ -27,7 +27,7 @@ class CreateMunkalapsTable extends Migration
             
         });
 
-        DB::statement('ALTER TABLE munkalaps ADD CONSTRAINT check_dates CHECK (munka_kezdete < "munka_vege")');
+        DB::statement('ALTER TABLE munkalaps ADD CONSTRAINT check_dates CHECK ("munka_kezdete" <= "munka_vege")');
     }
 
     /**
