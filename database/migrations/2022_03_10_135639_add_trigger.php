@@ -78,12 +78,12 @@ class AddTrigger extends Migration
         BEFORE INSERT ON munkalaps
         FOR EACH ROW
         BEGIN
-        IF NEW.munka_kezdete != CURDATE()-1 THEN
-        SIGNAL SQLSTATE "45000" SET MESSAGE_TEXT = "A munka kezdete dátuma nem lehet tegnapnál korábbi!";
+        IF NEW.munka_kezdete < CURDATE()-1  THEN
+        SIGNAL SQLSTATE "45000" SET MESSAGE_TEXT = "A munka kezdet dátuma nem lehet tegnapnál régebbi!";
         END IF;
         END');
 
-
+        
 
     }
     
@@ -95,16 +95,15 @@ class AddTrigger extends Migration
      */
     public function down()
     {
-        DB::unprepared('DROP TRIGGER `date_check`');
+       DB::unprepared('DROP TRIGGER `date_check`');
         DB::unprepared('DROP TRIGGER `munka_kezd_vege_check`');
         DB::unprepared('DROP TRIGGER `atveve_check`');
         DB::unprepared('DROP TRIGGER `egysegar_check`');
         DB::unprepared('DROP TRIGGER `mennyiseg_check`');
         DB::unprepared('DROP TRIGGER `besz_osszege_check`');
         DB::unprepared('DROP TRIGGER `dolgozo_kepesseg_check`');
-        DB::unprepared('DROP TRIGGER `munka_kezdete_check`');
-
-
+        DB::unprepared('DROP TRIGGER `munka_kezdete_tegnap_check`');
+    
     }
     }
 
