@@ -33,6 +33,7 @@
         <th>Beszerzés azonosító</th>
         <th>Feladatszám</th>
         <th>Alkatrész</th>
+        <th>Beszállító kód</th>
         <th>Egységár</th>
         <th>Mennyiség</th>
         <th>Beszerzés összege</th>

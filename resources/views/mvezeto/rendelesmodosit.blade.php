@@ -35,7 +35,7 @@
         <label for="besz_osszege">Beszerzés összege</label>
         <input type="number" id="besz_osszege" name="besz_osszege" value="{{ $beszerzes->besz_osszege }}"><br>
         <label for="atveve">Átvéve</label>
-        <input type="number" id="atveve" name="atveve" value="{{ $beszerzes->atveve }}"><br>
+        <input type="text" id="atveve" name="atveve" value="{{ $beszerzes->atveve }}"><br>
       <button type="submit" class="btn btn-success" style="width: 100%;">Mentés</button>
     </form>
   </div>

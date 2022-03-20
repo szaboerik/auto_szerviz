@@ -21,7 +21,7 @@
       @csrf
       @method('put')
         <label for="alk_azon">Alkatrész azonosító</label>
-        <input type="number" id="alk_azon" name="alk_azon" value="{{ $alkatresz->alk_azon }}"><br>
+        <input type="number" id="alk_azon" name="alk_azon" value="{{ $alkatresz->alk_azon }}" readonly><br>
         <label for="alk_neve">Alkatrész neve</label>
         <input type="text" id="alk_neve" name="alk_neve" value="{{ $alkatresz->alk_neve }}"><br>
       <button type="submit" class="btn btn-success" style="width: 100%;">Mentés</button>

@@ -46,7 +46,7 @@
                 <label for="besz_osszege">Beszerzés összege</label>
                 <input type="number" id="besz_osszege" name="besz_osszege"><br>
                 <label for="atveve">Átvéve</label>
-                <input type="number" id="atveve" name="atveve"><br>
+                <input type="text" id="atveve" name="atveve"><br>
                 <input type="submit" value="Feltöltés">
               </form> 
         </article>

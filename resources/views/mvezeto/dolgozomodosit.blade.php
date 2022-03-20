@@ -21,7 +21,7 @@
       @csrf
       @method('put')
         <label for="d_kod">Dolgozó azonosító</label>
-        <input type="number" id="d_kod" name="d_kod" value="{{ $dolgozo->d_kod }}"><br>
+        <input type="number" id="d_kod" name="d_kod" value="{{ $dolgozo->d_kod }}" readonly><br>
         <label for="dolg_nev">Dolgozó neve</label>
         <input type="text" id="dolg_nev" name="dolg_nev" value="{{ $dolgozo->dolg_nev }}"><br>
         <label for="kepesseg">Képesség</label>

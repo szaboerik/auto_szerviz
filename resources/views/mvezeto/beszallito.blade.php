@@ -31,7 +31,7 @@
             <form action="/api/beszallito" method="POST">
                 @csrf
                   <label for="beszall_kod">Beszállító kód</label>
-                  <input type="number" id="beszall_kod" name="beszall_kod"><br>
+                  <input type="number" id="beszall_kod" name="beszall_kod" readonly><br>
                   <label for="nev">Neve</label>
                   <input type="text" id="nev" name="nev"><br>
                   <label for="irsz">Irányítószám</label>
