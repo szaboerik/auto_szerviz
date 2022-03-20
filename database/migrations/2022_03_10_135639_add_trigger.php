@@ -65,6 +65,14 @@ class AddTrigger extends Migration
         SET NEW.besz_osszege = NEW.mennyiseg*NEW.egyseg_ar;
         END');
 
+        DB::unprepared('CREATE TRIGGER dolgozo_kepesseg_check
+        BEFORE INSERT ON dolgozos
+        FOR EACH ROW
+        BEGIN
+        IF NEW.kepesseg !="s" AND NEW.kepesseg !="v" THEN
+        SIGNAL SQLSTATE "45000" SET MESSAGE_TEXT = "A dolgozo kepessege v(vezeto) vagy s(szerelő)!";
+        END IF;
+        END');
         
     }
     
@@ -82,7 +90,9 @@ class AddTrigger extends Migration
         DB::unprepared('DROP TRIGGER `egysegar_check`');
         DB::unprepared('DROP TRIGGER `mennyiseg_check`');
         DB::unprepared('DROP TRIGGER `besz_osszege_check`');
-        
+        DB::unprepared('DROP TRIGGER `dolgozo_kepesseg_check`');
+
+
         
        
     }
