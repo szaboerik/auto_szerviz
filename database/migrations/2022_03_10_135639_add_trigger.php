@@ -73,7 +73,18 @@ class AddTrigger extends Migration
         SIGNAL SQLSTATE "45000" SET MESSAGE_TEXT = "A dolgozo kepessege v(vezeto) vagy s(szerelő)!";
         END IF;
         END');
-        
+
+        DB::unprepared('CREATE TRIGGER munka_kezdete_tegnap_check
+        BEFORE INSERT ON munkalaps
+        FOR EACH ROW
+        BEGIN
+        IF NEW.munka_kezdete != CURDATE()-1 THEN
+        SIGNAL SQLSTATE "45000" SET MESSAGE_TEXT = "A munka kezdete dátuma nem lehet tegnapnál korábbi!";
+        END IF;
+        END');
+
+
+
     }
     
 
@@ -91,10 +102,9 @@ class AddTrigger extends Migration
         DB::unprepared('DROP TRIGGER `mennyiseg_check`');
         DB::unprepared('DROP TRIGGER `besz_osszege_check`');
         DB::unprepared('DROP TRIGGER `dolgozo_kepesseg_check`');
+        DB::unprepared('DROP TRIGGER `munka_kezdete_check`');
 
 
-        
-       
     }
     }
 
