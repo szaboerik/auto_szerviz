@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+*{
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: 'Poppins', san-serif;
+}
+
+body {
+background: #7f8c8d;
+overflow: hidden;
+}
+
+.container{
+    max-width: 440px;
+    padding: 0px 20px;
+    margin: 170px auto;
+    
+}
+
+.loginmezo{
+    width: 100%;
+    background: whitesmoke;
+    border-radius: 5px;
+}
+
+.loginmezo .title{
+    text-align: center;
+    line-height: 80px;
+    background: #2c3e50;
+    border-radius: 5px;
+    padding-left: 20px;
+    border-radius: 5px 5px 0px 0px;
+    color: whitesmoke;
+    font-size: 25px;
+    font-weight: 600px;
+}
+
+.loginmezo form{
+padding: 30px 20px 25px 20px;
+}
+
+.loginmezo form .row{
+height: 45px;
+margin-bottom: 15px;
+position: relative;
+}
+
+.loginmezo form .row input{
+height: 100%;
+width: 100%;
+outline: none;
+padding-left: 60px;
+border-radius: 5px;
+border: 1px solid lightgray;
+font-size: 16px;
+transition: all 0.3s ease;
+}
+
+form .row input:focus{
+    border-color: #2c3e50;
+    box-shadow: inset 0px 0px 1px 1px rgba(164, 176, 190,1.0);
+}
+
+.loginmezo form .row i{
+position: absolute;
+width: 47px;
+height: 100%;
+color: whitesmoke;
+font-size: 18px;
+background-color: #2c3e50;
+border: 1px solid #2c3e50;
+display: flex;
+align-items: center;
+justify-content: center;
+border-radius: 5px 0px 0px 5px;
+}
+
+.loginmezo form .button input{
+padding-left: 0px;
+background-color: #2c3e50;
+border: 1px solid #2c3e50;
+color: whitesmoke;
+font-size: 18px;
+font-weight: 500;
+cursor: pointer;
+}
+
+form .button input:hover{
+background: #2f3542;
+
+}
+
