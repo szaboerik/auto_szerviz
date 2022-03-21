@@ -17,7 +17,7 @@
         </aside>
         <article class="item3">
   <div style="width: 80%; margin: auto;">
-    <form action="/api/dolgozo/{{ $dolgozo->id }}" method="POST">
+    <form action="/api/dolgozo/{{ $dolgozo->d_kod }}" method="POST">
       @csrf
       @method('put')
         <label for="d_kod">Dolgozó azonosító</label>

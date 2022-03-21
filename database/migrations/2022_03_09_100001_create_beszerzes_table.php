@@ -21,7 +21,7 @@ class CreateBeszerzesTable extends Migration
             $table->integer('egyseg_ar');
             $table->integer('mennyiseg');
             $table->integer('besz_osszege');
-            $table->char('atveve',1)->nullable();
+            
 
             $table->foreign('f_szam')->references('f_szam')->on('feladats');
             $table->foreign('alkatresz')->references('alk_azon')->on('alkatreszs');

@@ -17,7 +17,7 @@
         </aside>
         <article class="item3">
   <div style="width: 80%; margin: auto;">
-    <form action="/api/beszallito/{{ $beszallito->id }}" method="POST">
+    <form action="/api/beszallito/{{ $beszallito->beszall_kod }}" method="POST">
       @csrf
       @method('put')
         <label for="beszall_kod">Beszállító kód</label>

@@ -27,7 +27,7 @@ class CreateMunkalapsTable extends Migration
             
         });
 
-        DB::statement('ALTER TABLE munkalaps ADD CONSTRAINT check_dates CHECK ("munka_kezdete" <= "munka_vege")');
+        
     }
 
     /**

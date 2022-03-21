@@ -40,8 +40,6 @@
                   <input type="number" id="szerelo" name="szerelo"><br>
                   <label for="munkaora">Munkaóra</label>
                   <input type="number" id="munkaora" name="munkaora"><br>
-                  <label for="besz_osszege">Beszerzés összege</label>
-                  <input type="number" id="besz_osszege" name="besz_osszege"><br>
                   <button type="submit" class="btn btn-success" style="width: 100%;">Mentés</button>
               </form> 
         </article>

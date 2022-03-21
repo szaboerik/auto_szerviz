@@ -30,7 +30,7 @@ public function dolgozok()
 //Dolgozó törlése
 public function dolgozotorles($id)
 {
-    dolgozo::find($id)->delete();
+    Dolgozo::find($id)->delete();
     return redirect('/mvezeto/dolgozok');
 }
 //Dolgozó módosítása

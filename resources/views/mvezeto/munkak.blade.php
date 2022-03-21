@@ -54,6 +54,10 @@
           <td style="display: flex;">
             <a href="/mvezeto/munkamodosit/{{ $munkalap->m_szam }}"><button class="btn btn-sm btn-info">Szerkesztés</button></a>
             <a><form action="/api/munkalap/{{ $munkalap->m_szam }}" method="POST">@csrf @method('delete')<button type="submit" class="btn btn-sm btn-danger">Törlés</button></form></a>
+            <a href="/mvezeto/feladat"><button class="btn btn-sm btn-success">Új feladat hozzáadása</button></a>
+            <form action="" method="POST">
+                <button name="munkabef" class="munkabef">Munka befejezése</button>
+            </form>
           </td>
         </tr>
         <?php endforeach; ?> 

@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Alkatresz extends Model
 {
     use HasFactory;
+    protected $primaryKey = 'alk_azon';
 }

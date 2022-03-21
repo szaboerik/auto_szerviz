@@ -17,7 +17,7 @@
         </aside>
         <article class="item3">
   <div style="width: 80%; margin: auto;">
-    <form action="/api/alkatresz/{{ $alkatresz->id }}" method="POST">
+    <form action="/api/alkatresz/{{ $alkatresz->alk_azon }}" method="POST">
       @csrf
       @method('put')
         <label for="alk_azon">Alkatrész azonosító</label>

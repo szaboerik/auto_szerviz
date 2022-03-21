@@ -44,9 +44,8 @@
                 <label for="mennyiseg">Mennyiség</label>
                 <input type="number" id="mennyiseg" name="mennyiseg"><br>
                 <label for="besz_osszege">Beszerzés összege</label>
-                <input type="number" id="besz_osszege" name="besz_osszege"><br>
-                <label for="atveve">Átvéve</label>
-                <input type="text" id="atveve" name="atveve"><br>
+                <input type="number" id="besz_osszege" name="besz_osszege" readonly><br>
+                
                 <input type="submit" value="Feltöltés">
               </form> 
         </article>

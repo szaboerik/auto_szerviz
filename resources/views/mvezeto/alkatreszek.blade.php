@@ -40,8 +40,8 @@
           <th>{{ $alkatresz->alk_azon}}</th>
           <td>{{ $alkatresz->alk_neve }}</td>
           <td style="display: flex;">
-            <a href="/mvezeto/alkatreszmodosit/{{ $alkatresz->id }}"><button class="btn btn-sm btn-info">Szerkesztés</button></a>
-            <a><form action="/api/alkatresz/{{ $alkatresz->id }}" method="POST">@csrf @method('delete')<button type="submit" class="btn btn-sm btn-danger">Törlés</button></form></a>
+            <a href="/mvezeto/alkatreszmodosit/{{ $alkatresz->alk_azon }}"><button class="btn btn-sm btn-info">Szerkesztés</button></a>
+            <a><form action="/api/alkatresz/{{ $alkatresz->alk_azon }}" method="POST">@csrf @method('delete')<button type="submit" class="btn btn-sm btn-danger">Törlés</button></form></a>
           </td>
         </tr>
         <?php endforeach; ?> 

@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Dolgozo extends Model
 {
     use HasFactory;
+    protected $primaryKey = 'd_kod';
+
 }

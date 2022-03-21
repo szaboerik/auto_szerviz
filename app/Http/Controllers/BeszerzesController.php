@@ -22,7 +22,7 @@ public function rendeles(Request $request) {
     $beszerzes -> egyseg_ar = $request -> egyseg_ar;
     $beszerzes -> mennyiseg = $request -> mennyiseg;
     $beszerzes -> besz_osszege = $request -> besz_osszege;
-    $beszerzes -> atveve = $request -> atveve;
+    
     $beszerzes->save();
 
     return redirect('/mvezeto/rendelesek');
@@ -53,7 +53,7 @@ public function rmodosit(Request $request, $id)
     $beszerzes -> egyseg_ar = $request -> egyseg_ar;
     $beszerzes -> mennyiseg = $request -> mennyiseg;
     $beszerzes -> besz_osszege = $request -> besz_osszege;
-    $beszerzes -> atveve = $request -> atveve;
+    
     $beszerzes->save();
 
     return redirect('/mvezeto/rendelesek');

@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Beszallito extends Model
 {
     use HasFactory;
+    protected $primaryKey = 'beszall_kod';
 }

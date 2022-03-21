@@ -42,8 +42,8 @@
           <td>{{ $dolgozo->dolg_nev }}</td>
           <td>{{ $dolgozo->kepesseg }}</td>
           <td style="display: flex;">
-            <a href="/mvezeto/dolgozomodosit/{{ $dolgozo->id }}"><button class="btn btn-sm btn-info">Szerkesztés</button></a>
-            <a><form action="/api/dolgozo/{{ $dolgozo->id }}" method="POST">@csrf @method('delete')<button type="submit" class="btn btn-sm btn-danger">Törlés</button></form></a>
+            <a href="/mvezeto/dolgozomodosit/{{ $dolgozo->d_kod }}"><button class="btn btn-sm btn-info">Szerkesztés</button></a>
+            <a><form action="/api/dolgozo/{{ $dolgozo->d_kod }}" method="POST">@csrf @method('delete')<button type="submit" class="btn btn-sm btn-danger">Törlés</button></form></a>
           </td>
         </tr>
         <?php endforeach; ?> 

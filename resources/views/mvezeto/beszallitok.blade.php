@@ -46,8 +46,8 @@
           <td>{{ $beszallito->cim }}</td>
           <td>{{ $beszallito->elerhetoseg }}</td>
           <td style="display: flex;">
-            <a href="/mvezeto/beszallitomodosit/{{ $beszallito->id }}"><button class="btn btn-sm btn-info">Szerkesztés</button></a>
-            <a><form action="/api/beszallito/{{ $beszallito->id }}" method="POST">@csrf @method('delete')<button type="submit" class="btn btn-sm btn-danger">Törlés</button></form></a>
+            <a href="/mvezeto/beszallitomodosit/{{ $beszallito->beszall_kod }}"><button class="btn btn-sm btn-info">Szerkesztés</button></a>
+            <a><form action="/api/beszallito/{{ $beszallito->beszall_kod }}" method="POST">@csrf @method('delete')<button type="submit" class="btn btn-sm btn-danger">Törlés</button></form></a>
           </td>
         </tr>
         <?php endforeach; ?> 

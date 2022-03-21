@@ -33,11 +33,11 @@
                 @endforeach
                 </select><br>
         <label for="munka_kezdete">Munka kezdete</label>
-        <input type="date" id="munka_kezdete" name="munka_kezdete" value="{{ $munkalap->munka_kezdete }}"readonly><br>
+        <input type="date" id="munka_kezdete" name="munka_kezdete" value="{{ $munkalap->munka_kezdete }}"><br>
         <label for="munka_vege">Munka vége</label>
-        <input type="date" id="munka_vege" name="munka_vege" value="{{ $munkalap->munka_vege }}"><br>
+        <input type="date" id="munka_vege" name="munka_vege" value="{{ $munkalap->munka_vege }}" readonly><br>
         <label for="fizetendo">Fizetendő</label>
-        <input type="number" id="fizetendo" name="fizetendo" value="{{ $munkalap->fizetendo }}"><br>
+        <input type="number" id="fizetendo" name="fizetendo" value="{{ $munkalap->fizetendo }}" readonly><br>
       <button type="submit" class="btn btn-success" style="width: 100%;">Mentés</button>
     </form>
 </div>

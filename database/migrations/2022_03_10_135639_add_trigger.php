@@ -31,14 +31,7 @@ class AddTrigger extends Migration
         END IF;
         END');
 
-        DB::unprepared('CREATE TRIGGER atveve_check
-        BEFORE INSERT ON beszerzes
-        FOR EACH ROW
-        BEGIN
-        IF NEW.atveve !="i" THEN
-        SIGNAL SQLSTATE "45000" SET MESSAGE_TEXT = "Nem megfelelő karakter!";
-        END IF;
-        END');
+       
 
         DB::unprepared('CREATE TRIGGER egysegar_check
         BEFORE INSERT ON beszerzes
@@ -95,9 +88,8 @@ class AddTrigger extends Migration
      */
     public function down()
     {
-       DB::unprepared('DROP TRIGGER `date_check`');
+        DB::unprepared('DROP TRIGGER `date_check`');
         DB::unprepared('DROP TRIGGER `munka_kezd_vege_check`');
-        DB::unprepared('DROP TRIGGER `atveve_check`');
         DB::unprepared('DROP TRIGGER `egysegar_check`');
         DB::unprepared('DROP TRIGGER `mennyiseg_check`');
         DB::unprepared('DROP TRIGGER `besz_osszege_check`');

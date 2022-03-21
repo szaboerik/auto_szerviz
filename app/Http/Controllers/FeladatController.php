@@ -27,7 +27,7 @@ public function feladat(Request $request) {
     $feladat -> jelleg = $request -> jelleg;
     $feladat -> szerelo = $request -> szerelo;
     $feladat -> munkaora = $request -> munkaora;
-    $feladat -> besz_osszege = $request -> besz_osszege;
+    
     $feladat->save();
 
     return redirect('/mvezeto/feladatok');
@@ -55,7 +55,7 @@ public function fmodosit(Request $request, $id)
     $feladat -> jelleg = $request -> jelleg;
     $feladat -> szerelo = $request -> szerelo;
     $feladat -> munkaora = $request -> munkaora;
-    $feladat -> besz_osszege = $request -> besz_osszege;
+    
     $feladat->save();
 
     return redirect('/mvezeto/feladatok');

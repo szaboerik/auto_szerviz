@@ -30,8 +30,6 @@
         <input type="number" id="szerelo" name="szerelo" value="{{ $feladat->szerelo }}"><br>
         <label for="munkaora">Munkaóra</label>
         <input type="number" id="munkaora" name="munkaora" value="{{ $feladat->munkaora }}"><br>
-        <label for="besz_osszege">Beszerzési összeg</label>
-        <input type="number" id="besz_osszege" name="besz_osszege" value="{{ $feladat->besz_osszege }}"><br>
       <button type="submit" class="btn btn-success" style="width: 100%;">Mentés</button>
     </form>
   </div>

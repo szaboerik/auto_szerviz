@@ -37,7 +37,7 @@
         <th>Egységár</th>
         <th>Mennyiség</th>
         <th>Beszerzés összege</th>
-        <th>Átvéve</th>
+        
       </tr>
     </thead>
     <tbody>
@@ -50,7 +50,7 @@
           <td>{{ $beszerzes->egyseg_ar }}</td>
           <td>{{ $beszerzes->mennyiseg }}</td>
           <td>{{ $beszerzes->besz_osszege }}</td>
-          <td>{{ $beszerzes->atveve }}</td>
+          
           <td style="display: flex;">
             <a href="/mvezeto/rendelesmodosit/{{ $beszerzes->besz_azon }}"><button class="btn btn-sm btn-info">Szerkesztés</button></a>
             <a><form action="/api/rendeles/{{ $beszerzes->besz_azon }}" method="POST">@csrf @method('delete')<button type="submit" class="btn btn-sm btn-danger">Törlés</button></form></a>
