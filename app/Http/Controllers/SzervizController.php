@@ -32,7 +32,7 @@ class SzervizController extends Controller
             if($beFhn == $dolgozoFhn && $beJsz == $dolgozoJsz){
                 $_SESSION["belepve"] = true;
                 $_SESSION["nev"] =$beFhn;
-                return redirect("dolgozo/dfeladatok");
+                return redirect("dolgozo");
                 exit();
             }if($beFhn == $mvezetoFhn && $beJsz == $mvezetoJsz){
                 $_SESSION["belepve"] = true;

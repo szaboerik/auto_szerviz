@@ -11,9 +11,12 @@ class FeladatController extends Controller
 //-------------------------
 public function dfeladatok()
 {
-    $feladats = feladat::all();
-    return view('dolgozo.dfeladatok', ['feladats' => $feladats]);
+
+    $feladats=Feladat::all();
+        return response()->json($feladats);
 }
+
+
 //Új feladat
 public function ujf()
 {

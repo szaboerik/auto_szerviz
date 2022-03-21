@@ -24,13 +24,15 @@ Route::get('/belepes', function () {
 //Belépés
 Route::post('/belepes', [SzervizController::class, 'belepes']);
 
+
 //Dolgozó
 //--------------------------
-//Route::get('/dolgozo/dfeladatok', [FeladatController::class, 'dfeladatok']);
-Route::get('/ezaz','App\Http\Controllers\FeladatController@dfeladatok');
-Route::get('/dolgozo/dfeladatok', function () {
-    return view('/dolgozo/dfeladatok');
+
+Route::get('/dolgozo', function () {
+   return view('dfeladatok');
 });
+
+Route::get('api/dfeladatok', [FeladatController::class, 'dfeladatok']);
 
 //Feladathoz tartozó linkek
 //---------------------------------
