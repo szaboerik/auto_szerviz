@@ -23,11 +23,23 @@
         <label for="f_szam">Feladatszám</label>
         <input type="number" id="f_szam" name="f_szam" value="{{ $feladat->f_szam }}" readonly><br>
         <label for="m_szam">Munkaszám</label>
-        <input type="number" id="m_szam" name="m_szam" value="{{ $feladat->m_szam }}"><br>
-        <label for="jelleg">Jelleg</label>
-        <input type="number" id="jelleg" name="jelleg" value="{{ $feladat->jelleg }}"><br>
-        <label for="szerelo">Szerelő</label>
-        <input type="number" id="szerelo" name="szerelo" value="{{ $feladat->szerelo }}"><br>
+                <select name="m_szam">
+                @foreach ($munkalaps as $munkalap)
+                <option value="{{ $munkalap->m_szam }}">{{ $munkalap->m_szam }}</option>
+                @endforeach
+                </select><br>
+                <label for="jelleg">Jelleg</label>
+                <select name="jelleg">
+                @foreach ($jellegs as $jelleg)
+                <option value="{{ $jelleg->jelleg }}">{{ $jelleg->jelleg }}</option>
+                @endforeach
+                </select><br>
+                <label for="d_kod">Szerelő</label>
+                <select name="d_kod">
+                @foreach ($dolgozos as $dolgozo)
+                <option value="{{ $dolgozo->d_kod }}">{{ $dolgozo->d_kod }}</option>
+                @endforeach
+                </select><br>
         <label for="munkaora">Munkaóra</label>
         <input type="number" id="munkaora" name="munkaora" value="{{ $feladat->munkaora }}"><br>
       <button type="submit" class="btn btn-success" style="width: 100%;">Mentés</button>
