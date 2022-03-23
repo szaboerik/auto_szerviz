@@ -31,7 +31,10 @@
             <form action="/api/auto" method="POST">
                 @csrf
                   <label for="rendszam">Rendszám</label>
-                  <input type="text" id="rendszam" name="rendszam" ><br>
+                  <input type="text" id="rendszam" value="{{ old('rendszam') }}" name="rendszam" ><br>
+                    @error('rendszam')
+                        <div class="alert alert-danger">{{ $errors->first('rendszam') }}</div>
+                    @enderror
                   <label for="markaId">Márka</label>
                 <select name="markaId" placeholder="ABC123">
                 @foreach ($markas as $marka)
@@ -39,9 +42,12 @@
                 @endforeach
                 </select><br>
                   <label for="forgalmi">Forgalmi</label>
-                  <input type="text" id="forgalmi" name="forgalmi"><br>
+                  <input type="text" id="forgalmi" value="{{ old('forgalmi') }}" name="forgalmi"><br>
+                  @error('forgalmi')
+                        <div class="alert alert-danger">{{ $errors->first('forgalmi') }}</div>
+                    @enderror
                   <label for="evjarat">Évjárat</label>
-                  <input type="number" id="evjarat" name="evjarat"><br>
+                  <input type="number" id="evjarat" value="{{ old('evjarat') }}" name="evjarat"><br>
                   <button type="submit" class="btn btn-success" style="width: 100%;">Mentés</button>
               </form> 
         </article>

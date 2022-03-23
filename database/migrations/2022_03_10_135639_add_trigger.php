@@ -67,14 +67,32 @@ class AddTrigger extends Migration
         END IF;
         END');
 
-        DB::unprepared('CREATE TRIGGER munka_kezdete_tegnap_check
+        DB::unprepared('CREATE TRIGGER munka_kezdete_check
         BEFORE INSERT ON munkalaps
         FOR EACH ROW
         BEGIN
-        IF NEW.munka_kezdete < CURDATE()-1  THEN
-        SIGNAL SQLSTATE "45000" SET MESSAGE_TEXT = "A munka kezdet dátuma nem lehet tegnapnál régebbi!";
+        SET NEW.munka_kezdete = CURDATE();
+        END');
+
+        /*DB::unprepared('CREATE TRIGGER dolgozo_feladathoz_check
+        BEFORE INSERT ON feladats
+        FOR EACH ROW
+        BEGIN
+        IF NEW.szerelo != (SELECT d.d_kod from dolgozos d where d.kepesseg = "s") THEN
+        SIGNAL SQLSTATE "45000" SET MESSAGE_TEXT = "A feladathoz csak szerelő (s) vihető fel!";
+        END IF;
+        END');*/
+
+        DB::unprepared('CREATE TRIGGER dolgozo_munkaora_check
+        AFTER INSERT ON feladats
+        FOR EACH ROW
+        BEGIN
+        IF (SELECT SUM(f.munkaora) from feladats f, dolgozos d, munkalaps m
+         where f.szerelo = d.d_kod and NEW.szerelo=f.szerelo and m.m_szam = f.m_szam and m.munka_kezdete = CURDATE())>8 THEN
+         SIGNAL SQLSTATE "45000" SET MESSAGE_TEXT = "A dolgozó egy nap nem dolgozhat 8 óránál többet!";
         END IF;
         END');
+
 
         
 
@@ -94,7 +112,10 @@ class AddTrigger extends Migration
         DB::unprepared('DROP TRIGGER `mennyiseg_check`');
         DB::unprepared('DROP TRIGGER `besz_osszege_check`');
         DB::unprepared('DROP TRIGGER `dolgozo_kepesseg_check`');
-        DB::unprepared('DROP TRIGGER `munka_kezdete_tegnap_check`');
+        DB::unprepared('DROP TRIGGER `munka_kezdete_check`');
+        /*DB::unprepared('DROP TRIGGER `dolgozo_feladathoz_check`');*/
+        DB::unprepared('DROP TRIGGER `dolgozo_munkaora_check`');
+        
     
     }
     }
