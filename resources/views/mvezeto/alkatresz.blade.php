@@ -26,6 +26,7 @@
             <a href="markak">Márkák</a>
             <a href="munkak">Munkalapok</a>
         </nav>
+
         <article class="item3">
             <h2>Alkatrész felvitele</h2>
             <form action="/api/alkatresz" method="POST">

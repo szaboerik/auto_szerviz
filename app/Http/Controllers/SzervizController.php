@@ -46,6 +46,41 @@ class SzervizController extends Controller
             }
         }
     }
+/*
+    public function Validator() {
+        /*
+        $nameErr = "";
+if (!empty($_SERVER["QUERY_STRING"])) {
+    if (empty($_POST["alk_neve"])) {
+      $nameErr = "Name is required";
+    }
+    else {
+        return redirect("alkatreszek");
+    }
+}
+
+
+        session_start();
+
+        $alk_neve="";
+    
+        if(!empty($_SERVER["QUERY_STRING"])){
+            if(isset($_GET["alk_neve"])){
+                $alk_neve = $_GET["alk_neve"];
+            }
+        }
+        if(isset($_POST["mehet"])){
+            $bealkneve = $_POST["alk_neve"];  
+            if(empty($_POST["alk_neve"])){
+                $_SESSION["Validator"] = false;
+                echo "<h1>Nem jó!</h1>";
+                return redirect('alkatresz');
+            }
+            
+        }
+
+    }
+*/
     public function index() {
         return Szerviz::all();
     }

@@ -11,7 +11,7 @@ body {
     display: grid;
     grid-template-areas:
       'header header header header header aside'
-      'menu menu article article article article';
+      'menu article article article article article';
     grid-gap: 10px;
     text-align: center;
     background-color: #2196F3;
@@ -19,11 +19,28 @@ body {
   }
   .grid-container > article, header, menu, div {
     background-color: rgba(255, 255, 255, 0.8);
-    text-align: center;
     padding: 20px 0;
     font-size: 30px;
   }
 
 table, th, td{
   border: 1px solid black;
+  text-align:right;
+
 }
+.item2 {
+  text-align:left;
+}
+.header {
+  text-align:center;
+}
+
+@media only screen and (max-width: 500px) {
+  .grid-container {
+    grid-template-columns: 20% auto;
+    grid-template-areas:
+    'menu header aside'
+    'article article article';
+  }
+}
+
