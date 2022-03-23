@@ -5,12 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/stilus.css') }}" >
-    <title>Rendelések</title>
+    <title>Beszerzések</title>
 </head>
 <body>
     <main class="grid-container">
         <header class="header">
-            Rendelések
+        Beszerzések
         </header>
         <aside class="item4">
             <a href="/belepes">Kijelentkezés</a>
@@ -26,7 +26,7 @@
             <a href="munkak">Munkalapok</a>
         </nav>
         <article class="item3">
-            <h2>Rendelések</h2>
+            <h2>Beszerzések</h2>
             <table class="table">
     <thead>
       <tr>
@@ -52,13 +52,13 @@
           <td>{{ $beszerzes->besz_osszege }}</td>
           
           <td style="display: flex;">
-            <a href="/mvezeto/rendelesmodosit/{{ $beszerzes->besz_azon }}"><button class="btn btn-sm btn-info">Szerkesztés</button></a>
-            <a><form action="/api/rendeles/{{ $beszerzes->besz_azon }}" method="POST">@csrf @method('delete')<button type="submit" class="btn btn-sm btn-danger">Törlés</button></form></a>
+            <a href="/mvezeto/beszerzesmodosit/{{ $beszerzes->besz_azon }}"><button class="btn btn-sm btn-info">Szerkesztés</button></a>
+            <a><form action="/api/beszerzes/{{ $beszerzes->besz_azon }}" method="POST">@csrf @method('delete')<button type="submit" class="btn btn-sm btn-danger">Törlés</button></form></a>
           </td>
         </tr>
         <?php endforeach; ?> 
     </tbody>
-    <div><a href="/mvezeto/rendeles"><button class="btn btn-sm btn-success">Új rendelés létrehozása</button></a></div>
+    <div><a href="/mvezeto/beszerzes"><button class="btn btn-sm btn-success">Új beszerzés létrehozása</button></a></div>
   </table>
         </article>
     </main>

@@ -19,11 +19,11 @@
             <a href="alkatreszek">Alkatrészek</a>
             <a href="autok">Autók</a>
             <a href="beszallitok">Beszállítók</a>
+            <a href="beszerzesek">Beszerzések</a>
             <a href="dolgozok">Dolgozók</a>
             <a href="feladatok">Feladatok</a>
             <a href="markak">Márkák</a>
             <a href="munkak">Munkalapok</a>
-            <a href="rendelesek">Rendelések</a>
         </nav>
         <article class="item3">
             <h2>Jellegek</h2>

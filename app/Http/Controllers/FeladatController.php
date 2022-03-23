@@ -7,14 +7,12 @@ use App\Models\Munkalap;
 use App\Models\Dolgozo;
 use App\Models\Jelleg;
 use Illuminate\Http\Request;
-use App\Rules\m_szam;
-use App\Rules\d_kod;
-//use App\Rules\d_jelleg;
 
 class FeladatController extends Controller
 {
+
 //Dolgozó
-//-------------------------
+
 public function dfeladatok()
 {
 
@@ -22,14 +20,15 @@ public function dfeladatok()
         return response()->json($feladats);
 }
 
-
 //Új feladat
-public function ujf()
+
+public function ujfeladat()
 {
     $munkalaps = Munkalap::all();
     $dolgozos = Dolgozo::all();
-    //$jellegs = Jelleg::all();
-return view('mvezeto/feladat', ['munkalaps' => $munkalaps, 'dolgozos' => $dolgozos/*, $jellegs => 'jellegs'*/]);
+    $jellegs = Jelleg::all();
+
+    return view('mvezeto/feladat', ['munkalaps' => $munkalaps, 'dolgozos' => $dolgozos, 'jellegs' => $jellegs]);
 }
 
 public function feladat(Request $request) {
@@ -39,7 +38,6 @@ public function feladat(Request $request) {
     $feladat -> jelleg = $request -> jelleg;
     $feladat -> szerelo = $request -> d_kod;
     $feladat -> munkaora = $request -> munkaora;
-    
     $feladat->save();
 
    /* $rules = [
@@ -50,26 +48,29 @@ public function feladat(Request $request) {
 
     return redirect('/mvezeto/feladatok');
 }
+
 //Feladatok kilistázása
+
 public function feladatok()
 {
     $feladats = Feladat::all();
     foreach ($feladats as $feladat) {
         $feladat -> m_szam;
         $feladat -> d_kod;
-       // $feladat -> jelleg;
+        $feladat -> jelleg;
     }
     return view('mvezeto.feladatok', ['feladats' => $feladats]);
 }
 //Feladat törlése
-public function ftorles($id)
+public function feladattorles($id)
 {
     Feladat::find($id)->delete();
     return redirect('/mvezeto/feladatok');
 }
 
 //Feladat módosítása
-public function fmodosit(Request $request, $id)
+
+public function feladatmodosit(Request $request, $id)
 {
     $feladat = Feladat::find($id);
     $feladat -> f_szam = $request -> f_szam;
@@ -77,27 +78,21 @@ public function fmodosit(Request $request, $id)
     $feladat -> jelleg = $request -> jelleg;
     $feladat -> szerelo = $request -> d_kod;
     $feladat -> munkaora = $request -> munkaora;
-    
     $feladat->save();
 
     return redirect('/mvezeto/feladatok');
 }
-public function fszerkesztes($id)
+public function feladatszerkesztes($id)
 {
     $munkalaps = Munkalap::all();
     $dolgozos = Dolgozo::all();
-   // $jellegs = Jelleg::all();
+    $jellegs = Jelleg::all();
     $feladat = Feladat::find($id);
     $feladat -> m_szam;
     $feladat -> d_kod;
-    //$feladat -> jelleg;
-    return view('mvezeto/feladatmodosit', ['feladat' => $feladat, 'munkalaps' => $munkalaps, 'dolgozos' => $dolgozos/*, $jellegs => 'jellegs'*/]);
-}
+    $feladat -> jelleg;
 
-//Feladat mutatása ID szerint
-//public function fmutat($id)
-//{
-//    return Feladat::find($id);
-//}
+    return view('mvezeto/feladatmodosit', ['feladat' => $feladat, 'munkalaps' => $munkalaps, 'dolgozos' => $dolgozos, 'jellegs' => $jellegs]);
+}
 
 }

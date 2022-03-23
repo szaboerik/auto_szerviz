@@ -10,4 +10,5 @@ class Beszerzes extends Model
     use HasFactory;
 
     protected $primaryKey = 'besz_azon';
+    
 }

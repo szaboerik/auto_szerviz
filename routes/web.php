@@ -34,26 +34,6 @@ Route::get('/dolgozo', function () {
 
 Route::get('api/dfeladatok', [FeladatController::class, 'dfeladatok']);
 
-//Feladathoz tartozó linkek
-//---------------------------------
-
-//Új feladat
-Route::get('/mvezeto/feladat', [FeladatController::class, 'ujf']);
-Route::post('/api/feladat', [FeladatController::class, 'feladat']);
-
-//Feladatok listázása
-Route::get('/mvezeto/feladatok', [FeladatController::class, 'feladatok']);
-
-
-//Feladat törlése
-Route::delete('/api/feladat/{id}', [FeladatController::class, 'ftorles']);
-
-//Feladat szerkesztése
-Route::get('/mvezeto/feladatmodosit/{id}', [FeladatController::class, 'fszerkesztes']);
-Route::put('/api/feladat/{id}', [FeladatController::class, 'fmodosit']);
-
-//Feladat mutatása ID szerint
-//Route::get('/api/feladat/{id}', [FeladatController::class, 'fmutat']);
 
 //Alkatrészhez tartozó linkek
 //---------------------------------
@@ -73,8 +53,24 @@ Route::delete('/api/alkatresz/{id}', [AlkatreszController::class, 'alkatresztorl
 Route::get('/mvezeto/alkatreszmodosit/{id}', [AlkatreszController::class, 'alkatreszszerkesztes']);
 Route::put('/api/alkatresz/{id}', [AlkatreszController::class, 'alkatreszmodosit']);
 
-//Alkatrész mutatása ID szerint
-//Route::get('/api/alkatresz/{id}', [AlkatreszController::class, 'alkatreszmutat']);
+
+//Autóhoz tartozó linkek
+//-----------------------------------
+
+//Új Autó
+Route::get('/mvezeto/auto', [AutoController::class, 'ujauto']);
+Route::post('/api/auto', [AutoController::class, 'auto']);
+
+//Autók listázása
+Route::get('/mvezeto/autok', [AutoController::class, 'autok']);
+
+//Autók törlése
+Route::delete('/api/auto/{id}', [AutoController::class, 'autotorles']);
+
+//Autó szerkesztése
+Route::get('/mvezeto/automodosit/{id}', [AutoController::class, 'autoszerkesztes']);
+Route::put('/api/auto/{id}', [AutoController::class, 'automodosit']);
+
 
 //Beszállítóhoz tartozó linkek
 //---------------------------------
@@ -94,8 +90,24 @@ Route::delete('/api/beszallito/{id}', [BeszallitoController::class, 'beszallitot
 Route::get('/mvezeto/beszallitomodosit/{id}', [BeszallitoController::class, 'beszallitoszerkesztes']);
 Route::put('/api/beszallito/{id}', [BeszallitoController::class, 'beszallitomodosit']);
 
-//Beszállító mutatása ID szerint
-//Route::get('/api/beszallito/{id}', [BeszallitoController::class, 'beszallitomutat']);
+
+//Beszerzéshez tartozó linkek
+//--------------------------------
+
+//Új Beszerzés
+Route::get('/mvezeto/beszerzes', [BeszerzesController::class, 'ujbeszerzes']);
+Route::post('/api/beszerzes', [BeszerzesController::class, 'beszerzes']);
+
+//Beszerzés listázása
+Route::get('/mvezeto/beszerzesek', [BeszerzesController::class, 'beszerzesek']);
+
+//Beszerzés törlése
+Route::delete('/api/beszerzes/{id}', [BeszerzesController::class, 'beszerzestorles']);
+
+//Beszerzés szerkesztése
+Route::get('/mvezeto/beszerzesmodosit/{id}', [BeszerzesController::class, 'beszerzesszerkesztes']);
+Route::put('/api/beszerzes/{id}', [BeszerzesController::class, 'beszerzesmodosit']);
+
 
 //Dolgozóhoz tartozó linkek
 //---------------------------------
@@ -115,68 +127,43 @@ Route::delete('/api/dolgozo/{id}', [DolgozoController::class, 'dolgozotorles']);
 Route::get('/mvezeto/dolgozomodosit/{id}', [DolgozoController::class, 'dolgozoszerkesztes']);
 Route::put('/api/dolgozo/{id}', [DolgozoController::class, 'dolgozomodosit']);
 
-//Dolgozó mutatása ID szerint
-//Route::get('/api/dolgozo/{id}', [DolgozoController::class, 'dolgozomutat']);
 
-//Autóhoz tartozó linkek
-//-----------------------------------
+//Feladathoz tartozó linkek
+//---------------------------------
 
-//Új Autó
-Route::get('/mvezeto/auto', [AutoController::class, 'ujauto']);
-Route::post('/api/auto', [AutoController::class, 'auto']);
+//Új feladat
+Route::get('/mvezeto/feladat', [FeladatController::class, 'ujfeladat']);
+Route::post('/api/feladat', [FeladatController::class, 'feladat']);
 
-//Autók listázása
-Route::get('/mvezeto/autok', [AutoController::class, 'autok']);
+//Feladatok listázása
+Route::get('/mvezeto/feladatok', [FeladatController::class, 'feladatok']);
 
-//Autók törlése
-Route::delete('/api/auto/{id}', [AutoController::class, 'autotorles']);
 
-//Autó szerkesztése
-Route::get('/mvezeto/automodosit/{id}', [AutoController::class, 'autoszerkesztes']);
-Route::put('/api/auto/{id}', [AutoController::class, 'automodosit']);
+//Feladat törlése
+Route::delete('/api/feladat/{id}', [FeladatController::class, 'feladattorles']);
 
-//Autó mutatása ID szerint
-//Route::get('/api/auto/{id}', [AutoController::class, 'automutat']);
+//Feladat szerkesztése
+Route::get('/mvezeto/feladatmodosit/{id}', [FeladatController::class, 'feladatszerkesztes']);
+Route::put('/api/feladat/{id}', [FeladatController::class, 'feladatmodosit']);
 
-//Munkához tartozó linkek
-//-----------------------------------
 
-//Új munkalap
-Route::get('/mvezeto/munkalap', [MunkalapController::class, 'ujm']);
-Route::post('/api/munkalap', [MunkalapController::class, 'munkalap']);
-
-//Munkalapok listázása
-Route::get('/mvezeto/munkak', [MunkalapController::class, 'munkak']);
-
-//Munkalapok törlése
-Route::delete('/api/munkalap/{id}', [MunkalapController::class, 'mtorles']);
-
-//Munkalap szerkesztése
-Route::get('/mvezeto/munkamodosit/{id}', [MunkalapController::class, 'mszerkesztes']);
-Route::put('/api/munkalap/{id}', [MunkalapController::class, 'mmodosit']);
-
-//Munkalap mutatása ID szerint
-//Route::get('/api/munkalap/{id}', [MunkalapController::class, 'mmutat']);
-
-//Rendeléshez tartozó linkek
+//Jelleghez tartozó linkek
 //--------------------------------
 
-//Új rendelés
-Route::get('/mvezeto/rendeles', [BeszerzesController::class, 'ujr']);
-Route::post('/api/rendeles', [BeszerzesController::class, 'rendeles']);
+//Új Jelleg
+Route::get('/mvezeto/jelleg', [JellegController::class, 'ujjelleg']);
+Route::post('/api/jelleg', [JellegController::class, 'jelleg']);
 
-//Rendelés listázása
-Route::get('/mvezeto/rendelesek', [BeszerzesController::class, 'rendelesek']);
+//Jellegek listázása
+Route::get('/mvezeto/jellegek', [JellegController::class, 'jellegek']);
 
-//Rendelés törlése
-Route::delete('/api/rendeles/{id}', [BeszerzesController::class, 'rtorles']);
+//Jelleg törlése
+Route::delete('/api/jelleg/{id}', [JellegController::class, 'jellegtorles']);
 
-//Munkalap szerkesztése
-Route::get('/mvezeto/rendelesmodosit/{id}', [BeszerzesController::class, 'rszerkesztes']);
-Route::put('/api/rendeles/{id}', [BeszerzesController::class, 'rmodosit']);
+//Jelleg szerkesztése
+Route::get('/mvezeto/jellegmodosit/{id}', [JellegController::class, 'jellegszerkesztes']);
+Route::put('/api/jelleg/{id}', [JellegController::class, 'jellegmodosit']);
 
-//Rendelés mutatása ID szerint
-//Route::get('/api/rendeles/{id}', [BeszerzesController::class, 'rmutat']);
 
 //Márkához tartozó linkek
 //--------------------------------
@@ -195,22 +182,20 @@ Route::delete('/api/marka/{id}', [MarkaController::class, 'markatorles']);
 Route::get('/mvezeto/markamodosit/{id}', [MarkaController::class, 'markaszerkesztes']);
 Route::put('/api/marka/{id}', [MarkaController::class, 'markamodosit']);
 
-//Márka mutatása ID szerint
-//Route::get('/api/marka/{id}', [MarkaController::class, 'markamutat']);
 
-//Jelleghez tartozó linkek
-//--------------------------------
+//Munkához tartozó linkek
+//-----------------------------------
 
-//Új Jelleg
-Route::get('/mvezeto/jelleg', [JellegController::class, 'ujj']);
-Route::post('/api/jelleg', [JellegController::class, 'jelleg']);
+//Új munkalap
+Route::get('/mvezeto/munkalap', [MunkalapController::class, 'ujmunkalap']);
+Route::post('/api/munkalap', [MunkalapController::class, 'munkalap']);
 
-//Jellegek listázása
-Route::get('/mvezeto/jellegek', [JellegController::class, 'jellegek']);
+//Munkalapok listázása
+Route::get('/mvezeto/munkak', [MunkalapController::class, 'munkak']);
 
-//Jellegek törlése
-Route::delete('/api/jelleg/{id}', [JellegController::class, 'jtorles']);
+//Munkalapok törlése
+Route::delete('/api/munkalap/{id}', [MunkalapController::class, 'munkalaptorles']);
 
-//Jelleg szerkesztése
-Route::get('/mvezeto/jellegmodosit/{id}', [JellegController::class, 'jszerkesztes']);
-Route::put('/api/jelleg/{id}', [JellegController::class, 'jmodosit']);
+//Munkalap szerkesztése
+Route::get('/mvezeto/munkamodosit/{id}', [MunkalapController::class, 'munkalapszerkesztes']);
+Route::put('/api/munkalap/{id}', [MunkalapController::class, 'munkalapmodosit']);

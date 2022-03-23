@@ -47,9 +47,5 @@ public function alkatreszszerkesztes($id)
     $alkatresz = Alkatresz::find($id);
     return view('mvezeto/alkatreszmodosit', ['alkatresz' => $alkatresz]);
 }
-//Alkatrész mutatása ID szerint
-    //public function alkatreszmutat($id)
-    //{
-    //    return Alkatresz::find($id);
-    //}
+
 }

@@ -19,12 +19,12 @@
             <a href="alkatreszek">Alkatrészek</a>
             <a href="autok">Autók</a>
             <a href="beszallitok">Beszállítók</a>
+            <a href="beszerzesek">Beszerzések</a>
             <a href="dolgozok">Dolgozók</a>
             <a href="feladatok">Feladatok</a>
             <a href="jellegek">Jellegek</a>
             <a href="markak">Márkák</a>
             <a href="munkak">Munkalapok</a>
-            <a href="rendelesek">Rendelések</a>
         </nav>
         <article class="item3">
             <h2>Feladat felvitele</h2>
@@ -38,16 +38,12 @@
                 <option value="{{ $munkalap->m_szam }}">{{ $munkalap->m_szam }}</option>
                 @endforeach
                 </select><br>
-                <label for="jelleg">Jelleg</label>
-                <input type="number" id="jelleg" name="jelleg" ><br>
-                <?php //Jelleg nem működik!
-                /* <label for="jelleg">Jelleg</label> 
+                <label for="jelleg">Jelleg</label> 
                 <select name="jelleg">
                 @foreach ($jellegs as $jelleg)
                 <option value="{{ $jelleg->jelleg }}">{{ $jelleg->jelleg }}</option>
                 @endforeach
                 </select><br>
-                */?>
                 <label for="d_kod">Szerelő</label>
                 <select name="d_kod">
                 @foreach ($dolgozos as $dolgozo)
