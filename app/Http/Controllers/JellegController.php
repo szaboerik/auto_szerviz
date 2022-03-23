@@ -9,7 +9,8 @@ class JellegController extends Controller
 {
 
 //Új jelleg
-public function ujj()
+
+public function ujjelleg()
 {
     return view('mvezeto/jelleg');
 }
@@ -24,22 +25,27 @@ public function jelleg(Request $request) {
 
     return redirect('/mvezeto/jellegek');
 }
+
 //Jellegek kilistázása
+
 public function jellegek()
 {
     
     $jellegek = Jelleg::all();
     return view('mvezeto.jellegek', ['jellegek' => $jellegek]);
 }
+
 //Jelleg törlése
-public function jtorles($id)
+
+public function jellegtorles($id)
 {
     Jelleg::find($id)->delete();
     return redirect('/mvezeto/jellegek');
 }
 
 //Jelleg módosítása
-public function jmodosit(Request $request, $id)
+
+public function jellegmodosit(Request $request, $id)
 {
     $jelleg = Jelleg::find($id);
     $jelleg -> jelleg = $request -> jelleg;
@@ -50,7 +56,7 @@ public function jmodosit(Request $request, $id)
 
     return redirect('/mvezeto/jellegek');
 }
-public function jszerkesztes($id)
+public function jellegszerkesztes($id)
 {
     $jelleg = Jelleg::find($id);
     return view('mvezeto/jellegmodosit', ['jelleg' => $jelleg]);

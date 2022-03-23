@@ -8,8 +8,10 @@ use Illuminate\Http\Request;
 
 class MunkalapController extends Controller
 {
+
 //Új munkalap
-public function ujm()
+
+public function ujmunkalap()
 {
     $autos = Auto::all();
     return view('mvezeto/munkalap', ['autos' => $autos]);
@@ -30,6 +32,7 @@ public function munkalap(Request $request) {
 }
 
 //Munkalapok kilistázása
+
 public function munkak()
 {
     $munkalaps = Munkalap::all();
@@ -40,14 +43,16 @@ public function munkak()
 }
 
 //Munkalap törlése
-public function mtorles($id)
+
+public function munkalaptorles($id)
 {
     Munkalap::find($id)->delete();
     return redirect('/mvezeto/munkak');
 }
 
 //Munkalap módosítása
-public function mmodosit(Request $request, $id)
+
+public function munkalapmodosit(Request $request, $id)
 {
     $munkalap = Munkalap::find($id);
     $munkalap -> m_szam = $request -> m_szam;
@@ -61,7 +66,7 @@ public function mmodosit(Request $request, $id)
 
     return redirect('/mvezeto/munkak');
 }
-public function mszerkesztes($id)
+public function munkalapszerkesztes($id)
 {
     $autos = Auto::all();
     $munkalap = Munkalap::find($id);
@@ -69,9 +74,4 @@ public function mszerkesztes($id)
     return view('mvezeto/munkamodosit', ['autos' => $autos, 'munkalap' => $munkalap]);
 }
 
-//Munkalap mutatása ID szerint
-    //public function mmutat($id)
-    //{
-    //    return munkalap::find($id);
-    //}
 }

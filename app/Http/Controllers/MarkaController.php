@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 
 class MarkaController extends Controller
 {
+
 //Új márka
+
 public function ujmarka()
 {
     return view('mvezeto/marka');
@@ -20,13 +22,17 @@ public function marka(Request $request) {
 
     return redirect('/mvezeto/markak');
 }
+
 //Márkák kilistázása
+
 public function markak()
 {
     $markas = Marka::all();
     return view('mvezeto.markak', ['markas' => $markas]);
 }
+
 //Márka törlése
+
 public function markatorles($id)
 {
     Marka::find($id)->delete();
@@ -34,6 +40,7 @@ public function markatorles($id)
 }
 
 //Márka módosítása
+
 public function markamodosit(Request $request, $id)
 {
     $marka = marka::find($id);
@@ -42,15 +49,11 @@ public function markamodosit(Request $request, $id)
 
     return redirect('/mvezeto/markak');
 }
+
 public function markaszerkesztes($id)
 {
     $marka = Marka::find($id);
     return view('mvezeto/markamodosit', ['marka' => $marka]);
 }
 
-//marka mutatása ID szerint
-//public function markamutat($id)
-//{
-//    return Marka::find($id);
-//}
 }

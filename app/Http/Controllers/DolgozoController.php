@@ -7,11 +7,14 @@ use Illuminate\Http\Request;
 
 class DolgozoController extends Controller
 {
+
 //Új dolgozó
+
 public function ujdolgozo()
 {
     return view('mvezeto/dolgozo');
 } 
+
 public function dolgozo(Request $request) {
     $dolgozo = new Dolgozo();
     $dolgozo -> d_kod = $request -> d_kod;
@@ -21,19 +24,25 @@ public function dolgozo(Request $request) {
 
     return redirect('/mvezeto/dolgozok');
 }
+
 //Dolgozók kilistázása
+
 public function dolgozok()
 {
     $dolgozos = Dolgozo::all();
     return view('mvezeto.dolgozok', ['dolgozos' => $dolgozos]);
 }
+
 //Dolgozó törlése
+
 public function dolgozotorles($id)
 {
     Dolgozo::find($id)->delete();
     return redirect('/mvezeto/dolgozok');
 }
+
 //Dolgozó módosítása
+
 public function dolgozomodosit(Request $request, $id)
 {
     $dolgozo = Dolgozo::find($id);
@@ -44,14 +53,11 @@ public function dolgozomodosit(Request $request, $id)
 
     return redirect('/mvezeto/dolgozok');
 }
+
 public function dolgozoszerkesztes($id)
 {
     $dolgozo = Dolgozo::find($id);
     return view('mvezeto/dolgozomodosit', ['dolgozo' => $dolgozo]);
 }
-//Dolgozó mutatása ID szerint
-    //public function dolgozomutat($id)
-    //{
-    //    return Dolgozo::find($id);
-    //}
+
 }

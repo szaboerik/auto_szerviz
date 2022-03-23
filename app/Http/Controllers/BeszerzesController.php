@@ -2,71 +2,87 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Beszerzes;
 use Illuminate\Http\Request;
+use App\Models\Beszerzes;
+use App\Models\Feladat;
+use App\Models\Alkatresz;
+use App\Models\Beszallito;
 
 class BeszerzesController extends Controller
 {
-//Új feladat
-public function ujr()
+
+//Új beszerzés
+
+public function ujbeszerzes()
 {
-    return view('mvezeto/rendeles');
+    $feladats = Feladat::all();
+    $alkatreszs = Alkatresz::all();
+    $beszallitos = Beszallito::all();
+    return view('mvezeto/beszerzes', ['feladats' => $feladats, 'alkatreszs' => $alkatreszs, 'beszallitos' => $beszallitos]);
 }
 
-public function rendeles(Request $request) {
+public function beszerzes(Request $request) {
     $beszerzes = new beszerzes();
     $beszerzes -> besz_azon = $request -> besz_azon;
     $beszerzes -> f_szam = $request -> f_szam;
-    $beszerzes -> alkatresz = $request -> alkatresz;
+    $beszerzes -> alkatresz = $request -> alk_azon;
     $beszerzes -> beszall_kod = $request -> beszall_kod;
     $beszerzes -> egyseg_ar = $request -> egyseg_ar;
     $beszerzes -> mennyiseg = $request -> mennyiseg;
     $beszerzes -> besz_osszege = $request -> besz_osszege;
-    
     $beszerzes->save();
 
-    return redirect('/mvezeto/rendelesek');
+    return redirect('/mvezeto/beszerzesek');
 }
 
 //Rendelések kilistázása
-public function rendelesek()
+public function beszerzesek()
 {
     $beszerzess = Beszerzes::all();
-    return view('mvezeto.rendelesek', ['beszerzess' => $beszerzess]);
+    foreach ($beszerzess as $beszerzes) {
+        $beszerzes -> alkatresz;
+        $beszerzes -> f_szam;
+        $beszerzes -> beszall_kod;
+    }
+    return view('mvezeto.beszerzesek', ['beszerzess' => $beszerzess]);
 }
 
 //Rendelés törlése
-public function rtorles($id)
+
+public function beszerzestorles($id)
 {
     Beszerzes::find($id)->delete();
-    return redirect('/mvezeto/rendelesek');
+    return redirect('/mvezeto/beszerzesek');
 }
 
 //Rendelés módosítása
-public function rmodosit(Request $request, $id)
+
+public function beszerzesmodosit(Request $request, $id)
 {
     $beszerzes = Beszerzes::find($id);
     $beszerzes -> besz_azon = $request -> besz_azon;
     $beszerzes -> f_szam = $request -> f_szam;
-    $beszerzes -> alkatresz = $request -> alkatresz;
+    $beszerzes -> alkatresz = $request -> alk_azon;
     $beszerzes -> beszall_kod = $request -> beszall_kod;
     $beszerzes -> egyseg_ar = $request -> egyseg_ar;
     $beszerzes -> mennyiseg = $request -> mennyiseg;
     $beszerzes -> besz_osszege = $request -> besz_osszege;
-    
     $beszerzes->save();
 
-    return redirect('/mvezeto/rendelesek');
-}
-public function rszerkesztes($id)
-{
-    $beszerzes = Beszerzes::find($id);
-    return view('mvezeto/rendelesmodosit', ['beszerzes' => $beszerzes]);
+    return redirect('/mvezeto/beszerzesek');
 }
 
-//Rendelés mutatása ID szerint
-    //public function rmutat($id)
-    //{
-    //    return Beszerzes::find($id);
-    //}
+public function beszerzesszerkesztes($id)
+{
+    $feladats = Feladat::all();
+    $alkatreszs = Alkatresz::all();
+    $beszallitos = Beszallito::all();
+    $beszerzes = Beszerzes::find($id);
+    $beszerzes -> f_szam;
+    $beszerzes -> alk_azon;
+    $beszerzes -> beszall_kod;
+
+    return view('mvezeto/beszerzesmodosit', ['beszerzes' => $beszerzes, 'feladats' => $feladats, 'alkatreszs' => $alkatreszs, 'beszallitos' => $beszallitos]);
+}
+
 }
