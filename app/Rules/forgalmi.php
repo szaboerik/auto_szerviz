@@ -4,7 +4,7 @@ namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
 
-class rendszam implements Rule
+class forgalmi implements Rule
 {
     /**
      * Create a new rule instance.
@@ -25,7 +25,7 @@ class rendszam implements Rule
      */
     public function passes($attribute, $value)
     {
-        return preg_match('/^[a-zA-Z]{3}\d{3}$/', $value);
+        return preg_match('/^[a-zA-Z]{3}\d{5}$/', $value);
     }
 
     /**
@@ -35,6 +35,6 @@ class rendszam implements Rule
      */
     public function message()
     {
-        return 'A rendszám formátuma nem megfelelő.';
+        return 'A forgalmi számának formátuma nem megfelelő.';
     }
 }

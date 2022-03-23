@@ -6,6 +6,7 @@ use App\Models\Auto;
 use App\Models\Marka;
 use Illuminate\Http\Request;
 use App\Rules\rendszam;
+use App\Rules\forgalmi;
 
 class AutoController extends Controller
 {
@@ -19,6 +20,11 @@ public function ujauto()
 }
 
 public function auto(Request $request) {
+    $rules = [
+        'rendszam' => ['required', new rendszam],
+        'forgalmi' => ['required', new forgalmi],
+    ];
+    $request->validate($rules);
     $auto = new auto();
     $auto -> rendszam = $request -> rendszam;
     $auto -> markaId = $request -> markaId;
@@ -26,9 +32,7 @@ public function auto(Request $request) {
     $auto -> evjarat = $request -> evjarat;
     $auto->save();
 
-    $rules = [
-        'rendszam' => ['required', new rendszam],
-    ];
+    
 
     return redirect('/mvezeto/autok');
 }
