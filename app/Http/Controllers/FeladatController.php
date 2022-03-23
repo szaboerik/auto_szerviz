@@ -40,12 +40,6 @@ public function feladat(Request $request) {
     $feladat -> munkaora = $request -> munkaora;
     $feladat->save();
 
-   /* $rules = [
-        'm_szam' => ['required', new m_szam],
-        'd_kod' => ['required', new d_kod],
-        //'jelleg' => ['required', new d_jelleg],
-    ];*/
-
     return redirect('/mvezeto/feladatok');
 }
 

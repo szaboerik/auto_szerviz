@@ -48,7 +48,7 @@
           <td style="display: flex;">
             <a href="/mvezeto/feladatmodosit/{{ $feladat->f_szam }}"><button class="btn btn-sm btn-info">Szerkesztés</button></a>
             <a><form action="/api/feladat/{{ $feladat->f_szam }}" method="POST">@csrf @method('delete')<button type="submit" class="btn btn-sm btn-danger">Törlés</button></form></a>
-            <a href="/mvezeto/rendeles"><button class="btn btn-sm btn-success">Új rendelés hozzáadása</button></a>
+            <a href="/mvezeto/beszerzes"><button class="btn btn-sm btn-success">Új beszerzés hozzáadása</button></a>
           </td>
         </tr>
         <?php endforeach; ?> 
