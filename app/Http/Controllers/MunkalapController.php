@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Munkalap;
 use App\Models\Auto;
 use Illuminate\Http\Request;
@@ -72,6 +73,15 @@ public function munkalapszerkesztes($id)
     $munkalap = Munkalap::find($id);
     $munkalap->auto;
     return view('mvezeto/munkamodosit', ['autos' => $autos, 'munkalap' => $munkalap]);
+}
+
+public function munkabefejezes($id)
+{
+    $munkalap = Munkalap::find($id);
+    $munkalap -> munka_vege = Carbon::now();
+    $munkalap->save();
+
+    return redirect('/mvezeto/munkak');
 }
 
 }

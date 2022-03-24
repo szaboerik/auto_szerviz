@@ -43,7 +43,6 @@
     <tbody>
      <?php foreach($munkalaps as $munkalap): ?>
         <tr>
-          
           <th>{{ $munkalap->m_szam}}</th>
           <td>{{ $munkalap->ugyfel_neve }}</td>
           <td>{{ $munkalap->ugyfel_telszama }}</td>
@@ -55,8 +54,8 @@
             <a href="/mvezeto/munkamodosit/{{ $munkalap->m_szam }}"><button class="btn btn-sm btn-info">Szerkesztés</button></a>
             <a><form action="/api/munkalap/{{ $munkalap->m_szam }}" method="POST">@csrf @method('delete')<button type="submit" class="btn btn-sm btn-danger">Törlés</button></form></a>
             <a href="/mvezeto/feladat"><button class="btn btn-sm btn-success">Új feladat hozzáadása</button></a>
-            <form action="" method="POST">
-                <button name="munkabef" class="munkabef">Munka befejezése</button>
+            <form action="/api/munkalap/{{$munkalap->m_szam}}" method="POST">@csrf @method('put')
+                <button type="submit" name="munkabef" class="btn btn-success" >Munka befejezése</button>
             </form>
           </td>
         </tr>

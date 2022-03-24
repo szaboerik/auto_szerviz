@@ -199,3 +199,6 @@ Route::delete('/api/munkalap/{id}', [MunkalapController::class, 'munkalaptorles'
 //Munkalap szerkesztése
 Route::get('/mvezeto/munkamodosit/{id}', [MunkalapController::class, 'munkalapszerkesztes']);
 Route::put('/api/munkalap/{id}', [MunkalapController::class, 'munkalapmodosit']);
+
+//Munkalap befejezése
+Route::put('api/munkalap/{id}', [MunkalapController::class, 'munkabefejezes']);
