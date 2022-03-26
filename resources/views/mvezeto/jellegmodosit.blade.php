@@ -22,8 +22,6 @@
                 @method('put')
                   <label for="jelleg">Jelleg</label>
                   <input type="text" id="jelleg" name="jelleg" value="{{ $jelleg->jelleg }}" readonly><br>
-                  <label for="anyag_e">Beszerzéssel jár?</label>
-                  <input type="text" id="anyag_e" name="anyag_e" value="{{ $jelleg->anyag_e }}"><br>
                   <label for="elnevezes">Elnevezés</label>
                   <input type="text" id="elnevezes" name="elnevezes" value="{{ $jelleg->elnevezes }}"><br>
                   <label for="oradij">Óradíj</label>

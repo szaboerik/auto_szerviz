@@ -32,13 +32,14 @@
                 @csrf
                   <label for="jelleg">Jelleg</label>
                   <input type="text" id="jelleg" name="jelleg" readonly><br>
-                  <label for="anyag_e">Beszerzéssel jár?</label>
-                  <input type="text" id="anyag_e" name="anyag_e"><br>
                   <label for="elnevezes">Elnevezés</label>
                   <input type="text" id="elnevezes" name="elnevezes"><br>
                   <label for="oradij">Óradíj</label>
                   <input type="number" id="oradij" name="oradij"><br>
                   <button type="submit" class="btn btn-success" style="width: 100%;">Mentés</button>
+                  
+                  <a href="{{url()->previous()}}" class="btn">Mégse</a>
+                  
               </form> 
         </article>
     </main>

@@ -43,7 +43,7 @@
                 @endforeach
                 </select><br>
                 <label for="munka_kezdete">Munka kezdete</label>
-                <input type="date" id="munka_kezdete" name="munka_kezdete"><br>
+                <input type="date" id="munka_kezdete" name="munka_kezdete" readonly><br>
                 <label for="munka_vege">Munka vége</label>
                 <input type="date" id="munka_vege" name="munka_vege" readonly><br>
                 <label for="fizetendo">Fizetendő összeg</label>

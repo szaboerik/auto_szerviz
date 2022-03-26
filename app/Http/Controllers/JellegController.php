@@ -18,7 +18,6 @@ public function ujjelleg()
 public function jelleg(Request $request) {
     $jelleg = new Jelleg();
     $jelleg -> jelleg = $request -> jelleg;
-    $jelleg -> anyag_e = $request -> anyag_e;
     $jelleg -> elnevezes = $request -> elnevezes;
     $jelleg -> oradij = $request -> oradij;
     $jelleg->save();
@@ -49,7 +48,6 @@ public function jellegmodosit(Request $request, $id)
 {
     $jelleg = Jelleg::find($id);
     $jelleg -> jelleg = $request -> jelleg;
-    $jelleg -> anyag_e = $request -> anyag_e;
     $jelleg -> elnevezes = $request -> elnevezes;
     $jelleg -> oradij = $request -> oradij;
     $jelleg->save();

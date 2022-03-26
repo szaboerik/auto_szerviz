@@ -31,7 +31,6 @@
     <thead>
       <tr>
         <th>Jelleg</th>
-        <th>Beszerzéssel jár?</th>
         <th>Elnevezés</th>
         <th>Óradíj</th>
       </tr>
@@ -40,7 +39,6 @@
      <?php foreach($jellegek as $jelleg): ?>
         <tr>
           <th>{{ $jelleg->jelleg}}</th>
-          <td>{{ $jelleg->anyag_e }}</td>
           <td>{{ $jelleg->elnevezes }}</td>
           <td>{{ $jelleg->oradij }}</td>
           <td style="display: flex;">

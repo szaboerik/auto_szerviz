@@ -13,7 +13,7 @@ class AddTrigger extends Migration
      */
     public function up()
     {
-        DB::unprepared('CREATE TRIGGER date_check
+        DB::unprepared('CREATE TRIGGER evjarat_check
         BEFORE INSERT ON autos
         FOR EACH ROW
         BEGIN
@@ -75,7 +75,7 @@ class AddTrigger extends Migration
         END');
 
         /*DB::unprepared('CREATE TRIGGER dolgozo_feladathoz_check
-        BEFORE INSERT ON feladats
+        BEFORE INSERT ON feladats 
         FOR EACH ROW
         BEGIN
         IF NEW.szerelo != (SELECT d.d_kod from dolgozos d where d.kepesseg = "s") THEN
@@ -93,6 +93,36 @@ class AddTrigger extends Migration
         END IF;
         END');
 
+        DB::unprepared('CREATE TRIGGER dolgozo_vezeto_check
+        AFTER INSERT ON dolgozos
+        FOR EACH ROW
+        BEGIN
+        IF (SELECT COUNT(d.d_kod) from dolgozos d
+        where  d.kepesseg = "v")>1 THEN
+        SIGNAL SQLSTATE "45000" SET MESSAGE_TEXT = "Csak egy vezető lehet!";
+        END IF;
+        END');
+
+        DB::unprepared('CREATE TRIGGER munkalap_munkaora_check
+        AFTER INSERT ON feladats
+        FOR EACH ROW
+        BEGIN
+        IF (SELECT SUM(f.munkaora) from feladats f, munkalaps m
+        where m.m_szam = f.m_szam and NEW.m_szam = f.m_szam and m.munka_kezdete = CURDATE())>8 THEN
+        SIGNAL SQLSTATE "45000" SET MESSAGE_TEXT = "Egy munkalaphoz tartozó feladatok óraszáma nem lehet egy nap 8 óránál több!";
+        END IF;
+        END');
+
+        DB::unprepared('CREATE TRIGGER munkalap_befejezett_check
+        BEFORE INSERT ON feladats
+        FOR EACH ROW
+        BEGIN
+        IF NEW.m_szam = (SELECT m.m_szam from munkalaps m
+        where m.munka_vege is not null )THEN
+        SIGNAL SQLSTATE "45000" SET MESSAGE_TEXT = "Befejezett munkalaphoz nem rendelhető feladat!";
+        END IF;
+        END');
+
 
         
 
@@ -106,15 +136,18 @@ class AddTrigger extends Migration
      */
     public function down()
     {
-        DB::unprepared('DROP TRIGGER `date_check`');
+        /*DB::unprepared('DROP TRIGGER `evjarat_check`');
         DB::unprepared('DROP TRIGGER `munka_kezd_vege_check`');
         DB::unprepared('DROP TRIGGER `egysegar_check`');
         DB::unprepared('DROP TRIGGER `mennyiseg_check`');
         DB::unprepared('DROP TRIGGER `besz_osszege_check`');
         DB::unprepared('DROP TRIGGER `dolgozo_kepesseg_check`');
         DB::unprepared('DROP TRIGGER `munka_kezdete_check`');
-        /*DB::unprepared('DROP TRIGGER `dolgozo_feladathoz_check`');*/
+        DB::unprepared('DROP TRIGGER `dolgozo_feladathoz_check`');
         DB::unprepared('DROP TRIGGER `dolgozo_munkaora_check`');
+        DB::unprepared('DROP TRIGGER `dolgozo_vezeto_check`');
+        DB::unprepared('DROP TRIGGER `munkalap_munkaora_check`');
+        DB::unprepared('DROP TRIGGER `munkalap_befejezett_check`');*/
         
     
     }
