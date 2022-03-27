@@ -279,7 +279,15 @@ class AddTrigger extends Migration
         END');
 
 
-
+        
+        DB::unprepared('CREATE TRIGGER fizetendo_check
+        AFTER INSERT ON feladats
+        FOR EACH ROW
+        BEGIN
+        UPDATE munkalaps
+        SET munkalaps.fizetendo =(SELECT f.munkaora*j.oradij from feladats f, jellegs j, munkalaps m
+        where f.jelleg = j.jelleg and f.m_szam = m.m_szam) where NEW.m_szam = munkalaps.m_szam;
+        END');
         
 
     }
