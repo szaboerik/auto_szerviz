@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Models\Munkalap;
 use App\Models\Auto;
 use Illuminate\Http\Request;
+use App\Rules\ugyfel_telszama;
 
 class MunkalapController extends Controller
 {
@@ -19,6 +20,12 @@ public function ujmunkalap()
 }
 
 public function munkalap(Request $request) {
+
+    $rules = [
+        'ugyfel_telszama' => ['required', new ugyfel_telszama]
+    ];
+    $request->validate($rules);
+
     $munkalap = new Munkalap();
     $munkalap -> m_szam = $request -> m_szam;
     $munkalap -> ugyfel_neve = $request -> ugyfel_neve;
@@ -55,6 +62,12 @@ public function munkalaptorles($id)
 
 public function munkalapmodosit(Request $request, $id)
 {
+
+    $rules = [
+        'ugyfel_telszama' => ['required', new ugyfel_telszama]
+    ];
+    $request->validate($rules);
+
     $munkalap = Munkalap::find($id);
     $munkalap -> m_szam = $request -> m_szam;
     $munkalap -> ugyfel_neve = $request -> ugyfel_neve;

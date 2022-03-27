@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Beszallito;
 use Illuminate\Http\Request;
+use App\Rules\elerhetoseg;
 
 class BeszallitoController extends Controller
 {
@@ -15,6 +16,12 @@ public function ujbeszallito()
 } 
 
 public function beszallito(Request $request) {
+
+    $rules = [
+        'elerhetoseg' => ['required', new elerhetoseg]
+    ];
+    $request->validate($rules);
+
     $beszallito = new Beszallito();
     $beszallito -> beszall_kod = $request -> beszall_kod;
     $beszallito -> nev = $request -> nev;
@@ -46,6 +53,12 @@ public function beszallitotorles($id)
 
 public function beszallitomodosit(Request $request, $id)
 {
+
+    $rules = [
+        'elerhetoseg' => ['required', new elerhetoseg]
+    ];
+    $request->validate($rules);
+
     $beszallito = Beszallito::find($id);
     $beszallito -> beszall_kod = $request -> beszall_kod;
     $beszallito -> nev = $request -> nev;

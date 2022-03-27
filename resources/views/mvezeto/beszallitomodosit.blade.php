@@ -29,7 +29,10 @@
         <label for="cim">Lakcím</label>
         <input type="text" id="cim" name="cim" value="{{ $beszallito->cim }}"><br>
         <label for="elerhetoseg">Elérhetősége</label>
-        <input type="text" id="elerhetoseg" name="elerhetoseg" value="{{ $beszallito->elerhetoseg }}"><br>
+        <input type="text" id="elerhetoseg" name="elerhetoseg" value="{{ $beszallito->elerhetoseg }}" placeholder="+36701234567"><br>
+        @error('elerhetoseg')
+                        <div class="alert alert-danger">{{ $errors->first('elerhetoseg') }}</div>
+                    @enderror
       <button type="submit" class="btn btn-success" style="width: 100%;">Mentés</button>
     </form>
   </div>
