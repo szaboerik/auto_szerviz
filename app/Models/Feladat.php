@@ -18,4 +18,6 @@ class Feladat extends Model
     public function dolgozo(){
         return $this->belongsTo(Dolgozo::class, "d_kod");
     }
+
+    protected $dateFormat = 'Y-m-d';
 }

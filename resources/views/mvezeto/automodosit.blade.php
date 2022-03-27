@@ -22,6 +22,9 @@
       @method('put')
         <label for="rendszam">Rendszám</label>
         <input type="text" id="rendszam" name="rendszam" value="{{ $auto->rendszam }}"><br>
+        @error('rendszam')
+                        <div class="alert alert-danger">{{ $errors->first('rendszam') }}</div>
+                    @enderror
         <label for="markaId">Márka</label>
                 <select name="markaId" placeholder="ABC123">
                 @foreach ($markas as $marka)
@@ -30,6 +33,9 @@
                 </select><br>
         <label for="forgalmi">Forgalmi</label>
         <input type="text" id="forgalmi" name="forgalmi" value="{{ $auto->forgalmi }}"><br>
+        @error('forgalmi')
+                        <div class="alert alert-danger">{{ $errors->first('forgalmi') }}</div>
+                    @enderror
         <label for="evjarat">Évjárat</label>
         <input type="number" id="evjarat" name="evjarat" value="{{ $auto->evjarat }}"><br>
       <button type="submit" class="btn btn-success" style="width: 100%;">Mentés</button>

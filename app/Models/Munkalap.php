@@ -14,4 +14,6 @@ class Munkalap extends Model
     public function auto(){
         return $this->belongsTo(Auto::class, "autoId");
     }
+
+    protected $dateFormat = 'Y-m-d';
 }

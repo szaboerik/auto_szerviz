@@ -60,6 +60,13 @@ public function autotorles($id)
 
 public function automodosit(Request $request, $id)
 {
+    $rules = [
+        'rendszam' => ['required', new rendszam],
+        'forgalmi' => ['required', new forgalmi],
+    ];
+    $request->validate($rules);
+
+
     $auto = Auto::find($id);
     $auto -> rendszam = $request -> rendszam;
     $auto -> markaId = $request -> markaId;
