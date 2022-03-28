@@ -119,24 +119,7 @@
             </div>
         </aside>
 <body>
-    <main class="grid-container">
-        <header class="header">
-        Beszerzés
-        </header>
-        <aside class="item4">
-            <a href="/belepes">Kijelentkezés</a>
-        </aside>
-        <nav class="item2">
-            <a href="alkatreszek">Alkatrészek</a>
-            <a href="autok">Autók</a>
-            <a href="beszallitok">Beszállítók</a>
-            <a href="beszerzesek">Beszerzések</a>
-            <a href="dolgozok">Dolgozók</a>
-            <a href="feladatok">Feladatok</a>
-            <a href="jellegek">Jellegek</a>
-            <a href="markak">Márkák</a>
-            <a href="munkak">Munkalapok</a>
-        </nav>
+
         <article class="item3">
             <h2>Beszerzés felvétele</h2>
             <form action="/api/beszerzes" method="POST">

@@ -118,16 +118,7 @@
                 </div>   
             </div>
         </aside>
-        <nav class="item2">
-            <a href="alkatreszek">Alkatrészek</a>
-            <a href="autok">Autók</a>
-            <a href="beszallitok">Beszállítók</a>
-            <a href="beszerzesek">Beszerzések</a>
-            <a href="dolgozok">Dolgozók</a>
-            <a href="feladatok">Feladatok</a>
-            <a href="jellegek">Jellegek</a>
-            <a href="munkak">Munkalapok</a>
-        </nav>
+       
         <article class="item3">
             <h2>Márkák</h2>
             <table class="table">
