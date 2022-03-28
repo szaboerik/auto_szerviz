@@ -1,4 +1,281 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/*ARTICLE*/
+label{
+  color: var(--primary-color)
+}
+
+.input {
+  display: table-cell;
+  width: 100%;
+  padding-left: 30px;
+}
+.input input{
+  display: table-cell;
+  box-sizing: border-box;
+  width: 100%;
+  height: 40px;
+  margin: auto;
+ border: 1px solid gray;
+ font-size: 17px;
+ padding: 5px;
+ color: var(--primary-color);
+}
+
+ .input .btn{
+  margin-top: 30px;
+  padding-left: 0px;
+  background-color: var(--text-color);
+  border: 1px solid #525252;
+  color: var( --primary-color-light);
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  }
+
+  .savebtn {
+    max-width: 50%;
+  }
+
+
+/*.grid-container {
+  display: grid;
+  grid-template-areas:
+    'nav header header header'
+    'nav article article article'
+    'nav footer footer footer';
+  grid-template-rows: 2fr 1fr 1fr ;
+  grid-template-columns: 2fr 1fr 1fr; 
+}*/
+
+
+* {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root{
+  --body-color: #E4E9F7;
+  --sidebar-color: #FFF;
+  --primary-color: #494949;
+  --primary-color-light: #F6F5FF;
+  --toggle-color: #DDD;
+  --text-color: #707070;
+  --label-text-color: rgb(37, 37, 37) ;
+
+  --tran-03: all 0.2s ease;
+  --tran-03: all 0.3s ease;
+  --tran-04: all 0.3s ease;
+  --tran-05: all 0.3s ease;
+}
+
+body{
+  min-height: 100vh;
+  background: var(--body-color);
+  transition: var(--tran-05);
+}
+
+
+/*SIDEBAR*/
+.sidebar{
+  position:relative;
+  top:0;
+  left:0;
+  height: 100%;
+  width: 250px;
+  padding: 10px 14px;
+  background: var(--sidebar-color);
+}
+
+.sidebar .text{
+  font-size:17px;
+  font-weight: 500;
+  color: var(--text-color);
+  white-space: nowrap;
+  opacity: 1;
+  }
+
+  
+  
+.sidebar li{
+  height: 50px;
+  list-style: none;
+  margin-top: 10px;
+}
+
+
+.sidebar li .icon,
+.sidebar li .bx{
+min-width: 40px;
+font-size: 20px;
+}
+
+.sidebar li .icon,
+.sidebar li .text,
+.sidebar li .bx{
+  color: var(--text-color);
+}
+
+.sidebar header{
+  position: relative;
+}
+
+
+
+.header-text .name{
+font-weight: 600;
+}
+
+.sidebar header .toggle{
+position:absolute;
+top: 10%; /*nyíl elhelyzése felülről*/
+right:-13%;  /*nyíl elhelyezése sidebar szélén*/
+transform: translateY(-50%);
+height: 30px;
+width: 30px;
+background: var(--primary-color);
+border-radius: 25%;
+color: var(--sidebar-color);
+margin: auto;
+padding: 8px;
+}
+
+
+
+.sidebar li a {
+  height: 100%;
+  text-decoration: none;
+  text-align: center;
+}
+
+
+.sidebar .menubar{
+  height: calc(100% - 50px);
+}
+
+/*MENU ALJA, SÖTÉT-VILÁGOS*/
+
+.menubar .mode{
+  background: var(--primary-color-light);
+}
+
+.menubar .mode .moon-sun{
+  height: 50px;
+  width: 60px;
+}
+
+.menubar .mode i{
+  padding:10px;
+  position: absolute;
+}
+
+.menubar .mode .mode-text{
+  padding: 45px;
+}
+
+.menubar .mode .sun{
+  opacity:0;
+}
+
+/*.menubar .mode .toggle-switch{
+  height: 100%;
+  min-width: 60px;
+  background: red;
+}*/
+
+/*.toggle-switch .switch{
+  
+  height: 22px;
+  width: 44px;
+  border-radius: 25px;
+}*/
+
+
+.switch::before{
+  content: '';
+  position: absolute;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  
+background: var(--sidebar-color);
+}
+
+/*GRID ELRENDEZÉS*/
+
+article {
+  grid-area: content;
+  /*background-color: #20bf6b;*/
+  padding: 20px;
+}
+aside {
+  grid-area: sidebar;
+  background-color: #45aaf2;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 7fr;
+  grid-template-rows: 900px;
+  grid-template-areas: 
+    "sidebar content"
+
+}
+@media (max-width: 600px) {
+  .grid-container {
+    grid-template-columns: 4fr;
+    grid-template-areas:
+      "sidebar"
+      "content"
+  }
+}
+
+
+/*body {
+    background-color:aqua;
+}
+.item1 { grid-area: header; }
+.item2 { grid-area: nav; }
+.item3 { grid-area: article; }
+
+
+.grid-container {
+    display: grid;
+    grid-template-areas:
+      'nav header header'
+      'nav article article'
+      'nav footer footer';
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr; 
+    text-align: center;
+    background-color: #2196F3;
+    padding: 10px;
+  }
+  .grid-container > article, header, nav, div {
+    background-color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    padding: 20px 0;
+    font-size: 30px;
+  }
+
+table, th, td{
+  border: 1px solid black;
+}*/
+
+
+
+
+
+
+
+
+
+
+
+/*ELSŐ VERZIÓ*/
+/*body {
     background-color:aqua;
 }
 .item1 { grid-area: header; }
@@ -42,5 +319,5 @@ table, th, td{
     'menu header aside'
     'article article article';
   }
-}
+}*/
 
