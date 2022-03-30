@@ -169,14 +169,14 @@ class AddTrigger extends Migration
 
         //8. A feladathoz csak szerelő csatolható.
 
-        /*DB::unprepared('CREATE TRIGGER dolgozo_feladathoz_check
-        BEFORE INSERT ON feladats 
+        DB::unprepared('CREATE TRIGGER dolgozo_feladathoz_check
+        AFTER INSERT ON feladats 
         FOR EACH ROW
         BEGIN
-        IF feladats.szerelo != (SELECT d.d_kod from dolgozos d, feladats f where d.kepesseg = "s" and  f.szerelo= d.d_kod) THEN
+        IF NEW.szerelo = ANY (SELECT d.d_kod from dolgozos d, feladats f, munkalaps m where d.kepesseg = "v") THEN
         SIGNAL SQLSTATE "45000" SET MESSAGE_TEXT = "A feladathoz csak szerelő (s) vihető fel!";
         END IF;
-        END');*/
+        END');
 
         //9. Egy dolgozó nem dolgozhat 8 óránál többet egy nap.
 
@@ -323,7 +323,7 @@ class AddTrigger extends Migration
         DB::unprepared('DROP TRIGGER `dolgozo_kepesseg_check`');
         DB::unprepared('DROP TRIGGER `dolgozo_kepesseg_update_check`');
         DB::unprepared('DROP TRIGGER `munka_kezdete_check`');
-        /*DB::unprepared('DROP TRIGGER `dolgozo_feladathoz_check`');*/
+        DB::unprepared('DROP TRIGGER `dolgozo_feladathoz_check`');
         DB::unprepared('DROP TRIGGER `dolgozo_munkaora_check`');
         DB::unprepared('DROP TRIGGER `dolgozo_munkaora_update_check`');
         DB::unprepared('DROP TRIGGER `dolgozo_vezeto_check`');

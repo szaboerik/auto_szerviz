@@ -88,13 +88,13 @@ public function munkalapszerkesztes($id)
     return view('mvezeto/munkamodosit', ['autos' => $autos, 'munkalap' => $munkalap]);
 }
 
-public function munkabefejezes($id)
+/*public function munkabefejezes($id)
 {
     $munkalap = Munkalap::find($id);
-    $munkalap -> munka_vege = Carbon::now();
+    $munkalap -> munka_vege = now();
     $munkalap->save();
 
     return redirect('/mvezeto/munkak');
-}
-
+}*/
+ 
 }

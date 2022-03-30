@@ -130,7 +130,10 @@
         <label for="ugyfel_neve">Ügyfél neve</label>
         <input type="text" id="ugyfel_neve" name="ugyfel_neve" value="{{ $munkalap->ugyfel_neve }}"><br>
         <label for="ugyfel_telszama">Ügyfél telefonszáma</label>
-        <input type="text" id="ugyfel_telszama" name="ugyfel_telszama" value="{{ $munkalap->ugyfel_telszama }}"><br>
+        <input type="text" id="ugyfel_telszama" name="ugyfel_telszama" value="{{ $munkalap->ugyfel_telszama }}" placeholder="+36701234567"><br>
+        @error('ugyfel_telszama')
+                        <div class="alert alert-danger">{{ $errors->first('ugyfel_telszama') }}</div>
+                    @enderror
         <label for="rendszam">Rendszám</label>
                 <select name="rendszam" placeholder="ABC123">
                 @foreach ($autos as $auto)
