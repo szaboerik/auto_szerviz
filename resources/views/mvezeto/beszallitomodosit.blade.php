@@ -52,6 +52,13 @@
                     </li>
 
                     <li class="nav-link">
+                        <a href="beszerzesek">
+                            <i class='bx bx-cart-add icon' ></i>
+                            <span class="text nav-text">Beszerzések</span>
+                         </a>
+                    </li> 
+
+                    <li class="nav-link">
                         <a href="dolgozok">
                             <i class='bx bx-face icon'></i>
                             <span class="text nav-text">Dolgozók</span>
@@ -86,12 +93,7 @@
                         </a>
                     </li>
 
-                    <li class="nav-link">
-                        <a href="rendelesek">
-                            <i class='bx bx-cart-add icon' ></i>
-                            <span class="text nav-text">Rendelések</span>
-                         </a>
-                    </li>                                        
+                                                        
                 </ul>
                 </div>
 
@@ -136,7 +138,10 @@
         <label for="nev">Neve</label>
         <input type="text" id="nev" name="nev" value="{{ $beszallito->nev }}"><br>
         <label for="irsz">Irányítószám</label>
-        <input type="text" id="irsz" name="irsz" value="{{ $beszallito->irsz }}"><br>
+        <input type="text" id="irsz" name="irsz" value="{{ $beszallito->irsz }}" placeholder = "1234"><br>
+        @error('irsz')
+                        <div class="alert alert-danger">{{ $errors->first('irsz') }}</div>
+                    @enderror
         <label for="cim">Lakcím</label>
         <input type="text" id="cim" name="cim" value="{{ $beszallito->cim }}"><br>
         <label for="elerhetoseg">Elérhetősége</label>
@@ -145,6 +150,7 @@
                         <div class="alert alert-danger">{{ $errors->first('elerhetoseg') }}</div>
                     @enderror
       <button type="submit" class="btn btn-success" style="width: 100%;">Mentés</button>
+      <a href="{{url()->previous()}}" class="button">Mégse</a>
     </form>
   </div>
 </article>

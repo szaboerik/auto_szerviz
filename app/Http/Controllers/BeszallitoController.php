@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Beszallito;
 use Illuminate\Http\Request;
 use App\Rules\elerhetoseg;
+use App\Rules\irszam;
 
 class BeszallitoController extends Controller
 {
@@ -18,7 +19,8 @@ public function ujbeszallito()
 public function beszallito(Request $request) {
 
     $rules = [
-        'elerhetoseg' => ['required', new elerhetoseg]
+        'elerhetoseg' => ['required', new elerhetoseg],
+        'irsz' => ['required', new irszam]
     ];
     $request->validate($rules);
 
@@ -55,7 +57,8 @@ public function beszallitomodosit(Request $request, $id)
 {
 
     $rules = [
-        'elerhetoseg' => ['required', new elerhetoseg]
+        'elerhetoseg' => ['required', new elerhetoseg],
+        'irsz' => ['required', new irszam]
     ];
     $request->validate($rules);
 

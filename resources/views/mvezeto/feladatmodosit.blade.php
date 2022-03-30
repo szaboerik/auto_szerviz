@@ -52,6 +52,13 @@
                     </li>
 
                     <li class="nav-link">
+                        <a href="beszerzesek">
+                            <i class='bx bx-cart-add icon' ></i>
+                            <span class="text nav-text">Beszerzések</span>
+                         </a>
+                    </li> 
+
+                    <li class="nav-link">
                         <a href="dolgozok">
                             <i class='bx bx-face icon'></i>
                             <span class="text nav-text">Dolgozók</span>
@@ -86,12 +93,7 @@
                         </a>
                     </li>
 
-                    <li class="nav-link">
-                        <a href="rendelesek">
-                            <i class='bx bx-cart-add icon' ></i>
-                            <span class="text nav-text">Rendelések</span>
-                         </a>
-                    </li>                                        
+                                                      
                 </ul>
                 </div>
 
@@ -146,6 +148,7 @@
         <label for="munkaora">Munkaóra</label>
         <input type="number" id="munkaora" name="munkaora" value="{{ $feladat->munkaora }}"><br>
       <button type="submit" class="btn btn-success" style="width: 100%;">Mentés</button>
+      <a href="{{url()->previous()}}" class="button">Mégse</a>
     </form>
   </div>
 </article>

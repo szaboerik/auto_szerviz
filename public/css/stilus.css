@@ -38,6 +38,19 @@ label{
   }
 
 
+  .button {
+    display: block;
+    width: 115px;
+    height: 25px;
+    background: #4E9CAF;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 5px;
+    color: black;
+
+    line-height: 25px;
+}
+
 /*.grid-container {
   display: grid;
   grid-template-areas:

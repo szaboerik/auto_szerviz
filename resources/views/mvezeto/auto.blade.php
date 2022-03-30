@@ -52,6 +52,13 @@
                     </li>
 
                     <li class="nav-link">
+                        <a href="beszerzesek">
+                            <i class='bx bx-cart-add icon' ></i>
+                            <span class="text nav-text">Beszerzések</span>
+                         </a>
+                    </li> 
+
+                    <li class="nav-link">
                         <a href="dolgozok">
                             <i class='bx bx-face icon'></i>
                             <span class="text nav-text">Dolgozók</span>
@@ -86,12 +93,7 @@
                         </a>
                     </li>
 
-                    <li class="nav-link">
-                        <a href="rendelesek">
-                            <i class='bx bx-cart-add icon' ></i>
-                            <span class="text nav-text">Rendelések</span>
-                         </a>
-                    </li>                                        
+                                                          
                 </ul>
                 </div>
 
@@ -124,24 +126,25 @@
             <form action="/api/auto" method="POST">
                 @csrf
                   <label for="rendszam">Rendszám</label>
-                  <input type="text" id="rendszam" value="{{ old('rendszam') }}" name="rendszam" ><br>
+                  <input type="text" id="rendszam" value="{{ old('rendszam') }}" name="rendszam" placeholder="ABC123"><br>
                     @error('rendszam')
                         <div class="alert alert-danger">{{ $errors->first('rendszam') }}</div>
                     @enderror
                   <label for="markaId">Márka</label>
-                <select name="markaId" placeholder="ABC123">
+                <select name="markaId">
                 @foreach ($markas as $marka)
                 <option value="{{ $marka->id }}">{{ $marka->marka }}</option>
                 @endforeach
                 </select><br>
                   <label for="forgalmi">Forgalmi</label>
-                  <input type="text" id="forgalmi" value="{{ old('forgalmi') }}" name="forgalmi"><br>
+                  <input type="text" id="forgalmi" value="{{ old('forgalmi') }}" name="forgalmi" placeholder="abc12345"><br>
                   @error('forgalmi')
                         <div class="alert alert-danger">{{ $errors->first('forgalmi') }}</div>
                     @enderror
                   <label for="evjarat">Évjárat</label>
                   <input type="number" id="evjarat" value="{{ old('evjarat') }}" name="evjarat"><br>
                   <button type="submit" class="btn btn-success" style="width: 100%;">Mentés</button>
+                  <a href="{{url()->previous()}}" class="button">Mégse</a>
               </form> 
         </article>
     </main>

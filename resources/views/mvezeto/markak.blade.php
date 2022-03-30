@@ -52,6 +52,13 @@
                     </li>
 
                     <li class="nav-link">
+                        <a href="beszerzesek">
+                            <i class='bx bx-cart-add icon' ></i>
+                            <span class="text nav-text">Beszerzések</span>
+                         </a>
+                    </li> 
+
+                    <li class="nav-link">
                         <a href="dolgozok">
                             <i class='bx bx-face icon'></i>
                             <span class="text nav-text">Dolgozók</span>
@@ -85,13 +92,7 @@
                             <span class="text nav-text">Munkalapok</span>
                         </a>
                     </li>
-
-                    <li class="nav-link">
-                        <a href="rendelesek">
-                            <i class='bx bx-cart-add icon' ></i>
-                            <span class="text nav-text">Rendelések</span>
-                         </a>
-                    </li>                                        
+                                    
                 </ul>
                 </div>
 

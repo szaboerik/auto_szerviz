@@ -167,11 +167,13 @@ class AddTrigger extends Migration
         SET NEW.munka_kezdete = CURDATE();
         END');
 
+        //8. A feladathoz csak szerelő csatolható.
+
         /*DB::unprepared('CREATE TRIGGER dolgozo_feladathoz_check
         BEFORE INSERT ON feladats 
         FOR EACH ROW
         BEGIN
-        IF NEW.szerelo != (SELECT d.d_kod from dolgozos d, feladats f where d.kepesseg = "s" and  f.szerelo= d.d_kod) THEN
+        IF feladats.szerelo != (SELECT d.d_kod from dolgozos d, feladats f where d.kepesseg = "s" and  f.szerelo= d.d_kod) THEN
         SIGNAL SQLSTATE "45000" SET MESSAGE_TEXT = "A feladathoz csak szerelő (s) vihető fel!";
         END IF;
         END');*/
@@ -257,6 +259,16 @@ class AddTrigger extends Migration
         END IF;
         END');
 
+        DB::unprepared('CREATE TRIGGER munkalap_befejezett_update_check
+        AFTER UPDATE ON feladats
+        FOR EACH ROW
+        BEGIN
+        IF NEW.m_szam = (SELECT m.m_szam from munkalaps m
+        where m.munka_vege is not null )THEN
+        SIGNAL SQLSTATE "45000" SET MESSAGE_TEXT = "Befejezett munkalaphoz nem rendelhető feladat!";
+        END IF;
+        END');
+
 
         //13. Egy nap egy autó csak egy munkalaphoz csatolható.
 
@@ -300,7 +312,7 @@ class AddTrigger extends Migration
      */
     public function down()
     {
-        /*DB::unprepared('DROP TRIGGER `evjarat_check`');
+        DB::unprepared('DROP TRIGGER `evjarat_check`');
         DB::unprepared('DROP TRIGGER `evjarat_update_check`');
         DB::unprepared('DROP TRIGGER `munka_kezd_vege_check`');
         DB::unprepared('DROP TRIGGER `egysegar_check`');
@@ -311,7 +323,7 @@ class AddTrigger extends Migration
         DB::unprepared('DROP TRIGGER `dolgozo_kepesseg_check`');
         DB::unprepared('DROP TRIGGER `dolgozo_kepesseg_update_check`');
         DB::unprepared('DROP TRIGGER `munka_kezdete_check`');
-        /*DB::unprepared('DROP TRIGGER `dolgozo_feladathoz_check`');
+        /*DB::unprepared('DROP TRIGGER `dolgozo_feladathoz_check`');*/
         DB::unprepared('DROP TRIGGER `dolgozo_munkaora_check`');
         DB::unprepared('DROP TRIGGER `dolgozo_munkaora_update_check`');
         DB::unprepared('DROP TRIGGER `dolgozo_vezeto_check`');
@@ -323,9 +335,9 @@ class AddTrigger extends Migration
         DB::unprepared('DROP TRIGGER `munkalap_rendszam_check`');
         DB::unprepared('DROP TRIGGER `munkalap_rendszam_update_check`');
         DB::unprepared('DROP TRIGGER `munkaora_check`');
-        DB::unprepared('DROP TRIGGER `munkora_update_check`');
+        DB::unprepared('DROP TRIGGER `munkaora_update_check`');
         DB::unprepared('DROP TRIGGER `oradij_check`');
-        DB::unprepared('DROP TRIGGER `oradij_update_check`');*/
+        DB::unprepared('DROP TRIGGER `oradij_update_check`');
 
     
     }
