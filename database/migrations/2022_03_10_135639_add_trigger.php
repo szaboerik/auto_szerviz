@@ -88,6 +88,8 @@ class AddTrigger extends Migration
         END');
 
 
+        //5. Nem lehet 0 vagy kisebb a munkaóra.
+
         DB::unprepared('CREATE TRIGGER munkaora_check
         BEFORE INSERT ON feladats
         FOR EACH ROW
@@ -105,6 +107,8 @@ class AddTrigger extends Migration
         SIGNAL SQLSTATE "45000" SET MESSAGE_TEXT = "Nem lehet 0 vagy kisebb a munkaóra!";
         END IF;
         END');
+
+        //6. Az óradíjnak 5000 és 20000 között kell lennie.
 
 
         DB::unprepared('CREATE TRIGGER oradij_check
@@ -126,7 +130,7 @@ class AddTrigger extends Migration
         END');
 
 
-        //5. A beszerzés összege: mennyiség*egységár
+        //7. A beszerzés összege: mennyiség*egységár
 
         DB::unprepared('CREATE TRIGGER besz_osszege_check
         BEFORE INSERT ON beszerzes
@@ -138,7 +142,7 @@ class AddTrigger extends Migration
 
         
 
-        //6. A dolgozók képessége vagy vezető vagy szerelő lehet.
+        //8. A dolgozók képessége vagy vezető vagy szerelő lehet.
 
         DB::unprepared('CREATE TRIGGER dolgozo_kepesseg_check
         BEFORE INSERT ON dolgozos
@@ -158,7 +162,7 @@ class AddTrigger extends Migration
         END IF;
         END');
 
-        //7. A munka kezdete a munkalap létrehozásánál aktuális dátum.
+        //9. A munka kezdete a munkalap létrehozásánál aktuális dátum.
 
         DB::unprepared('CREATE TRIGGER munka_kezdete_check
         BEFORE INSERT ON munkalaps
@@ -167,7 +171,7 @@ class AddTrigger extends Migration
         SET NEW.munka_kezdete = CURDATE();
         END');
 
-        //8. A feladathoz csak szerelő csatolható.
+        //10. A feladathoz csak szerelő csatolható.
 
         DB::unprepared('CREATE TRIGGER dolgozo_feladathoz_check
         AFTER INSERT ON feladats 
@@ -178,7 +182,16 @@ class AddTrigger extends Migration
         END IF;
         END');
 
-        //9. Egy dolgozó nem dolgozhat 8 óránál többet egy nap.
+        DB::unprepared('CREATE TRIGGER dolgozo_feladathoz_update_check
+        AFTER UPDATE ON feladats 
+        FOR EACH ROW
+        BEGIN
+        IF NEW.szerelo = ANY (SELECT d.d_kod from dolgozos d, feladats f, munkalaps m where d.kepesseg = "v") THEN
+        SIGNAL SQLSTATE "45000" SET MESSAGE_TEXT = "A feladathoz csak szerelő (s) vihető fel!";
+        END IF;
+        END');
+
+        //11. Egy dolgozó nem dolgozhat 8 óránál többet egy nap.
 
         DB::unprepared('CREATE TRIGGER dolgozo_munkaora_check
         AFTER INSERT ON feladats
@@ -201,7 +214,7 @@ class AddTrigger extends Migration
         END IF;
         END');
 
-        //10. Csak egy vezető lehet a szervizben.
+        //12. Csak egy vezető lehet a szervizben.
 
         DB::unprepared('CREATE TRIGGER dolgozo_vezeto_check
         AFTER INSERT ON dolgozos
@@ -224,7 +237,7 @@ class AddTrigger extends Migration
         END IF;
         END');
 
-        //11. Egy munkalaphoz egy nap maximum 8 órányi feladatot lehet csatolni.
+        //13. Egy munkalaphoz egy nap maximum 8 órányi feladatot lehet csatolni.
 
         DB::unprepared('CREATE TRIGGER munkalap_munkaora_check
         AFTER INSERT ON feladats
@@ -247,7 +260,7 @@ class AddTrigger extends Migration
         END');
 
 
-        //12. A már befejezett munkalaphoz nem rendelhető újabb feladat.
+        //14. A már befejezett munkalaphoz nem rendelhető újabb feladat.
 
         DB::unprepared('CREATE TRIGGER munkalap_befejezett_check
         BEFORE INSERT ON feladats
@@ -270,7 +283,7 @@ class AddTrigger extends Migration
         END');
 
 
-        //13. Egy nap egy autó csak egy munkalaphoz csatolható.
+        //15. Egy nap egy autó csak egy munkalaphoz csatolható.
 
         DB::unprepared('CREATE TRIGGER munkalap_rendszam_check
         AFTER INSERT ON munkalaps
@@ -324,6 +337,7 @@ class AddTrigger extends Migration
         DB::unprepared('DROP TRIGGER `dolgozo_kepesseg_update_check`');
         DB::unprepared('DROP TRIGGER `munka_kezdete_check`');
         DB::unprepared('DROP TRIGGER `dolgozo_feladathoz_check`');
+        DB::unprepared('DROP TRIGGER `dolgozo_feladathoz_update_check`');
         DB::unprepared('DROP TRIGGER `dolgozo_munkaora_check`');
         DB::unprepared('DROP TRIGGER `dolgozo_munkaora_update_check`');
         DB::unprepared('DROP TRIGGER `dolgozo_vezeto_check`');

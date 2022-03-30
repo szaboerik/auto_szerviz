@@ -138,7 +138,7 @@
                 <option value="{{ $jelleg->jelleg }}">{{ $jelleg->jelleg }}</option>
                 @endforeach
                 </select><br>
-                <label for="d_kod">Szerelő</label>
+                <label for="d_kod">Dolgozó</label>
                 <select name="d_kod">
                 @foreach ($dolgozos as $dolgozo)
                 <option value="{{ $dolgozo->d_kod }}">{{ $dolgozo->d_kod }}</option>
