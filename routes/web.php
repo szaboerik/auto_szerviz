@@ -206,4 +206,5 @@ Route::get('/mvezeto/munkamodosit/{id}', [MunkalapController::class, 'munkalapsz
 Route::put('/api/munkalap/{id}', [MunkalapController::class, 'munkalapmodosit']);
 
 //Munkalap befejezése
-Route::put('api/munkalap/{id}', [MunkalapController::class, 'munkabefejezes']);
+Route::get('mvezeto/munkabefejezes/{id}', [MunkalapController::class, 'munkabefejezes']);
+

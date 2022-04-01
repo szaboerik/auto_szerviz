@@ -154,13 +154,13 @@ if(!check()){
           <td>{{ $munkalap->ugyfel_telszama }}</td>
           <td>{{ $munkalap->auto->rendszam }}</td>
           <td>{{ $munkalap->munka_kezdete }}</td>
-          <td>{{ $munkalap->munka_vege }}</td>
+          <td id="munka_vege">{{ $munkalap->munka_vege }}</td>
           <td>{{ $munkalap->fizetendo }}</td>
           <td style="display: flex;">
             <a href="/mvezeto/munkamodosit/{{ $munkalap->m_szam }}"><button class="btn btn-sm btn-info">Szerkesztés</button></a>
             <a><form action="/api/munkalap/{{ $munkalap->m_szam }}" method="POST">@csrf @method('delete')<button type="submit" class="btn btn-sm btn-danger">Törlés</button></form></a>
             <a href="/mvezeto/feladat"><button class="btn btn-sm btn-success">Új feladat hozzáadása</button></a>
-            <button onclick="munkabefejezes()">Feladat befejezése</button>
+            <a href="/mvezeto/munkabefejezes/{{ $munkalap->m_szam }}"><button class="btn btn-sm btn-info">Munka befejezése</button></a>
           </td>
         </tr>
         <?php endforeach; ?> 
@@ -172,13 +172,3 @@ if(!check()){
 </div>
 </body>
 </html>
-<?php
-function munkabefejezes($id)
-{
-    $munkalap = Munkalap::find($id);
-    $munkalap -> munka_vege = now();
-    $munkalap->save();
-
-    return redirect('/mvezeto/munkak');
-}
-?>

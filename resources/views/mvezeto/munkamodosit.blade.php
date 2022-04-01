@@ -158,7 +158,7 @@ if(!check()){
         <input type="date" id="munka_vege" name="munka_vege" value="{{ $munkalap->munka_vege }}" readonly><br>
         <label for="fizetendo">Fizetendő</label>
         <input type="number" id="fizetendo" name="fizetendo" value="{{ $munkalap->fizetendo }}" readonly><br>
-      <button type="submit" class="btn btn-success" style="width: 100%;">Mentés</button>
+        <button type="submit" class="btn btn-success" style="width: 100%;">Mentés</button>
       <a href="{{url()->previous()}}" class="button">Mégse</a>
     </form>
 </div>
