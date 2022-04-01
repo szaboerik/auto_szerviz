@@ -1,3 +1,15 @@
+<?php
+function check(){
+    if(isset($_SESSION["belepve"])){ return true;}
+    else {return false;}
+}
+session_start();
+if(!check()){
+    header("Location:../belepes");
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -99,7 +111,7 @@
 
                 <div class="bottom-content">
                         <li>
-                            <a href="/belepes">
+                            <a href="/kilepes">
                             <i class='bx bx-log-out icon' ></i>
                                 <span class="text nav-text">Kijelentkezés</span>
                             </a>
@@ -143,10 +155,10 @@
         <label for="munka_kezdete">Munka kezdete</label>
         <input type="date" id="munka_kezdete" name="munka_kezdete" value="{{ $munkalap->munka_kezdete }}" readonly><br>
         <label for="munka_vege">Munka vége</label>
-        <input type="date" id="munka_vege" name="munka_vege" value="{{ $munkalap->munka_vege }}" readonly><br>
+        <input type="date" id="munka_vege" name="munka_vege" value="{{ $munkalap->munka_vege }}"><br>
         <label for="fizetendo">Fizetendő</label>
         <input type="number" id="fizetendo" name="fizetendo" value="{{ $munkalap->fizetendo }}" readonly><br>
-      <button type="submit" class="btn btn-success" style="width: 100%;">Mentés</button>
+        <button type="submit" class="btn btn-success" style="width: 100%;">Mentés</button>
       <a href="{{url()->previous()}}" class="button">Mégse</a>
     </form>
 </div>

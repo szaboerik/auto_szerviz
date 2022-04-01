@@ -45,6 +45,15 @@ class AddTrigger extends Migration
         END IF;
         END');
 
+        DB::unprepared('CREATE TRIGGER munka_vege_megad_check
+        AFTER UPDATE ON munkalaps
+        FOR EACH ROW
+        BEGIN
+        IF NEW.munka_vege!=CURDATE() THEN
+        SIGNAL SQLSTATE "45000" SET MESSAGE_TEXT = "Nem lehet a mai napon kívül más a munka vége dátum!";
+        END IF;
+        END');
+
        
         //3. Az egységár nem lehet 0 vagy kisebb.
 
@@ -368,7 +377,7 @@ class AddTrigger extends Migration
         BEGIN
         UPDATE munkalaps
         SET fizetendo =(SELECT SUM(f.f_osszege) from feladats f where NEW.m_szam = m_szam)+
-        (SELECT SUM(f.besz_osszege) from feladats f where NEW.m_szam = m_szam) where m_szam = NEW.m_szam;
+        (SELECT IFNULL(SUM(f.besz_osszege),0) from feladats f where NEW.m_szam = m_szam) where m_szam = NEW.m_szam;
         END');
 
         DB::unprepared('CREATE TRIGGER fizetendo_munkalap_delete_check
@@ -421,6 +430,7 @@ class AddTrigger extends Migration
         DB::unprepared('DROP TRIGGER `evjarat_check`');
         DB::unprepared('DROP TRIGGER `evjarat_update_check`');
         DB::unprepared('DROP TRIGGER `munka_kezd_vege_check`');
+        DB::unprepared('DROP TRIGGER `munka_vege_megad_check`');
         DB::unprepared('DROP TRIGGER `egysegar_check`');
         DB::unprepared('DROP TRIGGER `egysegar_update_check`');
         DB::unprepared('DROP TRIGGER `mennyiseg_check`');

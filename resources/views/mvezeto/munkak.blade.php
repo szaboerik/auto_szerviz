@@ -1,3 +1,14 @@
+<?php
+function check(){
+    if(isset($_SESSION["belepve"])){ return true;}
+    else {return false;}
+}
+session_start();
+if(!check()){
+    header("Location:../belepes");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -100,7 +111,7 @@
 
                 <div class="bottom-content">
                         <li>
-                            <a href="/belepes">
+                            <a href="/kilepes">
                             <i class='bx bx-log-out icon' ></i>
                                 <span class="text nav-text">Kijelentkezés</span>
                             </a>
@@ -143,13 +154,13 @@
           <td>{{ $munkalap->ugyfel_telszama }}</td>
           <td>{{ $munkalap->auto->rendszam }}</td>
           <td>{{ $munkalap->munka_kezdete }}</td>
-          <td>{{ $munkalap->munka_vege }}</td>
+          <td id="munka_vege">{{ $munkalap->munka_vege }}</td>
           <td>{{ $munkalap->fizetendo }}</td>
           <td style="display: flex;">
             <a href="/mvezeto/munkamodosit/{{ $munkalap->m_szam }}"><button class="btn btn-sm btn-info">Szerkesztés</button></a>
             <a><form action="/api/munkalap/{{ $munkalap->m_szam }}" method="POST">@csrf @method('delete')<button type="submit" class="btn btn-sm btn-danger">Törlés</button></form></a>
             <a href="/mvezeto/feladat"><button class="btn btn-sm btn-success">Új feladat hozzáadása</button></a>
-            <button onclick="munkabefejezes()">Feladat befejezése</button>
+            
           </td>
         </tr>
         <?php endforeach; ?> 

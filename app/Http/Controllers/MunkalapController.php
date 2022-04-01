@@ -78,8 +78,6 @@ public function munkalapmodosit(Request $request, $id)
     $munkalap -> fizetendo = $request -> fizetendo;
     $munkalap->save();
 
-    
-
     return redirect('/mvezeto/munkak');
 }
 public function munkalapszerkesztes($id)
@@ -98,5 +96,7 @@ public function munkalapszerkesztes($id)
 
     return redirect('/mvezeto/munkak');
 }*/
+
+
  
 }
