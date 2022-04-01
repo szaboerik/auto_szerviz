@@ -15,7 +15,7 @@ class CreateAlkatreszsTable extends Migration
     {
         Schema::create('alkatreszs', function (Blueprint $table) {
             $table->id('alk_azon');
-            $table->string('alk_neve', 30);
+            $table->string('alk_neve', 30)->unique();
             $table->timestamps();
         });
     }

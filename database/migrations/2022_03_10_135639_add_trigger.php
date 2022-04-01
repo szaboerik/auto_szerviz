@@ -327,25 +327,7 @@ class AddTrigger extends Migration
 
 
         
-        DB::unprepared('CREATE TRIGGER feladat_jelleg_check
-        AFTER INSERT ON feladats
-        FOR EACH ROW
-        BEGIN
-        IF  (SELECT COUNT(f.jelleg) from feladats f, munkalaps m where f.jelleg = NEW.jelleg 
-        and f.m_szam = NEW.m_szam)>1 THEN
-        SIGNAL SQLSTATE "45000" SET MESSAGE_TEXT = "Egy autóhoz egy olyan feladat csatolható, ahol ugyanaz a jelleg!";
-        END IF;
-        END');
-
-        DB::unprepared('CREATE TRIGGER feladat_jelleg_update_check
-        AFTER UPDATE ON feladats
-        FOR EACH ROW
-        BEGIN
-        IF  (SELECT COUNT(f.jelleg) from feladats f, munkalaps m where f.jelleg = NEW.jelleg 
-        and f.m_szam = NEW.m_szam)>1 THEN
-        SIGNAL SQLSTATE "45000" SET MESSAGE_TEXT = "Egy autóhoz egy olyan feladat csatolható, ahol ugyanaz a jelleg!";
-        END IF;
-        END');
+        
 
         /*DB::unprepared('CREATE TRIGGER fizetendo_check
         AFTER INSERT ON feladats
@@ -367,7 +349,7 @@ class AddTrigger extends Migration
      */
     public function down()
     {
-        DB::unprepared('DROP TRIGGER `evjarat_check`');
+        /*DB::unprepared('DROP TRIGGER `evjarat_check`');
         DB::unprepared('DROP TRIGGER `evjarat_update_check`');
         DB::unprepared('DROP TRIGGER `munka_kezd_vege_check`');
         DB::unprepared('DROP TRIGGER `egysegar_check`');
@@ -395,7 +377,7 @@ class AddTrigger extends Migration
         DB::unprepared('DROP TRIGGER `oradij_check`');
         DB::unprepared('DROP TRIGGER `oradij_update_check`');
         DB::unprepared('DROP TRIGGER `feladat_jelleg_check`');
-        DB::unprepared('DROP TRIGGER `feladat_jelleg_update_check`');
+        DB::unprepared('DROP TRIGGER `feladat_jelleg_update_check`');*/
 
     
     }

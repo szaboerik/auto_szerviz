@@ -16,7 +16,7 @@ class CreateMunkalapsTable extends Migration
         Schema::create('munkalaps', function (Blueprint $table) {
             $table->id("m_szam");
             $table->string('ugyfel_neve', 50);
-            $table->string('ugyfel_telszama', 30);
+            $table->string('ugyfel_telszama', 30)->unique();
             $table->unsignedBigInteger('autoId')->references('id')->on('autos');
             $table->date('munka_kezdete');
             $table->date('munka_vege')->nullable();
