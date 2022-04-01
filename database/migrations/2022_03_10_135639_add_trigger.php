@@ -303,6 +303,28 @@ class AddTrigger extends Migration
         END IF;
         END');
 
+        //15. Egy munkalaphoz csak egyféle jellegű feladat csatolható.
+
+        DB::unprepared('CREATE TRIGGER feladat_jelleg_check
+        AFTER INSERT ON feladats
+        FOR EACH ROW
+        BEGIN
+        IF  (SELECT COUNT(f.jelleg) from feladats f, munkalaps m where f.jelleg = NEW.jelleg 
+        and f.m_szam = NEW.m_szam)>1 THEN
+        SIGNAL SQLSTATE "45000" SET MESSAGE_TEXT = "Egy munkalaphoz csak egyféle jellegű feladat csatolható!";
+        END IF;
+        END');
+
+        DB::unprepared('CREATE TRIGGER feladat_jelleg_update_check
+        AFTER UPDATE ON feladats
+        FOR EACH ROW
+        BEGIN
+        IF  (SELECT COUNT(f.jelleg) from feladats f, munkalaps m where f.jelleg = NEW.jelleg 
+        and f.m_szam = NEW.m_szam)>1 THEN
+        SIGNAL SQLSTATE "45000" SET MESSAGE_TEXT = "Egy munkalaphoz csak egyféle jellegű feladat csatolható!";
+        END IF;
+        END');
+
 
         
         /*DB::unprepared('CREATE TRIGGER fizetendo_check
@@ -352,6 +374,8 @@ class AddTrigger extends Migration
         DB::unprepared('DROP TRIGGER `munkaora_update_check`');
         DB::unprepared('DROP TRIGGER `oradij_check`');
         DB::unprepared('DROP TRIGGER `oradij_update_check`');
+        DB::unprepared('DROP TRIGGER `feladat_jelleg_check`');
+        DB::unprepared('DROP TRIGGER `feladat_jelleg_update_check`');
 
     
     }
