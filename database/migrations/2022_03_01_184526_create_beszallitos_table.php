@@ -15,10 +15,10 @@ class CreateBeszallitosTable extends Migration
     {
         Schema::create('beszallitos', function (Blueprint $table) {
             $table->id('beszall_kod');
-            $table->string('nev', 50);
+            $table->string('nev', 50)->unique();
             $table->string('irsz', 4);
             $table->string('cim', 50);
-            $table->string('elerhetoseg', 12);
+            $table->string('elerhetoseg', 12)->unique();
             $table->timestamps();
         });
     }
