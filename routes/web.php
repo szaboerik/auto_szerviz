@@ -12,6 +12,11 @@ use App\Http\Controllers\AlkatreszController;
 use App\Http\Controllers\BeszallitoController;
 use App\Http\Controllers\DolgozoController;
 
+//Kilépés gomb
+Route::get('/kilepes', function () {
+    return view('kilepes');
+ });
+
 //Alap funkciók
 //------------------------------
 Route::get('/', function () {

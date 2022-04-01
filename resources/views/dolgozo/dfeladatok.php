@@ -1,3 +1,15 @@
+<?php
+function check(){
+    if(isset($_SESSION["belepve"])){ return true;}
+    else {return false;}
+}
+session_start();
+if(!check()){
+    header("Location:../belepes");
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +30,7 @@
             Feladatok
         </header>
         <aside class="item4">
-            <a href="/belepes">Kijelentkezés</a>
+            <a href="/kilepes">Kijelentkezés</a>
         </aside>
         <article class="item3">
             <h2>Feladatok</h2>
