@@ -130,6 +130,8 @@
         <th>Jelleg</th>
         <th>Szerelő</th>
         <th>Munkaóra</th>
+        <th>Feladat összege</th>
+        <th>Beszer összege</th>
       </tr>
     </thead>
     <tbody>
@@ -140,6 +142,8 @@
           <td>{{ $feladat->jelleg }}</td>
           <td>{{ $feladat->szerelo }}</td>
           <td>{{ $feladat->munkaora }}</td>
+          <td>{{ $feladat->f_osszege }}</td>
+          <td>{{ $feladat->besz_osszege }}</td>
           <td style="display: flex;">
             <a href="/mvezeto/feladatmodosit/{{ $feladat->f_szam }}"><button class="btn btn-sm btn-info">Szerkesztés</button></a>
             <a><form action="/api/feladat/{{ $feladat->f_szam }}" method="POST">@csrf @method('delete')<button type="submit" class="btn btn-sm btn-danger">Törlés</button></form></a>

@@ -135,17 +135,21 @@
                 <label for="jelleg">Jelleg</label> 
                 <select name="jelleg">
                 @foreach ($jellegs as $jelleg)
-                <option value="{{ $jelleg->jelleg }}">{{ $jelleg->jelleg }}</option>
+                <option value="{{ $jelleg->jelleg }}">{{ $jelleg->elnevezes }}</option>
                 @endforeach
                 </select><br>
                 <label for="d_kod">Dolgozó</label>
                 <select name="d_kod">
                 @foreach ($dolgozos as $dolgozo)
-                <option value="{{ $dolgozo->d_kod }}">{{ $dolgozo->d_kod }}</option>
+                <option value="{{ $dolgozo->d_kod }}">{{ $dolgozo->dolg_nev }}</option>
                 @endforeach
                 </select><br>
                   <label for="munkaora">Munkaóra</label>
                   <input type="number" id="munkaora" name="munkaora"><br>
+                  <label for="f_osszege">Feladat összege</label>
+                  <input type="number" id="f_osszege" name="f_osszege" readonly><br>
+                  <label for="besz_osszege">Beszerzés összege</label>
+                  <input type="number" id="besz_osszege" name="besz_osszege" readonly><br>
                   <button type="submit" class="btn btn-success" style="width: 100%;">Mentés</button>
                   <a href="{{url()->previous()}}" class="button">Mégse</a>
               </form> 

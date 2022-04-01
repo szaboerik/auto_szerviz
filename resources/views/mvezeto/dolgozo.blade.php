@@ -128,8 +128,12 @@
                   <input type="number" id="d_kod" name="d_kod" readonly><br>
                   <label for="dolg_nev">Dolgozó neve</label>
                   <input type="text" id="dolg_nev" name="dolg_nev"><br>
-                  <label for="kepesseg">Képesség</label>
-                  <input type="text" id="kepesseg" name="kepesseg"><br>
+                    <label for="kepesseg">Képesség</label>
+                    <select name="kepesseg">
+                        
+                  <option value="s">szerelő</option>
+                  <option value="v">vezető</option>
+                    </select>
                   <button type="submit" class="btn btn-success" style="width: 100%;">Mentés</button>
                   <a href="{{url()->previous()}}" class="button">Mégse</a>
               </form> 

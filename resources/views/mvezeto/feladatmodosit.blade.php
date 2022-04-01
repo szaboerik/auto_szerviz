@@ -130,23 +130,27 @@
         <label for="m_szam">Munkaszám</label>
                 <select name="m_szam">
                 @foreach ($munkalaps as $munkalap)
-                <option value="{{ $munkalap->m_szam }}">{{ $munkalap->m_szam }}</option>
+                <option value="{{ $munkalap->m_szam }}" {{$munkalap->m_szam == $feladat->m_szam ? 'selected' : ''}}>{{ $munkalap->m_szam }}</option>
                 @endforeach
                 </select><br>
                 <label for="jelleg">Jelleg</label>
                 <select name="jelleg">
                 @foreach ($jellegs as $jelleg)
-                <option value="{{ $jelleg->jelleg }}">{{ $jelleg->jelleg }}</option>
+                <option value="{{ $jelleg->jelleg }}" {{$jelleg->jelleg == $feladat->jelleg ? 'selected' : ''}}>{{ $jelleg->elnevezes }}</option>
                 @endforeach
                 </select><br>
                 <label for="d_kod">Szerelő</label>
                 <select name="d_kod">
                 @foreach ($dolgozos as $dolgozo)
-                <option value="{{ $dolgozo->d_kod }}">{{ $dolgozo->d_kod }}</option>
+                <option value="{{ $dolgozo->d_kod }}" {{$dolgozo->d_kod == $feladat->szerelo ? 'selected' : ''}}>{{ $dolgozo->dolg_nev }}</option>
                 @endforeach
                 </select><br>
-        <label for="munkaora">Munkaóra</label>
-        <input type="number" id="munkaora" name="munkaora" value="{{ $feladat->munkaora }}"><br>
+                <label for="munkaora">Munkaóra</label>
+                <input type="number" id="munkaora" name="munkaora" value="{{ $feladat->munkaora }}"><br>
+                <label for="f_osszege">Feladat összege</label>
+                  <input type="number" id="f_osszege" name="f_osszege" value="{{ $feladat->f_osszege }}"readonly><br>
+                  <label for="besz_osszege">Beszerzés összege</label>
+                  <input type="number" id="besz_osszege" name="besz_osszege" value="{{ $feladat->besz_osszege }}"readonly><br>
       <button type="submit" class="btn btn-success" style="width: 100%;">Mentés</button>
       <a href="{{url()->previous()}}" class="button">Mégse</a>
     </form>

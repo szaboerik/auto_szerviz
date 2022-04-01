@@ -130,7 +130,10 @@
         <label for="dolg_nev">Dolgozó neve</label>
         <input type="text" id="dolg_nev" name="dolg_nev" value="{{ $dolgozo->dolg_nev }}"><br>
         <label for="kepesseg">Képesség</label>
-        <input type="text" id="kepesseg" name="kepesseg" value="{{ $dolgozo->kepesseg }}"><br>
+        <select name="kepesseg">
+                  <option value="s">szerelő</option>
+                  <option value="v">vezető</option>
+        </select>
       <button type="submit" class="btn btn-success" style="width: 100%;">Mentés</button>
       <a href="{{url()->previous()}}" class="button">Mégse</a>
     </form>

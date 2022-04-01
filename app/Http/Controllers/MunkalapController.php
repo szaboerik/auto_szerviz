@@ -78,7 +78,7 @@ public function munkalapmodosit(Request $request, $id)
     $munkalap -> fizetendo = $request -> fizetendo;
     $munkalap->save();
 
-    return $munkalap;
+    
 
     return redirect('/mvezeto/munkak');
 }
@@ -90,13 +90,13 @@ public function munkalapszerkesztes($id)
     return view('mvezeto/munkamodosit', ['autos' => $autos, 'munkalap' => $munkalap]);
 }
 
-public function munkabefejezes($id)
+/*public function munkabefejezes($id)
 {
     $munkalap = Munkalap::find($id);
     $munkalap -> munka_vege = now();
     $munkalap->save();
 
     return redirect('/mvezeto/munkak');
-}
+}*/
  
 }

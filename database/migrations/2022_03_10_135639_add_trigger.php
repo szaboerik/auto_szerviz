@@ -139,6 +139,13 @@ class AddTrigger extends Migration
         SET NEW.besz_osszege = NEW.mennyiseg*NEW.egyseg_ar;
         END');
 
+        DB::unprepared('CREATE TRIGGER besz_osszege_update_check
+        BEFORE UPDATE ON beszerzes
+        FOR EACH ROW
+        BEGIN
+        SET NEW.besz_osszege = NEW.mennyiseg*NEW.egyseg_ar;
+        END');
+
 
         
 
@@ -310,7 +317,7 @@ class AddTrigger extends Migration
         FOR EACH ROW
         BEGIN
         IF  (SELECT COUNT(f.jelleg) from feladats f, munkalaps m where f.jelleg = NEW.jelleg 
-        and f.m_szam = NEW.m_szam)>1 THEN
+        and f.m_szam = NEW.m_szam and m.m_szam = f.m_szam)>1 THEN
         SIGNAL SQLSTATE "45000" SET MESSAGE_TEXT = "Egy munkalaphoz csak egyféle jellegű feladat csatolható!";
         END IF;
         END');
@@ -320,23 +327,85 @@ class AddTrigger extends Migration
         FOR EACH ROW
         BEGIN
         IF  (SELECT COUNT(f.jelleg) from feladats f, munkalaps m where f.jelleg = NEW.jelleg 
-        and f.m_szam = NEW.m_szam)>1 THEN
+        and f.m_szam = NEW.m_szam and m.m_szam = f.m_szam)>1 THEN
         SIGNAL SQLSTATE "45000" SET MESSAGE_TEXT = "Egy munkalaphoz csak egyféle jellegű feladat csatolható!";
         END IF;
         END');
 
 
         
-        
+        //16. Feladat összege = feladat óraszáma*hozzá kapcs jelleg óradíja.
 
-        /*DB::unprepared('CREATE TRIGGER fizetendo_check
+        DB::unprepared('CREATE TRIGGER feladat_osszege_check
+        BEFORE INSERT ON feladats
+        FOR EACH ROW
+        BEGIN
+        SET NEW.f_osszege = NEW.munkaora*(SELECT j.oradij from jellegs j where NEW.jelleg = j.jelleg);
+        END');
+
+        DB::unprepared('CREATE TRIGGER feladat_osszege_update_check
+        BEFORE UPDATE ON feladats
+        FOR EACH ROW
+        BEGIN
+        IF NEW.jelleg <> OLD.jelleg || NEW.szerelo <> OLD.szerelo || NEW.munkaora <> OLD.munkaora THEN
+        SET NEW.f_osszege = NEW.munkaora*(SELECT j.oradij from jellegs j where NEW.jelleg = j.jelleg);
+        END IF;
+        END');
+
+        //17. Fizetendő mező számítása.
+        
+        DB::unprepared('CREATE TRIGGER fizetendo_munkalap_check
         AFTER INSERT ON feladats
         FOR EACH ROW
         BEGIN
         UPDATE munkalaps
-        SET munkalaps.fizetendo =(SELECT f.munkaora*j.oradij from feladats f, jellegs j, munkalaps m
-        where f.jelleg = j.jelleg and f.m_szam = m.m_szam) where NEW.m_szam = munkalaps.m_szam;
-        END');*/
+        SET fizetendo =(SELECT SUM(f.f_osszege) from feladats f where NEW.m_szam = m_szam) where m_szam = NEW.m_szam;
+        END');
+
+        DB::unprepared('CREATE TRIGGER fizetendo_munkalap_update_check
+        AFTER UPDATE ON feladats
+        FOR EACH ROW
+        BEGIN
+        UPDATE munkalaps
+        SET fizetendo =(SELECT SUM(f.f_osszege) from feladats f where NEW.m_szam = m_szam)+
+        (SELECT SUM(f.besz_osszege) from feladats f where NEW.m_szam = m_szam) where m_szam = NEW.m_szam;
+        END');
+
+        DB::unprepared('CREATE TRIGGER fizetendo_munkalap_delete_check
+        AFTER DELETE ON feladats
+        FOR EACH ROW
+        BEGIN
+        UPDATE munkalaps
+        SET fizetendo =(SELECT SUM(f.f_osszege) from feladats f where OLD.m_szam = m_szam) where m_szam = OLD.m_szam;
+        END');
+
+
+        //18. Ha van beszerzés, a hozzá kapcs. feladat besz_összegéhez átadva a beszerzés besz. összege.
+
+        DB::unprepared('CREATE TRIGGER feladat_beszerzes_osszege_check
+        AFTER INSERT ON beszerzes
+        FOR EACH ROW
+        BEGIN
+        UPDATE feladats
+        SET besz_osszege = (SELECT SUM(b.besz_osszege) from beszerzes b where NEW.f_szam = f_szam and b.f_szam=NEW.f_szam) where NEW.f_szam = f_szam;
+        END');
+
+        DB::unprepared('CREATE TRIGGER feladat_beszerzes_osszege_update_check
+        AFTER UPDATE ON beszerzes
+        FOR EACH ROW
+        BEGIN
+        UPDATE feladats
+        SET besz_osszege = (SELECT SUM(b.besz_osszege) from beszerzes b where NEW.f_szam = f_szam and b.f_szam=NEW.f_szam) where NEW.f_szam = f_szam;
+        END');
+
+        DB::unprepared('CREATE TRIGGER feladat_beszerzes_osszege_delete_check
+        AFTER DELETE ON beszerzes
+        FOR EACH ROW
+        BEGIN
+        UPDATE feladats
+        SET besz_osszege = (SELECT SUM(b.besz_osszege) from beszerzes b where OLD.f_szam = f_szam and b.f_szam=OLD.f_szam) where OLD.f_szam = f_szam;
+        END');
+
         
 
     }
@@ -349,7 +418,7 @@ class AddTrigger extends Migration
      */
     public function down()
     {
-        /*DB::unprepared('DROP TRIGGER `evjarat_check`');
+        DB::unprepared('DROP TRIGGER `evjarat_check`');
         DB::unprepared('DROP TRIGGER `evjarat_update_check`');
         DB::unprepared('DROP TRIGGER `munka_kezd_vege_check`');
         DB::unprepared('DROP TRIGGER `egysegar_check`');
@@ -357,6 +426,7 @@ class AddTrigger extends Migration
         DB::unprepared('DROP TRIGGER `mennyiseg_check`');
         DB::unprepared('DROP TRIGGER `mennyiseg_update_check`');
         DB::unprepared('DROP TRIGGER `besz_osszege_check`');
+        DB::unprepared('DROP TRIGGER `besz_osszege_update_check`');
         DB::unprepared('DROP TRIGGER `dolgozo_kepesseg_check`');
         DB::unprepared('DROP TRIGGER `dolgozo_kepesseg_update_check`');
         DB::unprepared('DROP TRIGGER `munka_kezdete_check`');
@@ -377,8 +447,15 @@ class AddTrigger extends Migration
         DB::unprepared('DROP TRIGGER `oradij_check`');
         DB::unprepared('DROP TRIGGER `oradij_update_check`');
         DB::unprepared('DROP TRIGGER `feladat_jelleg_check`');
-        DB::unprepared('DROP TRIGGER `feladat_jelleg_update_check`');*/
-
+        DB::unprepared('DROP TRIGGER `feladat_jelleg_update_check`');
+        DB::unprepared('DROP TRIGGER `feladat_osszege_check`');
+        DB::unprepared('DROP TRIGGER `feladat_osszege_update_check`');
+        DB::unprepared('DROP TRIGGER `fizetendo_munkalap_check`');
+        DB::unprepared('DROP TRIGGER `fizetendo_munkalap_update_check`');
+        DB::unprepared('DROP TRIGGER `fizetendo_munkalap_delete_check`');
+        DB::unprepared('DROP TRIGGER `feladat_beszerzes_osszege_check`');
+        DB::unprepared('DROP TRIGGER `feladat_beszerzes_osszege_update_check`');
+        DB::unprepared('DROP TRIGGER `feladat_beszerzes_osszege_delete_check`');
     
     }
     }

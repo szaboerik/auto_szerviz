@@ -133,7 +133,7 @@
         <label for="markaId">Márka</label>
                 <select name="markaId">
                 @foreach ($markas as $marka)
-                <option value="{{ $marka->id }}">{{ $marka->marka }}</option>
+                <option value="{{ $marka->id }}" {{$marka->id == $auto->markaId ? 'selected' : ''}}>>{{ $marka->marka }}</option>
                 @endforeach
                 </select><br>
         <label for="forgalmi">Forgalmi</label>

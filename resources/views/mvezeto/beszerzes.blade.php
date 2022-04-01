@@ -137,13 +137,13 @@
                 <label for="alk_azon">Alkatrész</label>
                 <select name="alk_azon">
                 @foreach ($alkatreszs as $alkatresz)
-                <option value="{{ $alkatresz->alk_azon }}">{{ $alkatresz->alk_azon }}</option>
+                <option value="{{ $alkatresz->alk_azon }}">{{ $alkatresz->alk_neve }}</option>
                 @endforeach
                 </select><br>
                 <label for="beszall_kod">Beszállító kód</label>
                 <select name="beszall_kod">
                 @foreach ($beszallitos as $beszallito)
-                <option value="{{ $beszallito->beszall_kod }}">{{ $beszallito->beszall_kod }}</option>
+                <option value="{{ $beszallito->beszall_kod }}">{{ $beszallito->nev }}</option>
                 @endforeach
                 </select><br>
                 <label for="egyseg_ar">Egységár</label>

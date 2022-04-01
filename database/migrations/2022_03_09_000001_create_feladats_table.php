@@ -18,7 +18,9 @@ class CreateFeladatsTable extends Migration
             $table->unsignedBigInteger('m_szam');
             $table->unsignedBigInteger('jelleg');
             $table->unsignedBigInteger('szerelo');
-            $table->float('munkaora')->nullable();
+            $table->float('munkaora');
+            $table->integer('f_osszege');
+            $table->integer('besz_osszege')->nullable();
             
 
             $table->foreign('m_szam')->references('m_szam')->on('munkalaps');
