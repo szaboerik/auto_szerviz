@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SzervizController;
 use App\Http\Controllers\FeladatController;
@@ -208,3 +209,12 @@ Route::put('/api/munkalap/{id}', [MunkalapController::class, 'munkalapmodosit'])
 //Munkalap befejezése
 //Route::get('mvezeto/munkabefejezes/{id}', [MunkalapController::class, 'munkabefejezes']);
 
+//Oldalmenü
+Route::get('/', function()
+{
+   return View::make('layouts.oldalmenu');
+});
+Route::get('/', function()
+{
+   return View::make('layouts.oldalmenu');
+});
