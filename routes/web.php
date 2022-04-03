@@ -210,11 +210,4 @@ Route::put('/api/munkalap/{id}', [MunkalapController::class, 'munkalapmodosit'])
 //Route::get('mvezeto/munkabefejezes/{id}', [MunkalapController::class, 'munkabefejezes']);
 
 //Oldalmenü @include Route az összes blade-re. 
-Route::get('/', function()
-{
-   return View::make('layouts.oldalmenu');
-});
-Route::get('/', function()
-{
-   return View::make('layouts.oldalmenu');
-});
+Route::get('/mvezeto', function() {return View::make('layouts.oldalmenu');});
