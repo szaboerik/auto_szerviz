@@ -24,16 +24,7 @@ if(!check()){
     <main>
     <div class="grid-container">
     @include('layouts.oldalmenu')
-        <nav class="item2">
-            <a href="alkatreszek">Alkatrészek</a>
-            <a href="beszallitok">Beszállítók</a>
-            <a href="beszerzesek">Beszerzések</a>
-            <a href="dolgozok">Dolgozók</a>
-            <a href="feladatok">Feladatok</a>
-            <a href="jellegek">Jellegek</a>
-            <a href="markak">Márkák</a>
-            <a href="munkak">Munkalapok</a>
-        </nav>
+      
         <article class="item3">
             <h2>Autók</h2>
             <table class="table">
