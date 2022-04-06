@@ -32,6 +32,10 @@ if(!check()){
                   <input type="number" id="d_kod" name="d_kod" readonly><br>
                   <label for="dolg_nev">Dolgozó neve</label>
                   <input type="text" id="dolg_nev" name="dolg_nev"><br>
+                  @error('dolgozo')
+                  <div class="alert alert-danger">{{ $errors->first('dolgozo') }}</div>
+                  <!-- <div class="alert alert-danger">{{ $message}}</div> --> <!--Ugyanazt az eredményt hozza mint a {{ $errors->first('oradij') }} --> 
+                  @enderror
                     <label for="kepesseg">Képesség</label>
                     <select name="kepesseg">
                         
@@ -39,7 +43,7 @@ if(!check()){
                   <option value="v">vezető</option>
                     </select>
                   <button type="submit" class="btn btn-success">Mentés</button>
-                  <a href="{{url()->previous()}}" class="button">Mégse</a>
+                  <a href="/mvezeto/dolgozok" class="button">Mégse</a>
               </form> 
         </article>
     </main>
