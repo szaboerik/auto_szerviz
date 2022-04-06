@@ -47,7 +47,7 @@ if(!check()){
                   <label for="evjarat">Évjárat</label>
                   <input type="number" id="evjarat" value="{{ old('evjarat') }}" name="evjarat"><br>
                   <button type="submit" class="btn btn-success">Mentés</button>
-                  <a href="{{url()->previous()}}" class="button">Mégse</a>
+                  <a href="/mvezeto/autok" class="button">Mégse</a>
               </form> 
         </article>
     </main>

@@ -30,8 +30,12 @@ if(!check()){
                 @csrf
                   <label for="marka">Márka</label>
                   <input type="text" id="marka" name="marka"><br>
+                  @error('marka')
+                  <div class="alert alert-danger">{{ $errors->first('marka') }}</div>
+                  <!-- <div class="alert alert-danger">{{ $message}}</div> --> <!--Ugyanazt az eredményt hozza mint a {{ $errors->first('oradij') }} --> 
+                  @enderror
                   <button type="submit" class="btn btn-success">Mentés</button>
-                  <a href="{{url()->previous()}}" class="button">Mégse</a>
+                  <a href="/mvezeto/markak" class="button">Mégse</a>
               </form> 
         </article>
     </main>

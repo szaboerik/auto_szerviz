@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Database\QueryException;
 use App\Models\Auto;
 use App\Models\Marka;
 use Illuminate\Http\Request;
@@ -24,6 +25,7 @@ public function auto(Request $request) {
         'rendszam' => ['required', new rendszam],
         'forgalmi' => ['required', new forgalmi],
     ];
+    try{
     $request->validate($rules);
     $auto = new auto();
     $auto -> rendszam = $request -> rendszam;
@@ -31,10 +33,18 @@ public function auto(Request $request) {
     $auto -> forgalmi = $request -> forgalmi;
     $auto -> evjarat = $request -> evjarat;
     $auto->save();
-
-    
-
     return redirect('/mvezeto/autok');
+}catch(QueryException  $e){
+    $message = '';
+    $validator = Validator::make([],[]);
+    if (preg_match("/field is required/", $e->getMessage())) {
+        $message = 'A mező kitöltése kötelező!';
+    }
+    $validator->errors()->add('auto', $message);
+ return redirect()->back()->withErrors($validator)->withInput($request->input());
+ return redirect('/mvezeto/auto')->withErrors($validator);
+}
+// return redirect('/mvezeto/jellegek');
 }
 
 //Autók kilistázása

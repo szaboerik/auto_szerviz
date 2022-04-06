@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Validator;
 use App\Models\Alkatresz;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 
 class AlkatreszController extends Controller
@@ -13,12 +14,24 @@ public function ujalkatresz()
     return view('mvezeto/alkatresz');
 } 
 public function alkatresz(Request $request) {
+    try{
     $alkatresz = new Alkatresz();
     $alkatresz -> alk_azon = $request -> alk_azon;
     $alkatresz -> alk_neve = $request -> alk_neve;
     $alkatresz->save();
-
     return redirect('/mvezeto/alkatreszek');
+}catch(QueryException  $e){
+    $message = '';
+    $validator = Validator::make([],[]);
+    if (preg_match("/'alk_neve' cannot be null/", $e->getMessage())) {
+        $message = 'A mező kitöltése kötelező!';
+    }
+    
+    $validator->errors()->add('alkatresz', $message);
+ 
+ return redirect()->back()->withErrors($validator)->withInput($request->input());
+ return redirect('/mvezeto/alkatresz')->withErrors($validator);
+}
 }
 //Alkatrészek kilistázása
 public function alkatreszek()
