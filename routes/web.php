@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SzervizController;
@@ -12,6 +13,8 @@ use App\Http\Controllers\MarkaController;
 use App\Http\Controllers\AlkatreszController;
 use App\Http\Controllers\BeszallitoController;
 use App\Http\Controllers\DolgozoController;
+
+use function PHPUnit\Framework\throwException;
 
 //Kilépés gomb
 Route::get('/kilepes', function () {
@@ -211,3 +214,22 @@ Route::put('/api/munkalap/{id}', [MunkalapController::class, 'munkalapmodosit'])
 
 //Oldalmenü @include Route az összes blade-re. 
 Route::get('/mvezeto', function() {return View::make('layouts.oldalmenu');});
+
+/*//Új Jelleg
+Route::get('/mvezeto/jelleg', [JellegController::class, 'ujjelleg']);
+Route::post('/api/jelleg', [JellegController::class, 'jelleg']);*/ 
+////Hibaüzenetek
+/*Route::get('/test', function(){
+try{
+    $e = new Exception('Az óradíj nem lehet 5000-nél kisebb és 20000-nél nagyobb!');
+    throw new Exception('insert into `jellegs` (`jelleg`, `elnevezes`, `oradij`, `updated_at`, `created_at`) values (?, aaa, 1, 2022-04-03 17:58:53, 2022-04-03 17:58:53)');
+}
+catch(Exception $e){
+    $validator = Validator::make([],[]);
+    $validator->errors()->add('oradij',$e->getMessage());
+    return redirect('/test2')->withErrors($validator);
+}
+});
+Route::get('/test2', function(){
+    echo session('errrors');
+});//*/

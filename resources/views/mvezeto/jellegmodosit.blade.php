@@ -35,7 +35,7 @@ if(!check()){
                   <input type="text" id="elnevezes" name="elnevezes" value="{{ $jelleg->elnevezes }}"><br>
                   <label for="oradij">Óradíj</label>
                   <input type="number" id="oradij" name="oradij" value="{{ $jelleg->oradij }}"><br>
-                  <button type="submit" class="btn btn-success" style="width: 100%;">Mentés</button>
+                  <button type="submit" class="btn btn-success">Mentés</button>
                   <a href="{{url()->previous()}}" class="button">Mégse</a>
               </form> 
               </div>

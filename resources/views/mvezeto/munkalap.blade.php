@@ -49,7 +49,7 @@ if(!check()){
                 <input type="date" id="munka_vege" name="munka_vege" readonly><br>
                 <label for="fizetendo">Fizetendő összeg</label>
                 <input type="number" id="fizetendo" name="fizetendo" readonly><br>
-                <button type="submit" class="btn btn-success" style="width: 100%;">Mentés</button>
+                <button type="submit" class="btn btn-success">Mentés</button>
                 <a href="{{url()->previous()}}" class="button">Mégse</a>
               </form> 
         </article>

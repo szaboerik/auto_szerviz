@@ -30,7 +30,7 @@ if(!check()){
                 @csrf
                   <label for="marka">Márka</label>
                   <input type="text" id="marka" name="marka"><br>
-                  <button type="submit" class="btn btn-success" style="width: 100%;">Mentés</button>
+                  <button type="submit" class="btn btn-success">Mentés</button>
                   <a href="{{url()->previous()}}" class="button">Mégse</a>
               </form> 
         </article>

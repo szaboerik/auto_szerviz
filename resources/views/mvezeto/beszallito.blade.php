@@ -44,7 +44,7 @@ if(!check()){
                   @error('elerhetoseg')
                         <div class="alert alert-danger">{{ $errors->first('elerhetoseg') }}</div>
                     @enderror
-                  <button type="submit" class="btn btn-success" style="width: 100%;">Mentés</button>
+                  <button type="submit" class="btn btn-success">Mentés</button>
                   <a href="{{url()->previous()}}" class="button">Mégse</a>
               </form> 
         </article>

@@ -38,7 +38,7 @@ if(!check()){
                   <option value="s">szerelő</option>
                   <option value="v">vezető</option>
         </select>
-      <button type="submit" class="btn btn-success" style="width: 100%;">Mentés</button>
+      <button type="submit" class="btn btn-success">Mentés</button>
       <a href="{{url()->previous()}}" class="button">Mégse</a>
     </form>
   </div>

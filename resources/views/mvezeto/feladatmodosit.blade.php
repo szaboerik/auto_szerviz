@@ -55,7 +55,7 @@ if(!check()){
                   <input type="number" id="f_osszege" name="f_osszege" value="{{ $feladat->f_osszege }}"readonly><br>
                   <label for="besz_osszege">Beszerzés összege</label>
                   <input type="number" id="besz_osszege" name="besz_osszege" value="{{ $feladat->besz_osszege }}"readonly><br>
-      <button type="submit" class="btn btn-success" style="width: 100%;">Mentés</button>
+      <button type="submit" class="btn btn-success">Mentés</button>
       <a href="{{url()->previous()}}" class="button">Mégse</a>
     </form>
   </div>

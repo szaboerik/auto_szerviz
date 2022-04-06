@@ -46,7 +46,7 @@ if(!check()){
                     @enderror
                   <label for="evjarat">Évjárat</label>
                   <input type="number" id="evjarat" value="{{ old('evjarat') }}" name="evjarat"><br>
-                  <button type="submit" class="btn btn-success" style="width: 100%;">Mentés</button>
+                  <button type="submit" class="btn btn-success">Mentés</button>
                   <a href="{{url()->previous()}}" class="button">Mégse</a>
               </form> 
         </article>

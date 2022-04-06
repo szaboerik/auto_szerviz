@@ -31,7 +31,7 @@ if(!check()){
       @method('put')
         <label for="marka">Márka</label>
         <input type="text" id="marka" name="marka" value="{{ $marka->marka }}"><br>
-      <button type="submit" class="btn btn-success" style="width: 100%;">Mentés</button>
+      <button type="submit" class="btn btn-success">Mentés</button>
       <a href="{{url()->previous()}}" class="button">Mégse</a>
     </form>
   </div>

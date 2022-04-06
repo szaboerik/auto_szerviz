@@ -31,12 +31,16 @@ if(!check()){
                   <label for="jelleg">Jelleg</label>
                   <input type="text" id="jelleg" name="jelleg" readonly><br>
                   <label for="elnevezes">Elnevezés</label>
-                  <input type="text" id="elnevezes" name="elnevezes"><br>
+                  <input type="text" id="elnevezes" name="elnevezes" value={{ old('elnevezes') }}><br>
                   <label for="oradij">Óradíj</label>
-                  <input type="number" id="oradij" name="oradij"><br>
-                  <button type="submit" class="btn btn-success" style="width: 100%;">Mentés</button>
-                  
-                  <a href="{{url()->previous()}}" class="button">Mégse</a>
+                  @error('oradij')
+                  <div class="alert alert-danger">{{ $errors->first('oradij') }}</div>
+                  <!-- <div class="alert alert-danger">{{ $message}}</div> --> <!--Ugyanazt az eredményt hozza mint a {{ $errors->first('oradij') }} --> 
+                  @enderror
+                  <input type="number" id="oradij" name="oradij" value={{ old('oradij') }}><br>
+                  <button type="submit" class="btn btn-success">Mentés</button>
+
+                  <a href="/mvezeto/jellegek"  type=button class="button">Mégse</a>
                   
               </form> 
         </article>

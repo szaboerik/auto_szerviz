@@ -32,7 +32,7 @@ if(!check()){
                   <input type="number" id="alk_azon" name="alk_azon" readonly><br>
                   <label for="alk_neve">Alkatrész neve</label>
                   <input type="text" id="alk_neve" name="alk_neve"><br>
-                  <button type="submit" class="btn btn-success" style="width: 100%;">Mentés</button>
+                  <button type="submit" class="btn btn-success" >Mentés</button>
                   <a href="{{url()->previous()}}" class="button">Mégse</a>
               </form> 
         </article>
