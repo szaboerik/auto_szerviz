@@ -49,8 +49,20 @@ if(!check()){
                 </select><br>
         <label for="egyseg_ar">Egységár</label>
         <input type="number" id="egyseg_ar" name="egyseg_ar" value="{{ $beszerzes->egyseg_ar }}"><br>
+        @error('egysegar')
+                        <div class="alert alert-danger">{{ $errors->first('egysegar') }}</div>
+                    @enderror
+                    @error('egysegarv')
+                        <div class="alert alert-danger">{{ $errors->first('egysegarv') }}</div>
+                    @enderror
         <label for="mennyiseg">Mennyiség</label>
         <input type="number" id="mennyiseg" name="mennyiseg" value="{{ $beszerzes->mennyiseg }}"><br>
+        @error('mennyiseg')
+                        <div class="alert alert-danger">{{ $errors->first('mennyiseg') }}</div>
+                    @enderror
+                    @error('mennyisegv')
+                        <div class="alert alert-danger">{{ $errors->first('mennyisegv') }}</div>
+                    @enderror
         <label for="besz_osszege">Beszerzés összege</label>
         <input type="number" id="besz_osszege" name="besz_osszege" value="{{ $beszerzes->besz_osszege }}" readonly><br>
       <button type="submit" class="btn btn-success">Mentés</button>

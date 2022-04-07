@@ -38,6 +38,8 @@ public function auto(Request $request) {
    
     $evjaratures = '';
     $rosszevjarat = '';
+    $rszdup = '';
+    $forgdup = '';
     $validator = Validator::make([],[]);
    
     
@@ -49,9 +51,18 @@ public function auto(Request $request) {
         $rosszevjarat = 'Nem megfelelő évjárat! Nem lehet 1990-nél kisebb, illetve a mostani évnél nagyobb!';
     }
 
-    
+    if (preg_match("/Duplicate entry/", $e->getMessage())) {
+        $rszdup = 'Van már ilyen rendszámú autó!';
+    }
+
+    if (preg_match("/Duplicate entry/", $e->getMessage())) {
+        $forgdup = 'Van már ilyen forgalmi számú autó!';
+    }
+
     $validator->errors()->add('evjarat', $evjaratures);
     $validator->errors()->add('evjaratcheck', $rosszevjarat);
+    $validator->errors()->add('rszdup', $rszdup);
+    $validator->errors()->add('forgdup', $forgdup);
  return redirect()->back()->withErrors($validator)->withInput($request->input());
  return redirect('/mvezeto/auto')->withErrors($validator);
 }
@@ -100,6 +111,8 @@ public function automodosit(Request $request, $id)
     
     $evjaratures = '';
     $rosszevjarat = '';
+    $rszdup = '';
+    $forgdup = '';
     $validator = Validator::make([],[]);
     
     
@@ -110,10 +123,19 @@ public function automodosit(Request $request, $id)
     if (preg_match("/Nem megfelelő évjárat!/", $e->getMessage())) {
         $rosszevjarat = 'Nem megfelelő évjárat! Nem lehet 1990-nél kisebb, illetve a mostani évnél nagyobb!';
     }
-
     
+    if (preg_match("/Duplicate entry/", $e->getMessage())) {
+        $rszdup = 'Van már ilyen rendszámú autó!';
+    }
+
+    if (preg_match("/Duplicate entry/", $e->getMessage())) {
+        $forgdup = 'Van már ilyen forgalmi számú autó!';
+    }
+
     $validator->errors()->add('evjarat', $evjaratures);
     $validator->errors()->add('evjaratcheck', $rosszevjarat);
+    $validator->errors()->add('rszdup', $rszdup);
+    $validator->errors()->add('forgdup', $forgdup);
  return redirect()->back()->withErrors($validator)->withInput($request->input());
  return redirect('/mvezeto/auto')->withErrors($validator);
 }

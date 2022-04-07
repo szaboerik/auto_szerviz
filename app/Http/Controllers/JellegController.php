@@ -31,6 +31,7 @@ public function jelleg(Request $request) {
         $oradij = '';
         $elnev = '';
         $oradijures = '';
+        $elnevdup = '';
         $validator = Validator::make([],[]);
         if (preg_match("/Az óradíj nem lehet 5000-nél kisebb és 20000-nél nagyobb!/", $e->getMessage())) {
             $oradij = 'Az óradíj nem lehet 5000-nél kisebb és 20000-nél nagyobb!';
@@ -41,10 +42,15 @@ public function jelleg(Request $request) {
         if (preg_match("/'oradij' cannot be null/", $e->getMessage())) {
             $oradijures = 'A mező kitöltése kötelező!';
         }
+        if (preg_match("/Duplicate entry/", $e->getMessage())) {
+            $elnevdup = 'Van már ilyen elnevezésű jelleged!';
+        }
         //$message = explode('>>: ', $e->getPrevious()->getMessage());
         $validator->errors()->add('oradij', $oradij);
         $validator->errors()->add('elnevezes', $elnev);
         $validator->errors()->add('jelleg', $oradijures);
+        $validator->errors()->add('elnevdup', $elnevdup);
+        
      //   return redirect('/mvezeto/jellegek')->withErrors($validator);
      return redirect()->back()->withErrors($validator)->withInput($request->input());
      return redirect('/mvezeto/jelleg')->withErrors($validator);
@@ -84,6 +90,7 @@ public function jellegmodosit(Request $request, $id)
     $oradij = '';
     $elnev = '';
     $oradijures = '';
+    $elnevdup = '';
     $validator = Validator::make([],[]);
     if (preg_match("/Az óradíj nem lehet 5000-nél kisebb és 20000-nél nagyobb!/", $e->getMessage())) {
         $oradij = 'Az óradíj nem lehet 5000-nél kisebb és 20000-nél nagyobb!';
@@ -94,10 +101,14 @@ public function jellegmodosit(Request $request, $id)
     if (preg_match("/'oradij' cannot be null/", $e->getMessage())) {
         $oradijures = 'A mező kitöltése kötelező!';
     }
+    if (preg_match("/Duplicate entry/", $e->getMessage())) {
+        $elnevdup = 'Van már ilyen elnevezésű jelleged!';
+    }
     //$message = explode('>>: ', $e->getPrevious()->getMessage());
     $validator->errors()->add('oradij', $oradij);
     $validator->errors()->add('elnevezes', $elnev);
     $validator->errors()->add('jelleg', $oradijures);
+    $validator->errors()->add('elnevdup', $elnevdup);
  //   return redirect('/mvezeto/jellegek')->withErrors($validator);
  return redirect()->back()->withErrors($validator)->withInput($request->input());
  return redirect('/mvezeto/jelleg')->withErrors($validator);

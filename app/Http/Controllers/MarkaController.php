@@ -24,12 +24,17 @@ public function marka(Request $request) {
     return redirect('/mvezeto/markak');
     }catch(QueryException  $e){
     $message = '';
+    $markadup = '';
     $validator = Validator::make([],[]);
     if (preg_match("/'marka' cannot be null/", $e->getMessage())) {
         $message = 'A mező kitöltése kötelező!';
     }
+    if (preg_match("/Duplicate entry/", $e->getMessage())) {
+        $markadup = 'Van már ilyen elnevezésű márkád!';
+    }
     //$message = explode('>>: ', $e->getPrevious()->getMessage());
     $validator->errors()->add('marka', $message);
+    $validator->errors()->add('markadup', $markadup);
  //   return redirect('/mvezeto/jellegek')->withErrors($validator);
  return redirect()->back()->withErrors($validator)->withInput($request->input());
  return redirect('/mvezeto/marka')->withErrors($validator);
@@ -57,11 +62,30 @@ public function markatorles($id)
 
 public function markamodosit(Request $request, $id)
 {
+    try{
     $marka = marka::find($id);
     $marka -> marka = $request -> marka;
     $marka->save();
 
     return redirect('/mvezeto/markak');
+} catch(QueryException  $e){
+    $message = '';
+    $markadup = '';
+    $validator = Validator::make([],[]);
+    if (preg_match("/'marka' cannot be null/", $e->getMessage())) {
+        $message = 'A mező kitöltése kötelező!';
+    }
+    if (preg_match("/Duplicate entry/", $e->getMessage())) {
+        $markadup = 'Van már ilyen elnevezésű márkád!';
+    }
+    //$message = explode('>>: ', $e->getPrevious()->getMessage());
+    $validator->errors()->add('marka', $message);
+    $validator->errors()->add('markadup', $markadup);
+ //   return redirect('/mvezeto/jellegek')->withErrors($validator);
+ return redirect()->back()->withErrors($validator)->withInput($request->input());
+ return redirect('/mvezeto/marka')->withErrors($validator);
+}
+
 }
 
 public function markaszerkesztes($id)

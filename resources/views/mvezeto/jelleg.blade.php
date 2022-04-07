@@ -36,6 +36,10 @@ if(!check()){
                   <div class="alert alert-danger">{{ $errors->first('elnevezes') }}</div>
                   <!-- <div class="alert alert-danger">{{ $message}}</div> --> <!--Ugyanazt az eredményt hozza mint a {{ $errors->first('oradij') }} --> 
                   @enderror
+                  @error('elnevdup')
+                  <div class="alert alert-danger">{{ $errors->first('elnevdup') }}</div>
+                  <!-- <div class="alert alert-danger">{{ $message}}</div> --> <!--Ugyanazt az eredményt hozza mint a {{ $errors->first('oradij') }} --> 
+                  @enderror
                   <label for="oradij">Óradíj</label>
                   <input type="number" id="oradij" name="oradij" value="{{ old('oradij') }}"><br>
                   @error('oradij')

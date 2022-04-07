@@ -55,7 +55,10 @@ if(!check()){
             
           </td>
         </tr>
-        <?php endforeach; ?> 
+        <?php endforeach; ?>
+        @error('torles')
+                        <div class="alert alert-danger">{{ $errors->first('torles') }}</div>
+                    @enderror
     </tbody>
     <div><a href="/mvezeto/munkalap"><button class="btn btn-sm btn-success">Új munkalap létrehozása</button></a></div>
   </table>

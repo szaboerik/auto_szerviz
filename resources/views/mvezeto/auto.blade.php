@@ -33,6 +33,9 @@ if(!check()){
                     @error('rendszam')
                         <div class="alert alert-danger">{{ $errors->first('rendszam') }}</div>
                     @enderror
+                    @error('rszdup')
+                        <div class="alert alert-danger">{{ $errors->first('rszdup') }}</div>
+                    @enderror
                   <label for="markaId">Márka</label>
                 <select name="markaId">
                 @foreach ($markas as $marka)
@@ -43,6 +46,9 @@ if(!check()){
                   <input type="text" id="forgalmi" value="{{ old('forgalmi') }}" name="forgalmi" placeholder="abc12345"><br>
                   @error('forgalmi')
                         <div class="alert alert-danger">{{ $errors->first('forgalmi') }}</div>
+                    @enderror
+                    @error('forgdup')
+                        <div class="alert alert-danger">{{ $errors->first('forgdup') }}</div>
                     @enderror
                   <label for="evjarat">Évjárat</label>
                   <input type="number" id="evjarat" value="{{ old('evjarat') }}" name="evjarat"><br>

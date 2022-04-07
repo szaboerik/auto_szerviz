@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use App\Models\Beszerzes;
 use App\Models\Feladat;
@@ -22,6 +23,7 @@ public function ujbeszerzes()
 }
 
 public function beszerzes(Request $request) {
+    try{
     $beszerzes = new beszerzes();
     $beszerzes -> besz_azon = $request -> besz_azon;
     $beszerzes -> f_szam = $request -> f_szam;
@@ -33,6 +35,38 @@ public function beszerzes(Request $request) {
     $beszerzes->save();
 
     return redirect('/mvezeto/beszerzesek');
+}catch(QueryException $e){
+   
+    $egysegar = '';
+    $menny = '';
+    $mennyvizsg = '';
+    $egysegarvizsg = '';
+    $validator = Validator::make([],[]);
+   
+    
+    if (preg_match("/'egyseg_ar' cannot be null/", $e->getMessage())) {
+        $egysegar = 'A mező kitöltése kötelező!';
+    }
+
+    if (preg_match("/'mennyiseg' cannot be null/", $e->getMessage())) {
+        $menny = 'A mező kitöltése kötelező!';
+    }
+
+    if (preg_match("/Nem lehet 0 vagy kisebb a mennyiség!/", $e->getMessage())) {
+        $mennyvizsg = 'Nem lehet 0 vagy kisebb a mennyiség!';
+    }
+
+    if (preg_match("/Nem lehet 0 vagy kisebb az egységár!/", $e->getMessage())) {
+        $egysegarvizsg = 'Nem lehet 0 vagy kisebb az egységár!';
+    }
+    
+    $validator->errors()->add('egysegar', $egysegar);
+    $validator->errors()->add('mennyiseg', $menny);
+    $validator->errors()->add('mennyisegv', $mennyvizsg);
+    $validator->errors()->add('egysegarv', $egysegarvizsg);
+ return redirect()->back()->withErrors($validator)->withInput($request->input());
+ return redirect('/mvezeto/beszerzes')->withErrors($validator);
+}
 }
 
 //Rendelések kilistázása
@@ -59,6 +93,7 @@ public function beszerzestorles($id)
 
 public function beszerzesmodosit(Request $request, $id)
 {
+    try{
     $beszerzes = Beszerzes::find($id);
     $beszerzes -> besz_azon = $request -> besz_azon;
     $beszerzes -> f_szam = $request -> f_szam;
@@ -70,6 +105,39 @@ public function beszerzesmodosit(Request $request, $id)
     $beszerzes->save();
 
     return redirect('/mvezeto/beszerzesek');
+}catch(QueryException $e){
+   
+    $egysegar = '';
+    $menny = '';
+    $mennyvizsg = '';
+    $egysegarvizsg = '';
+    $validator = Validator::make([],[]);
+   
+    
+    if (preg_match("/'egyseg_ar' cannot be null/", $e->getMessage())) {
+        $egysegar = 'A mező kitöltése kötelező!';
+    }
+
+    if (preg_match("/'mennyiseg' cannot be null/", $e->getMessage())) {
+        $menny = 'A mező kitöltése kötelező!';
+    }
+
+    if (preg_match("/Nem lehet 0 vagy kisebb a mennyiség!/", $e->getMessage())) {
+        $mennyvizsg = 'Nem lehet 0 vagy kisebb a mennyiség!';
+    }
+
+    if (preg_match("/Nem lehet 0 vagy kisebb az egységár!/", $e->getMessage())) {
+        $egysegarvizsg = 'Nem lehet 0 vagy kisebb az egységár!';
+    }
+
+    
+    $validator->errors()->add('egysegar', $egysegar);
+    $validator->errors()->add('mennyiseg', $menny);
+    $validator->errors()->add('mennyisegv', $mennyvizsg);
+    $validator->errors()->add('egysegarv', $egysegarvizsg);
+ return redirect()->back()->withErrors($validator)->withInput($request->input());
+ return redirect('/mvezeto/beszerzes')->withErrors($validator);
+}
 }
 
 public function beszerzesszerkesztes($id)

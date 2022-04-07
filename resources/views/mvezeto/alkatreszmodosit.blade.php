@@ -32,7 +32,9 @@ if(!check()){
         <input type="text" id="alk_neve" name="alk_neve" value="{{ $alkatresz->alk_neve }}"><br>
         @error('alkatresz')
                   <div class="alert alert-danger">{{ $errors->first('alkatresz') }}</div>
-                  <!-- <div class="alert alert-danger">{{ $message}}</div> --> <!--Ugyanazt az eredményt hozza mint a {{ $errors->first('oradij') }} --> 
+                  @enderror
+                  @error('alkatreszdup')
+                  <div class="alert alert-danger">{{ $errors->first('alkatreszdup') }}</div>
                   @enderror
       <button type="submit" class="btn btn-success">Mentés</button>
       <a href="/mvezeto/alkatreszek" class="button">Mégse</a>

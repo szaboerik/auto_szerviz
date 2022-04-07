@@ -22,12 +22,17 @@ public function alkatresz(Request $request) {
     return redirect('/mvezeto/alkatreszek');
 }catch(QueryException  $e){
     $message = '';
+    $alkdup = '';
     $validator = Validator::make([],[]);
     if (preg_match("/'alk_neve' cannot be null/", $e->getMessage())) {
         $message = 'A mező kitöltése kötelező!';
     }
     
+    if (preg_match("/Duplicate entry/", $e->getMessage())) {
+        $alkdup = 'Van már ilyen elnevezésű alkatrészed!';
+    }
     $validator->errors()->add('alkatresz', $message);
+    $validator->errors()->add('alkatreszdup', $alkdup);
  
  return redirect()->back()->withErrors($validator)->withInput($request->input());
  return redirect('/mvezeto/alkatresz')->withErrors($validator);
@@ -57,13 +62,18 @@ public function alkatreszmodosit(Request $request, $id)
     return redirect('/mvezeto/alkatreszek');
 } catch (QueryException  $e){
     $message = '';
+    $alkdup = '';
     $validator = Validator::make([],[]);
     if (preg_match("/'alk_neve' cannot be null/", $e->getMessage())) {
         $message = 'A mező kitöltése kötelező!';
     }
     
+    if (preg_match("/Duplicate entry/", $e->getMessage())) {
+        $alkdup = 'Van már ilyen elnevezésű alkatrészed!';
+    }
+
     $validator->errors()->add('alkatresz', $message);
- 
+    $validator->errors()->add('alkatreszdup', $alkdup);
  return redirect()->back()->withErrors($validator)->withInput($request->input());
  return redirect('/mvezeto/alkatresz')->withErrors($validator);
 }

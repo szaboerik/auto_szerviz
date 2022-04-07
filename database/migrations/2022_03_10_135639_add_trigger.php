@@ -47,7 +47,7 @@ class AddTrigger extends Migration
         END');
 
        
-        //3. Az egységár nem lehet 0 vagy kisebb.
+        //3. Az egységár nem lehet 0 vagy kisebb. MEGOLDVA
 
         DB::unprepared('CREATE TRIGGER egysegar_check
         BEFORE INSERT ON beszerzes

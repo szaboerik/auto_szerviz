@@ -51,9 +51,21 @@ if(!check()){
                 @endforeach
                 </select><br>
                 <label for="egyseg_ar">Egységár</label>
-                <input type="number" id="egyseg_ar" name="egyseg_ar"><br>
+                <input type="number" id="egyseg_ar" name="egyseg_ar" value="{{ old('egyseg_ar') }}"><br>
+                @error('egysegar')
+                        <div class="alert alert-danger">{{ $errors->first('egysegar') }}</div>
+                    @enderror
+                    @error('egysegarv')
+                        <div class="alert alert-danger">{{ $errors->first('egysegarv') }}</div>
+                    @enderror
                 <label for="mennyiseg">Mennyiség</label>
-                <input type="number" id="mennyiseg" name="mennyiseg"><br>
+                <input type="number" id="mennyiseg" name="mennyiseg" value="{{ old('mennyiseg') }}"><br>
+                @error('mennyiseg')
+                        <div class="alert alert-danger">{{ $errors->first('mennyiseg') }}</div>
+                    @enderror
+                    @error('mennyisegv')
+                        <div class="alert alert-danger">{{ $errors->first('mennyisegv') }}</div>
+                    @enderror
                 <label for="besz_osszege">Beszerzés összege</label>
                 <input type="number" id="besz_osszege" name="besz_osszege" readonly><br>
                 

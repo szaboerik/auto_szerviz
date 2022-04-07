@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Database\QueryException;
 use App\Models\Beszallito;
 use Illuminate\Http\Request;
 use App\Rules\elerhetoseg;
@@ -38,6 +39,8 @@ public function beszallito(Request $request) {
     $message = '';
     $nev = '';
     $cim = '';
+    $telszamdup = '';
+    $nevdup = '';
     $validator = Validator::make([],[]);
     
     if (preg_match("/field is required/", $e->getMessage())) {
@@ -51,10 +54,18 @@ public function beszallito(Request $request) {
     if (preg_match("/'cim' cannot be null/", $e->getMessage())) {
         $cim = 'A mező kitöltése kötelező!';
     }
+    if (preg_match("/Duplicate entry/", $e->getMessage())) {
+        $telszamdup = 'Van már beszállítód ezen a telefonszámon!';
+    }
+    if (preg_match("/Duplicate entry/", $e->getMessage())) {
+        $nevdup = 'Van már ilyen elnevezésű beszállítód!';
+    }
 
     $validator->errors()->add('beszallito', $message);
     $validator->errors()->add('neve', $nev);
     $validator->errors()->add('cime', $cim);
+    $validator->errors()->add('telszamdup', $telszamdup);
+    $validator->errors()->add('nevdup', $nevdup);
  return redirect()->back()->withErrors($validator)->withInput($request->input());
  return redirect('/mvezeto/beszallito')->withErrors($validator);
 }
@@ -101,12 +112,15 @@ public function beszallitomodosit(Request $request, $id)
     $message = '';
     $nev = '';
     $cim = '';
-   
+    $telszamdup = '';
+    $nevdup = '';
+
     $validator = Validator::make([],[]);
 
     if (preg_match("/field is required/", $e->getMessage())) {
         $message = 'A mező kitöltése kötelező!';
     }
+
     if (preg_match("/'nev' cannot be null/", $e->getMessage())) {
         $nev = 'A mező kitöltése kötelező!';
     }
@@ -114,9 +128,20 @@ public function beszallitomodosit(Request $request, $id)
     if (preg_match("/'cim' cannot be null/", $e->getMessage())) {
         $cim = 'A mező kitöltése kötelező!';
     }
+
+    if (preg_match("/Duplicate entry/", $e->getMessage())) {
+        $telszamdup = 'Van már beszállítód ezen a telefonszámon!';
+    }
+    if (preg_match("/Duplicate entry/", $e->getMessage())) {
+        $nevdup = 'Van már ilyen elnevezésű beszállítód!';
+    }
+
+
     $validator->errors()->add('beszallito', $message);
     $validator->errors()->add('neve', $nev);
     $validator->errors()->add('cime', $cim);
+    $validator->errors()->add('telszamdup', $telszamdup);
+    $validator->errors()->add('nevdup', $nevdup);
  return redirect()->back()->withErrors($validator)->withInput($request->input());
  return redirect('/mvezeto/beszallito')->withErrors($validator);
 }

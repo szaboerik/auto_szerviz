@@ -32,7 +32,11 @@ if(!check()){
                   <input type="text" id="elnevezes" name="elnevezes" value="{{ $jelleg->elnevezes }}"><br>
                   @error('elnevezes')
                   <div class="alert alert-danger">{{ $errors->first('elnevezes') }}</div>
-                  <!-- <div class="alert alert-danger">{{ $message}}</div> --> <!--Ugyanazt az eredményt hozza mint a {{ $errors->first('oradij') }} --> 
+                 
+                  @enderror
+                  @error('elnevdup')
+                  <div class="alert alert-danger">{{ $errors->first('elnevdup') }}</div>
+                  
                   @enderror
                   <label for="oradij">Óradíj</label>
                   <input type="number" id="oradij" name="oradij" value="{{ $jelleg->oradij }}"><br>

@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Database\QueryException;
 
-use Carbon\Carbon;
 use App\Models\Munkalap;
 use App\Models\Auto;
 use Illuminate\Http\Request;
@@ -81,6 +82,7 @@ public function munkak()
 
 public function munkalaptorles($id)
 {
+    
     Munkalap::find($id)->delete();
     return redirect('/mvezeto/munkak');
 }
@@ -111,6 +113,7 @@ try{
     $ugyfel = '';
     $munkavege = '';
     $munkarsz = '';
+    
     $validator = Validator::make([],[]);
     if (preg_match("/'ugyfel_neve' cannot be null/", $e->getMessage())) {
         $ugyfel = 'A mező kitöltése kötelező!';
@@ -125,9 +128,12 @@ try{
     
     }
 
+    
+
     $validator->errors()->add('ugyfelnev', $ugyfel);
     $validator->errors()->add('vege', $munkavege);
     $validator->errors()->add('rsz', $munkarsz);
+    
 
  return redirect()->back()->withErrors($validator)->withInput($request->input());
  return redirect('/mvezeto/munkalap')->withErrors($validator);
