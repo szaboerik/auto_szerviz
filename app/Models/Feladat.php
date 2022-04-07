@@ -19,5 +19,10 @@ class Feladat extends Model
         return $this->belongsTo(Dolgozo::class, "d_kod");
     }
 
+    public function besz()
+    {
+        return $this->hasMany(Beszerzes::class, "f_szam");
+    }
+
     protected $dateFormat = 'Y-m-d';
 }

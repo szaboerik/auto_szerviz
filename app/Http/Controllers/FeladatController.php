@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Feladat;
 use App\Models\Munkalap;
 use App\Models\Dolgozo;
+use App\Models\Beszerzes;
 use App\Models\Jelleg;
 use Illuminate\Http\Request;
 
@@ -60,8 +61,14 @@ public function feladatok()
 //Feladat törlése
 public function feladattorles($id)
 {
-    Feladat::find($id)->delete();
+    
+    $besz = Feladat::findOrFail($id);
+    if($besz->besz()->count()>0){
+        return redirect()->back()->with('error', "Nem törölheted a feladatot, ameddig beszerzés van hozzárendelve!");
+    }
+    $besz->delete();
     return redirect('/mvezeto/feladatok');
+    
 }
 
 //Feladat módosítása

@@ -56,13 +56,19 @@ if(!check()){
           </td>
         </tr>
         <?php endforeach; ?>
-        @error('torles')
-                        <div class="alert alert-danger">{{ $errors->first('torles') }}</div>
-                    @enderror
+        @if (\Session::has('error'))
+    <div class="alert alert-success">
+        <ul>
+            <li>{!! \Session::get('error') !!}</li>
+        </ul>
+    </div>
+@endif
     </tbody>
     <div><a href="/mvezeto/munkalap"><button class="btn btn-sm btn-success">Új munkalap létrehozása</button></a></div>
   </table>
+  
         </article>
+        
     </main>
 </div>
 </body>

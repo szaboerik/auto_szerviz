@@ -6,6 +6,7 @@ use Illuminate\Database\QueryException;
 
 use App\Models\Munkalap;
 use App\Models\Auto;
+use App\Models\Feladat;
 use Illuminate\Http\Request;
 use App\Rules\ugyfel_telszama;
 
@@ -83,9 +84,17 @@ public function munkak()
 public function munkalaptorles($id)
 {
     
-    Munkalap::find($id)->delete();
+    $munkalap = Munkalap::findOrFail($id);
+    if($munkalap->feladat()->count()>0){
+        return redirect()->back()->with('error', "Nem törölheted a munkalapot, ameddig feladat van hozzárendelve!");
+    }
+    $munkalap->delete();
     return redirect('/mvezeto/munkak');
-}
+} 
+    
+
+
+
 
 //Munkalap módosítása
 

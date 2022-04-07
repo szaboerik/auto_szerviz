@@ -15,5 +15,11 @@ class Munkalap extends Model
         return $this->belongsTo(Auto::class, "autoId");
     }
 
+    public function feladat()
+    {
+        return $this->hasMany(Feladat::class, "m_szam");
+    }
+
+
     protected $dateFormat = 'Y-m-d';
 }
