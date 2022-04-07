@@ -28,13 +28,23 @@ public function jelleg(Request $request) {
     //$e = new Exception('Az óradíj nem lehet 5000-nél kisebb és 20000-nél nagyobb!');
     //throw new Exception('insert into `jellegs` (`jelleg`, `elnevezes`, `oradij`, `updated_at`, `created_at`)');
     }catch(QueryException  $e){
-        $message = '';
+        $oradij = '';
+        $elnev = '';
+        $oradijures = '';
         $validator = Validator::make([],[]);
         if (preg_match("/Az óradíj nem lehet 5000-nél kisebb és 20000-nél nagyobb!/", $e->getMessage())) {
-            $message = 'Az óradíj nem lehet 5000-nél kisebb és 20000-nél nagyobb!';
+            $oradij = 'Az óradíj nem lehet 5000-nél kisebb és 20000-nél nagyobb!';
+        }
+        if (preg_match("/'elnevezes' cannot be null/", $e->getMessage())) {
+            $elnev = 'A mező kitöltése kötelező!';
+        }
+        if (preg_match("/'oradij' cannot be null/", $e->getMessage())) {
+            $oradijures = 'A mező kitöltése kötelező!';
         }
         //$message = explode('>>: ', $e->getPrevious()->getMessage());
-        $validator->errors()->add('oradij', $message);
+        $validator->errors()->add('oradij', $oradij);
+        $validator->errors()->add('elnevezes', $elnev);
+        $validator->errors()->add('jelleg', $oradijures);
      //   return redirect('/mvezeto/jellegek')->withErrors($validator);
      return redirect()->back()->withErrors($validator)->withInput($request->input());
      return redirect('/mvezeto/jelleg')->withErrors($validator);
@@ -62,7 +72,7 @@ public function jellegtorles($id)
 //Jelleg módosítása
 
 public function jellegmodosit(Request $request, $id)
-{
+{ try{
     $jelleg = Jelleg::find($id);
     $jelleg -> jelleg = $request -> jelleg;
     $jelleg -> elnevezes = $request -> elnevezes;
@@ -70,7 +80,31 @@ public function jellegmodosit(Request $request, $id)
     $jelleg->save();
 
     return redirect('/mvezeto/jellegek');
+} catch(QueryException  $e){
+    $oradij = '';
+    $elnev = '';
+    $oradijures = '';
+    $validator = Validator::make([],[]);
+    if (preg_match("/Az óradíj nem lehet 5000-nél kisebb és 20000-nél nagyobb!/", $e->getMessage())) {
+        $oradij = 'Az óradíj nem lehet 5000-nél kisebb és 20000-nél nagyobb!';
+    }
+    if (preg_match("/'elnevezes' cannot be null/", $e->getMessage())) {
+        $elnev = 'A mező kitöltése kötelező!';
+    }
+    if (preg_match("/'oradij' cannot be null/", $e->getMessage())) {
+        $oradijures = 'A mező kitöltése kötelező!';
+    }
+    //$message = explode('>>: ', $e->getPrevious()->getMessage());
+    $validator->errors()->add('oradij', $oradij);
+    $validator->errors()->add('elnevezes', $elnev);
+    $validator->errors()->add('jelleg', $oradijures);
+ //   return redirect('/mvezeto/jellegek')->withErrors($validator);
+ return redirect()->back()->withErrors($validator)->withInput($request->input());
+ return redirect('/mvezeto/jelleg')->withErrors($validator);
 }
+// return redirect('/mvezeto/jellegek');
+}
+
 public function jellegszerkesztes($id)
 {
     $jelleg = Jelleg::find($id);

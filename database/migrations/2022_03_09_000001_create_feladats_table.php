@@ -14,7 +14,7 @@ class CreateFeladatsTable extends Migration
     public function up()
     {
         Schema::create('feladats', function (Blueprint $table) {
-            $table->id('f_szam');
+            $table->id('f_szam')->from(1000);
             $table->unsignedBigInteger('m_szam');
             $table->unsignedBigInteger('jelleg');
             $table->unsignedBigInteger('szerelo');

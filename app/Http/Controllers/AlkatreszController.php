@@ -48,13 +48,27 @@ public function alkatresztorles($id)
 //Alkatrész módosítása
 public function alkatreszmodosit(Request $request, $id)
 {
+    try{
     $alkatresz = Alkatresz::find($id);
     $alkatresz -> alk_azon = $request -> alk_azon;
     $alkatresz -> alk_neve = $request -> alk_neve;
     $alkatresz->save();
 
     return redirect('/mvezeto/alkatreszek');
+} catch (QueryException  $e){
+    $message = '';
+    $validator = Validator::make([],[]);
+    if (preg_match("/'alk_neve' cannot be null/", $e->getMessage())) {
+        $message = 'A mező kitöltése kötelező!';
+    }
+    
+    $validator->errors()->add('alkatresz', $message);
+ 
+ return redirect()->back()->withErrors($validator)->withInput($request->input());
+ return redirect('/mvezeto/alkatresz')->withErrors($validator);
 }
+}
+
 public function alkatreszszerkesztes($id)
 {
     $alkatresz = Alkatresz::find($id);

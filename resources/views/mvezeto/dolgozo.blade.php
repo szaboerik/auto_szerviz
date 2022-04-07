@@ -42,6 +42,10 @@ if(!check()){
                   <option value="s">szerelő</option>
                   <option value="v">vezető</option>
                     </select>
+                    @error('vezeto')
+                  <div class="alert alert-danger">{{ $errors->first('vezeto') }}</div>
+                  
+                  @enderror
                   <button type="submit" class="btn btn-success">Mentés</button>
                   <a href="/mvezeto/dolgozok" class="button">Mégse</a>
               </form> 

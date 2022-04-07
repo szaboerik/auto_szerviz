@@ -46,6 +46,12 @@ if(!check()){
                     @enderror
                   <label for="evjarat">Évjárat</label>
                   <input type="number" id="evjarat" value="{{ old('evjarat') }}" name="evjarat"><br>
+                  @error('evjarat')
+                  <div class="alert alert-danger">{{ $errors->first('evjarat') }}</div>
+                  @enderror
+                  @error('evjaratcheck')
+                  <div class="alert alert-danger">{{ $errors->first('evjaratcheck') }}</div>
+                  @enderror
                   <button type="submit" class="btn btn-success">Mentés</button>
                   <a href="/mvezeto/autok" class="button">Mégse</a>
               </form> 

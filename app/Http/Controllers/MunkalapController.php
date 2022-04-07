@@ -24,6 +24,7 @@ public function munkalap(Request $request) {
     $rules = [
         'ugyfel_telszama' => ['required', new ugyfel_telszama]
     ];
+    try{
     $request->validate($rules);
 
     $munkalap = new Munkalap();
@@ -37,6 +38,32 @@ public function munkalap(Request $request) {
     $munkalap->save();
 
     return redirect('/mvezeto/munkak');
+}catch(QueryException  $e){
+    $ugyfel = '';
+    $munkavege = '';
+    $munkarsz = '';
+    $validator = Validator::make([],[]);
+    if (preg_match("/'ugyfel_neve' cannot be null/", $e->getMessage())) {
+        $ugyfel = 'A mező kitöltése kötelező!';
+    
+    }
+    if (preg_match("/Nem lehet a mai napon kívül más a munka vége dátum!/", $e->getMessage())) {
+        $munkavege = 'Nem lehet a mai napon kívül más a munka vége dátum!';
+    
+    }
+    if (preg_match("/Egy nap egy autó csak egy munkalapra vihető fel!/", $e->getMessage())) {
+        $munkarsz = 'Egy nap egy autó csak egy munkalapra vihető fel!';
+    
+    }
+
+    $validator->errors()->add('ugyfelnev', $ugyfel);
+    $validator->errors()->add('vege', $munkavege);
+    $validator->errors()->add('rsz', $munkarsz);
+
+ return redirect()->back()->withErrors($validator)->withInput($request->input());
+ return redirect('/mvezeto/munkalap')->withErrors($validator);
+}
+
 }
 
 //Munkalapok kilistázása
@@ -66,6 +93,7 @@ public function munkalapmodosit(Request $request, $id)
     $rules = [
         'ugyfel_telszama' => ['required', new ugyfel_telszama]
     ];
+try{
     $request->validate($rules);
 
     $munkalap = Munkalap::find($id);
@@ -79,7 +107,34 @@ public function munkalapmodosit(Request $request, $id)
     $munkalap->save();
 
     return redirect('/mvezeto/munkak');
+}catch(QueryException  $e){
+    $ugyfel = '';
+    $munkavege = '';
+    $munkarsz = '';
+    $validator = Validator::make([],[]);
+    if (preg_match("/'ugyfel_neve' cannot be null/", $e->getMessage())) {
+        $ugyfel = 'A mező kitöltése kötelező!';
+    
+    }
+    if (preg_match("/Nem lehet a mai napon kívül más a munka vége dátum!/", $e->getMessage())) {
+        $munkavege = 'Nem lehet a mai napon kívül más a munka vége dátum!';
+    
+    }
+    if (preg_match("/Egy nap egy autó csak egy munkalapra vihető fel!/", $e->getMessage())) {
+        $munkarsz = 'Egy nap egy autó csak egy munkalapra vihető fel!';
+    
+    }
+
+    $validator->errors()->add('ugyfelnev', $ugyfel);
+    $validator->errors()->add('vege', $munkavege);
+    $validator->errors()->add('rsz', $munkarsz);
+
+ return redirect()->back()->withErrors($validator)->withInput($request->input());
+ return redirect('/mvezeto/munkalap')->withErrors($validator);
 }
+
+}
+
 public function munkalapszerkesztes($id)
 {
     $autos = Auto::all();

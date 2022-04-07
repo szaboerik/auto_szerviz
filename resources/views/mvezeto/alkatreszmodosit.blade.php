@@ -18,14 +18,11 @@ if(!check()){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
                     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/stilus.css') }}" >
-    <title>Adatfelvitel</title>
+    <title>Adatszerkesztés</title>
 </head>
 <body>
     <main>
-    <div class="grid-container">
-    @include('layouts.oldalmenu')
-        <article class="item3">
-  <div style="width: 80%; margin: auto;">
+    <h2>Alkatrész módosítása</h2>
     <form action="/api/alkatresz/{{ $alkatresz->alk_azon }}" method="POST">
       @csrf
       @method('put')
@@ -33,8 +30,12 @@ if(!check()){
         <input type="number" id="alk_azon" name="alk_azon" value="{{ $alkatresz->alk_azon }}" readonly><br>
         <label for="alk_neve">Alkatrész neve</label>
         <input type="text" id="alk_neve" name="alk_neve" value="{{ $alkatresz->alk_neve }}"><br>
+        @error('alkatresz')
+                  <div class="alert alert-danger">{{ $errors->first('alkatresz') }}</div>
+                  <!-- <div class="alert alert-danger">{{ $message}}</div> --> <!--Ugyanazt az eredményt hozza mint a {{ $errors->first('oradij') }} --> 
+                  @enderror
       <button type="submit" class="btn btn-success">Mentés</button>
-      <a href="{{url()->previous()}}" class="button">Mégse</a>
+      <a href="/mvezeto/alkatreszek" class="button">Mégse</a>
     </form>
   </div>
 </article>

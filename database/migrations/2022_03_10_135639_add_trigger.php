@@ -13,7 +13,7 @@ class AddTrigger extends Migration
      */
     public function up()
     {
-        //1. Az autó évjárata nem lehet 1990nél régebbi, és a mostani évnél nagyobb.
+        //1. Az autó évjárata nem lehet 1990nél régebbi, és a mostani évnél nagyobb. MEGOLDVA
 
         DB::unprepared('CREATE TRIGGER evjarat_check
         BEFORE INSERT ON autos
@@ -34,16 +34,8 @@ class AddTrigger extends Migration
         END');
 
 
-        //2. A munka kezdete dátum nem lehet nagyobb a munka vége dátumnál.
-
-        DB::unprepared('CREATE TRIGGER munka_kezd_vege_check
-        BEFORE INSERT ON munkalaps
-        FOR EACH ROW
-        BEGIN
-        IF NEW.munka_kezdete > NEW.munka_vege THEN
-        SIGNAL SQLSTATE "45000" SET MESSAGE_TEXT = "Nem megfelelő dátum!";
-        END IF;
-        END');
+        //2. A munka vége nem lehet más a mai napon kívül. MEGOLDVA
+       
 
         DB::unprepared('CREATE TRIGGER munka_vege_megad_check
         AFTER UPDATE ON munkalaps
@@ -117,7 +109,7 @@ class AddTrigger extends Migration
         END IF;
         END');
 
-        //6. Az óradíjnak 5000 és 20000 között kell lennie.
+        //6. Az óradíjnak 5000 és 20000 között kell lennie. MEGOLDVA
 
 
         DB::unprepared('CREATE TRIGGER oradij_check
@@ -158,9 +150,9 @@ class AddTrigger extends Migration
 
         
 
-        //8. A dolgozók képessége vagy vezető vagy szerelő lehet.
+        //8. A dolgozók képessége vagy vezető vagy szerelő lehet. MEGOLDVA
 
-        DB::unprepared('CREATE TRIGGER dolgozo_kepesseg_check
+        DB::unprepared('CREATE TRIGGER dolgozo_kepesseg_check 
         BEFORE INSERT ON dolgozos
         FOR EACH ROW
         BEGIN
@@ -178,7 +170,7 @@ class AddTrigger extends Migration
         END IF;
         END');
 
-        //9. A munka kezdete a munkalap létrehozásánál aktuális dátum.
+        //9. A munka kezdete a munkalap létrehozásánál aktuális dátum. MEGOLDVA
 
         DB::unprepared('CREATE TRIGGER munka_kezdete_check
         BEFORE INSERT ON munkalaps
@@ -230,7 +222,7 @@ class AddTrigger extends Migration
         END IF;
         END');
 
-        //12. Csak egy vezető lehet a szervizben.
+        //12. Csak egy vezető lehet a szervizben.MEGOLDVA
 
         DB::unprepared('CREATE TRIGGER dolgozo_vezeto_check
         AFTER INSERT ON dolgozos
@@ -299,7 +291,7 @@ class AddTrigger extends Migration
         END');
 
 
-        //15. Egy nap egy autó csak egy munkalaphoz csatolható.
+        //15. Egy nap egy autó csak egy munkalaphoz csatolható. MEGOLDVA
 
         DB::unprepared('CREATE TRIGGER munkalap_rendszam_check
         AFTER INSERT ON munkalaps
@@ -429,7 +421,7 @@ class AddTrigger extends Migration
     {
         DB::unprepared('DROP TRIGGER `evjarat_check`');
         DB::unprepared('DROP TRIGGER `evjarat_update_check`');
-        DB::unprepared('DROP TRIGGER `munka_kezd_vege_check`');
+        
         DB::unprepared('DROP TRIGGER `munka_vege_megad_check`');
         DB::unprepared('DROP TRIGGER `egysegar_check`');
         DB::unprepared('DROP TRIGGER `egysegar_update_check`');

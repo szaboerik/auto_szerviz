@@ -58,7 +58,7 @@ if(!check()){
                 <input type="number" id="besz_osszege" name="besz_osszege" readonly><br>
                 
                 <button type="submit" class="btn btn-success">Mentés</button>
-                <a href="{{url()->previous()}}" class="button">Mégse</a>
+                <a href="/mvezeto/beszerzesek" class="button">Mégse</a>
               </form> 
         </article>
     </main>

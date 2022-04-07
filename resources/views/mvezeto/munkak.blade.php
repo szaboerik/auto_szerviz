@@ -46,7 +46,7 @@ if(!check()){
           <td>{{ $munkalap->ugyfel_telszama }}</td>
           <td>{{ $munkalap->auto->rendszam }}</td>
           <td>{{ $munkalap->munka_kezdete }}</td>
-          <td id="munka_vege">{{ $munkalap->munka_vege }}</td>
+          <td>{{ $munkalap->munka_vege }}</td>
           <td>{{ $munkalap->fizetendo }}</td>
           <td style="display: flex;">
             <a href="/mvezeto/munkamodosit/{{ $munkalap->m_szam }}"><button class="btn btn-sm btn-info">Szerkesztés</button></a>

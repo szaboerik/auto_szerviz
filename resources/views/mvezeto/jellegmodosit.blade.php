@@ -18,14 +18,11 @@ if(!check()){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
                     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/stilus.css') }}" >
-    <title>Adatfelvitel</title>
+    <title>Adatszerkesztés</title>
 </head>
 <body>
     <main>
-    <div class="grid-container">
-    @include('layouts.oldalmenu')
-        <article class="item3">
-            <div style="width: 80%; margin: auto;">
+    <h2>Jelleg módosítása</h2>
             <form action="/api/jelleg/{{ $jelleg->jelleg }}" method="POST">
                 @csrf
                 @method('put')
@@ -33,10 +30,20 @@ if(!check()){
                   <input type="text" id="jelleg" name="jelleg" value="{{ $jelleg->jelleg }}" readonly><br>
                   <label for="elnevezes">Elnevezés</label>
                   <input type="text" id="elnevezes" name="elnevezes" value="{{ $jelleg->elnevezes }}"><br>
+                  @error('elnevezes')
+                  <div class="alert alert-danger">{{ $errors->first('elnevezes') }}</div>
+                  <!-- <div class="alert alert-danger">{{ $message}}</div> --> <!--Ugyanazt az eredményt hozza mint a {{ $errors->first('oradij') }} --> 
+                  @enderror
                   <label for="oradij">Óradíj</label>
                   <input type="number" id="oradij" name="oradij" value="{{ $jelleg->oradij }}"><br>
+                  @error('oradij')
+                  <div class="alert alert-danger">{{ $errors->first('oradij') }}</div>
+                  @enderror
+                  @error('jelleg')
+                  <div class="alert alert-danger">{{ $errors->first('jelleg') }}</div>
+                    @enderror
                   <button type="submit" class="btn btn-success">Mentés</button>
-                  <a href="{{url()->previous()}}" class="button">Mégse</a>
+                  <a href="/mvezeto/jellegek" class="button">Mégse</a>
               </form> 
               </div>
         </article>

@@ -22,6 +22,8 @@ public function beszallito(Request $request) {
         'elerhetoseg' => ['required', new elerhetoseg],
         'irsz' => ['required', new irszam]
     ];
+
+    try{
     $request->validate($rules);
 
     $beszallito = new Beszallito();
@@ -31,8 +33,31 @@ public function beszallito(Request $request) {
     $beszallito -> cim = $request -> cim;
     $beszallito -> elerhetoseg = $request -> elerhetoseg;
     $beszallito->save();
-
     return redirect('/mvezeto/beszallitok');
+}catch(QueryException  $e){
+    $message = '';
+    $nev = '';
+    $cim = '';
+    $validator = Validator::make([],[]);
+    
+    if (preg_match("/field is required/", $e->getMessage())) {
+        $message = 'A mező kitöltése kötelező!';
+    }
+    
+    if (preg_match("/'nev' cannot be null/", $e->getMessage())) {
+        $nev = 'A mező kitöltése kötelező!';
+    }
+    
+    if (preg_match("/'cim' cannot be null/", $e->getMessage())) {
+        $cim = 'A mező kitöltése kötelező!';
+    }
+
+    $validator->errors()->add('beszallito', $message);
+    $validator->errors()->add('neve', $nev);
+    $validator->errors()->add('cime', $cim);
+ return redirect()->back()->withErrors($validator)->withInput($request->input());
+ return redirect('/mvezeto/beszallito')->withErrors($validator);
+}
 }
 
 //Beszállítók kilistázása
@@ -60,6 +85,7 @@ public function beszallitomodosit(Request $request, $id)
         'elerhetoseg' => ['required', new elerhetoseg],
         'irsz' => ['required', new irszam]
     ];
+    try{
     $request->validate($rules);
 
     $beszallito = Beszallito::find($id);
@@ -71,6 +97,29 @@ public function beszallitomodosit(Request $request, $id)
     $beszallito->save();
 
     return redirect('/mvezeto/beszallitok');
+}catch(QueryException  $e){
+    $message = '';
+    $nev = '';
+    $cim = '';
+   
+    $validator = Validator::make([],[]);
+
+    if (preg_match("/field is required/", $e->getMessage())) {
+        $message = 'A mező kitöltése kötelező!';
+    }
+    if (preg_match("/'nev' cannot be null/", $e->getMessage())) {
+        $nev = 'A mező kitöltése kötelező!';
+    }
+    
+    if (preg_match("/'cim' cannot be null/", $e->getMessage())) {
+        $cim = 'A mező kitöltése kötelező!';
+    }
+    $validator->errors()->add('beszallito', $message);
+    $validator->errors()->add('neve', $nev);
+    $validator->errors()->add('cime', $cim);
+ return redirect()->back()->withErrors($validator)->withInput($request->input());
+ return redirect('/mvezeto/beszallito')->withErrors($validator);
+}
 }
 
 public function beszallitoszerkesztes($id)

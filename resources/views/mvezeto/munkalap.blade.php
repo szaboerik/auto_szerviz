@@ -31,7 +31,10 @@ if(!check()){
                 <label for="m_szam">Munkaszám</label>
                 <input type="number" id="m_szam" name="m_szam" readonly><br>
                 <label for="ugyfel_neve">Ügyfél neve</label>
-                <input type="text" id="ugyfel_neve" name="ugyfel_neve"><br>
+                <input type="text" id="ugyfel_neve" name="ugyfel_neve" value="{{ old('ugyfel_neve') }}"><br>
+                @error('ugyfelnev')
+                        <div class="alert alert-danger">{{ $errors->first('ugyfelnev') }}</div>
+                    @enderror
                 <label for="ugyfel_telszama">Ügyfél telefonszáma</label>
                 <input type="text" id="ugyfel_telszama" name="ugyfel_telszama" value="{{ old('ugyfel_telszama') }}" placeholder="+36701234567"><br>
                 @error('ugyfel_telszama')
@@ -43,14 +46,20 @@ if(!check()){
                 <option value="{{ $auto->id }}">{{ $auto->rendszam }}</option>
                 @endforeach
                 </select><br>
+                @error('rsz')
+                        <div class="alert alert-danger">{{ $errors->first('rsz') }}</div>
+                    @enderror
                 <label for="munka_kezdete">Munka kezdete</label>
                 <input type="date" id="munka_kezdete" name="munka_kezdete" readonly><br>
                 <label for="munka_vege">Munka vége</label>
                 <input type="date" id="munka_vege" name="munka_vege" readonly><br>
+                @error('vege')
+                        <div class="alert alert-danger">{{ $errors->first('vege') }}</div>
+                    @enderror
                 <label for="fizetendo">Fizetendő összeg</label>
                 <input type="number" id="fizetendo" name="fizetendo" readonly><br>
                 <button type="submit" class="btn btn-success">Mentés</button>
-                <a href="{{url()->previous()}}" class="button">Mégse</a>
+                <a href="/mvezeto/munkak" class="button">Mégse</a>
               </form> 
         </article>
     </main>

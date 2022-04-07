@@ -24,14 +24,20 @@ public function dolgozo(Request $request) {
     $dolgozo->save();
     return redirect('/mvezeto/dolgozok');
 }catch(QueryException  $e){
-    $message = '';
+    $dolgnev = '';
+    $vezeto = '';
     $validator = Validator::make([],[]);
     if (preg_match("/'dolg_nev' cannot be null/", $e->getMessage())) {
-        $message = 'A mező kitöltése kötelező!';
+        $dolgnev = 'A mező kitöltése kötelező!';
+    
+    }
+    if (preg_match("/Csak egy vezető lehet!/", $e->getMessage())) {
+        $vezeto = 'Csak egy vezető lehet!';
     
     }
 
-    $validator->errors()->add('dolgozo', $message);
+    $validator->errors()->add('dolgozo', $dolgnev);
+    $validator->errors()->add('vezeto', $vezeto);
 
  return redirect()->back()->withErrors($validator)->withInput($request->input());
  return redirect('/mvezeto/dolgozo')->withErrors($validator);
@@ -59,6 +65,7 @@ public function dolgozotorles($id)
 
 public function dolgozomodosit(Request $request, $id)
 {
+    try{
     $dolgozo = Dolgozo::find($id);
     $dolgozo -> d_kod = $request -> d_kod;
     $dolgozo -> dolg_nev = $request -> dolg_nev;
@@ -66,6 +73,26 @@ public function dolgozomodosit(Request $request, $id)
     $dolgozo->save();
 
     return redirect('/mvezeto/dolgozok');
+} catch(QueryException  $e){
+    $dolgnev = '';
+    $vezeto = '';
+    $validator = Validator::make([],[]);
+    if (preg_match("/'dolg_nev' cannot be null/", $e->getMessage())) {
+        $dolgnev = 'A mező kitöltése kötelező!';
+    
+    }
+    if (preg_match("/Csak egy vezető lehet!/", $e->getMessage())) {
+        $vezeto = 'Csak egy vezető lehet!';
+    
+    }
+
+    $validator->errors()->add('dolgozo', $dolgnev);
+    $validator->errors()->add('vezeto', $vezeto);
+
+ return redirect()->back()->withErrors($validator)->withInput($request->input());
+ return redirect('/mvezeto/dolgozo')->withErrors($validator);
+}
+
 }
 
 public function dolgozoszerkesztes($id)

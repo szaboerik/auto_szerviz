@@ -31,13 +31,21 @@ if(!check()){
                   <label for="jelleg">Jelleg</label>
                   <input type="text" id="jelleg" name="jelleg" readonly><br>
                   <label for="elnevezes">Elnevezés</label>
-                  <input type="text" id="elnevezes" name="elnevezes" value={{ old('elnevezes') }}><br>
+                  <input type="text" id="elnevezes" name="elnevezes" value="{{ old('elnevezes') }}"><br>
+                  @error('elnevezes')
+                  <div class="alert alert-danger">{{ $errors->first('elnevezes') }}</div>
+                  <!-- <div class="alert alert-danger">{{ $message}}</div> --> <!--Ugyanazt az eredményt hozza mint a {{ $errors->first('oradij') }} --> 
+                  @enderror
                   <label for="oradij">Óradíj</label>
+                  <input type="number" id="oradij" name="oradij" value="{{ old('oradij') }}"><br>
                   @error('oradij')
                   <div class="alert alert-danger">{{ $errors->first('oradij') }}</div>
                   <!-- <div class="alert alert-danger">{{ $message}}</div> --> <!--Ugyanazt az eredményt hozza mint a {{ $errors->first('oradij') }} --> 
                   @enderror
-                  <input type="number" id="oradij" name="oradij" value={{ old('oradij') }}><br>
+                  @error('jelleg')
+                  <div class="alert alert-danger">{{ $errors->first('jelleg') }}</div>
+                  <!-- <div class="alert alert-danger">{{ $message}}</div> --> <!--Ugyanazt az eredményt hozza mint a {{ $errors->first('oradij') }} --> 
+                  @enderror
                   <button type="submit" class="btn btn-success">Mentés</button>
 
                   <a href="/mvezeto/jellegek"  type=button class="button">Mégse</a>

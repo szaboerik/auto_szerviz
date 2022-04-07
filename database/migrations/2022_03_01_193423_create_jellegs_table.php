@@ -14,7 +14,7 @@ class CreateJellegsTable extends Migration
     public function up()
     {
         Schema::create('jellegs', function (Blueprint $table) {
-            $table->id('jelleg');
+            $table->id('jelleg')->from(100);
             $table->string('elnevezes', 50)->unique();
             $table->integer('oradij');
             $table->timestamps();

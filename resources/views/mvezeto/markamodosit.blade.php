@@ -18,21 +18,18 @@ if(!check()){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
                     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/stilus.css') }}" >
-    <title>Adatfelvitel</title>
+    <title>Adatszerkesztés</title>
 </head>
 <body>
     <main>
-    <div class="grid-container">
-    @include('layouts.oldalmenu')
-        <article class="item3">
-  <div style="width: 80%; margin: auto;">
+    <h2>Márka módosítása</h2>
     <form action="/api/marka/{{ $marka->id }}" method="POST">
       @csrf
       @method('put')
         <label for="marka">Márka</label>
         <input type="text" id="marka" name="marka" value="{{ $marka->marka }}"><br>
       <button type="submit" class="btn btn-success">Mentés</button>
-      <a href="{{url()->previous()}}" class="button">Mégse</a>
+      <a href="/mvezeto/markak" class="button">Mégse</a>
     </form>
   </div>
 </article>

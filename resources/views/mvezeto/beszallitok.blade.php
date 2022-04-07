@@ -32,7 +32,7 @@ if(!check()){
         <th>Beszállító kód</th>
         <th>Neve</th>
         <th>Irányítószám</th>
-        <th>Lakcím</th>
+        <th>Címe</th>
         <th>Elérhetősége</th>
       </tr>
     </thead>

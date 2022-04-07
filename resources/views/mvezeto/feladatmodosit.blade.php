@@ -18,14 +18,11 @@ if(!check()){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
                     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/stilus.css') }}" >
-    <title>Adatfelvitel</title>
+    <title>Adatszerkesztés</title>
 </head>
 <body>
     <main>
-    <div class="grid-container">
-    @include('layouts.oldalmenu')
-        <article class="item3">
-  <div style="width: 80%; margin: auto;">
+    <h2>Feladat módosítása</h2>
     <form action="/api/feladat/{{ $feladat->f_szam }}" method="POST">
       @csrf
       @method('put')
@@ -34,7 +31,7 @@ if(!check()){
         <label for="m_szam">Munkaszám</label>
                 <select name="m_szam">
                 @foreach ($munkalaps as $munkalap)
-                <option value="{{ $munkalap->m_szam }}" {{$munkalap->m_szam == $feladat->m_szam ? 'selected' : ''}}>{{ $munkalap->m_szam }}</option>
+                <option value="{{ $munkalap->m_szam }}" {{$munkalap->m_szam == $feladat->m_szam ? 'selected' : 'disabled'}}>{{ $munkalap->m_szam }}</option>
                 @endforeach
                 </select><br>
                 <label for="jelleg">Jelleg</label>
@@ -56,7 +53,7 @@ if(!check()){
                   <label for="besz_osszege">Beszerzés összege</label>
                   <input type="number" id="besz_osszege" name="besz_osszege" value="{{ $feladat->besz_osszege }}"readonly><br>
       <button type="submit" class="btn btn-success">Mentés</button>
-      <a href="{{url()->previous()}}" class="button">Mégse</a>
+      <a href="/mvezeto/feladatok" class="button">Mégse</a>
     </form>
   </div>
 </article>

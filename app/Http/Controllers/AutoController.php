@@ -35,16 +35,26 @@ public function auto(Request $request) {
     $auto->save();
     return redirect('/mvezeto/autok');
 }catch(QueryException  $e){
-    $message = '';
+   
+    $evjaratures = '';
+    $rosszevjarat = '';
     $validator = Validator::make([],[]);
-    if (preg_match("/field is required/", $e->getMessage())) {
-        $message = 'A mező kitöltése kötelező!';
+   
+    
+    if (preg_match("/'evjarat' cannot be null/", $e->getMessage())) {
+        $evjaratures = 'A mező kitöltése kötelező!';
     }
-    $validator->errors()->add('auto', $message);
+
+    if (preg_match("/Nem megfelelő évjárat!/", $e->getMessage())) {
+        $rosszevjarat = 'Nem megfelelő évjárat! Nem lehet 1990-nél kisebb, illetve a mostani évnél nagyobb!';
+    }
+
+    
+    $validator->errors()->add('evjarat', $evjaratures);
+    $validator->errors()->add('evjaratcheck', $rosszevjarat);
  return redirect()->back()->withErrors($validator)->withInput($request->input());
  return redirect('/mvezeto/auto')->withErrors($validator);
 }
-// return redirect('/mvezeto/jellegek');
 }
 
 //Autók kilistázása
@@ -74,6 +84,7 @@ public function automodosit(Request $request, $id)
         'rendszam' => ['required', new rendszam],
         'forgalmi' => ['required', new forgalmi],
     ];
+    try{
     $request->validate($rules);
 
 
@@ -85,6 +96,28 @@ public function automodosit(Request $request, $id)
     $auto->save();
 
     return redirect('/mvezeto/autok');
+} catch (QueryException  $e){
+    
+    $evjaratures = '';
+    $rosszevjarat = '';
+    $validator = Validator::make([],[]);
+    
+    
+    if (preg_match("/'evjarat' cannot be null/", $e->getMessage())) {
+        $evjaratures = 'A mező kitöltése kötelező!';
+    }
+
+    if (preg_match("/Nem megfelelő évjárat!/", $e->getMessage())) {
+        $rosszevjarat = 'Nem megfelelő évjárat! Nem lehet 1990-nél kisebb, illetve a mostani évnél nagyobb!';
+    }
+
+    
+    $validator->errors()->add('evjarat', $evjaratures);
+    $validator->errors()->add('evjaratcheck', $rosszevjarat);
+ return redirect()->back()->withErrors($validator)->withInput($request->input());
+ return redirect('/mvezeto/auto')->withErrors($validator);
+}
+
 }
 
 public function autoszerkesztes($id)
