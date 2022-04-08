@@ -36,6 +36,9 @@ if(!check()){
                 <option value="{{ $munkalap->m_szam }}">{{ $munkalap->m_szam }}</option>
                 @endforeach
                 </select><br>
+                @error('befejezettmunkalap')
+                  <div class="alert alert-danger">{{ $errors->first('befejezettmunkalap') }}</div> 
+                  @enderror
                 <label for="jelleg">Jelleg</label> 
                 <select name="jelleg">
                 @foreach ($jellegs as $jelleg)
@@ -64,6 +67,10 @@ if(!check()){
                   @enderror
                   @error('szerelominmunkaora')
                   <div class="alert alert-danger">{{ $errors->first('szerelominmunkaora') }}</div>
+                  <!-- <div class="alert alert-danger">{{ $message}}</div> --> <!--Ugyanazt az eredményt hozza mint a {{ $errors->first('oradij') }} --> 
+                  @enderror
+                  @error('feladatmaxoraszam')
+                  <div class="alert alert-danger">{{ $errors->first('feladatmaxoraszam') }}</div>
                   <!-- <div class="alert alert-danger">{{ $message}}</div> --> <!--Ugyanazt az eredményt hozza mint a {{ $errors->first('oradij') }} --> 
                   @enderror
                   <label for="f_osszege">Feladat összege</label>

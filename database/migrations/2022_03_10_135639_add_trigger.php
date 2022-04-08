@@ -246,7 +246,7 @@ class AddTrigger extends Migration
         END');
 
         //13. Egy munkalaphoz egy nap maximum 8 órányi feladatot lehet csatolni.
-
+        //hibaüzenetOK
         DB::unprepared('CREATE TRIGGER munkalap_munkaora_check
         AFTER INSERT ON feladats
         FOR EACH ROW
@@ -269,7 +269,7 @@ class AddTrigger extends Migration
 
 
         //14. A már befejezett munkalaphoz nem rendelhető újabb feladat.
-
+        //HibaüzenetOK
         DB::unprepared('CREATE TRIGGER munkalap_befejezett_check
         BEFORE INSERT ON feladats
         FOR EACH ROW
@@ -312,7 +312,7 @@ class AddTrigger extends Migration
         END');
 
         //15. Egy munkalaphoz csak egyféle jellegű feladat csatolható.
-
+        
         DB::unprepared('CREATE TRIGGER feladat_jelleg_check
         AFTER INSERT ON feladats
         FOR EACH ROW
@@ -336,7 +336,7 @@ class AddTrigger extends Migration
 
         
         //16. Feladat összege = feladat óraszáma*hozzá kapcs jelleg óradíja.
-
+        //nemkellhibaüzenet
         DB::unprepared('CREATE TRIGGER feladat_osszege_check
         BEFORE INSERT ON feladats
         FOR EACH ROW
@@ -354,7 +354,7 @@ class AddTrigger extends Migration
         END');
 
         //17. Fizetendő mező számítása.
-        
+        //nemkellhibaüzenet
         DB::unprepared('CREATE TRIGGER fizetendo_munkalap_check
         AFTER INSERT ON feladats
         FOR EACH ROW
@@ -382,7 +382,7 @@ class AddTrigger extends Migration
 
 
         //18. Ha van beszerzés, a hozzá kapcs. feladat besz_összegéhez átadva a beszerzés besz. összege.
-
+        //nemkellhibaüzenet
         DB::unprepared('CREATE TRIGGER feladat_beszerzes_osszege_check
         AFTER INSERT ON beszerzes
         FOR EACH ROW

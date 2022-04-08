@@ -34,6 +34,9 @@ if(!check()){
                 <option value="{{ $munkalap->m_szam }}" {{$munkalap->m_szam == $feladat->m_szam ? 'selected' : 'disabled'}}>{{ $munkalap->m_szam }}</option>
                 @endforeach
                 </select><br>
+                @error('befejezettmunkalap')
+                  <div class="alert alert-danger">{{ $errors->first('befejezettmunkalap') }}</div> 
+                  @enderror
                 <label for="jelleg">Jelleg</label>
                 <select name="jelleg">
                 @foreach ($jellegs as $jelleg)
@@ -48,6 +51,22 @@ if(!check()){
                 </select><br>
                 <label for="munkaora">Munkaóra</label>
                 <input type="number" id="munkaora" name="munkaora" value="{{ $feladat->munkaora }}"><br>
+                @error('munkaoranotnull')
+                  <div class="alert alert-danger">{{ $errors->first('munkaoranotnull') }}</div>
+                  <!-- <div class="alert alert-danger">{{ $message}}</div> --> <!--Ugyanazt az eredményt hozza mint a {{ $errors->first('oradij') }} --> 
+                  @enderror
+                  @error('szerelomaxmunkora')
+                  <div class="alert alert-danger">{{ $errors->first('szerelomaxmunkora') }}</div>
+                  <!-- <div class="alert alert-danger">{{ $message}}</div> --> <!--Ugyanazt az eredményt hozza mint a {{ $errors->first('oradij') }} --> 
+                  @enderror
+                  @error('szerelominmunkaora')
+                  <div class="alert alert-danger">{{ $errors->first('szerelominmunkaora') }}</div>
+                  <!-- <div class="alert alert-danger">{{ $message}}</div> --> <!--Ugyanazt az eredményt hozza mint a {{ $errors->first('oradij') }} --> 
+                  @enderror
+                  @error('feladatmaxoraszam')
+                  <div class="alert alert-danger">{{ $errors->first('feladatmaxoraszam') }}</div>
+                  <!-- <div class="alert alert-danger">{{ $message}}</div> --> <!--Ugyanazt az eredményt hozza mint a {{ $errors->first('oradij') }} --> 
+                  @enderror
                 <label for="f_osszege">Feladat összege</label>
                   <input type="number" id="f_osszege" name="f_osszege" value="{{ $feladat->f_osszege }}"readonly><br>
                   <label for="besz_osszege">Beszerzés összege</label>

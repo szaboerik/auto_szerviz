@@ -51,7 +51,8 @@ public function feladat(Request $request) {
     $munkaoranotnull = '';
     $szerelomaxmunkaora ='';
     $szerelominmunkaora ='';
-  
+    $feladatmaxoraszam = '';
+    $befejezettmunkalap = '';
 
     $validator = Validator::make([],[]);
 
@@ -68,11 +69,19 @@ public function feladat(Request $request) {
     if (preg_match("/Nem lehet 0 vagy kisebb a munkaóra!/", $e->getMessage())) {
         $szerelominmunkaora = 'Nem lehet 0 vagy kisebb a munkaóra!';
     }
+    if (preg_match("/Egy munkalaphoz tartozó feladatok óraszáma nem lehet egy nap 8 óránál több!/", $e->getMessage())) {
+        $feladatmaxoraszam = 'Egy munkalaphoz tartozó feladatok óraszáma nem lehet egy nap 8 óránál több!';
+    }
+    if (preg_match("/Befejezett munkalaphoz nem rendelhető feladat!/", $e->getMessage())) {
+        $befejezettmunkalap= 'Befejezett munkalaphoz nem rendelhető feladat!';
+    }
 
     $validator->errors()->add('szerelo', $csakszerelo);
     $validator->errors()->add('munkaoranotnull', $munkaoranotnull);
     $validator->errors()->add('szerelomaxmunkora', $szerelomaxmunkaora);
     $validator->errors()->add('szerelominmunkaora', $szerelominmunkaora);
+    $validator->errors()->add('feladatmaxoraszam', $feladatmaxoraszam);
+    $validator->errors()->add('befejezettmunkalap', $befejezettmunkalap);
 
     return redirect()->back()->withErrors($validator)->withInput($request->input());
     return redirect('/mvezeto/feladat')->withErrors($validator);
@@ -106,7 +115,8 @@ public function feladattorles($id)
 //Feladat módosítása
 
 public function feladatmodosit(Request $request, $id)
-{
+{   
+    try{
     $feladat = Feladat::find($id);
     $feladat -> f_szam = $request -> f_szam;
     $feladat -> m_szam = $request -> m_szam;
@@ -116,9 +126,48 @@ public function feladatmodosit(Request $request, $id)
     $feladat -> f_osszege = $request -> f_osszege;
     $feladat -> besz_osszege = $request -> besz_osszege;
     $feladat->save();
-
     return redirect('/mvezeto/feladatok');
-}
+    }catch(QueryException  $e){
+        $csakszerelo = '';
+        $munkaoranotnull = '';
+        $szerelomaxmunkaora ='';
+        $szerelominmunkaora ='';
+        $feladatmaxoraszam = '';
+        $befejezettmunkalap = '';
+    
+        $validator = Validator::make([],[]);
+    
+        if (preg_match("/csak szerelő/", $e->getMessage())) {
+            $csakszerelo = 'A feladathoz csak szerelő (s) vihető fel!';
+        }
+        
+        if (preg_match("/'munkaora' cannot be null/", $e->getMessage())) {
+            $munkaoranotnull = 'A mező kitöltése kötelező!';
+        }
+        if (preg_match("/A dolgozó egy nap nem dolgozhat 8 óránál többet!/", $e->getMessage())) {
+            $szerelomaxmunkaora = 'A dolgozó egy nap nem dolgozhat 8 óránál többet!';
+        }
+        if (preg_match("/Nem lehet 0 vagy kisebb a munkaóra!/", $e->getMessage())) {
+            $szerelominmunkaora = 'Nem lehet 0 vagy kisebb a munkaóra!';
+        }
+        if (preg_match("/Egy munkalaphoz tartozó feladatok óraszáma nem lehet egy nap 8 óránál több!/", $e->getMessage())) {
+            $feladatmaxoraszam = 'Egy munkalaphoz tartozó feladatok óraszáma nem lehet egy nap 8 óránál több!';
+        }
+        if (preg_match("/Befejezett munkalaphoz nem rendelhető feladat!/", $e->getMessage())) {
+            $befejezettmunkalap= 'Befejezett munkalaphoz nem rendelhető feladat!';
+        }
+    
+        $validator->errors()->add('szerelo', $csakszerelo);
+        $validator->errors()->add('munkaoranotnull', $munkaoranotnull);
+        $validator->errors()->add('szerelomaxmunkora', $szerelomaxmunkaora);
+        $validator->errors()->add('szerelominmunkaora', $szerelominmunkaora);
+        $validator->errors()->add('feladatmaxoraszam', $feladatmaxoraszam);
+        $validator->errors()->add('befejezettmunkalap', $befejezettmunkalap);
+    
+        return redirect()->back()->withErrors($validator)->withInput($request->input());
+        return redirect('/mvezeto/feladat')->withErrors($validator);
+    }
+    }
 public function feladatszerkesztes($id)
 {
     $munkalaps = Munkalap::all();
