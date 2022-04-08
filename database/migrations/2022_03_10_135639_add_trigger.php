@@ -90,7 +90,7 @@ class AddTrigger extends Migration
 
 
         //5. Nem lehet 0 vagy kisebb a munkaóra.
-
+        //hibaüzenetOK
         DB::unprepared('CREATE TRIGGER munkaora_check
         BEFORE INSERT ON feladats
         FOR EACH ROW
@@ -180,7 +180,7 @@ class AddTrigger extends Migration
         END');
 
         //10. A feladathoz csak szerelő csatolható.
-
+        //hibaüzenetOK
         DB::unprepared('CREATE TRIGGER dolgozo_feladathoz_check
         AFTER INSERT ON feladats 
         FOR EACH ROW
@@ -200,7 +200,7 @@ class AddTrigger extends Migration
         END');
 
         //11. Egy dolgozó nem dolgozhat 8 óránál többet egy nap.
-
+        //hibaüzenetOK
         DB::unprepared('CREATE TRIGGER dolgozo_munkaora_check
         AFTER INSERT ON feladats
         FOR EACH ROW

@@ -48,8 +48,24 @@ if(!check()){
                 <option value="{{ $dolgozo->d_kod }}">{{ $dolgozo->dolg_nev }}</option>
                 @endforeach
                 </select><br>
+                @error('szerelo')
+                  <div class="alert alert-danger">{{ $errors->first('szerelo') }}</div>
+                  <!-- <div class="alert alert-danger">{{ $message}}</div> --> <!--Ugyanazt az eredményt hozza mint a {{ $errors->first('oradij') }} --> 
+                  @enderror
                   <label for="munkaora">Munkaóra</label>
                   <input type="number" id="munkaora" name="munkaora"><br>
+                  @error('munkaoranotnull')
+                  <div class="alert alert-danger">{{ $errors->first('munkaoranotnull') }}</div>
+                  <!-- <div class="alert alert-danger">{{ $message}}</div> --> <!--Ugyanazt az eredményt hozza mint a {{ $errors->first('oradij') }} --> 
+                  @enderror
+                  @error('szerelomaxmunkora')
+                  <div class="alert alert-danger">{{ $errors->first('szerelomaxmunkora') }}</div>
+                  <!-- <div class="alert alert-danger">{{ $message}}</div> --> <!--Ugyanazt az eredményt hozza mint a {{ $errors->first('oradij') }} --> 
+                  @enderror
+                  @error('szerelominmunkaora')
+                  <div class="alert alert-danger">{{ $errors->first('szerelominmunkaora') }}</div>
+                  <!-- <div class="alert alert-danger">{{ $message}}</div> --> <!--Ugyanazt az eredményt hozza mint a {{ $errors->first('oradij') }} --> 
+                  @enderror
                   <label for="f_osszege">Feladat összege</label>
                   <input type="number" id="f_osszege" name="f_osszege" readonly><br>
                   <label for="besz_osszege">Beszerzés összege</label>

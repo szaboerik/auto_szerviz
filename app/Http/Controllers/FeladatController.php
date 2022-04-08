@@ -1,12 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Validator;
 use App\Models\Feladat;
 use App\Models\Munkalap;
 use App\Models\Dolgozo;
 use App\Models\Beszerzes;
 use App\Models\Jelleg;
+use App\Models\Auto;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 
 class FeladatController extends Controller
@@ -33,6 +35,7 @@ public function ujfeladat()
 }
 
 public function feladat(Request $request) {
+    try{
     $feladat = new Feladat();
     $feladat -> f_szam = $request -> f_szam;
     $feladat -> m_szam = $request -> m_szam;
@@ -42,10 +45,39 @@ public function feladat(Request $request) {
     $feladat -> f_osszege = $request -> f_osszege;
     $feladat -> besz_osszege = $request -> besz_osszege;
     $feladat->save();
-
     return redirect('/mvezeto/feladatok');
-}
+}catch(QueryException  $e){
+    $csakszerelo = '';
+    $munkaoranotnull = '';
+    $szerelomaxmunkaora ='';
+    $szerelominmunkaora ='';
+  
 
+    $validator = Validator::make([],[]);
+
+    if (preg_match("/csak szerelő/", $e->getMessage())) {
+        $csakszerelo = 'A feladathoz csak szerelő (s) vihető fel!';
+    }
+    
+    if (preg_match("/'munkaora' cannot be null/", $e->getMessage())) {
+        $munkaoranotnull = 'A mező kitöltése kötelező!';
+    }
+    if (preg_match("/A dolgozó egy nap nem dolgozhat 8 óránál többet!/", $e->getMessage())) {
+        $szerelomaxmunkaora = 'A dolgozó egy nap nem dolgozhat 8 óránál többet!';
+    }
+    if (preg_match("/Nem lehet 0 vagy kisebb a munkaóra!/", $e->getMessage())) {
+        $szerelominmunkaora = 'Nem lehet 0 vagy kisebb a munkaóra!';
+    }
+
+    $validator->errors()->add('szerelo', $csakszerelo);
+    $validator->errors()->add('munkaoranotnull', $munkaoranotnull);
+    $validator->errors()->add('szerelomaxmunkora', $szerelomaxmunkaora);
+    $validator->errors()->add('szerelominmunkaora', $szerelominmunkaora);
+
+    return redirect()->back()->withErrors($validator)->withInput($request->input());
+    return redirect('/mvezeto/feladat')->withErrors($validator);
+}
+}
 //Feladatok kilistázása
 
 public function feladatok()
