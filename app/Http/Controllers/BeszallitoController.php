@@ -54,10 +54,10 @@ public function beszallito(Request $request) {
     if (preg_match("/'cim' cannot be null/", $e->getMessage())) {
         $cim = 'A mező kitöltése kötelező!';
     }
-    if (preg_match("/Duplicate entry/", $e->getMessage())) {
+    if (preg_match("/'beszallitos_elerhetoseg_unique'/", $e->getMessage())) {
         $telszamdup = 'Van már beszállítód ezen a telefonszámon!';
     }
-    if (preg_match("/Duplicate entry/", $e->getMessage())) {
+    if (preg_match("/'beszallitos_nev_unique'/", $e->getMessage())) {
         $nevdup = 'Van már ilyen elnevezésű beszállítód!';
     }
 
@@ -83,8 +83,12 @@ public function beszallitok()
 
 public function beszallitotorles($id)
 {
-    Beszallito::find($id)->delete();
-    return redirect('/mvezeto/beszallitok');
+    $besz = Beszallito::findOrFail($id);
+        if($besz->beszerzes()->count()>0){
+            return redirect()->back()->with('error', "Nem törölheted a beszállítót, ha beszerzéshez van hozzárendelve!");
+        }
+        $besz->delete();
+        return redirect('/mvezeto/beszallitok');
 }
 
 //Beszállító módosítása
@@ -129,10 +133,10 @@ public function beszallitomodosit(Request $request, $id)
         $cim = 'A mező kitöltése kötelező!';
     }
 
-    if (preg_match("/Duplicate entry/", $e->getMessage())) {
+    if (preg_match("/'beszallitos_elerhetoseg_unique'/", $e->getMessage())) {
         $telszamdup = 'Van már beszállítód ezen a telefonszámon!';
     }
-    if (preg_match("/Duplicate entry/", $e->getMessage())) {
+    if (preg_match("/'beszallitos_nev_unique'/", $e->getMessage())) {
         $nevdup = 'Van már ilyen elnevezésű beszállítód!';
     }
 

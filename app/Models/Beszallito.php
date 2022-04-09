@@ -9,4 +9,9 @@ class Beszallito extends Model
 {
     use HasFactory;
     protected $primaryKey = 'beszall_kod';
+
+    public function beszerzes()
+    {
+        return $this->hasMany(Beszerzes::class, "beszall_kod");
+    }
 }

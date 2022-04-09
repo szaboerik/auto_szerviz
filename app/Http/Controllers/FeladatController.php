@@ -53,11 +53,12 @@ public function feladat(Request $request) {
     $szerelominmunkaora ='';
     $feladatmaxoraszam = '';
     $befejezettmunkalap = '';
+    $jelleg= '';
 
     $validator = Validator::make([],[]);
 
     if (preg_match("/csak szerelő/", $e->getMessage())) {
-        $csakszerelo = 'A feladathoz csak szerelő (s) vihető fel!';
+        $csakszerelo = 'A feladathoz csak szerelő (s) vihető fel! A jelenleg kiválasztott dolgozó vezető (v)!';
     }
     
     if (preg_match("/'munkaora' cannot be null/", $e->getMessage())) {
@@ -75,6 +76,9 @@ public function feladat(Request $request) {
     if (preg_match("/Befejezett munkalaphoz nem rendelhető feladat!/", $e->getMessage())) {
         $befejezettmunkalap= 'Befejezett munkalaphoz nem rendelhető feladat!';
     }
+    if (preg_match("/Egy munkalaphoz csak egyféle jellegű feladat csatolható!/", $e->getMessage())) {
+        $jelleg= 'Egy munkalaphoz csak egyféle jellegű feladat csatolható!';
+    }
 
     $validator->errors()->add('szerelo', $csakszerelo);
     $validator->errors()->add('munkaoranotnull', $munkaoranotnull);
@@ -82,6 +86,7 @@ public function feladat(Request $request) {
     $validator->errors()->add('szerelominmunkaora', $szerelominmunkaora);
     $validator->errors()->add('feladatmaxoraszam', $feladatmaxoraszam);
     $validator->errors()->add('befejezettmunkalap', $befejezettmunkalap);
+    $validator->errors()->add('jelleg', $jelleg);
 
     return redirect()->back()->withErrors($validator)->withInput($request->input());
     return redirect('/mvezeto/feladat')->withErrors($validator);
@@ -134,6 +139,7 @@ public function feladatmodosit(Request $request, $id)
         $szerelominmunkaora ='';
         $feladatmaxoraszam = '';
         $befejezettmunkalap = '';
+        $jelleg = '';
     
         $validator = Validator::make([],[]);
     
@@ -156,6 +162,9 @@ public function feladatmodosit(Request $request, $id)
         if (preg_match("/Befejezett munkalaphoz nem rendelhető feladat!/", $e->getMessage())) {
             $befejezettmunkalap= 'Befejezett munkalaphoz nem rendelhető feladat!';
         }
+        if (preg_match("/Egy munkalaphoz csak egyféle jellegű feladat csatolható!/", $e->getMessage())) {
+            $jelleg= 'Egy munkalaphoz csak egyféle jellegű feladat csatolható!';
+        }
     
         $validator->errors()->add('szerelo', $csakszerelo);
         $validator->errors()->add('munkaoranotnull', $munkaoranotnull);
@@ -163,6 +172,7 @@ public function feladatmodosit(Request $request, $id)
         $validator->errors()->add('szerelominmunkaora', $szerelominmunkaora);
         $validator->errors()->add('feladatmaxoraszam', $feladatmaxoraszam);
         $validator->errors()->add('befejezettmunkalap', $befejezettmunkalap);
+        $validator->errors()->add('jelleg', $jelleg);
     
         return redirect()->back()->withErrors($validator)->withInput($request->input());
         return redirect('/mvezeto/feladat')->withErrors($validator);

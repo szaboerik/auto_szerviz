@@ -71,9 +71,15 @@ public function jellegek()
 
 public function jellegtorles($id)
 {
-    Jelleg::find($id)->delete();
-    return redirect('/mvezeto/jellegek');
+    
+    $jelleg = Jelleg::findOrFail($id);
+        if($jelleg->feladat()->count()>0){
+            return redirect()->back()->with('error', "Nem törölheted a jelleget, ha feladathoz van hozzárendelve!");
+        }
+        $jelleg->delete();
+        return redirect('/mvezeto/jellegek');
 }
+
 
 //Jelleg módosítása
 

@@ -42,6 +42,13 @@ if(!check()){
           </td>
         </tr>
         <?php endforeach; ?> 
+        @if (\Session::has('error'))
+    <div class="alert alert-success">
+        <ul>
+            <li>{!! \Session::get('error') !!}</li>
+        </ul>
+    </div>
+@endif
     </tbody>
     <div><a href="/mvezeto/marka"><button class="btn btn-sm btn-success">Új márka létrehozása</button></a></div>
   </table>

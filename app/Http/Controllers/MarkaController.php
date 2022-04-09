@@ -54,8 +54,14 @@ public function markak()
 
 public function markatorles($id)
 {
-    Marka::find($id)->delete();
-    return redirect('/mvezeto/markak');
+   
+
+    $marka = Marka::findOrFail($id);
+        if($marka->marka()->count()>0){
+            return redirect()->back()->with('error', "Nem törölheted a márkát, ha autóhoz van hozzárendelve!");
+        }
+        $marka->delete();
+        return redirect('/mvezeto/markak');
 }
 
 //Márka módosítása

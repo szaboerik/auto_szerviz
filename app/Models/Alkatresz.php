@@ -9,4 +9,12 @@ class Alkatresz extends Model
 {
     use HasFactory;
     protected $primaryKey = 'alk_azon';
+
+
+    public function beszerzes()
+    {
+        return $this->hasMany(Beszerzes::class, "alkatresz");
+    }
+
+    
 }

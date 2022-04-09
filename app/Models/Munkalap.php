@@ -20,6 +20,8 @@ class Munkalap extends Model
         return $this->hasMany(Feladat::class, "m_szam");
     }
 
+    
+
 
     protected $dateFormat = 'Y-m-d';
 }

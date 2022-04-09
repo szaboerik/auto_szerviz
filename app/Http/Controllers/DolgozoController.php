@@ -57,9 +57,15 @@ public function dolgozok()
 
 public function dolgozotorles($id)
 {
-    Dolgozo::find($id)->delete();
-    return redirect('/mvezeto/dolgozok');
+
+    $dolg = Dolgozo::findOrFail($id);
+        if($dolg->feladat()->count()>0){
+            return redirect()->back()->with('error', "Nem törölheted a dolgozót, ha feladathoz van hozzárendelve!");
+        }
+        $dolg->delete();
+        return redirect('/mvezeto/dolgozok');
 }
+
 
 //Dolgozó módosítása
 

@@ -16,9 +16,11 @@ class CreateAutosTable extends Migration
         Schema::create('autos', function (Blueprint $table) {
             $table->id();
             $table->string('rendszam', 6)->unique();
-            $table->unsignedBigInteger('markaId')->references('id')->on('markas');
+            $table->unsignedBigInteger('markaId');
             $table->string('forgalmi', 8)->unique();
             $table->year('evjarat');
+
+            $table->foreign('markaId')->references('id')->on('markas');
             $table->timestamps();
         });
 

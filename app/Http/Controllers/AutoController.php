@@ -51,11 +51,11 @@ public function auto(Request $request) {
         $rosszevjarat = 'Nem megfelelő évjárat! Nem lehet 1990-nél kisebb, illetve a mostani évnél nagyobb!';
     }
 
-    if (preg_match("/Duplicate entry/", $e->getMessage())) {
+    if (preg_match("/'autos_rendszam_unique'/", $e->getMessage())) {
         $rszdup = 'Van már ilyen rendszámú autó!';
     }
 
-    if (preg_match("/Duplicate entry/", $e->getMessage())) {
+    if (preg_match("/'autos_forgalmi_unique'/", $e->getMessage())) {
         $forgdup = 'Van már ilyen forgalmi számú autó!';
     }
 
@@ -83,9 +83,14 @@ public function autok()
 
 public function autotorles($id)
 {
-    Auto::find($id)->delete();
-    return redirect('/mvezeto/autok');
+        $rsz = Auto::findOrFail($id);
+        if($rsz->rendszam()->count()>0){
+            return redirect()->back()->with('error', "Nem törölheted az autót, ha munkalaphoz van hozzárendelve!");
+        }
+        $rsz->delete();
+        return redirect('/mvezeto/autok');
 }
+
 
 //Autó módosítása
 
@@ -124,11 +129,11 @@ public function automodosit(Request $request, $id)
         $rosszevjarat = 'Nem megfelelő évjárat! Nem lehet 1990-nél kisebb, illetve a mostani évnél nagyobb!';
     }
     
-    if (preg_match("/Duplicate entry/", $e->getMessage())) {
+    if (preg_match("/'autos_rendszam_unique'/", $e->getMessage())) {
         $rszdup = 'Van már ilyen rendszámú autó!';
     }
 
-    if (preg_match("/Duplicate entry/", $e->getMessage())) {
+    if (preg_match("/'autos_forgalmi_unique'/", $e->getMessage())) {
         $forgdup = 'Van már ilyen forgalmi számú autó!';
     }
 

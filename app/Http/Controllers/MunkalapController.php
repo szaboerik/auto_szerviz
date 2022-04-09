@@ -88,6 +88,7 @@ public function munkalaptorles($id)
     if($munkalap->feladat()->count()>0){
         return redirect()->back()->with('error', "Nem törölheted a munkalapot, ameddig feladat van hozzárendelve!");
     }
+    
     $munkalap->delete();
     return redirect('/mvezeto/munkak');
 } 

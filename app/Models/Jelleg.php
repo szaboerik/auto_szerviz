@@ -10,4 +10,9 @@ class Jelleg extends Model
     use HasFactory;
 
     protected $primaryKey = 'jelleg';
+
+    public function feladat()
+    {
+        return $this->hasMany(Feladat::class, "jelleg");
+    }
 }

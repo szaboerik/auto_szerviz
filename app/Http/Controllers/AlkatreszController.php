@@ -47,9 +47,15 @@ public function alkatreszek()
 //Alkatrész törlése
 public function alkatresztorles($id)
 {
-    Alkatresz::find($id)->delete();
-    return redirect('/mvezeto/alkatreszek');
-}
+    
+        $alk = Alkatresz::findOrFail($id);
+        if($alk->beszerzes()->count()>0){
+            return redirect()->back()->with('error', "Nem törölheted az alkatrészt, ha beszerzéshez van hozzárendelve!");
+        }
+        $alk->delete();
+        return redirect('/mvezeto/alkatreszek');
+    } 
+
 //Alkatrész módosítása
 public function alkatreszmodosit(Request $request, $id)
 {

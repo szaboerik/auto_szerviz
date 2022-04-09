@@ -45,7 +45,14 @@ if(!check()){
             <a><form action="/api/jelleg/{{ $jelleg->jelleg }}" method="POST">@csrf @method('delete')<button type="submit" class="btn btn-sm btn-danger">Törlés</button></form></a>
           </td>
         </tr>
-        <?php endforeach; ?> 
+        <?php endforeach; ?>
+        @if (\Session::has('error'))
+    <div class="alert alert-success">
+        <ul>
+            <li>{!! \Session::get('error') !!}</li>
+        </ul>
+    </div>
+@endif 
     </tbody>
     <div><a href="/mvezeto/jelleg"><button class="btn btn-sm btn-success">Új jelleg létrehozása</button></a></div>
   </table>

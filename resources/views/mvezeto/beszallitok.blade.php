@@ -49,7 +49,14 @@ if(!check()){
             <a><form action="/api/beszallito/{{ $beszallito->beszall_kod }}" method="POST">@csrf @method('delete')<button type="submit" class="btn btn-sm btn-danger">Törlés</button></form></a>
           </td>
         </tr>
-        <?php endforeach; ?> 
+        <?php endforeach; ?>
+        @if (\Session::has('error'))
+    <div class="alert alert-success">
+        <ul>
+            <li>{!! \Session::get('error') !!}</li>
+        </ul>
+    </div>
+@endif
     </tbody>
     <div><a href="/mvezeto/beszallito"><button class="btn btn-sm btn-success">Új beszállító létrehozása</button></a></div>
   </table>

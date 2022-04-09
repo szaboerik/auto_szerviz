@@ -35,6 +35,9 @@ if(!check()){
                   @error('neve')
                         <div class="alert alert-danger">{{ $errors->first('neve') }}</div>
                     @enderror
+                    @error('nevdup')
+                        <div class="alert alert-danger">{{ $errors->first('nevdup') }}</div>
+                    @enderror
                   <label for="irsz">Irányítószám</label>
                   <input type="number" id="irsz" name="irsz" value="{{ old('irsz') }}" placeholder = "1234"><br>
                   @error('irsz')
@@ -49,6 +52,9 @@ if(!check()){
                   <input type="text" id="elerhetoseg" name="elerhetoseg" value="{{ old('elerhetoseg') }}" placeholder="+36701234567"><br>
                   @error('elerhetoseg')
                         <div class="alert alert-danger">{{ $errors->first('elerhetoseg') }}</div>
+                    @enderror
+                    @error('telszamdup')
+                        <div class="alert alert-danger">{{ $errors->first('telszamdup') }}</div>
                     @enderror
                   <button type="submit" class="btn btn-success">Mentés</button>
                   <a href="/mvezeto/beszallitok" class="button">Mégse</a>

@@ -13,4 +13,9 @@ class Auto extends Model
     public function marka(){
         return $this->belongsTo(Marka::class, "markaId");
     }
+
+    public function rendszam()
+    {
+        return $this->hasMany(Munkalap::class, "autoId");
+    }
 }
