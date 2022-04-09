@@ -26,8 +26,8 @@ if(!check()){
     <form action="/api/feladat/{{ $feladat->f_szam }}" method="POST">
       @csrf
       @method('put')
-        <label for="f_szam">Feladatszám</label>
-        <input type="number" id="f_szam" name="f_szam" value="{{ $feladat->f_szam }}" readonly><br>
+        <!--<label for="f_szam">Feladatszám</label>
+        <input type="number" id="f_szam" name="f_szam" value="{{ $feladat->f_szam }}" readonly><br>-->
         <label for="m_szam">Munkaszám</label>
                 <select name="m_szam">
                 @foreach ($munkalaps as $munkalap)

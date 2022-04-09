@@ -28,8 +28,8 @@ if(!check()){
             <h2>Jelleg felvitele</h2>
             <form action="/api/jelleg" method="POST">
                 @csrf
-                  <label for="jelleg">Jelleg</label>
-                  <input type="text" id="jelleg" name="jelleg" readonly><br>
+                  <!--<label for="jelleg">Jelleg</label>
+                  <input type="text" id="jelleg" name="jelleg" readonly><br>-->
                   <label for="elnevezes">Elnevezés</label>
                   <input type="text" id="elnevezes" name="elnevezes" value="{{ old('elnevezes') }}"><br>
                   @error('elnevezes')

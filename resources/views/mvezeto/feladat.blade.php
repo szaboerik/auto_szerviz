@@ -28,8 +28,8 @@ if(!check()){
             <h2>Feladat felvitele</h2>
             <form action="/api/feladat" method="POST">
                 @csrf
-                  <label for="f_szam">Feladatszám</label>
-                  <input type="number" id="f_szam" name="f_szam" readonly><br>
+                  <!--<label for="f_szam">Feladatszám</label>
+                  <input type="number" id="f_szam" name="f_szam" readonly><br>-->
                   <label for="m_szam">Munkaszám</label>
                 <select name="m_szam">
                 @foreach ($munkalaps as $munkalap)

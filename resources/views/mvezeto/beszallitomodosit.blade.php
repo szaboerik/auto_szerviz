@@ -27,8 +27,8 @@ if(!check()){
     <form action="/api/beszallito/{{ $beszallito->beszall_kod }}" method="POST">
       @csrf
       @method('put')
-        <label for="beszall_kod">Beszállító kód</label>
-        <input type="number" id="beszall_kod" name="beszall_kod" value="{{ $beszallito->beszall_kod }}" readonly><br>
+       <!-- <label for="beszall_kod">Beszállító kód</label>
+        <input type="number" id="beszall_kod" name="beszall_kod" value="{{ $beszallito->beszall_kod }}" readonly><br>-->
         <label for="nev">Neve</label>
         <input type="text" id="nev" name="nev" value="{{ $beszallito->nev }}"><br>
         @error('neve')

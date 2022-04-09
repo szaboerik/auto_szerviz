@@ -28,8 +28,8 @@ if(!check()){
             <h2>Munkalap felvitele</h2>
             <form action="/api/munkalap" method="POST">
                 @csrf
-                <label for="m_szam">Munkaszám</label>
-                <input type="number" id="m_szam" name="m_szam" readonly><br>
+                <!--<label for="m_szam">Munkaszám</label>
+                <input type="number" id="m_szam" name="m_szam" readonly><br>-->
                 <label for="ugyfel_neve">Ügyfél neve</label>
                 <input type="text" id="ugyfel_neve" name="ugyfel_neve" value="{{ old('ugyfel_neve') }}"><br>
                 @error('ugyfelnev')

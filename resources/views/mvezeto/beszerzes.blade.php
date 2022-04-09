@@ -30,8 +30,8 @@ if(!check()){
             <h2>Beszerzés felvétele</h2>
             <form action="/api/beszerzes" method="POST">
                 @csrf
-                <label for="besz_azon">Beszerzés azonosító</label>
-                <input type="number" id="besz_azon" name="besz_azon" readonly><br>
+                <!--<label for="besz_azon">Beszerzés azonosító</label>
+                <input type="number" id="besz_azon" name="besz_azon" readonly><br>-->
                 <label for="f_szam">Feladatszám</label>
                 <select name="f_szam">
                 @foreach ($feladats as $feladat)
