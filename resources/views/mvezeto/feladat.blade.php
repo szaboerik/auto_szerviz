@@ -28,12 +28,11 @@ if(!check()){
             <h2>Feladat felvitele</h2>
             <form action="/api/feladat" method="POST">
                 @csrf
-                  <!--<label for="f_szam">Feladatszám</label>
-                  <input type="number" id="f_szam" name="f_szam" readonly><br>-->
                   <label for="m_szam">Munkaszám</label>
                 <select name="m_szam">
                 @foreach ($munkalaps as $munkalap)
-                <option value="{{ $munkalap->m_szam }}">{{ $munkalap->m_szam }}</option>
+                <option {{old('m_szam', $munkalap->m_szam) == $munkalap->m_szam ? 'selected' : '' }} 
+                  value="{{$munkalap->m_szam}}">{{ $munkalap->m_szam}}</option>
                 @endforeach
                 </select><br>
                 @error('befejezettmunkalap')
@@ -42,7 +41,8 @@ if(!check()){
                 <label for="jelleg">Jelleg</label> 
                 <select name="jelleg">
                 @foreach ($jellegs as $jelleg)
-                <option value="{{ $jelleg->jelleg }}">{{ $jelleg->elnevezes }}</option>
+                <option {{old('jelleg', $jelleg->jelleg) == $jelleg->jelleg ? 'selected' : '' }} 
+                value="{{$jelleg->jelleg}}">{{ $jelleg->elnevezes}}</option>
                 @endforeach
                 </select><br>
                 @error('jelleg')
@@ -51,7 +51,8 @@ if(!check()){
                 <label for="d_kod">Dolgozó</label>
                 <select name="d_kod">
                 @foreach ($dolgozos as $dolgozo)
-                <option value="{{ $dolgozo->d_kod }}">{{ $dolgozo->dolg_nev }}</option>
+                <option {{old('d_kod', $dolgozo->d_kod) == $dolgozo->d_kod ? 'selected' : '' }} 
+                value="{{$dolgozo->d_kod}}">{{ $dolgozo->dolg_nev}}</option>
                 @endforeach
                 </select><br>
                 @error('szerelo')
