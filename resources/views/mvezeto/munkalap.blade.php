@@ -43,8 +43,8 @@ if(!check()){
                 <label for="rendszam">Rendszám</label>
                 <select name="rendszam" placeholder="ABC123">
                 @foreach ($autos as $auto)
-                <option {{old('rendszam', $auto->rendszam) == $auto->rendszam ? 'selected' : '' }} 
-                value="{{$auto->rendszam}}">{{ $auto->rendszam}}</option>
+                <option value="{{ $auto->id }}">{{ $auto->rendszam }}</option>
+            
                 @endforeach
                 </select><br>
                 @error('rsz')
