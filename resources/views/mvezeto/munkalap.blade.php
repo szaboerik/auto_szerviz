@@ -41,10 +41,11 @@ if(!check()){
                         <div class="alert alert-danger">{{ $errors->first('ugyfel_telszama') }}</div>
                     @enderror
                 <label for="rendszam">Rendszám</label>
-                <select name="rendszam" placeholder="ABC123">
+                <select name="rendszam">
                 @foreach ($autos as $auto)
-                <option value="{{ $auto->id }}">{{ $auto->rendszam }}</option>
-            
+                
+                <option {{old('rendszam', $auto->id) == $auto->id ? 'selected' : '' }} 
+                value="{{$auto->id}}">{{ $auto->rendszam}}</option>
                 @endforeach
                 </select><br>
                 @error('rsz')
