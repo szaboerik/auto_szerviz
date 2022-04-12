@@ -34,9 +34,9 @@ if(!check()){
         <th>Feladatszám</th>
         <th>Alkatrész</th>
         <th>Beszállító kód</th>
-        <th>Egységár</th>
-        <th>Mennyiség</th>
-        <th>Beszerzés összege</th>
+        <th>Egységár (Ft)</th>
+        <th>Mennyiség (Db)</th>
+        <th>Beszerzés összege (Ft)</th>
         
       </tr>
     </thead>
@@ -45,8 +45,8 @@ if(!check()){
         <tr>
           <th>{{ $beszerzes->besz_azon}}</th>
           <td>{{ $beszerzes->f_szam }}</td>
-          <td>{{ $beszerzes->alkatresz }}</td>
-          <td>{{ $beszerzes->beszall_kod }}</td>
+          <td>{{ $beszerzes->alk->alk_neve }}</td>
+          <td>{{ $beszerzes->besz->nev }}</td>
           <td>{{ $beszerzes->egyseg_ar }}</td>
           <td>{{ $beszerzes->mennyiseg }}</td>
           <td>{{ $beszerzes->besz_osszege }}</td>

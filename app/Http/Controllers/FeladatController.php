@@ -62,6 +62,9 @@ public function feladat(Request $request) {
     $feladatmaxoraszam = '';
     $befejezettmunkalap = '';
     $jelleg= '';
+    $mszam= '';
+    $jell= '';
+    $szer= '';
 
     $validator = Validator::make([],[]);
 
@@ -72,8 +75,17 @@ public function feladat(Request $request) {
     if (preg_match("/'munkaora' cannot be null/", $e->getMessage())) {
         $munkaoranotnull = 'A mező kitöltése kötelező!';
     }
-    if (preg_match("/A dolgozó egy nap nem dolgozhat 8 óránál többet!/", $e->getMessage())) {
-        $szerelomaxmunkaora = 'A dolgozó egy nap nem dolgozhat 8 óránál többet!';
+    if (preg_match("/'m_szam' cannot be null/", $e->getMessage())) {
+        $mszam = 'Nem vihetsz fel új feladatot, ameddig nincs munkalap létrehozva!';
+    }
+    if (preg_match("/'jelleg' cannot be null/", $e->getMessage())) {
+        $jell = 'Nem vihetsz fel új feladatot, ameddig nincs jelleg létrehozva!';
+    }
+    if (preg_match("/'szerelo' cannot be null/", $e->getMessage())) {
+        $szer = 'Nem vihetsz fel új feladatot, ameddig nincs szerelő létrehozva!';
+    }
+    if (preg_match("/A szerelő egy nap nem dolgozhat 8 óránál többet!/", $e->getMessage())) {
+        $szerelomaxmunkaora = 'A szerelő egy nap nem dolgozhat 8 óránál többet!';
     }
     if (preg_match("/Nem lehet 0 vagy kisebb a munkaóra!/", $e->getMessage())) {
         $szerelominmunkaora = 'Nem lehet 0 vagy kisebb a munkaóra!';
@@ -95,6 +107,9 @@ public function feladat(Request $request) {
     $validator->errors()->add('feladatmaxoraszam', $feladatmaxoraszam);
     $validator->errors()->add('befejezettmunkalap', $befejezettmunkalap);
     $validator->errors()->add('jelleg', $jelleg);
+    $validator->errors()->add('mszam', $mszam);
+    $validator->errors()->add('jell', $jell);
+    $validator->errors()->add('szer', $szer);
 
     return redirect()->back()->withErrors($validator)->withInput($request->input());
     return redirect('/mvezeto/feladat')->withErrors($validator);
@@ -158,8 +173,8 @@ public function feladatmodosit(Request $request, $id)
         if (preg_match("/'munkaora' cannot be null/", $e->getMessage())) {
             $munkaoranotnull = 'A mező kitöltése kötelező!';
         }
-        if (preg_match("/A dolgozó egy nap nem dolgozhat 8 óránál többet!/", $e->getMessage())) {
-            $szerelomaxmunkaora = 'A dolgozó egy nap nem dolgozhat 8 óránál többet!';
+        if (preg_match("/A szerelő egy nap nem dolgozhat 8 óránál többet!/", $e->getMessage())) {
+            $szerelomaxmunkaora = 'A szerelő egy nap nem dolgozhat 8 óránál többet!';
         }
         if (preg_match("/Nem lehet 0 vagy kisebb a munkaóra!/", $e->getMessage())) {
             $szerelominmunkaora = 'Nem lehet 0 vagy kisebb a munkaóra!';

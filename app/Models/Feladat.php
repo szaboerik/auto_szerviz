@@ -15,8 +15,12 @@ class Feladat extends Model
         return $this->belongsTo(Munkalap::class, "m_szam");
     }
 
-    public function dolgozo(){
-        return $this->belongsTo(Dolgozo::class, "d_kod");
+    public function dolg(){
+        return $this->belongsTo(Dolgozo::class, "szerelo");
+    }
+
+    public function jell(){
+        return $this->belongsTo(Jelleg::class, "jelleg");
     }
 
     public function besz()

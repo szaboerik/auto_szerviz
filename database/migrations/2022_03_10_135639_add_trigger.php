@@ -199,7 +199,7 @@ class AddTrigger extends Migration
         END IF;
         END');
 
-        //11. Egy dolgozó nem dolgozhat 8 óránál többet egy nap.
+        //11. Egy szerelő nem dolgozhat 8 óránál többet egy nap.
         //hibaüzenetOK
         DB::unprepared('CREATE TRIGGER dolgozo_munkaora_check
         AFTER INSERT ON feladats
@@ -207,7 +207,7 @@ class AddTrigger extends Migration
         BEGIN
         IF (SELECT SUM(f.munkaora) from feladats f, dolgozos d, munkalaps m
          where f.szerelo = d.d_kod and d.kepesseg = "s" and NEW.szerelo=f.szerelo and m.m_szam = f.m_szam and f.created_at = CURDATE())>8 THEN
-         SIGNAL SQLSTATE "45000" SET MESSAGE_TEXT = "A dolgozó egy nap nem dolgozhat 8 óránál többet!";
+         SIGNAL SQLSTATE "45000" SET MESSAGE_TEXT = "A szerelő egy nap nem dolgozhat 8 óránál többet!";
         END IF;
         END');
 
@@ -218,7 +218,7 @@ class AddTrigger extends Migration
         BEGIN
         IF (SELECT SUM(f.munkaora) from feladats f, dolgozos d, munkalaps m
         where f.szerelo = d.d_kod and d.kepesseg = "s" and NEW.szerelo=f.szerelo and m.m_szam = f.m_szam and f.created_at = CURDATE())>8 THEN
-        SIGNAL SQLSTATE "45000" SET MESSAGE_TEXT = "A dolgozó egy nap nem dolgozhat 8 óránál többet!";
+        SIGNAL SQLSTATE "45000" SET MESSAGE_TEXT = "A szerelő egy nap nem dolgozhat 8 óránál többet!";
         END IF;
         END');
 
@@ -353,6 +353,16 @@ class AddTrigger extends Migration
         END IF;
         END');
 
+        DB::unprepared('CREATE TRIGGER feladat_jellege_update_check
+        BEFORE UPDATE ON jellegs
+        FOR EACH ROW
+        BEGIN
+        IF NEW.oradij <> OLD.oradij THEN
+        UPDATE feladats
+        SET f_osszege = munkaora*(SELECT NEW.oradij from jellegs j where j.jelleg = OLD.jelleg);
+        END IF;
+        END');
+
         //17. Fizetendő mező számítása.
         //nemkellhibaüzenet
         DB::unprepared('CREATE TRIGGER fizetendo_munkalap_check
@@ -421,7 +431,6 @@ class AddTrigger extends Migration
     {
         DB::unprepared('DROP TRIGGER `evjarat_check`');
         DB::unprepared('DROP TRIGGER `evjarat_update_check`');
-        
         DB::unprepared('DROP TRIGGER `munka_vege_megad_check`');
         DB::unprepared('DROP TRIGGER `egysegar_check`');
         DB::unprepared('DROP TRIGGER `egysegar_update_check`');
@@ -458,6 +467,7 @@ class AddTrigger extends Migration
         DB::unprepared('DROP TRIGGER `feladat_beszerzes_osszege_check`');
         DB::unprepared('DROP TRIGGER `feladat_beszerzes_osszege_update_check`');
         DB::unprepared('DROP TRIGGER `feladat_beszerzes_osszege_delete_check`');
+        DB::unprepared('DROP TRIGGER `feladat_jellege_update_check`');
     
     }
     }

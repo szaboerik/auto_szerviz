@@ -28,17 +28,15 @@ if(!check()){
             <h2>Jelleg felvitele</h2>
             <form action="/api/jelleg" method="POST">
                 @csrf
-                  <!--<label for="jelleg">Jelleg</label>
-                  <input type="text" id="jelleg" name="jelleg" readonly><br>-->
                   <label for="elnevezes">Elnevezés</label>
                   <input type="text" id="elnevezes" name="elnevezes" value="{{ old('elnevezes') }}"><br>
                   @error('elnevezes')
                   <div class="alert alert-danger">{{ $errors->first('elnevezes') }}</div>
-                  <!-- <div class="alert alert-danger">{{ $message}}</div> --> <!--Ugyanazt az eredményt hozza mint a {{ $errors->first('oradij') }} --> 
+                  
                   @enderror
                   @error('elnevdup')
                   <div class="alert alert-danger">{{ $errors->first('elnevdup') }}</div>
-                  <!-- <div class="alert alert-danger">{{ $message}}</div> --> <!--Ugyanazt az eredményt hozza mint a {{ $errors->first('oradij') }} --> 
+                  
                   @enderror
                   <label for="oradij">Óradíj</label>
                   <input type="number" id="oradij" name="oradij" value="{{ old('oradij') }}"><br>
@@ -48,7 +46,7 @@ if(!check()){
                   @enderror
                   @error('jelleg')
                   <div class="alert alert-danger">{{ $errors->first('jelleg') }}</div>
-                  <!-- <div class="alert alert-danger">{{ $message}}</div> --> <!--Ugyanazt az eredményt hozza mint a {{ $errors->first('oradij') }} --> 
+                 
                   @enderror
                   <button type="submit" class="btn btn-success">Mentés</button>
 

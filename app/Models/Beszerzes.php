@@ -12,6 +12,13 @@ class Beszerzes extends Model
     public function feladat(){
         return $this->belongsTo(Feladat::class, "f_szam");
     }
+    public function alk(){
+        return $this->belongsTo(Alkatresz::class, "alkatresz");
+    }
+    public function besz(){
+        return $this->belongsTo(Beszallito::class, "beszall_kod");
+    }
+
     protected $primaryKey = 'besz_azon';
     
 }

@@ -28,7 +28,7 @@ public function alkatresz(Request $request) {
         $message = 'A mező kitöltése kötelező!';
     }
     
-    if (preg_match("/Duplicate entry/", $e->getMessage())) {
+    if (preg_match("/alkatreszs_alk_neve_unique'/", $e->getMessage())) {
         $alkdup = 'Van már ilyen elnevezésű alkatrészed!';
     }
     $validator->errors()->add('alkatresz', $message);
@@ -74,7 +74,7 @@ public function alkatreszmodosit(Request $request, $id)
         $message = 'A mező kitöltése kötelező!';
     }
     
-    if (preg_match("/Duplicate entry/", $e->getMessage())) {
+    if (preg_match("/alkatreszs_alk_neve_unique'/", $e->getMessage())) {
         $alkdup = 'Van már ilyen elnevezésű alkatrészed!';
     }
 

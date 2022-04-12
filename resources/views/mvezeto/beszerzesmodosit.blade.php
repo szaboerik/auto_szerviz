@@ -26,8 +26,8 @@ if(!check()){
     <form action="/api/beszerzes/{{ $beszerzes->besz_azon }}" method="POST">
       @csrf
       @method('put')
-        <!--<label for="besz_azon">Beszerzés azonosító</label>
-        <input type="number" id="besz_azon" name="besz_azon" value="{{ $beszerzes->besz_azon }}" readonly><br>-->
+        <label for="besz_azon">Beszerzés azonosító</label>
+        <input type="number" id="besz_azon" name="besz_azon" value="{{ $beszerzes->besz_azon }}" readonly><br>
         <label for="f_szam">Feladatszám</label>
                 <select name="f_szam">
                 
