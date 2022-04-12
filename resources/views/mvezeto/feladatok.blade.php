@@ -43,8 +43,8 @@ if(!check()){
         <tr>
           <th>{{ $feladat->f_szam}}</th>
           <td>{{ $feladat->m_szam }}</td>
-          <td>{{ $feladat->jelleg }}</td>
-          <td>{{ $feladat->szerelo }}</td>
+          <td>{{ $feladat->jell->elnevezes }}</td>
+          <td>{{ $feladat->dolg->dolg_nev }}</td>
           <td>{{ $feladat->munkaora }}</td>
           <td>{{ $feladat->f_osszege }}</td>
           <td>{{ $feladat->besz_osszege }}</td>

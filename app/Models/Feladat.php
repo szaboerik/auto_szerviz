@@ -19,6 +19,10 @@ class Feladat extends Model
         return $this->belongsTo(Dolgozo::class, "szerelo");
     }
 
+    public function jell(){
+        return $this->belongsTo(Jelleg::class, "jelleg");
+    }
+
     public function besz()
     {
         return $this->hasMany(Beszerzes::class, "f_szam");
