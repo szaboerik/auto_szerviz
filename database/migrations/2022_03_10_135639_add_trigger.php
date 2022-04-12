@@ -199,7 +199,7 @@ class AddTrigger extends Migration
         END IF;
         END');
 
-        //11. Egy dolgozó nem dolgozhat 8 óránál többet egy nap.
+        //11. Egy szerelő nem dolgozhat 8 óránál többet egy nap.
         //hibaüzenetOK
         DB::unprepared('CREATE TRIGGER dolgozo_munkaora_check
         AFTER INSERT ON feladats
@@ -207,7 +207,7 @@ class AddTrigger extends Migration
         BEGIN
         IF (SELECT SUM(f.munkaora) from feladats f, dolgozos d, munkalaps m
          where f.szerelo = d.d_kod and d.kepesseg = "s" and NEW.szerelo=f.szerelo and m.m_szam = f.m_szam and f.created_at = CURDATE())>8 THEN
-         SIGNAL SQLSTATE "45000" SET MESSAGE_TEXT = "A dolgozó egy nap nem dolgozhat 8 óránál többet!";
+         SIGNAL SQLSTATE "45000" SET MESSAGE_TEXT = "A szerelő egy nap nem dolgozhat 8 óránál többet!";
         END IF;
         END');
 
@@ -218,7 +218,7 @@ class AddTrigger extends Migration
         BEGIN
         IF (SELECT SUM(f.munkaora) from feladats f, dolgozos d, munkalaps m
         where f.szerelo = d.d_kod and d.kepesseg = "s" and NEW.szerelo=f.szerelo and m.m_szam = f.m_szam and f.created_at = CURDATE())>8 THEN
-        SIGNAL SQLSTATE "45000" SET MESSAGE_TEXT = "A dolgozó egy nap nem dolgozhat 8 óránál többet!";
+        SIGNAL SQLSTATE "45000" SET MESSAGE_TEXT = "A szerelő egy nap nem dolgozhat 8 óránál többet!";
         END IF;
         END');
 
