@@ -10,6 +10,8 @@ use App\Models\Jelleg;
 use App\Models\Auto;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class FeladatController extends Controller
 {
@@ -18,17 +20,18 @@ class FeladatController extends Controller
 
 public function dfeladatok()
 {
+    $feladatss = 
+    DB::table('feladats')
+    ->join('munkalaps', 'feladats.m_szam', '=', 'munkalaps.m_szam')
+    ->join('autos', 'munkalaps.autoId', '=', 'autos.id')
+    ->join('dolgozos', 'feladats.szerelo', '=', 'dolgozos.d_kod')
+    ->join('jellegs', 'feladats.jelleg', '=', 'jellegs.jelleg')
+    ->whereDate('feladats.created_at', '=', Carbon::today()->toDateString())
+    ->select('feladats.f_szam','feladats.m_szam','jellegs.elnevezes','dolgozos.dolg_nev', 'autos.rendszam')
+    ->get();
+    
+    return response()->json($feladatss);
 
-    $feladats=Feladat::all();
-    return response()->json($feladats);
-}
-
-//Feladatra szűrés
-
-public function dfeladat($id)
-{
-    $feladats=Feladat::find($id);
-        return response()->json($feladats);   
 }
 
 //Új feladat

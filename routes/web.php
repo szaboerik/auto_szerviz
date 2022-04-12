@@ -44,7 +44,6 @@ Route::get('/dolgozo', function () {
 Route::get('api/dfeladatok', [FeladatController::class, 'dfeladatok']);
 Route::get('api/dfeladatok/{id}', [FeladatController::class, 'dfeladat']);
 
-
 //Alkatrészhez tartozó linkek
 //---------------------------------
 
