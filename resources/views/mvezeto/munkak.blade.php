@@ -35,7 +35,7 @@ if(!check()){
         <th>Rendszám</th>
         <th>Munka kezdete</th>
         <th>Munka vége</th>
-        <th>Fizetendő</th>
+        <th>Fizetendő (Ft)</th>
       </tr>
     </thead>
     <tbody>
@@ -52,7 +52,6 @@ if(!check()){
             <a href="/mvezeto/munkamodosit/{{ $munkalap->m_szam }}"><button class="btn btn-sm btn-info">Szerkesztés</button></a>
             <a><form action="/api/munkalap/{{ $munkalap->m_szam }}" method="POST">@csrf @method('delete')<button type="submit" class="btn btn-sm btn-danger">Törlés</button></form></a>
             <a href="/mvezeto/feladat"><button class="btn btn-sm btn-success">Új feladat hozzáadása</button></a>
-            
           </td>
         </tr>
         <?php endforeach; ?>

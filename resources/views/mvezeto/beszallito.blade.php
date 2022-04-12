@@ -28,8 +28,6 @@ if(!check()){
             <h2>Beszállító felvitele</h2>
             <form action="/api/beszallito" method="POST">
                 @csrf
-                  <label for="beszall_kod">Beszállító kód</label>
-                  <input type="number" id="beszall_kod" name="beszall_kod" readonly><br>
                   <label for="nev">Neve</label>
                   <input type="text" id="nev" name="nev" value="{{ old('nev') }}"><br>
                   @error('neve')

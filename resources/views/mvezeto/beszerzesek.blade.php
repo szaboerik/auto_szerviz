@@ -34,9 +34,9 @@ if(!check()){
         <th>Feladatszám</th>
         <th>Alkatrész</th>
         <th>Beszállító kód</th>
-        <th>Egységár</th>
-        <th>Mennyiség</th>
-        <th>Beszerzés összege</th>
+        <th>Egységár (Ft)</th>
+        <th>Mennyiség (Db)</th>
+        <th>Beszerzés összege (Ft)</th>
         
       </tr>
     </thead>

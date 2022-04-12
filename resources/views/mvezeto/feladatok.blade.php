@@ -34,8 +34,8 @@ if(!check()){
         <th>Jelleg</th>
         <th>Szerelő</th>
         <th>Munkaóra</th>
-        <th>Feladat összege</th>
-        <th>Beszerzés összege</th>
+        <th>Feladat összege (Ft)</th>
+        <th>Beszerzés összege (Ft)</th>
       </tr>
     </thead>
     <tbody>

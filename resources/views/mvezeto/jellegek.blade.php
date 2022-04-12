@@ -31,7 +31,7 @@ if(!check()){
       <tr>
         <th>Jelleg</th>
         <th>Elnevezés</th>
-        <th>Óradíj</th>
+        <th>Óradíj (Ft)</th>
       </tr>
     </thead>
     <tbody>
