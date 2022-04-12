@@ -31,32 +31,38 @@ if(!check()){
                   <label for="m_szam">Munkaszám</label>
                 <select name="m_szam">
                 @foreach ($munkalaps as $munkalap)
-                <option {{old('m_szam', $munkalap->m_szam) == $munkalap->m_szam ? 'selected' : '' }} 
-                  value="{{$munkalap->m_szam}}">{{ $munkalap->m_szam}}</option>
+                <option value="{{ $munkalap->m_szam }}">{{ $munkalap->m_szam }}</option>
                 @endforeach
                 </select><br>
                 @error('befejezettmunkalap')
                   <div class="alert alert-danger">{{ $errors->first('befejezettmunkalap') }}</div> 
                   @enderror
+                  @error('mszam')
+                  <div class="alert alert-danger">{{ $errors->first('mszam') }}</div> 
+                  @enderror
                 <label for="jelleg">Jelleg</label> 
                 <select name="jelleg">
                 @foreach ($jellegs as $jelleg)
-                <option {{old('jelleg', $jelleg->jelleg) == $jelleg->jelleg ? 'selected' : '' }} 
-                value="{{$jelleg->jelleg}}">{{ $jelleg->elnevezes}}</option>
+                <option value="{{ $jelleg->jelleg }}">{{ $jelleg->elnevezes }}</option>
                 @endforeach
                 </select><br>
                 @error('jelleg')
                   <div class="alert alert-danger">{{ $errors->first('jelleg') }}</div>
                   @enderror
+                  @error('jell')
+                  <div class="alert alert-danger">{{ $errors->first('jell') }}</div>
+                  @enderror
                 <label for="d_kod">Dolgozó</label>
                 <select name="d_kod">
                 @foreach ($dolgozos as $dolgozo)
-                <option {{old('d_kod', $dolgozo->d_kod) == $dolgozo->d_kod ? 'selected' : '' }} 
-                value="{{$dolgozo->d_kod}}">{{ $dolgozo->dolg_nev}}</option>
+                <option value="{{ $dolgozo->d_kod }}">{{ $dolgozo->dolg_nev }}</option>
                 @endforeach
                 </select><br>
                 @error('szerelo')
                   <div class="alert alert-danger">{{ $errors->first('szerelo') }}</div>
+                  @enderror
+                  @error('szer')
+                  <div class="alert alert-danger">{{ $errors->first('szer') }}</div>
                   @enderror
                   <label for="munkaora">Munkaóra</label>
                   <input type="number" id="munkaora" name="munkaora" value="{{ old('munkaora') }}"><br>

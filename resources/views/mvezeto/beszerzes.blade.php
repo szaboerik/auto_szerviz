@@ -30,8 +30,8 @@ if(!check()){
             <h2>Beszerzés felvétele</h2>
             <form action="/api/beszerzes" method="POST">
                 @csrf
-                <!--<label for="besz_azon">Beszerzés azonosító</label>
-                <input type="number" id="besz_azon" name="besz_azon" readonly><br>-->
+                <label for="besz_azon">Beszerzés azonosító</label>
+                <input type="number" id="besz_azon" name="besz_azon" readonly><br>
                 <label for="f_szam">Feladatszám</label>
                 <select name="f_szam">
                 @foreach ($feladats as $feladat)
@@ -39,6 +39,9 @@ if(!check()){
                 value="{{$feladat->f_szam}}">{{ $feladat->f_szam}}</option>
                 @endforeach
                 </select><br>
+                @error('fszam')
+                        <div class="alert alert-danger">{{ $errors->first('fszam') }}</div>
+                    @enderror
                 <label for="alk_azon">Alkatrész</label>
                 <select name="alk_azon">
                 @foreach ($alkatreszs as $alkatresz)
@@ -46,6 +49,9 @@ if(!check()){
                 value="{{$alkatresz->alk_azon}}">{{ $alkatresz->alk_neve}}</option>
                 @endforeach
                 </select><br>
+                @error('alk')
+                        <div class="alert alert-danger">{{ $errors->first('alk') }}</div>
+                    @enderror
                 <label for="beszall_kod">Beszállító kód</label>
                 <select name="beszall_kod">
                 @foreach ($beszallitos as $beszallito)
@@ -53,6 +59,9 @@ if(!check()){
                 value="{{$beszallito->beszall_kod}}">{{$beszallito->nev}}</option>
                 @endforeach
                 </select><br>
+                @error('besz')
+                        <div class="alert alert-danger">{{ $errors->first('besz') }}</div>
+                    @enderror
                 <label for="egyseg_ar">Egységár</label>
                 <input type="number" id="egyseg_ar" name="egyseg_ar" value="{{ old('egyseg_ar') }}"><br>
                 @error('egysegar')

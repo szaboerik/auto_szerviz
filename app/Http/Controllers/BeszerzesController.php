@@ -41,17 +41,30 @@ public function beszerzes(Request $request) {
     $menny = '';
     $mennyvizsg = '';
     $egysegarvizsg = '';
+    $fszam = '';
+    $alk = '';
+    $besz = '';
     $validator = Validator::make([],[]);
    
     
     if (preg_match("/'egyseg_ar' cannot be null/", $e->getMessage())) {
         $egysegar = 'A mező kitöltése kötelező!';
     }
+    
 
     if (preg_match("/'mennyiseg' cannot be null/", $e->getMessage())) {
         $menny = 'A mező kitöltése kötelező!';
     }
 
+    if (preg_match("/'f_szam' cannot be null/", $e->getMessage())) {
+        $fszam = 'Nem vihetsz fel új beszerzést, ameddig nincs feladat létrehozva!';
+    }
+    if (preg_match("/'alkatresz' cannot be null/", $e->getMessage())) {
+        $alk = 'Nem vihetsz fel új beszerzést, ameddig nincs alkatrész létrehozva!';
+    }
+    if (preg_match("/'beszall_kod' cannot be null/", $e->getMessage())) {
+        $besz = 'Nem vihetsz fel új beszerzést, ameddig nincs beszállító létrehozva!';
+    }
     if (preg_match("/Nem lehet 0 vagy kisebb a mennyiség!/", $e->getMessage())) {
         $mennyvizsg = 'Nem lehet 0 vagy kisebb a mennyiség!';
     }
@@ -64,6 +77,9 @@ public function beszerzes(Request $request) {
     $validator->errors()->add('mennyiseg', $menny);
     $validator->errors()->add('mennyisegv', $mennyvizsg);
     $validator->errors()->add('egysegarv', $egysegarvizsg);
+    $validator->errors()->add('fszam', $fszam);
+    $validator->errors()->add('alk', $alk);
+    $validator->errors()->add('besz', $besz);
  return redirect()->back()->withErrors($validator)->withInput($request->input());
  return redirect('/mvezeto/beszerzes')->withErrors($validator);
 }

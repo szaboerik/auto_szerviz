@@ -26,8 +26,8 @@ if(!check()){
     <form action="/api/feladat/{{ $feladat->f_szam }}" method="POST">
       @csrf
       @method('put')
-        <!--<label for="f_szam">Feladatszám</label>
-        <input type="number" id="f_szam" name="f_szam" value="{{ $feladat->f_szam }}" readonly><br>-->
+        <label for="f_szam">Feladatszám</label>
+        <input type="number" id="f_szam" name="f_szam" value="{{ $feladat->f_szam }}" readonly><br>
         <label for="m_szam">Munkaszám</label>
                 <select name="m_szam">
                 @foreach ($munkalaps as $munkalap)
@@ -40,7 +40,7 @@ if(!check()){
                 <label for="jelleg">Jelleg</label>
                 <select name="jelleg">
                 @foreach ($jellegs as $jelleg)
-                <option value="{{ $jelleg->jelleg }}" {{$jelleg->jelleg == $feladat->jelleg ? 'selected' : ''}}>{{ $jelleg->elnevezes }}</option>
+                <option value="{{ $jelleg->jelleg }}">{{ $jelleg->elnevezes }}</option>
                 @endforeach
                 </select><br>
                 @error('jelleg')
@@ -49,9 +49,12 @@ if(!check()){
                 <label for="d_kod">Szerelő</label>
                 <select name="d_kod">
                 @foreach ($dolgozos as $dolgozo)
-                <option value="{{ $dolgozo->d_kod }}" {{$dolgozo->d_kod == $feladat->szerelo ? 'selected' : ''}}>{{ $dolgozo->dolg_nev }}</option>
+                <option value="{{ $dolgozo->d_kod }}">{{ $dolgozo->dolg_nev }}</option>
                 @endforeach
                 </select><br>
+                @error('szerelo')
+                  <div class="alert alert-danger">{{ $errors->first('szerelo') }}</div>
+                  @enderror
                 <label for="munkaora">Munkaóra</label>
                 <input type="number" id="munkaora" name="munkaora" value="{{ $feladat->munkaora }}"><br>
                 @error('munkaoranotnull')

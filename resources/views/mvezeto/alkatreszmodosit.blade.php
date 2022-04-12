@@ -26,8 +26,8 @@ if(!check()){
     <form action="/api/alkatresz/{{ $alkatresz->alk_azon }}" method="POST">
       @csrf
       @method('put')
-       <!-- <label for="alk_azon">Alkatrész azonosító</label>
-        <input type="number" id="alk_azon" name="alk_azon" value="{{ $alkatresz->alk_azon }}" readonly><br>-->
+       <label for="alk_azon">Alkatrész azonosító</label>
+        <input type="number" id="alk_azon" name="alk_azon" value="{{ $alkatresz->alk_azon }}" readonly><br>
         <label for="alk_neve">Alkatrész neve</label>
         <input type="text" id="alk_neve" name="alk_neve" value="{{ $alkatresz->alk_neve }}"><br>
         @error('alkatresz')

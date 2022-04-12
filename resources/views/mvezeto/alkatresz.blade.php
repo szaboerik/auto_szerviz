@@ -28,8 +28,8 @@ if(!check()){
             <h2>Alkatrész felvitele</h2>
             <form action="/api/alkatresz" method="POST">
                 @csrf
-                <!--  <label for="alk_azon">Alkatrész azonosító</label>-->
-                <!--  <input type="number" id="alk_azon" name="alk_azon" readonly><br>-->
+                <label for="alk_azon">Alkatrész azonosító</label>
+                <input type="number" id="alk_azon" name="alk_azon" readonly><br>
                   <label for="alk_neve">Alkatrész neve</label>
                   <input type="text" id="alk_neve" name="alk_neve"><br>
                   @error('alkatresz')
