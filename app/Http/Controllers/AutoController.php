@@ -40,11 +40,15 @@ public function auto(Request $request) {
     $rosszevjarat = '';
     $rszdup = '';
     $forgdup = '';
+    $marka= '';
     $validator = Validator::make([],[]);
    
     
     if (preg_match("/'evjarat' cannot be null/", $e->getMessage())) {
         $evjaratures = 'A mező kitöltése kötelező!';
+    }
+    if (preg_match("/'markaId' cannot be null/", $e->getMessage())) {
+        $marka = 'Nem vihetsz fel új autót, ameddig nincs márka!';
     }
 
     if (preg_match("/Nem megfelelő évjárat!/", $e->getMessage())) {
@@ -63,6 +67,7 @@ public function auto(Request $request) {
     $validator->errors()->add('evjaratcheck', $rosszevjarat);
     $validator->errors()->add('rszdup', $rszdup);
     $validator->errors()->add('forgdup', $forgdup);
+    $validator->errors()->add('marka', $marka);
  return redirect()->back()->withErrors($validator)->withInput($request->input());
  return redirect('/mvezeto/auto')->withErrors($validator);
 }
@@ -118,12 +123,16 @@ public function automodosit(Request $request, $id)
     $rosszevjarat = '';
     $rszdup = '';
     $forgdup = '';
+    
     $validator = Validator::make([],[]);
     
     
     if (preg_match("/'evjarat' cannot be null/", $e->getMessage())) {
         $evjaratures = 'A mező kitöltése kötelező!';
     }
+
+    
+    
 
     if (preg_match("/Nem megfelelő évjárat!/", $e->getMessage())) {
         $rosszevjarat = 'Nem megfelelő évjárat! Nem lehet 1990-nél kisebb, illetve a mostani évnél nagyobb!';
@@ -141,6 +150,7 @@ public function automodosit(Request $request, $id)
     $validator->errors()->add('evjaratcheck', $rosszevjarat);
     $validator->errors()->add('rszdup', $rszdup);
     $validator->errors()->add('forgdup', $forgdup);
+    
  return redirect()->back()->withErrors($validator)->withInput($request->input());
  return redirect('/mvezeto/auto')->withErrors($validator);
 }

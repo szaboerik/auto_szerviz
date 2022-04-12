@@ -43,6 +43,9 @@ if(!check()){
                 value="{{$marka->id}}">{{ $marka->marka}}</option>
                 @endforeach
                 </select><br>
+                @error('marka')
+                        <div class="alert alert-danger">{{ $errors->first('marka') }}</div>
+                    @enderror
                   <label for="forgalmi">Forgalmi</label>
                   <input type="text" id="forgalmi" value="{{ old('forgalmi') }}" name="forgalmi" placeholder="abc12345"><br>
                   @error('forgalmi')
