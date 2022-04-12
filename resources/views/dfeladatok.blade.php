@@ -29,11 +29,14 @@ if(!check()){
             Feladatok
         </header>
         <aside class="item4">
-            <a href="/kilepes">Kijelentkezés</a>
+        <a href="/kilepes">Kijelentkezés</a>
         </aside>
         <article class="item3">
             <h2>Feladatok</h2>
             <aside class="gyerek">
+            <label for="felh">Szerelőre szűrés: </label>
+            <select id="felh">
+            </select><br>
             <table>
                 <tr>
                     <td class="f_szam">Feladatszám</td>

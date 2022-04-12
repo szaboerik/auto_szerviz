@@ -20,7 +20,15 @@ public function dfeladatok()
 {
 
     $feladats=Feladat::all();
-        return response()->json($feladats);
+    return response()->json($feladats);
+}
+
+//Feladatra szűrés
+
+public function dfeladat($id)
+{
+    $feladats=Feladat::find($id);
+        return response()->json($feladats);   
 }
 
 //Új feladat

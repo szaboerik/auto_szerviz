@@ -1,9 +1,15 @@
 $(function() {
     const token=$('meta[name="csrf-token"]').attr('content');
-    const feladatTomb=[];
     const ajax=new Ajax(token);
-    let feladatokVegpont="http://localhost:8000/api/dfeladatok";
+    //
+    const szerelo = new Szerelo(token);
+    //
+    let feladatokVegpont="http://localhost:8000/api/dfeladatok/";
+    const feladatTomb=[];
+    const felTomb=[];
     ajax.getAjax(feladatokVegpont, feladatTomb, feladatLista);
+    ajax.getAjax(feladatokVegpont, feladatTomb, szereloLista);
+    szerelo.getSzerelo(feladatokVegpont, felTomb, kivalasztottSzerelo);
 
     function feladatLista(feladatok) {
         const szuloElem = $("section table tbody");
@@ -17,4 +23,20 @@ $(function() {
         sablonElem.hide();
 
     }
+
+    function szereloLista(szerelok){
+        let option="";
+        szerelok.forEach(function(elem){
+            option="<option value='"+elem.szerelo+"'>"+elem.szerelo+"</option>";
+            $("#felh").append(option);
+        });
+    }
+    function kivalasztottSzerelo() {
+    $("#felh").on("change",function(){
+        let jelenlegiSzerelo=$(this, " option:selected").val();
+        console.log(jelenlegiSzerelo);
+        szerelo.getSzerelo(feladatokVegpont+jelenlegiSzerelo, feladatTomb, feladatLista);
+    });
+}
+
 });
