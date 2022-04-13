@@ -38,6 +38,7 @@ if(!check()){
     </thead>
     <tbody>
      <?php foreach($autos as $auto): ?>
+      
         <tr>
           <th>{{ $auto->rendszam}}</th>
           <td>{{ $auto->marka->marka }}</td>

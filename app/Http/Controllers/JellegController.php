@@ -12,7 +12,7 @@ class JellegController extends Controller
 
 //Új jelleg
 
-public function ujjelleg()
+public function ujJelleg()
 {
     return view('mvezeto/jelleg');
 }
@@ -69,7 +69,7 @@ public function jellegek()
 
 //Jelleg törlése
 
-public function jellegtorles($id)
+public function jellegTorles($id)
 {
     
     $jelleg = Jelleg::findOrFail($id);
@@ -83,7 +83,7 @@ public function jellegtorles($id)
 
 //Jelleg módosítása
 
-public function jellegmodosit(Request $request, $id)
+public function jellegModosit(Request $request, $id)
 { try{
     $jelleg = Jelleg::find($id);
     $jelleg -> jelleg = $request -> jelleg;
@@ -122,7 +122,7 @@ public function jellegmodosit(Request $request, $id)
 // return redirect('/mvezeto/jellegek');
 }
 
-public function jellegszerkesztes($id)
+public function jellegSzerkesztes($id)
 {
     $jelleg = Jelleg::find($id);
     return view('mvezeto/jellegmodosit', ['jelleg' => $jelleg]);

@@ -10,7 +10,7 @@ class DolgozoController extends Controller
 
 //Új dolgozó
 
-public function ujdolgozo()
+public function ujDolgozo()
 {
     return view('mvezeto/dolgozo');
 } 
@@ -55,7 +55,7 @@ public function dolgozok()
 
 //Dolgozó törlése
 
-public function dolgozotorles($id)
+public function dolgozoTorles($id)
 {
 
     $dolg = Dolgozo::findOrFail($id);
@@ -69,7 +69,7 @@ public function dolgozotorles($id)
 
 //Dolgozó módosítása
 
-public function dolgozomodosit(Request $request, $id)
+public function dolgozoModosit(Request $request, $id)
 {
     try{
     $dolgozo = Dolgozo::find($id);
@@ -101,7 +101,7 @@ public function dolgozomodosit(Request $request, $id)
 
 }
 
-public function dolgozoszerkesztes($id)
+public function dolgozoSzerkesztes($id)
 {
     $dolgozo = Dolgozo::find($id);
     return view('mvezeto/dolgozomodosit', ['dolgozo' => $dolgozo]);

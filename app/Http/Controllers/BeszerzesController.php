@@ -14,7 +14,7 @@ class BeszerzesController extends Controller
 
 //Új beszerzés
 
-public function ujbeszerzes()
+public function ujBeszerzes()
 {
     $feladats = Feladat::all();
     $alkatreszs = Alkatresz::all();
@@ -44,6 +44,7 @@ public function beszerzes(Request $request) {
     $fszam = '';
     $alk = '';
     $besz = '';
+    $fel = '';
     $validator = Validator::make([],[]);
    
     
@@ -72,6 +73,9 @@ public function beszerzes(Request $request) {
     if (preg_match("/Nem lehet 0 vagy kisebb az egységár!/", $e->getMessage())) {
         $egysegarvizsg = 'Nem lehet 0 vagy kisebb az egységár!';
     }
+    if (preg_match("/Befejezett munkalaphoz nem rendelhető feladat!/", $e->getMessage())) {
+        $fel = 'Befejezett munkalaphoz csatolt feladathoz nem rendelhető már beszerzés!';
+    }
     
     $validator->errors()->add('egysegar', $egysegar);
     $validator->errors()->add('mennyiseg', $menny);
@@ -80,6 +84,7 @@ public function beszerzes(Request $request) {
     $validator->errors()->add('fszam', $fszam);
     $validator->errors()->add('alk', $alk);
     $validator->errors()->add('besz', $besz);
+    $validator->errors()->add('fel', $fel);
  return redirect()->back()->withErrors($validator)->withInput($request->input());
  return redirect('/mvezeto/beszerzes')->withErrors($validator);
 }
@@ -99,7 +104,7 @@ public function beszerzesek()
 
 //Rendelés törlése
 
-public function beszerzestorles($id)
+public function beszerzesTorles($id)
 {
     Beszerzes::find($id)->delete();
     return redirect('/mvezeto/beszerzesek');
@@ -107,7 +112,7 @@ public function beszerzestorles($id)
 
 //Rendelés módosítása
 
-public function beszerzesmodosit(Request $request, $id)
+public function beszerzesModosit(Request $request, $id)
 {
     try{
     $beszerzes = Beszerzes::find($id);
@@ -127,6 +132,7 @@ public function beszerzesmodosit(Request $request, $id)
     $menny = '';
     $mennyvizsg = '';
     $egysegarvizsg = '';
+    
     $validator = Validator::make([],[]);
    
     
@@ -145,18 +151,20 @@ public function beszerzesmodosit(Request $request, $id)
     if (preg_match("/Nem lehet 0 vagy kisebb az egységár!/", $e->getMessage())) {
         $egysegarvizsg = 'Nem lehet 0 vagy kisebb az egységár!';
     }
+    
 
     
     $validator->errors()->add('egysegar', $egysegar);
     $validator->errors()->add('mennyiseg', $menny);
     $validator->errors()->add('mennyisegv', $mennyvizsg);
     $validator->errors()->add('egysegarv', $egysegarvizsg);
+    
  return redirect()->back()->withErrors($validator)->withInput($request->input());
  return redirect('/mvezeto/beszerzes')->withErrors($validator);
 }
 }
 
-public function beszerzesszerkesztes($id)
+public function beszerzesSzerkesztes($id)
 {
     $feladats = Feladat::all();
     $alkatreszs = Alkatresz::all();

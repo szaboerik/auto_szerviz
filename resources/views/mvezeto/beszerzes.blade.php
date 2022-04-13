@@ -42,6 +42,9 @@ if(!check()){
                 @error('fszam')
                         <div class="alert alert-danger">{{ $errors->first('fszam') }}</div>
                     @enderror
+                    @error('fel')
+                        <div class="alert alert-danger">{{ $errors->first('fel') }}</div>
+                    @enderror
                 <label for="alk_azon">Alkatrész</label>
                 <select name="alk_azon">
                 @foreach ($alkatreszs as $alkatresz)

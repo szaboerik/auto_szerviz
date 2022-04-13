@@ -29,7 +29,7 @@ if(!check()){
             Feladatok
         </header>
         <aside class="item4">
-            <a href="/kilepes">Kijelentkezés</a>
+        <a href="/kilepes">Kijelentkezés</a>
         </aside>
         <article class="item3">
             <h2>Feladatok</h2>
@@ -38,8 +38,9 @@ if(!check()){
                 <tr>
                     <td class="f_szam">Feladatszám</td>
                     <td class="m_szam">Munkaszám</td>
-                    <td class="jelleg">Jelleg</td>
-                    <td class="szerelo">Szerelő</td>
+                    <td class="elnevezes">Jelleg</td>
+                    <td class="dolg_nev">Szerelő</td>
+                    <td class="rendszam">Rendszám</td>
                 </tr>
             </table>
         </aside>
@@ -51,6 +52,7 @@ if(!check()){
                         <th>Munkaszám</th>
                         <th>Jelleg</th>
                         <th>Szerelő</th>
+                        <th>Rendszám</th>
                     </tr>
                 </thead>
                 <tbody>

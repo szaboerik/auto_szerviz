@@ -15,7 +15,7 @@ class MunkalapController extends Controller
 
 //Új munkalap
 
-public function ujmunkalap()
+public function ujMunkalap()
 {
     $autos = Auto::all();
     return view('mvezeto/munkalap', ['autos' => $autos]);
@@ -81,7 +81,7 @@ public function munkak()
 
 //Munkalap törlése
 
-public function munkalaptorles($id)
+public function munkalapTorles($id)
 {
     
     $munkalap = Munkalap::findOrFail($id);
@@ -99,7 +99,7 @@ public function munkalaptorles($id)
 
 //Munkalap módosítása
 
-public function munkalapmodosit(Request $request, $id)
+public function munkalapModosit(Request $request, $id)
 {
 
     $rules = [
@@ -151,7 +151,7 @@ try{
 
 }
 
-public function munkalapszerkesztes($id)
+public function munkalapSzerkesztes($id)
 {
     $autos = Auto::all();
     $munkalap = Munkalap::find($id);

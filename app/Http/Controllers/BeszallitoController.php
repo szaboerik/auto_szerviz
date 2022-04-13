@@ -12,7 +12,7 @@ class BeszallitoController extends Controller
 {
 //Új beszállító
 
-public function ujbeszallito()
+public function ujBeszallito()
 {
     return view('mvezeto/beszallito');
 } 
@@ -81,7 +81,7 @@ public function beszallitok()
 
 //Beszállító törlése
 
-public function beszallitotorles($id)
+public function beszallitoTorles($id)
 {
     $besz = Beszallito::findOrFail($id);
         if($besz->beszerzes()->count()>0){
@@ -93,7 +93,7 @@ public function beszallitotorles($id)
 
 //Beszállító módosítása
 
-public function beszallitomodosit(Request $request, $id)
+public function beszallitoModosit(Request $request, $id)
 {
 
     $rules = [
@@ -151,7 +151,7 @@ public function beszallitomodosit(Request $request, $id)
 }
 }
 
-public function beszallitoszerkesztes($id)
+public function beszallitoSzerkesztes($id)
 {
     $beszallito = Beszallito::find($id);
     return view('mvezeto/beszallitomodosit', ['beszallito' => $beszallito]);

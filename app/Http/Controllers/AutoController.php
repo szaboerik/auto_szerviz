@@ -14,7 +14,7 @@ class AutoController extends Controller
 
 //Új autó
 
-public function ujauto()
+public function ujAuto()
 {
     $markas = Marka::all();
     return view('mvezeto/auto', ['markas' => $markas]);
@@ -86,7 +86,7 @@ public function autok()
 
 //Autó törlése
 
-public function autotorles($id)
+public function autoTorles($id)
 {
         $rsz = Auto::findOrFail($id);
         if($rsz->rendszam()->count()>0){
@@ -99,7 +99,7 @@ public function autotorles($id)
 
 //Autó módosítása
 
-public function automodosit(Request $request, $id)
+public function autoModosit(Request $request, $id)
 {
     $rules = [
         'rendszam' => ['required', new rendszam],
@@ -157,7 +157,7 @@ public function automodosit(Request $request, $id)
 
 }
 
-public function autoszerkesztes($id)
+public function autoSzerkesztes($id)
 {
 $markas = Marka::all();
 $auto = Auto::find($id);

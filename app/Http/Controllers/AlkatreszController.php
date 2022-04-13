@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class AlkatreszController extends Controller
 {
 //Új Alkatrész
-public function ujalkatresz()
+public function ujAlkatresz()
 {
     return view('mvezeto/alkatresz');
 } 
@@ -45,7 +45,7 @@ public function alkatreszek()
     return view('mvezeto.alkatreszek', ['alkatreszs' => $alkatreszs]);
 }
 //Alkatrész törlése
-public function alkatresztorles($id)
+public function alkatreszTorles($id)
 {
     
         $alk = Alkatresz::findOrFail($id);
@@ -57,7 +57,7 @@ public function alkatresztorles($id)
     } 
 
 //Alkatrész módosítása
-public function alkatreszmodosit(Request $request, $id)
+public function alkatreszModosit(Request $request, $id)
 {
     try{
     $alkatresz = Alkatresz::find($id);
@@ -85,7 +85,7 @@ public function alkatreszmodosit(Request $request, $id)
 }
 }
 
-public function alkatreszszerkesztes($id)
+public function alkatreszSzerkesztes($id)
 {
     $alkatresz = Alkatresz::find($id);
     return view('mvezeto/alkatreszmodosit', ['alkatresz' => $alkatresz]);

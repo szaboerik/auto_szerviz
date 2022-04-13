@@ -11,23 +11,32 @@ use App\Models\Auto;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class FeladatController extends Controller
 {
 
 //Dolgozó
 
-public function dfeladatok()
+public function dFeladatok()
 {
+    $feladatss = 
+    DB::table('feladats')
+    ->join('munkalaps', 'feladats.m_szam', '=', 'munkalaps.m_szam')
+    ->join('autos', 'munkalaps.autoId', '=', 'autos.id')
+    ->join('dolgozos', 'feladats.szerelo', '=', 'dolgozos.d_kod')
+    ->join('jellegs', 'feladats.jelleg', '=', 'jellegs.jelleg')
+    ->whereDate('feladats.created_at', '=', Carbon::today()->toDateString())
+    ->select('feladats.f_szam','feladats.m_szam','jellegs.elnevezes','dolgozos.dolg_nev', 'autos.rendszam')
+    ->get();
+    
+    return response()->json($feladatss);
 
-    //$feladats=Feladat::all();
-    $feladats=Feladat::whereDate('created_at', Carbon::today())->get();
-        return response()->json($feladats);
 }
 
 //Új feladat
 
-public function ujfeladat()
+public function ujFeladat()
 {
     $munkalaps = Munkalap::all();
     $dolgozos = Dolgozo::all();
@@ -122,7 +131,7 @@ public function feladatok()
     return view('mvezeto.feladatok', ['feladats' => $feladats]);
 }
 //Feladat törlése
-public function feladattorles($id)
+public function feladatTorles($id)
 {
     
     $besz = Feladat::findOrFail($id);
@@ -136,7 +145,7 @@ public function feladattorles($id)
 
 //Feladat módosítása
 
-public function feladatmodosit(Request $request, $id)
+public function feladatModosit(Request $request, $id)
 {   
     try{
     $feladat = Feladat::find($id);
@@ -195,7 +204,7 @@ public function feladatmodosit(Request $request, $id)
         return redirect('/mvezeto/feladat')->withErrors($validator);
     }
     }
-public function feladatszerkesztes($id)
+public function feladatSzerkesztes($id)
 {
     $munkalaps = Munkalap::all();
     $dolgozos = Dolgozo::all();

@@ -11,7 +11,7 @@ class MarkaController extends Controller
 
 //Új márka
 
-public function ujmarka()
+public function ujMarka()
 {   
     return view('mvezeto/marka');
 }
@@ -52,7 +52,7 @@ public function markak()
 
 //Márka törlése
 
-public function markatorles($id)
+public function markaTorles($id)
 {
    
 
@@ -66,7 +66,7 @@ public function markatorles($id)
 
 //Márka módosítása
 
-public function markamodosit(Request $request, $id)
+public function markaModosit(Request $request, $id)
 {
     try{
     $marka = marka::find($id);
@@ -94,7 +94,7 @@ public function markamodosit(Request $request, $id)
 
 }
 
-public function markaszerkesztes($id)
+public function markaSzerkesztes($id)
 {
     $marka = Marka::find($id);
     return view('mvezeto/markamodosit', ['marka' => $marka]);
