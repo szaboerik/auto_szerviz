@@ -6,7 +6,7 @@ class Feladat{
         this.m_szam=this.node.children(".m_szam");
         this.jelleg=this.node.children(".jelleg");
         this.szerelo=this.node.children(".szerelo");
-
+        
         this.setAdat(this.adat);
     }
 
@@ -16,5 +16,6 @@ class Feladat{
         this.m_szam.text(this.adat.m_szam);
         this.jelleg.text(this.adat.jelleg);
         this.szerelo.text(this.adat.szerelo);
+        
     }
 }

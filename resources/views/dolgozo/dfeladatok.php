@@ -41,6 +41,7 @@ if(!check()){
                     <td class="m_szam">Munkaszám</td>
                     <td class="jelleg">Jelleg</td>
                     <td class="szerelo">Szerelő</td>
+                    
                 </tr>
             </table>
         </aside>
@@ -52,6 +53,7 @@ if(!check()){
                         <th>Munkaszám</th>
                         <th>Jelleg</th>
                         <th>Szerelő</th>
+                    
                     </tr>
                 </thead>
                 <tbody>

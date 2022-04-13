@@ -10,6 +10,7 @@ use App\Models\Jelleg;
 use App\Models\Auto;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class FeladatController extends Controller
 {
@@ -19,7 +20,8 @@ class FeladatController extends Controller
 public function dfeladatok()
 {
 
-    $feladats=Feladat::all();
+    //$feladats=Feladat::all();
+    $feladats=Feladat::whereDate('created_at', Carbon::today())->get();
         return response()->json($feladats);
 }
 

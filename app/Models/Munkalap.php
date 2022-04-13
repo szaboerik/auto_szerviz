@@ -21,6 +21,7 @@ class Munkalap extends Model
     }
 
     
+    
 
 
     protected $dateFormat = 'Y-m-d';
