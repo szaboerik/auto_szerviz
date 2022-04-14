@@ -26,7 +26,7 @@ if(!check()){
     @include('layouts.oldalmenu')
         <article class="item3">
             <h2>Autó felvitele</h2>
-            <form action="/api/auto" method="POST">
+            <form action="/api/auto" method="POST" id="forminput">
                 @csrf
                   <label for="rendszam">Rendszám</label>
                   <input type="text" id="rendszam" value="{{ old('rendszam') }}" name="rendszam" placeholder="ABC123"><br>

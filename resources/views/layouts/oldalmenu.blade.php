@@ -1,5 +1,8 @@
-<aside class="sidebar" id="sidebar">
-                
+<aside class="sidebar close" id="sidebar">
+                <header>
+                    <i class='bx bx-chevron-left toggle'>
+
+                </i></header>
                 <div class="menubar">
                 <div class="menu">
                      
