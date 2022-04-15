@@ -78,7 +78,10 @@ if(!check()){
                     @enderror
                     @error('mennyisegv')
                         <div class="alert alert-danger">{{ $errors->first('mennyisegv') }}</div>
-                    @enderror                
+                    @enderror
+                <label for="besz_osszege">Beszerzés összege</label>
+                <input type="number" id="besz_osszege" name="besz_osszege" readonly><br>
+                
                 <button type="submit" class="btn btn-success">Mentés</button>
                 <a href="/mvezeto/beszerzesek" class="button">Mégse</a>
               </form> 
