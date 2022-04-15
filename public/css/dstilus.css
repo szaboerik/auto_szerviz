@@ -1,37 +1,302 @@
-body {
-    background-color:aqua;
-}
-.item1 { grid-area: header; }
-.item3 { grid-area: article; }
-.item4 {grid-area: aside}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 
-
-.grid-container {
-    display: grid;
-    grid-template-areas:
-      'header header header header header aside'
-      'article article article article article article';
-    grid-gap: 10px;
-    text-align: center;
-    background-color: #2196F3;
-    padding: 10px;
-  }
-  .grid-container > article, header {
-    background-color: rgba(255, 255, 255, 0.8);
-    text-align: center;
-    padding: 20px 0;
-    font-size: 30px;
-  }
-  table, th, td{
-    border: 1px solid black;
-  }
-.item2 {
-  list-style-type: none;
+* {
+  font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+:root{
+  --body-color: #E4E9F7;
+  --sidebar-color: #FFF;
+  --primary-color: #494949;
+  --primary-color-light: #F6F5FF;
+  --toggle-color: #DDD;
+  --text-color: #707070;
+  --label-text-color: rgb(37, 37, 37) ;
+
+  --tran-03: all 0.2s ease;
+  --tran-03: all 0.3s ease;
+  --tran-04: all 0.3s ease;
+  --tran-05: all 0.3s ease;
+}
+
+body{
+  min-height: 100vh;
+  background: var(--body-color);
+  transition: var(--tran-05);
+}
+
+/*======================================================*/
+/*TÁBLÁZAT*/
+
+.table{
+	width: 50%;
+	border-collapse: collapse;
+}
+tbody>tr>:nth-child(1){
+  width:30%;
+  text-align:center;
  }
 
+.table td,.table th{
+  padding:6px 15px;
+  border:1px solid #ddd;
+  
+  font-size:15px;
+}
+
+.table th{
+	background-color: var(--text-color);
+	color:#ffffff;
+}
+
+.table tbody tr:nth-child(even){
+	background-color: #f5f5f5;
+}
+
+/*=======================================================*/
+/*GRID ELRENDEZÉS*/
+header{
+
+  color: var(--primary-color);
+  font-weight: bold;
+  font-size: large;
+  grid-area: header;
+
+  text-align: center;
+}
+
+article {
+  
+  grid-area: content;
+  /*background-color: #20bf6b;*/
+  padding: 20px;
+}
+aside {
+  
+  grid-area: sidebar;
+}
+footer{
+ 
+  padding-left:50%;
+  grid-area: footer;
+}
+  #footer {
+  margin-top:2em;
+}
+
+.grid-container {
+  display: grid;
+  height: 100vh;
+  grid-template-columns:1fr 10fr;
+  grid-template-rows: 0fr 10fr;
+  grid-template-areas:
+    "sidebar header"
+    "sidebar content"
+    "footer footer"
+}
+
+aside ul li .dropdownmenu{
+  display: none;
+}
+
+nav{
+  display: none;
+  grid-area: dropdownmenu;
+}
+/*=========================================================*/
+/*DOLGOZÓ SIDEBAR*/
+
+.sidebardolgozo{
+  position:relative;
+  top:0;
+  left:0;
+  height:100vh;
+  width: 250px;
+  padding: 20px 19px;
+  background: var(--sidebar-color);
+}
+
+.sidebardolgozo a{
+  text-decoration: none;
+  padding: 20px;
+  font-size: 15px;
+}
+.sidebardolgozo .text{
+  font-size:17px;
+  font-weight: 500;
+  color: var(--text-color);
+  white-space: nowrap;
+  opacity: 1;
+  }
+
+.sidebardolgozo li{
+  height: 50px;
+  list-style: none;
+  margin-top: 10px;
+}
+
+.sidebardolgozo li .icon,
+.sidebardolgozo li .bx{
+min-width: 40px;
+font-size: 20px;
+}
+
+.sidebardolgozo li .icon,
+.sidebardolgozo li .text,
+.sidebardolgozo li .bx{
+  color: var(--text-color);
+}
+.sidebardolgozo li a {
+  float: left;
+ padding: 5%;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  transition: var(--text-color);
+}
+.sidebardolgozo li a:hover{
+  background: var(--primary-color);
+  border-radius: 3px;
+}
+.sidebardolgozo li .icon,
+.sidebardolgozo li .text{
+  color: var(--text-color);
+  transition: var(--tran-03);
+}
+.sidebardolgozo li a:hover .icon,
+.sidebardolgozo li a:hover .text{
+  color: var(--body-color);
+  transition: var(--tran-03);
+}
+/*==========================================================*/
+/*DOLGOZÓ TÁBLÁZAT*/
+
+
+
+/*=========================================================*/
+/*MOBILMÓD*/
+@media (max-width: 500px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+      /*"header"*/
+      "dropdown"
+      "content"
+      "footer"
+  }
+  .dropdownmenu{
+    grid-area: dropdown;
+    position: relative;
+    display: grid;
+  }
+
+  .dropbtn {
+    background-color: var(--primary-color-light);
+    color: var(--text-color);
+    padding: 16px;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    width: 100%;
+    z-index: 1;
+    color: var(--primary-color-light)
+  }
+  
+  .dropdown-content a {
+    color: var(--text-color);
+    padding: 16px 16px;
+    font-size: 20px;
+    text-decoration: none;
+    display: block;
+
+  }
+  
+  .dropdown-content a:hover {
+    background-color: var(--primary-color);
+    color: var(--primary-color-light);
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+    width: 100%;
+  }
+  
+  .dropdown:hover .dropbtn {
+    background-color: var(--label-text-color);
+    color: var(--primary-color-light);
+  }
+
+  .dropdown li{
+    list-style: none;
+  }
+
+.dropdownmenu button .bx{
+font-size: 50px;
+  }
+  /*=====================*/
+  /*Táblázat*/
+  .table thead{
+		display: none;
+	}
+	.table, .table tbody, .table tr, .table td{
+		display: block;
+		width: 100%;
+	}
+	.table tr{
+		margin-bottom:15px;
+	}
+	.table td{
+		text-align: right;
+		padding-left: 50%;
+		text-align: right;
+		position: relative;
+	}
+	.table td::before{
+		content: attr(data-label);
+		position: absolute;
+		left:0;
+		width: 50%;
+		padding-left:15px;
+		font-size:15px;
+		font-weight: bold;
+		text-align: left;
+	}
+  .sidebar ul{
+    grid-template-columns: 1fr;
+  }
+  .sidebar li{
+    font-size: 12px;
+  }
+  ul .menu-links{
+    padding: 0px;
+    font-size: 12px;
+  }
+/*============================*/
+/*DROPDOWN*/
+  .sidebar{
+    display: none;
+  }
+
+
+
+
+}
 
 
 
