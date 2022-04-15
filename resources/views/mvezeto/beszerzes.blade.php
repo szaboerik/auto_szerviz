@@ -79,6 +79,8 @@ if(!check()){
                     @error('mennyisegv')
                         <div class="alert alert-danger">{{ $errors->first('mennyisegv') }}</div>
                     @enderror
+                    <label for="created_at">Beszerzés dátuma</label>
+                  <input type="date" id="created_at" name="created_at" readonly><br>
                 <label for="besz_osszege">Beszerzés összege</label>
                 <input type="number" id="besz_osszege" name="besz_osszege" readonly><br>
                 

@@ -59,6 +59,7 @@ if(!check()){
           </td>
         </tr>
         <?php endforeach; ?> 
+        
     </tbody>
     <div><a href="/mvezeto/beszerzes"><button class="btn btn-sm btn-success">Új beszerzés létrehozása</button></a></div>
   </table>
