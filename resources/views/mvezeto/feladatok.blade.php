@@ -34,6 +34,7 @@ if(!check()){
         <th>Jelleg</th>
         <th>Szerelő</th>
         <th>Munkaóra</th>
+        <th>Feladat felvitele</th>
         <th>Feladat összege (Ft)</th>
         <th>Beszerzés összege (Ft)</th>
       </tr>
@@ -46,6 +47,7 @@ if(!check()){
           <td>{{ $feladat->jell->elnevezes }}</td>
           <td>{{ $feladat->dolg->dolg_nev }}</td>
           <td>{{ $feladat->munkaora }}</td>
+          <td>{{ $feladat->created_at->toDateString();}}</td>
           <td>{{ $feladat->f_osszege }}</td>
           <td>{{ $feladat->besz_osszege }}</td>
           <td style="display: flex;">

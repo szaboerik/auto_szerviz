@@ -28,8 +28,7 @@ if(!check()){
             <h2>Dolgozó felvitele</h2>
             <form action="/api/dolgozo" method="POST">
                 @csrf
-                 <label for="d_kod">Dolgozó azonosító</label>
-                <input type="number" id="d_kod" name="d_kod" readonly><br>
+                 
                   <label for="dolg_nev">Dolgozó neve</label>
                   <input type="text" id="dolg_nev" name="dolg_nev"><br>
                   @error('dolgozo')

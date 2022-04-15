@@ -69,7 +69,9 @@ if(!check()){
                   @error('feladatmaxoraszam')
                   <div class="alert alert-danger">{{ $errors->first('feladatmaxoraszam') }}</div>
                   @enderror
-                <label for="f_osszege">Feladat összege</label>
+                  <label for="created_at">Feladat felvitele</label>
+                  <input type="date" id="created_at" name="created_at" value="{{ $feladat->created_at }}" readonly><br>
+                  <label for="f_osszege">Feladat összege</label>
                   <input type="number" id="f_osszege" name="f_osszege" value="{{ $feladat->f_osszege }}"readonly><br>
                   <label for="besz_osszege">Beszerzés összege</label>
                   <input type="number" id="besz_osszege" name="besz_osszege" value="{{ $feladat->besz_osszege }}"readonly><br>

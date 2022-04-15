@@ -30,8 +30,6 @@ if(!check()){
             <h2>Beszerzés felvétele</h2>
             <form action="/api/beszerzes" method="POST">
                 @csrf
-                <label for="besz_azon">Beszerzés azonosító</label>
-                <input type="number" id="besz_azon" name="besz_azon" readonly><br>
                 <label for="f_szam">Feladatszám</label>
                 <select name="f_szam">
                 @foreach ($feladats as $feladat)
@@ -81,8 +79,10 @@ if(!check()){
                     @error('mennyisegv')
                         <div class="alert alert-danger">{{ $errors->first('mennyisegv') }}</div>
                     @enderror
-                <!--<label for="besz_osszege">Beszerzés összege</label>
-                <input type="number" id="besz_osszege" name="besz_osszege" readonly><br>-->
+                    <label for="created_at">Beszerzés dátuma</label>
+                  <input type="date" id="created_at" name="created_at" readonly><br>
+                <label for="besz_osszege">Beszerzés összege</label>
+                <input type="number" id="besz_osszege" name="besz_osszege" readonly><br>
                 
                 <button type="submit" class="btn btn-success">Mentés</button>
                 <a href="/mvezeto/beszerzesek" class="button">Mégse</a>

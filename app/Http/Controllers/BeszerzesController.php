@@ -106,6 +106,7 @@ public function beszerzesek()
 
 public function beszerzesTorles($id)
 {
+    
     Beszerzes::find($id)->delete();
     return redirect('/mvezeto/beszerzesek');
 }

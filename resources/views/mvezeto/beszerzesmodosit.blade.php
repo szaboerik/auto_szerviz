@@ -30,7 +30,6 @@ if(!check()){
         <input type="number" id="besz_azon" name="besz_azon" value="{{ $beszerzes->besz_azon }}" readonly><br>
         <label for="f_szam">Feladatszám</label>
                 <select name="f_szam">
-                
                 @foreach ($feladats as $feladat)
                 <option value="{{ $feladat->f_szam }}"{{$feladat->f_szam == $beszerzes->f_szam ? 'selected' : 'disabled'}}>{{ $feladat->f_szam }} </option>
                 @endforeach
@@ -63,8 +62,10 @@ if(!check()){
                     @error('mennyisegv')
                         <div class="alert alert-danger">{{ $errors->first('mennyisegv') }}</div>
                     @enderror
-        <!--<label for="besz_osszege">Beszerzés összege</label>
-        <input type="number" id="besz_osszege" name="besz_osszege" value="{{ $beszerzes->besz_osszege }}" readonly><br>-->
+        <label for="created_at">Beszerzés dátuma</label>
+        <input type="date" id="created_at" name="created_at" value="{{ $beszerzes->created_at }}" readonly><br>
+        <label for="besz_osszege">Beszerzés összege</label>
+        <input type="number" id="besz_osszege" name="besz_osszege" value="{{ $beszerzes->besz_osszege }}" readonly><br>
       <button type="submit" class="btn btn-success">Mentés</button>
       <a href="/mvezeto/beszerzesek" class="button">Mégse</a>
     </form>
