@@ -233,7 +233,7 @@ tbody>tr>:nth-child(1){
 /*======*/
 /*DOLGOZÓ TÁBLÁZAT*/
 
-.item3 .table{
+article .item3 .table{
 	width: 50%;
 	border-collapse: collapse;
 }
