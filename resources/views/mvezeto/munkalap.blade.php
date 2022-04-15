@@ -49,15 +49,6 @@ if(!check()){
                 @error('rsz')
                         <div class="alert alert-danger">{{ $errors->first('rsz') }}</div>
                     @enderror
-                <label for="munka_kezdete">Munka kezdete</label>
-                <input type="date" id="munka_kezdete" name="munka_kezdete" readonly><br>
-                <label for="munka_vege">Munka vége</label>
-                <input type="date" id="munka_vege" name="munka_vege" readonly><br>
-                @error('vege')
-                        <div class="alert alert-danger">{{ $errors->first('vege') }}</div>
-                    @enderror
-                <label for="fizetendo">Fizetendő összeg</label>
-                <input type="number" id="fizetendo" name="fizetendo" readonly><br>
                 <button type="submit" class="btn btn-success">Mentés</button>
                 <a href="/mvezeto/munkak" class="button">Mégse</a>
               </form> 

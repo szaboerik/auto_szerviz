@@ -36,6 +36,7 @@ if(!check()){
         <th>Beszállító kód</th>
         <th>Egységár (Ft)</th>
         <th>Mennyiség (Db)</th>
+        <th>Beszerzés dátuma</th>
         <th>Beszerzés összege (Ft)</th>
         
       </tr>
@@ -49,6 +50,7 @@ if(!check()){
           <td>{{ $beszerzes->besz->nev }}</td>
           <td>{{ $beszerzes->egyseg_ar }}</td>
           <td>{{ $beszerzes->mennyiseg }}</td>
+          <td>{{ $beszerzes->created_at->toDateString();}}</td>
           <td>{{ $beszerzes->besz_osszege }}</td>
           
           <td style="display: flex;">

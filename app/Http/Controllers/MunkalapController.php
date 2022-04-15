@@ -42,24 +42,18 @@ public function munkalap(Request $request) {
     return redirect('/mvezeto/munkak');
 }catch(QueryException  $e){
     $ugyfel = '';
-    $munkavege = '';
     $munkarsz = '';
     $validator = Validator::make([],[]);
     if (preg_match("/'ugyfel_neve' cannot be null/", $e->getMessage())) {
         $ugyfel = 'A mező kitöltése kötelező!';
     
-    }
-    if (preg_match("/Nem lehet a mai napon kívül más a munka vége dátum!/", $e->getMessage())) {
-        $munkavege = 'Nem lehet a mai napon kívül más a munka vége dátum!';
-    
-    }
+    }    
     if (preg_match("/Egy nap egy autó csak egy munkalapra vihető fel!/", $e->getMessage())) {
         $munkarsz = 'Egy nap egy autó csak egy munkalapra vihető fel!';
     
     }
 
     $validator->errors()->add('ugyfelnev', $ugyfel);
-    $validator->errors()->add('vege', $munkavege);
     $validator->errors()->add('rsz', $munkarsz);
 
  return redirect()->back()->withErrors($validator)->withInput($request->input());
