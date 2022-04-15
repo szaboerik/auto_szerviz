@@ -2,14 +2,19 @@
 
 /*ARTICLE*/
 label{
-  color: var(--primary-color)
+  width: 150px;
+  color: var(--primary-color);
+  display: inline-block;
 }
 
-.input {
-  display: table-cell;
-  width: 100%;
-  padding-left: 30px;
+input {
+  margin-bottom: 5px;
 }
+
+select {
+  margin-bottom: 5px;
+}
+
 .input input{
   display: table-cell;
   box-sizing: border-box;
@@ -17,12 +22,13 @@ label{
   height: 40px;
   margin: auto;
  border: 1px solid gray;
- font-size: 17px;
+ font-size: 20px;
  padding: 5px;
  color: var(--primary-color);
 }
 
  .input .btn{
+  
   padding:10px;
   background-color: var(--text-color);
   border: 1px solid #525252;
@@ -38,7 +44,7 @@ label{
 
 
   .button {
-
+ 
     display: block;
     width: 115px;
     height: 25px;
@@ -78,16 +84,15 @@ body{
   background: var(--body-color);
   transition: var(--tran-05);
 }
-
-
+/*======================================================*/
 /*SIDEBAR*/
 .sidebar{
   position:relative;
   top:0;
   left:0;
-  height: 100%;
+  height:fit-content;
   width: 250px;
-  padding: 10px 14px;
+  padding: 20px 19px;
   background: var(--sidebar-color);
 }
 
@@ -99,14 +104,11 @@ body{
   opacity: 1;
   }
 
-  
-  
 .sidebar li{
   height: 50px;
   list-style: none;
   margin-top: 10px;
 }
-
 
 .sidebar li .icon,
 .sidebar li .bx{
@@ -124,41 +126,56 @@ font-size: 20px;
   position: relative;
 }
 
-
-
 .header-text .name{
 font-weight: 600;
 }
 
-.sidebar header .toggle{
-position:absolute;
-top: 10%; /*nyíl elhelyzése felülről*/
-right:-13%;  /*nyíl elhelyezése sidebar szélén*/
-transform: translateY(-50%);
-height: 30px;
-width: 30px;
-background: var(--primary-color);
-border-radius: 25%;
-color: var(--sidebar-color);
-margin: auto;
-padding: 8px;
-}
-
-
 
 .sidebar li a {
+  float: left;
+ padding: 5%;
+  width: 100%;
   height: 100%;
   text-decoration: none;
-  text-align: center;
+  transition: var(--text-color);
 }
-
+.sidebar li a:hover{
+  background: var(--primary-color);
+  border-radius: 3px;
+}
+.sidebar li .icon,
+.sidebar li .text{
+  color: var(--text-color);
+  transition: var(--tran-03);
+}
+.sidebar li a:hover .icon,
+.sidebar li a:hover .text{
+  color: var(--body-color);
+  transition: var(--tran-03);
+}
 
 .sidebar .menubar{
   height: calc(100% - 50px);
 }
-
+.sidebar header .toggle{
+  position: absolute;
+  top: 50%;
+  right: -30px;
+  transform: translateY(-50%) rotate(180deg);
+  height: 25px;
+  width: 25px;
+  background-color: var(--primary-color);
+  color: var(--sidebar-color);
+  display: grid;
+  border-radius: 10%;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  cursor: pointer;
+  transition: var(--tran-05);
+}
+/*===========================================*/
 /*MENU ALJA, SÖTÉT-VILÁGOS*/
-
 .menubar .mode{
   background: var(--primary-color-light);
 }
@@ -181,128 +198,130 @@ padding: 8px;
   opacity:0;
 }
 
-/*TOGGLESWITCH*/
-.toggle-switch {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
+/*======================================================*/
+/*TÁBLÁZAT*/
+
+.table{
+ 
+	width: 50%;
+	border-collapse: collapse;
+}
+tbody>tr>:nth-child(1){
+  width:30%;
+  text-align:center;
+ }
+
+.table td,.table th{
+  padding:6px 15px;
+  border:1px solid #ddd;
+  
+  font-size:15px;
 }
 
-.switch input { 
-  opacity: 0;
-  width: 0;
-  height: 0;
+.table th{
+	background-color: var(--text-color);
+	color:#ffffff;
 }
 
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
+.table tbody tr:nth-child(even){
+	background-color: #f5f5f5;
 }
 
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-input:checked + .slider {
-  background-color: #2196F3;
-}
-
-input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
-}
-
-input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
-}
-
-/* Rounded sliders */
-.slider.round {
-  border-radius: 34px;
-}
-
-.slider.round:before {
-  border-radius: 50%;
-}
-
-
+/*=======================================================*/
 /*GRID ELRENDEZÉS*/
+header{
+  
+  padding-left: 30px;
+  color: var(--primary-color);
+  font-weight: bold;
+  font-size: large;
+  grid-area: header;
+  margin:auto;
+  text-align: center;
+}
 
 article {
+  
   grid-area: content;
   /*background-color: #20bf6b;*/
   padding: 20px;
 }
 aside {
+  background-color: red;
   grid-area: sidebar;
-  background-color: #45aaf2;
+}
+footer{
+ 
+  padding-left:50%;
+  grid-area: footer;
+}
+  #footer {
+  margin-top:2em;
 }
 
 .grid-container {
   display: grid;
-  grid-template-columns: 1fr 7fr;
-  grid-template-rows: 900px;
-  grid-template-areas: 
+  height: 100vh;
+  grid-template-columns:1fr 10fr;
+  grid-template-rows: 0fr 10fr;
+  grid-template-areas:
+    "sidebar header"
     "sidebar content"
-
+    "footer footer"
 }
-@media (max-width: 600px) {
+
+/*=========================================================*/
+@media (max-width: 500px) {
   .grid-container {
-    grid-template-columns: 4fr;
+    grid-template-columns: 1fr;
     grid-template-areas:
+      "header"
       "sidebar"
       "content"
+      "footer"
   }
+  /*=====================*/
+  /*Táblázat*/
+  .table thead{
+		display: none;
+	}
+	.table, .table tbody, .table tr, .table td{
+		display: block;
+		width: 100%;
+	}
+	.table tr{
+		margin-bottom:15px;
+	}
+	.table td{
+		text-align: right;
+		padding-left: 50%;
+		text-align: right;
+		position: relative;
+	}
+	.table td::before{
+		content: attr(data-label);
+		position: absolute;
+		left:0;
+		width: 50%;
+		padding-left:15px;
+		font-size:15px;
+		font-weight: bold;
+		text-align: left;
+	}
+  .sidebar ul{
+    grid-template-columns: 1fr;
+  }
+  .sidebar li{
+    font-size: 12px;
+  }
+  ul .menu-links{
+    padding: 0px;
+    font-size: 12px;
+  }
+
 }
 
 
-/*body {
-    background-color:aqua;
-}
-.item1 { grid-area: header; }
-.item2 { grid-area: nav; }
-.item3 { grid-area: article; }
-
-
-.grid-container {
-    display: grid;
-    grid-template-areas:
-      'nav header header'
-      'nav article article'
-      'nav footer footer';
-    grid-template-rows: 1fr 1fr 1fr;
-    grid-template-columns: 1fr 1fr 1fr; 
-    text-align: center;
-    background-color: #2196F3;
-    padding: 10px;
-  }
-  .grid-container > article, header, nav, div {
-    background-color: rgba(255, 255, 255, 0.8);
-    text-align: center;
-    padding: 20px 0;
-    font-size: 30px;
-  }
-
-table, th, td{
-  border: 1px solid black;
-}*/
 
 
 
@@ -312,52 +331,4 @@ table, th, td{
 
 
 
-
-
-/*ELSŐ VERZIÓ*/
-/*body {
-    background-color:aqua;
-}
-.item1 { grid-area: header; }
-.item2 { grid-area: menu; }
-.item3 { grid-area: article; }
-.item4 {grid-area: aside}
-
-
-.grid-container {
-    display: grid;
-    grid-template-areas:
-      'header header header header header aside'
-      'menu article article article article article';
-    grid-gap: 10px;
-    text-align: center;
-    background-color: #2196F3;
-    padding: 10px;
-  }
-  .grid-container > article, header, menu, div {
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 20px 0;
-    font-size: 30px;
-  }
-
-table, th, td{
-  border: 1px solid black;
-  text-align:right;
-
-}
-.item2 {
-  text-align:left;
-}
-.header {
-  text-align:center;
-}
-
-@media only screen and (max-width: 500px) {
-  .grid-container {
-    grid-template-columns: 20% auto;
-    grid-template-areas:
-    'menu header aside'
-    'article article article';
-  }
-}*/
 
