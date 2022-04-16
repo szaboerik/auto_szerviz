@@ -1,10 +1,10 @@
 <aside class="sidebar close" id="sidebar">
                 <header>
 
-                <span id="image">
-                   <!-- <img src="/css/vw.png" alt="">-->
-                </span>
-                    <i class='bx bx-chevron-left toggle'>
+              <!--  <span id="image">
+                   <img src="/css/vw.png" alt="">
+                </span>-->
+                   <!-- <i class='bx bx-chevron-left toggle'>-->
 
                 </i></header>
                 <div class="menubar">

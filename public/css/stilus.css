@@ -51,15 +51,16 @@ select {
   .button {
  
     display: block;
-    width: 115px;
+    width: 52px;
     height: 25px;
-    background: #4E9CAF;
+    background: #e6e6e6;
     text-decoration: none;
     text-align: center;
-    border-radius: 5px;
+    border-radius: 1px;
     color: black;
-
+    font-size: 14px;
     line-height: 25px;
+    border: 1px solid gray;
 }
 
 * {
