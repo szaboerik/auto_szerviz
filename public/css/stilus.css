@@ -182,27 +182,6 @@ font-weight: 600;
 }
 /*===========================================*/
 /*MENU ALJA, SÖTÉT-VILÁGOS*/
-.menubar .mode{
-  background: var(--primary-color-light);
-}
-
-.menubar .mode .moon-sun{
-  height: 50px;
-  width: 60px;
-}
-
-.menubar .mode i{
-  padding:10px;
-  position: absolute;
-}
-
-.menubar .mode .mode-text{
-  padding: 45px;
-}
-
-.menubar .mode .sun{
-  opacity:0;
-}
 
 /*======================================================*/
 /*TÁBLÁZAT*/

@@ -62,17 +62,17 @@ if(!check()){
             </table>
         </aside>
         <section class="szulo">
-            <table>
+            <table cellspacing="0">
+            <tbody>
                 <thead>
                     <tr>
-                        <th>Feladatszám</th>
+                        <th>Feladatszám<m/th>
                         <th>Munkaszám</th>
                         <th>Jelleg</th>
                         <th>Szerelő</th>
                         <th>Rendszám</th>
                     </tr>
                 </thead>
-                <tbody>
                 </tbody>
             </table>
             </section>
