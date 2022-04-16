@@ -26,9 +26,7 @@ if(!check()){
 </head>
 <body>
     <main class="grid-container">
-        <header class="header">
-            Feladatok
-        </header>
+        
         <aside class="sidebardolgozo">
         <div class="menubar">
                 <div class="menu">
