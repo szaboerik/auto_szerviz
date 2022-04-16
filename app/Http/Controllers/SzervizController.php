@@ -19,8 +19,8 @@ class SzervizController extends Controller
             }
         }
         
-        $dolgozoFhn = "dolgozo";
-        $dolgozoJsz = "dolgozo";
+        $dolgozoFhn = "szerelo";
+        $dolgozoJsz = "szerelo";
     
         $mvezetoFhn = "admin";
         $mvezetoJsz = "admin";
