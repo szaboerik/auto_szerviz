@@ -215,6 +215,8 @@ Route::put('/api/munkalap/{id}', [MunkalapController::class, 'munkalapModosit'])
 //Oldalmenü @include Route az összes blade-re. 
 Route::get('/mvezeto', function() {return View::make('layouts.oldalmenu');});
 
+Route::get('/mvezeto', function() {return View::make('layouts.belepve');});
+
 /*//Új Jelleg
 Route::get('/mvezeto/jelleg', [JellegController::class, 'ujjelleg']);
 Route::post('/api/jelleg', [JellegController::class, 'jelleg']);*/ 
