@@ -39,7 +39,7 @@ public function dFeladatok()
 public function ujFeladat()
 {
     $munkalaps = Munkalap::all();
-    $dolgozos = Dolgozo::all();
+    $dolgozos = Dolgozo::where("kepesseg",'=','s')->get();
     $jellegs = Jelleg::all();
 
     return view('mvezeto/feladat', ['munkalaps' => $munkalaps, 'dolgozos' => $dolgozos, 'jellegs' => $jellegs]);
