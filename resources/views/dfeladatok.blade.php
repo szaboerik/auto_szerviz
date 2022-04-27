@@ -50,7 +50,7 @@ if(!check()){
             <h2>Feladatok</h2>
             <aside class="gyerek">
             <table>
-                <tr>
+                <tr style="display: none;">
                     <td class="f_szam">Feladatszám</td>
                     <td class="m_szam">Munkaszám</td>
                     <td class="elnevezes">Jelleg</td>

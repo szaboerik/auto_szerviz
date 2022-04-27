@@ -19,7 +19,7 @@
             <form action="/api/feladat" method="POST">
                 @csrf
                   <label for="m_szam">Munkaszám</label>
-                  <select name="m_szam" autocomplete="off">
+                  <select name="m_szam" autocomplete="off"> <!--ha firefox-al van megnyitva az alkalmazás, kell az aut.compl=off;chrome nem igényli-->
                 @foreach ($munkalaps as $munkalap)
                 <option value="{{ $munkalap->m_szam }}" {{$munkalap->m_szam==request()->get('m_szam') ? "selected" : "" }} >{{$munkalap->m_szam }}</option>
                 @endforeach

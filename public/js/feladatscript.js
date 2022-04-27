@@ -12,12 +12,14 @@ $(function() {
         const szuloElem = $("section table tbody");
         const sablonElem = $("aside table tr");
         szuloElem.empty();
-        sablonElem.show();
+        //sablonElem.show();
         feladatok.forEach(function(elem) {    
-            let node = sablonElem.clone().appendTo(szuloElem);
+            let sablonClone = sablonElem.clone();
+            sablonClone.show();
+            let node=sablonClone.appendTo(szuloElem);
             const obj = new Feladat(node, elem);
         });
-        sablonElem.hide();
+       // sablonElem.hide();
 
     }
     /*
