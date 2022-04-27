@@ -37,7 +37,7 @@
           <td style="display: flex;">
             <a href="/mvezeto/automodosit/{{ $auto->id }}"><button class="btn btn-sm btn-info">Szerkesztés</button></a>
             <a><form action="/api/auto/{{ $auto->id }}" method="POST">@csrf @method('delete')<button type="submit" class="btn btn-sm btn-danger">Törlés</button></form></a>
-            <a href="/mvezeto/munkalap"><button class="btn btn-sm btn-success">Új munkalap hozzáadása</button></a>
+            <a href="/mvezeto/munkalap?rendszam={{$auto->rendszam}}"><button class="btn btn-sm btn-success">Új munkalap hozzáadása</button></a>
           </td>
         </tr>
         <?php endforeach; ?> 

@@ -30,9 +30,10 @@
                         <div class="alert alert-danger">{{ $errors->first('ugyfel_telszama') }}</div>
                     @enderror
                 <label for="rendszam">Rendszám</label>
-                <select name="rendszam">
+                <select name="rendszam" autocomplete="off">
                 @foreach ($autos as $auto)
-                <option value="{{ $auto->id }}">{{ $auto->rendszam }}</option>
+                <option value="{{ $auto->id }}" {{$auto->rendszam==request()->get('rendszam') ? "selected" : "" }} > {{$auto->rendszam}}</option>
+                                    
                 @endforeach
                 </select><br>
                 @error('rsz')
