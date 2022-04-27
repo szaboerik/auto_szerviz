@@ -5,7 +5,7 @@ $(function() {
     let feladatokVegpont="http://localhost:8000/api/dfeladatok";
     const feladatTomb=[];
     const dolgozoTomb=[];
-    ajax.getAjax(feladaokVegpont, feladatTomb, feladatLista);
+    ajax.getAjax(feladatokVegpont, feladatTomb, feladatLista);
     //ajax.getAjax(feladatokVegpont, dolgozoTomb, dolgozoLista);
 
     function feladatLista(feladatok) {
