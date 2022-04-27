@@ -19,9 +19,9 @@
             <form action="/api/feladat" method="POST">
                 @csrf
                   <label for="m_szam">Munkaszám</label>
-                <select name="m_szam">
+                  <select name="m_szam" autocomplete="off">
                 @foreach ($munkalaps as $munkalap)
-                <option value="{{ $munkalap->m_szam }}">{{ $munkalap->m_szam }}</option>
+                <option value="{{ $munkalap->m_szam }}" {{$munkalap->m_szam==request()->get('m_szam') ? "selected" : "" }} >{{$munkalap->m_szam }}</option>
                 @endforeach
                 </select><br>
                 @error('befejezettmunkalap')
