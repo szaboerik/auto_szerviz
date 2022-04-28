@@ -25,13 +25,11 @@ public function ujBeszerzes()
 public function beszerzes(Request $request) {
     try{
     $beszerzes = new beszerzes();
-    $beszerzes -> besz_azon = $request -> besz_azon;
     $beszerzes -> f_szam = $request -> f_szam;
     $beszerzes -> alkatresz = $request -> alk_azon;
     $beszerzes -> beszall_kod = $request -> beszall_kod;
     $beszerzes -> egyseg_ar = $request -> egyseg_ar;
     $beszerzes -> mennyiseg = $request -> mennyiseg;
-    $beszerzes -> besz_osszege = $request -> besz_osszege;
     $beszerzes->save();
 
     return redirect('/mvezeto/beszerzesek');
@@ -117,13 +115,11 @@ public function beszerzesModosit(Request $request, $id)
 {
     try{
     $beszerzes = Beszerzes::find($id);
-    $beszerzes -> besz_azon = $request -> besz_azon;
     $beszerzes -> f_szam = $request -> f_szam;
     $beszerzes -> alkatresz = $request -> alk_azon;
     $beszerzes -> beszall_kod = $request -> beszall_kod;
     $beszerzes -> egyseg_ar = $request -> egyseg_ar;
     $beszerzes -> mennyiseg = $request -> mennyiseg;
-    $beszerzes -> besz_osszege = $request -> besz_osszege;
     $beszerzes->save();
 
     return redirect('/mvezeto/beszerzesek');

@@ -370,7 +370,8 @@ class AddTrigger extends Migration
         FOR EACH ROW
         BEGIN
         UPDATE munkalaps
-        SET fizetendo =(SELECT SUM(f.f_osszege) from feladats f where NEW.m_szam = m_szam) where m_szam = NEW.m_szam;
+        SET fizetendo =(SELECT SUM(f.f_osszege) from feladats f where NEW.m_szam = m_szam)+
+        (SELECT IFNULL(SUM(f.besz_osszege),0) from feladats f where NEW.m_szam = m_szam) where m_szam = NEW.m_szam;
         END');
 
         DB::unprepared('CREATE TRIGGER fizetendo_munkalap_update_check
@@ -387,7 +388,8 @@ class AddTrigger extends Migration
         FOR EACH ROW
         BEGIN
         UPDATE munkalaps
-        SET fizetendo =(SELECT SUM(f.f_osszege) from feladats f where OLD.m_szam = m_szam) where m_szam = OLD.m_szam;
+        SET fizetendo =(SELECT SUM(f.f_osszege) from feladats f where OLD.m_szam = m_szam)+
+        (SELECT IFNULL(SUM(f.besz_osszege),0) from feladats f where OLD.m_szam = m_szam) where m_szam = OLD.m_szam;
         END');
 
 

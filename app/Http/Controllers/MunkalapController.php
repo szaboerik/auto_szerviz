@@ -30,36 +30,30 @@ public function munkalap(Request $request) {
     $request->validate($rules);
 
     $munkalap = new Munkalap();
-    $munkalap -> m_szam = $request -> m_szam;
+    
     $munkalap -> ugyfel_neve = $request -> ugyfel_neve;
     $munkalap -> ugyfel_telszama = $request -> ugyfel_telszama;
     $munkalap->autoId = $request->rendszam;
-    $munkalap -> munka_kezdete = $request -> munka_kezdete;
-    $munkalap -> munka_vege = $request -> munka_vege;
-    $munkalap -> fizetendo = $request -> fizetendo;
     $munkalap->save();
 
     return redirect('/mvezeto/munkak');
 }catch(QueryException  $e){
     $ugyfel = '';
-    $munkavege = '';
+    
     $munkarsz = '';
     $validator = Validator::make([],[]);
     if (preg_match("/'ugyfel_neve' cannot be null/", $e->getMessage())) {
         $ugyfel = 'A mező kitöltése kötelező!';
     
     }
-    if (preg_match("/Nem lehet a mai napon kívül más a munka vége dátum!/", $e->getMessage())) {
-        $munkavege = 'Nem lehet a mai napon kívül más a munka vége dátum!';
     
-    }
     if (preg_match("/Egy nap egy autó csak egy munkalapra vihető fel!/", $e->getMessage())) {
         $munkarsz = 'Egy nap egy autó csak egy munkalapra vihető fel!';
     
     }
 
     $validator->errors()->add('ugyfelnev', $ugyfel);
-    $validator->errors()->add('vege', $munkavege);
+   
     $validator->errors()->add('rsz', $munkarsz);
 
  return redirect()->back()->withErrors($validator)->withInput($request->input());
@@ -109,13 +103,13 @@ try{
     $request->validate($rules);
 
     $munkalap = Munkalap::find($id);
-    $munkalap -> m_szam = $request -> m_szam;
+    
     $munkalap -> ugyfel_neve = $request -> ugyfel_neve;
     $munkalap -> ugyfel_telszama = $request -> ugyfel_telszama;
     $munkalap->autoId = $request->rendszam;
-    $munkalap -> munka_kezdete = $request -> munka_kezdete;
+    
     $munkalap -> munka_vege = $request -> munka_vege;
-    $munkalap -> fizetendo = $request -> fizetendo;
+    
     $munkalap->save();
 
     return redirect('/mvezeto/munkak');

@@ -48,13 +48,10 @@ public function ujFeladat()
 public function feladat(Request $request) {
     try{
     $feladat = new Feladat();
-    $feladat -> f_szam = $request -> f_szam;
     $feladat -> m_szam = $request -> m_szam;
     $feladat -> jelleg = $request -> jelleg;
     $feladat -> szerelo = $request -> d_kod;
     $feladat -> munkaora = $request -> munkaora;
-    $feladat -> f_osszege = $request -> f_osszege;
-    $feladat -> besz_osszege = $request -> besz_osszege;
     $feladat->save();
     return redirect('/mvezeto/feladatok');
 }catch(QueryException  $e){
@@ -149,13 +146,10 @@ public function feladatModosit(Request $request, $id)
 {   
     try{
     $feladat = Feladat::find($id);
-    $feladat -> f_szam = $request -> f_szam;
     $feladat -> m_szam = $request -> m_szam;
     $feladat -> jelleg = $request -> jelleg;
     $feladat -> szerelo = $request -> d_kod;
     $feladat -> munkaora = $request -> munkaora;
-    $feladat -> f_osszege = $request -> f_osszege;
-    $feladat -> besz_osszege = $request -> besz_osszege;
     $feladat->save();
     return redirect('/mvezeto/feladatok');
     }catch(QueryException  $e){
@@ -207,7 +201,7 @@ public function feladatModosit(Request $request, $id)
 public function feladatSzerkesztes($id)
 {
     $munkalaps = Munkalap::all();
-    $dolgozos = Dolgozo::all();
+    $dolgozos = Dolgozo::where("kepesseg",'=','s')->get();
     $jellegs = Jelleg::all();
     $feladat = Feladat::find($id);
     $feladat -> m_szam;
