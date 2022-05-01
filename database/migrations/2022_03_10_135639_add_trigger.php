@@ -176,7 +176,7 @@ class AddTrigger extends Migration
         BEFORE INSERT ON munkalaps
         FOR EACH ROW
         BEGIN
-        SET NEW.munka_kezdete = CURDATE();
+        SET NEW.munka_kezdete = NEW.created_at;
         END');
 
         //10. A feladathoz csak szerelő csatolható.
