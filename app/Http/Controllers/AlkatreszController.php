@@ -8,19 +8,24 @@ use Illuminate\Http\Request;
 
 class AlkatreszController extends Controller
 {
+
 //Új Alkatrész
+
 public function ujAlkatresz()
 {
     return view('mvezeto/alkatresz');
 } 
+
 public function alkatresz(Request $request) {
     try{
     $alkatresz = new Alkatresz();
     $alkatresz -> alk_azon = $request -> alk_azon;
     $alkatresz -> alk_neve = $request -> alk_neve;
     $alkatresz->save();
+    
     return redirect('/mvezeto/alkatreszek');
-}catch(QueryException  $e){
+
+    }catch(QueryException  $e){
     $message = '';
     $alkdup = '';
     $validator = Validator::make([],[]);
@@ -31,20 +36,25 @@ public function alkatresz(Request $request) {
     if (preg_match("/alkatreszs_alk_neve_unique'/", $e->getMessage())) {
         $alkdup = 'Van már ilyen elnevezésű alkatrészed!';
     }
+
     $validator->errors()->add('alkatresz', $message);
     $validator->errors()->add('alkatreszdup', $alkdup);
  
- return redirect()->back()->withErrors($validator)->withInput($request->input());
- return redirect('/mvezeto/alkatresz')->withErrors($validator);
+    return redirect()->back()->withErrors($validator)->withInput($request->input());
+    return redirect('/mvezeto/alkatresz')->withErrors($validator);
+    }
 }
-}
+
 //Alkatrészek kilistázása
+
 public function alkatreszek()
 {
     $alkatreszs = Alkatresz::all();
     return view('mvezeto.alkatreszek', ['alkatreszs' => $alkatreszs]);
 }
+
 //Alkatrész törlése
+
 public function alkatreszTorles($id)
 {
     
@@ -54,9 +64,10 @@ public function alkatreszTorles($id)
         }
         $alk->delete();
         return redirect('/mvezeto/alkatreszek');
-    } 
+} 
 
 //Alkatrész módosítása
+
 public function alkatreszModosit(Request $request, $id)
 {
     try{
@@ -66,7 +77,8 @@ public function alkatreszModosit(Request $request, $id)
     $alkatresz->save();
 
     return redirect('/mvezeto/alkatreszek');
-} catch (QueryException  $e){
+
+    }catch (QueryException  $e){
     $message = '';
     $alkdup = '';
     $validator = Validator::make([],[]);
@@ -77,12 +89,12 @@ public function alkatreszModosit(Request $request, $id)
     if (preg_match("/alkatreszs_alk_neve_unique'/", $e->getMessage())) {
         $alkdup = 'Van már ilyen elnevezésű alkatrészed!';
     }
-
     $validator->errors()->add('alkatresz', $message);
     $validator->errors()->add('alkatreszdup', $alkdup);
- return redirect()->back()->withErrors($validator)->withInput($request->input());
- return redirect('/mvezeto/alkatresz')->withErrors($validator);
-}
+
+    return redirect()->back()->withErrors($validator)->withInput($request->input());
+    return redirect('/mvezeto/alkatresz')->withErrors($validator);
+    }
 }
 
 public function alkatreszSzerkesztes($id)

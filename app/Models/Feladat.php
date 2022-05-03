@@ -23,8 +23,6 @@ class Feladat extends Model
         return $this->belongsTo(Jelleg::class, "jelleg");
     }
 
-    
-
     public function besz()
     {
         return $this->hasMany(Beszerzes::class, "f_szam");

@@ -6,15 +6,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/stilus.css') }}" >
-    <title>Adatfelvitel</title>
+    <title>Autók</title>
 </head>
 <body>
     <main>
     <div class="grid-container">
     @include('layouts.oldalmenu')
-      
         <article class="item3">
             <h2>Autók</h2>
             <table class="table">
@@ -28,7 +27,6 @@
     </thead>
     <tbody>
      <?php foreach($autos as $auto): ?>
-      
         <tr>
           <th>{{ $auto->rendszam}}</th>
           <td>{{ $auto->marka->marka }}</td>

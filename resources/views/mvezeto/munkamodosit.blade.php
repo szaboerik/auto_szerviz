@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/stilus.css') }}" >
     <title>Adatszerkesztés</title>
 </head>
@@ -15,7 +15,6 @@
     <form action="/api/munkalap/{{ $munkalap->m_szam }}" method="POST">
       @csrf
       @method('put')
-        
         <label for="ugyfel_neve">Ügyfél neve</label>
         <input type="text" id="ugyfel_neve" name="ugyfel_neve" value="{{ $munkalap->ugyfel_neve }}"><br>
         @error('ugyfelnev')
@@ -35,13 +34,11 @@
                 @error('rsz')
                         <div class="alert alert-danger">{{ $errors->first('rsz') }}</div>
                     @enderror
-        
         <label for="munka_vege">Munka vége</label>
         <input type="date" id="munka_vege" name="munka_vege" value="{{ $munkalap->munka_vege }}"><br>
         @error('vege')
                         <div class="alert alert-danger">{{ $errors->first('vege') }}</div>
                     @enderror
-        
         <button type="submit" class="btn btn-success">Mentés</button>
       <a href="/mvezeto/munkak" class="button">Mégse</a>
     </form>

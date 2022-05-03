@@ -17,8 +17,8 @@ public function ujBeszallito()
     return view('mvezeto/beszallito');
 } 
 
-public function beszallito(Request $request) {
-
+public function beszallito(Request $request)
+{
     $rules = [
         'elerhetoseg' => ['required', new elerhetoseg],
         'irsz' => ['required', new irszam]
@@ -34,8 +34,10 @@ public function beszallito(Request $request) {
     $beszallito -> cim = $request -> cim;
     $beszallito -> elerhetoseg = $request -> elerhetoseg;
     $beszallito->save();
+    
     return redirect('/mvezeto/beszallitok');
-}catch(QueryException  $e){
+
+    }catch(QueryException  $e){
     $message = '';
     $nev = '';
     $cim = '';
@@ -66,9 +68,10 @@ public function beszallito(Request $request) {
     $validator->errors()->add('cime', $cim);
     $validator->errors()->add('telszamdup', $telszamdup);
     $validator->errors()->add('nevdup', $nevdup);
- return redirect()->back()->withErrors($validator)->withInput($request->input());
- return redirect('/mvezeto/beszallito')->withErrors($validator);
-}
+
+    return redirect()->back()->withErrors($validator)->withInput($request->input());
+    return redirect('/mvezeto/beszallito')->withErrors($validator);
+    }
 }
 
 //Beszállítók kilistázása
@@ -95,7 +98,6 @@ public function beszallitoTorles($id)
 
 public function beszallitoModosit(Request $request, $id)
 {
-
     $rules = [
         'elerhetoseg' => ['required', new elerhetoseg],
         'irsz' => ['required', new irszam]
@@ -112,7 +114,8 @@ public function beszallitoModosit(Request $request, $id)
     $beszallito->save();
 
     return redirect('/mvezeto/beszallitok');
-}catch(QueryException  $e){
+
+    }catch(QueryException  $e){
     $message = '';
     $nev = '';
     $cim = '';
@@ -146,9 +149,10 @@ public function beszallitoModosit(Request $request, $id)
     $validator->errors()->add('cime', $cim);
     $validator->errors()->add('telszamdup', $telszamdup);
     $validator->errors()->add('nevdup', $nevdup);
- return redirect()->back()->withErrors($validator)->withInput($request->input());
- return redirect('/mvezeto/beszallito')->withErrors($validator);
-}
+
+    return redirect()->back()->withErrors($validator)->withInput($request->input());
+    return redirect('/mvezeto/beszallito')->withErrors($validator);
+    }
 }
 
 public function beszallitoSzerkesztes($id)

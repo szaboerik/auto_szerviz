@@ -30,18 +30,13 @@ if(!check()){
         <aside class="sidebardolgozo">
         <div class="menubar">
                 <div class="menu">
-                     
                 <ul class="menu-links">
-                    
                     <li>
                             <a href="/kilepes">
                             <i class='bx bx-log-out icon' ></i>
                                 <span class="text nav-text">Kijelentkezés</span>
                             </a>
-                        </li>      
-                    
-
-                                                         
+                        </li>                                           
                 </ul>
                 </div> 
             </div>
@@ -87,10 +82,7 @@ if(!check()){
                             <i class='bx bx-log-out icon' ></i>
                                 <span class="text nav-text">Kijelentkezés</span>
                             </a>
-                        </li>      
-                    
-
-                                                         
+                        </li>                                           
                 </ul>
                 </div> 
             </div>

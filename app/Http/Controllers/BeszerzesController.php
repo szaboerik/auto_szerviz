@@ -33,8 +33,9 @@ public function beszerzes(Request $request) {
     $beszerzes->save();
 
     return redirect('/mvezeto/beszerzesek');
-}catch(QueryException $e){
-   
+
+    }catch(QueryException $e){
+
     $egysegar = '';
     $menny = '';
     $mennyvizsg = '';
@@ -45,7 +46,6 @@ public function beszerzes(Request $request) {
     $fel = '';
     $validator = Validator::make([],[]);
    
-    
     if (preg_match("/'egyseg_ar' cannot be null/", $e->getMessage())) {
         $egysegar = 'A mező kitöltése kötelező!';
     }
@@ -83,9 +83,10 @@ public function beszerzes(Request $request) {
     $validator->errors()->add('alk', $alk);
     $validator->errors()->add('besz', $besz);
     $validator->errors()->add('fel', $fel);
- return redirect()->back()->withErrors($validator)->withInput($request->input());
- return redirect('/mvezeto/beszerzes')->withErrors($validator);
-}
+
+    return redirect()->back()->withErrors($validator)->withInput($request->input());
+    return redirect('/mvezeto/beszerzes')->withErrors($validator);
+    }
 }
 
 //Rendelések kilistázása
@@ -123,7 +124,8 @@ public function beszerzesModosit(Request $request, $id)
     $beszerzes->save();
 
     return redirect('/mvezeto/beszerzesek');
-}catch(QueryException $e){
+    
+    }catch(QueryException $e){
    
     $egysegar = '';
     $menny = '';
@@ -148,17 +150,14 @@ public function beszerzesModosit(Request $request, $id)
     if (preg_match("/Nem lehet 0 vagy kisebb az egységár!/", $e->getMessage())) {
         $egysegarvizsg = 'Nem lehet 0 vagy kisebb az egységár!';
     }
-    
-
-    
     $validator->errors()->add('egysegar', $egysegar);
     $validator->errors()->add('mennyiseg', $menny);
     $validator->errors()->add('mennyisegv', $mennyvizsg);
     $validator->errors()->add('egysegarv', $egysegarvizsg);
     
- return redirect()->back()->withErrors($validator)->withInput($request->input());
- return redirect('/mvezeto/beszerzes')->withErrors($validator);
-}
+    return redirect()->back()->withErrors($validator)->withInput($request->input());
+    return redirect('/mvezeto/beszerzes')->withErrors($validator);
+    }
 }
 
 public function beszerzesSzerkesztes($id)

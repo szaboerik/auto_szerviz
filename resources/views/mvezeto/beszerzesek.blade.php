@@ -6,15 +6,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/stilus.css') }}" >
-    <title>Adatfelvitel</title>
+    <title>Beszerzések</title>
 </head>
 <body>
     <main>
     <div class="grid-container">
     @include('layouts.oldalmenu')
-       
         <article class="item3">
             <h2>Beszerzések</h2>
             <table class="table">
@@ -28,7 +27,6 @@
         <th>Mennyiség (Db)</th>
         <th>Beszerzés dátuma</th>
         <th>Beszerzés összege (Ft)</th>
-        
       </tr>
     </thead>
     <tbody>
@@ -42,14 +40,12 @@
           <td>{{ $beszerzes->mennyiseg }}</td>
           <td>{{ $beszerzes->created_at->toDateString();}}</td>
           <td>{{ $beszerzes->besz_osszege }}</td>
-          
           <td style="display: flex;">
             <a href="/mvezeto/beszerzesmodosit/{{ $beszerzes->besz_azon }}"><button class="btn btn-sm btn-info">Szerkesztés</button></a>
             <a><form action="/api/beszerzes/{{ $beszerzes->besz_azon }}" method="POST">@csrf @method('delete')<button type="submit" class="btn btn-sm btn-danger">Törlés</button></form></a>
           </td>
         </tr>
         <?php endforeach; ?> 
-        
     </tbody>
     <div><a href="/mvezeto/beszerzes"><button class="btn btn-sm btn-success">Új beszerzés létrehozása</button></a></div>
   </table>

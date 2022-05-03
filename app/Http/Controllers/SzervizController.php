@@ -48,7 +48,6 @@ class SzervizController extends Controller
                 $hiba = 'Helytelen felhasználónév vagy jelszó!';
                 $validator = Validator::make([],[]);
                 $validator->errors()->add('hiba', $hiba);
-                //return redirect();
 
                 return redirect()->back()->withErrors($validator);
                 return redirect("belepes")->withErrors($validator);

@@ -1,9 +1,9 @@
 $(function() {
     const token=$('meta[name="csrf-token"]').attr('content');
     const ajax=new Ajax(token);
-
     let feladatokVegpont="http://localhost:8000/api/dfeladatok";
     const feladatTomb=[];
+    
     ajax.getAjax(feladatokVegpont, feladatTomb, feladatLista);
 
     function feladatLista(feladatok) {

@@ -32,13 +32,12 @@ public function marka(Request $request) {
     if (preg_match("/Duplicate entry/", $e->getMessage())) {
         $markadup = 'Van már ilyen elnevezésű márkád!';
     }
-    //$message = explode('>>: ', $e->getPrevious()->getMessage());
     $validator->errors()->add('marka', $message);
     $validator->errors()->add('markadup', $markadup);
- //   return redirect('/mvezeto/jellegek')->withErrors($validator);
- return redirect()->back()->withErrors($validator)->withInput($request->input());
- return redirect('/mvezeto/marka')->withErrors($validator);
-}
+
+    return redirect()->back()->withErrors($validator)->withInput($request->input());
+    return redirect('/mvezeto/marka')->withErrors($validator);
+    }
 
 }
 
@@ -54,8 +53,6 @@ public function markak()
 
 public function markaTorles($id)
 {
-   
-
     $marka = Marka::findOrFail($id);
         if($marka->marka()->count()>0){
             return redirect()->back()->with('error', "Nem törölheted a márkát, ha autóhoz van hozzárendelve!");
@@ -74,7 +71,8 @@ public function markaModosit(Request $request, $id)
     $marka->save();
 
     return redirect('/mvezeto/markak');
-} catch(QueryException  $e){
+
+    }catch(QueryException  $e){
     $message = '';
     $markadup = '';
     $validator = Validator::make([],[]);
@@ -84,13 +82,12 @@ public function markaModosit(Request $request, $id)
     if (preg_match("/Duplicate entry/", $e->getMessage())) {
         $markadup = 'Van már ilyen elnevezésű márkád!';
     }
-    //$message = explode('>>: ', $e->getPrevious()->getMessage());
     $validator->errors()->add('marka', $message);
     $validator->errors()->add('markadup', $markadup);
- //   return redirect('/mvezeto/jellegek')->withErrors($validator);
- return redirect()->back()->withErrors($validator)->withInput($request->input());
- return redirect('/mvezeto/marka')->withErrors($validator);
-}
+
+    return redirect()->back()->withErrors($validator)->withInput($request->input());
+    return redirect('/mvezeto/marka')->withErrors($validator);
+    }
 
 }
 

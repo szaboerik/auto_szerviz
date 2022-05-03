@@ -22,8 +22,10 @@ public function dolgozo(Request $request) {
     $dolgozo -> dolg_nev = $request -> dolg_nev;
     $dolgozo -> kepesseg = $request -> kepesseg;
     $dolgozo->save();
+    
     return redirect('/mvezeto/dolgozok');
-}catch(QueryException  $e){
+
+    }catch(QueryException  $e){
     $dolgnev = '';
     $vezeto = '';
     $validator = Validator::make([],[]);
@@ -39,9 +41,9 @@ public function dolgozo(Request $request) {
     $validator->errors()->add('dolgozo', $dolgnev);
     $validator->errors()->add('vezeto', $vezeto);
 
- return redirect()->back()->withErrors($validator)->withInput($request->input());
- return redirect('/mvezeto/dolgozo')->withErrors($validator);
-}
+    return redirect()->back()->withErrors($validator)->withInput($request->input());
+    return redirect('/mvezeto/dolgozo')->withErrors($validator);
+    }
 
 }
 
@@ -79,10 +81,12 @@ public function dolgozoModosit(Request $request, $id)
     $dolgozo->save();
 
     return redirect('/mvezeto/dolgozok');
-} catch(QueryException  $e){
+
+    }catch(QueryException  $e){
     $dolgnev = '';
     $vezeto = '';
     $validator = Validator::make([],[]);
+
     if (preg_match("/'dolg_nev' cannot be null/", $e->getMessage())) {
         $dolgnev = 'A mező kitöltése kötelező!';
     
@@ -95,9 +99,9 @@ public function dolgozoModosit(Request $request, $id)
     $validator->errors()->add('dolgozo', $dolgnev);
     $validator->errors()->add('vezeto', $vezeto);
 
- return redirect()->back()->withErrors($validator)->withInput($request->input());
- return redirect('/mvezeto/dolgozo')->withErrors($validator);
-}
+    return redirect()->back()->withErrors($validator)->withInput($request->input());
+    return redirect('/mvezeto/dolgozo')->withErrors($validator);
+    }
 
 }
 

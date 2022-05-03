@@ -32,16 +32,5 @@
             </form>
         </div>
     </div>
-    <!--<form action="belepes" method="post">
-    @csrf
-    <div class="bejelentkezes">
-    <form class="bejel">
-    <label for="fhn"><b>Felhasználónév:</b></label>
-        <input type="text" name="fhn" id="fhn" placeholder="Írd be a felhasználóneved"><br>
-    <label for="jsz"><b>Jelszó:</b></label>
-        <input type="password" placeholder="Írd be a jelszabad" name="jsz" id="jsz" > <br>
-    <input type="submit" value="Bejelentkezés" name="mehet"><br>
-      </form>
-    </div> -->
 </body>
 </html>

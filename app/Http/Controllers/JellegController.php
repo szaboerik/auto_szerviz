@@ -24,9 +24,9 @@ public function jelleg(Request $request) {
     $jelleg -> elnevezes = $request -> elnevezes;
     $jelleg -> oradij = $request -> oradij;
     $jelleg->save();
+    
     return redirect('/mvezeto/jellegek');
-    //$e = new Exception('Az óradíj nem lehet 5000-nél kisebb és 20000-nél nagyobb!');
-    //throw new Exception('insert into `jellegs` (`jelleg`, `elnevezes`, `oradij`, `updated_at`, `created_at`)');
+
     }catch(QueryException  $e){
         $oradij = '';
         $elnev = '';
@@ -45,17 +45,15 @@ public function jelleg(Request $request) {
         if (preg_match("/Duplicate entry/", $e->getMessage())) {
             $elnevdup = 'Van már ilyen elnevezésű jelleged!';
         }
-        //$message = explode('>>: ', $e->getPrevious()->getMessage());
         $validator->errors()->add('oradij', $oradij);
         $validator->errors()->add('elnevezes', $elnev);
         $validator->errors()->add('jelleg', $oradijures);
         $validator->errors()->add('elnevdup', $elnevdup);
-        
-     //   return redirect('/mvezeto/jellegek')->withErrors($validator);
+
      return redirect()->back()->withErrors($validator)->withInput($request->input());
      return redirect('/mvezeto/jelleg')->withErrors($validator);
     }
-   // return redirect('/mvezeto/jellegek');
+
 }
 
 //Jellegek kilistázása
@@ -84,7 +82,8 @@ public function jellegTorles($id)
 //Jelleg módosítása
 
 public function jellegModosit(Request $request, $id)
-{ try{
+{
+    try{
     $jelleg = Jelleg::find($id);
     $jelleg -> jelleg = $request -> jelleg;
     $jelleg -> elnevezes = $request -> elnevezes;
@@ -92,7 +91,8 @@ public function jellegModosit(Request $request, $id)
     $jelleg->save();
 
     return redirect('/mvezeto/jellegek');
-} catch(QueryException  $e){
+
+    }catch(QueryException  $e){
     $oradij = '';
     $elnev = '';
     $oradijures = '';
@@ -110,16 +110,14 @@ public function jellegModosit(Request $request, $id)
     if (preg_match("/Duplicate entry/", $e->getMessage())) {
         $elnevdup = 'Van már ilyen elnevezésű jelleged!';
     }
-    //$message = explode('>>: ', $e->getPrevious()->getMessage());
     $validator->errors()->add('oradij', $oradij);
     $validator->errors()->add('elnevezes', $elnev);
     $validator->errors()->add('jelleg', $oradijures);
     $validator->errors()->add('elnevdup', $elnevdup);
- //   return redirect('/mvezeto/jellegek')->withErrors($validator);
- return redirect()->back()->withErrors($validator)->withInput($request->input());
- return redirect('/mvezeto/jelleg')->withErrors($validator);
-}
-// return redirect('/mvezeto/jellegek');
+
+    return redirect()->back()->withErrors($validator)->withInput($request->input());
+    return redirect('/mvezeto/jelleg')->withErrors($validator);
+    }
 }
 
 public function jellegSzerkesztes($id)

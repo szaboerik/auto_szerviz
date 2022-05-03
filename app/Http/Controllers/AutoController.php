@@ -33,8 +33,10 @@ public function auto(Request $request) {
     $auto -> forgalmi = $request -> forgalmi;
     $auto -> evjarat = $request -> evjarat;
     $auto->save();
+
     return redirect('/mvezeto/autok');
-}catch(QueryException  $e){
+
+    }catch(QueryException  $e){
    
     $evjaratures = '';
     $rosszevjarat = '';
@@ -42,7 +44,6 @@ public function auto(Request $request) {
     $forgdup = '';
     $marka= '';
     $validator = Validator::make([],[]);
-   
     
     if (preg_match("/'evjarat' cannot be null/", $e->getMessage())) {
         $evjaratures = 'A mező kitöltése kötelező!';
@@ -68,9 +69,10 @@ public function auto(Request $request) {
     $validator->errors()->add('rszdup', $rszdup);
     $validator->errors()->add('forgdup', $forgdup);
     $validator->errors()->add('marka', $marka);
- return redirect()->back()->withErrors($validator)->withInput($request->input());
- return redirect('/mvezeto/auto')->withErrors($validator);
-}
+
+    return redirect()->back()->withErrors($validator)->withInput($request->input());
+    return redirect('/mvezeto/auto')->withErrors($validator);
+    }
 }
 
 //Autók kilistázása
@@ -96,7 +98,6 @@ public function autoTorles($id)
         return redirect('/mvezeto/autok');
 }
 
-
 //Autó módosítása
 
 public function autoModosit(Request $request, $id)
@@ -107,8 +108,6 @@ public function autoModosit(Request $request, $id)
     ];
     try{
     $request->validate($rules);
-
-
     $auto = Auto::find($id);
     $auto -> rendszam = $request -> rendszam;
     $auto -> markaId = $request -> markaId;
@@ -117,22 +116,17 @@ public function autoModosit(Request $request, $id)
     $auto->save();
 
     return redirect('/mvezeto/autok');
-} catch (QueryException  $e){
-    
+
+    }catch (QueryException  $e){
     $evjaratures = '';
     $rosszevjarat = '';
     $rszdup = '';
     $forgdup = '';
-    
     $validator = Validator::make([],[]);
-    
     
     if (preg_match("/'evjarat' cannot be null/", $e->getMessage())) {
         $evjaratures = 'A mező kitöltése kötelező!';
     }
-
-    
-    
 
     if (preg_match("/Nem megfelelő évjárat!/", $e->getMessage())) {
         $rosszevjarat = 'Nem megfelelő évjárat! Nem lehet 1990-nél kisebb, illetve a mostani évnél nagyobb!';
@@ -151,9 +145,9 @@ public function autoModosit(Request $request, $id)
     $validator->errors()->add('rszdup', $rszdup);
     $validator->errors()->add('forgdup', $forgdup);
     
- return redirect()->back()->withErrors($validator)->withInput($request->input());
- return redirect('/mvezeto/auto')->withErrors($validator);
-}
+    return redirect()->back()->withErrors($validator)->withInput($request->input());
+    return redirect('/mvezeto/auto')->withErrors($validator);
+    }
 
 }
 
@@ -162,6 +156,7 @@ public function autoSzerkesztes($id)
 $markas = Marka::all();
 $auto = Auto::find($id);
 $auto->marka;
+
 return view('mvezeto/automodosit', ['markas' => $markas, 'auto' => $auto]);
 }
 

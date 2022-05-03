@@ -209,29 +209,7 @@ Route::delete('/api/munkalap/{id}', [MunkalapController::class, 'munkalapTorles'
 Route::get('/mvezeto/munkamodosit/{id}', [MunkalapController::class, 'munkalapSzerkesztes']);
 Route::put('/api/munkalap/{id}', [MunkalapController::class, 'munkalapModosit']);
 
-//Munkalap befejezése
-//Route::get('mvezeto/munkabefejezes/{id}', [MunkalapController::class, 'munkabefejezes']);
-
 //Oldalmenü @include Route az összes blade-re. 
 Route::get('/mvezeto', function() {return View::make('layouts.oldalmenu');});
 
 Route::get('/mvezeto', function() {return View::make('layouts.belepve');});
-
-/*//Új Jelleg
-Route::get('/mvezeto/jelleg', [JellegController::class, 'ujjelleg']);
-Route::post('/api/jelleg', [JellegController::class, 'jelleg']);*/ 
-////Hibaüzenetek
-/*Route::get('/test', function(){
-try{
-    $e = new Exception('Az óradíj nem lehet 5000-nél kisebb és 20000-nél nagyobb!');
-    throw new Exception('insert into `jellegs` (`jelleg`, `elnevezes`, `oradij`, `updated_at`, `created_at`) values (?, aaa, 1, 2022-04-03 17:58:53, 2022-04-03 17:58:53)');
-}
-catch(Exception $e){
-    $validator = Validator::make([],[]);
-    $validator->errors()->add('oradij',$e->getMessage());
-    return redirect('/test2')->withErrors($validator);
-}
-});
-Route::get('/test2', function(){
-    echo session('errrors');
-});//*/
