@@ -9,7 +9,7 @@
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <title>Bejelentkezés</title>
 </head>
-<body> 
+<body>
     <div class="container">
         <div class="loginmezo">
             <div class="title"><span>Bejelentkezés</span></div>
@@ -23,6 +23,9 @@
                      <i class="fas fa-lock"></i>
                     <input type="password" placeholder="Jelszó" name="jsz" id="jsz" required>
                 </div>
+                @error('hiba')
+                  <div class="alert alert-danger">{{ $errors->first('hiba') }}</div>
+                  @enderror
                 <div class="row button">
                     <input type="submit" value="Belépés" name="mehet">
                 </div>

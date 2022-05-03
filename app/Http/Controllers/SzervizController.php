@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Validator;
 use App\Models\Szerviz;
 use App\Models\Feladat;
 use Illuminate\Http\Request;
@@ -43,8 +44,16 @@ class SzervizController extends Controller
             else{
                 $_SESSION["belepve"] = false;
                 $_SESSION["dbelepve"] = false;
-                return redirect("belepes");
+
+                $hiba = 'Helytelen felhasználónév vagy jelszó!';
+                $validator = Validator::make([],[]);
+                $validator->errors()->add('hiba', $hiba);
+                //return redirect();
+
+                return redirect()->back()->withErrors($validator);
+                return redirect("belepes")->withErrors($validator);
             }
+
         }
     }
 
